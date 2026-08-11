@@ -46,17 +46,25 @@ instructional_working_cadence:
   time: "12:30 PM"
   label: "Same as the official Banner meeting time above -- no separate planning cadence for this course."
 
-# No textbook source was supplied for DSCT in prompt 045 or found tracked
-# elsewhere in this repo as of 2026-08-09.
+# Updated 2026-08-11: Jeremy filed a ZyBooks adoption request for a
+# discrete-mathematics title today; not yet cleared/confirmed. Strategy
+# (Jeremy, same conversation): once it clears, follow the same pattern
+# already used for CS1/CS2/Architecture -- a ZyBooks product as the
+# primary graded-practice track. No specific title/edition/URL exists yet
+# -- do not fabricate one; this block gets populated the moment Jeremy
+# confirms the adoption cleared and names the product.
 textbook:
-  title: "Not yet tracked"
+  title: "Discrete-mathematics ZyBooks adoption filed 2026-08-11, pending -- not yet cleared or named"
   authors: []
-  zybook_identifier: "TBD"
+  zybook_identifier: "TBD -- pending adoption"
   zybook_url: ""
   main_chapters: []
   note: >-
-    No textbook source has been confirmed and tracked for DSCT as of
-    2026-08-09. Do not fabricate one here.
+    Fall 2026 strategy (Jeremy, 2026-08-11): ZyBooks-first for all four
+    courses. DSCT is the one course with no historical SWOSU ZyBooks
+    precedent to reuse (unlike CS1/CS2/Architecture) -- Jeremy is
+    flexible here and filed a fresh discrete-math adoption today. See
+    jeremy_task_tracking/DECISIONS.md's 2026-08-11 entries.
 
 provenance:
   - source: "Jeremy's directly supplied Fall 2026 catalog/section record (jeremy_task_tracking/prompts/045_add_week_at_a_glance_for_other_three_classes.md)"
