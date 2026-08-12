@@ -46,25 +46,42 @@ instructional_working_cadence:
   time: "12:30 PM"
   label: "Same as the official Banner meeting time above -- no separate planning cadence for this course."
 
-# Updated 2026-08-11: Jeremy filed a ZyBooks adoption request for a
-# discrete-mathematics title today; not yet cleared/confirmed. Strategy
-# (Jeremy, same conversation): once it clears, follow the same pattern
-# already used for CS1/CS2/Architecture -- a ZyBooks product as the
-# primary graded-practice track. No specific title/edition/URL exists yet
-# -- do not fabricate one; this block gets populated the moment Jeremy
-# confirms the adoption cleared and names the product.
+# Reconciled 2026-08-11: this is the current course-specific Fall 2026
+# zyBook URL. It supersedes the older generic/custom identifier as the
+# operational link, while preserving it below as product-history provenance.
+# The known underlying product/release are prior evidence, not proof that the
+# current course configuration, roster, assignment, due-date, or LTI state is
+# identical; verify those from the authorized current page.
 textbook:
-  title: "Discrete-mathematics ZyBooks adoption filed 2026-08-11, pending -- not yet cleared or named"
+  title: "Discrete Mathematics"
   authors: []
-  zybook_identifier: "TBD -- pending adoption"
-  zybook_url: ""
-  main_chapters: []
+  zybook_identifier: "SWOSUCOMSC2043EvertFall2026"
+  zybook_url: "https://learn.zybooks.com/zybook/SWOSUCOMSC2043EvertFall2026"
+  current_release: "March 2026 (intended for Summer/Fall 2026) -- prior page-capture evidence; current course page still requires verification"
+  historical_zybook_identifiers:
+    - "EvertDiscreteMathDec2024"
+  main_chapters:
+    - { number: 1, title: "Logic" }
+    - { number: 2, title: "Proofs" }
+    - { number: 3, title: "Sets" }
+    - { number: 4, title: "Functions" }
+    - { number: 5, title: "Boolean Algebra" }
+    - { number: 6, title: "Relations / Digraphs" }
+    - { number: 7, title: "Computation" }
+    - { number: 8, title: "Induction and Recursion" }
+    - { number: 9, title: "Integer Properties" }
+    - { number: 10, title: "Introduction to Counting" }
+    - { number: 11, title: "Advanced Counting" }
+    - { number: 12, title: "Discrete Probability" }
+    - { number: 13, title: "Graphs" }
+    - { number: 14, title: "Trees" }
+    - { number: 15, title: "Appendix" }
   note: >-
     Fall 2026 strategy (Jeremy, 2026-08-11): ZyBooks-first for all four
-    courses. DSCT is the one course with no historical SWOSU ZyBooks
-    precedent to reuse (unlike CS1/CS2/Architecture) -- Jeremy is
-    flexible here and filed a fresh discrete-math adoption today. See
-    jeremy_task_tracking/DECISIONS.md's 2026-08-11 entries.
+    courses. `EvertDiscreteMathDec2024` is historical provenance only;
+    `SWOSUCOMSC2043EvertFall2026` is the Fall 2026 operational identifier.
+    The chapter list and release are prior evidence and must not be assumed
+    byte-for-byte identical to the current page.
 
 provenance:
   - source: "Jeremy's directly supplied Fall 2026 catalog/section record (jeremy_task_tracking/prompts/045_add_week_at_a_glance_for_other_three_classes.md)"
@@ -73,6 +90,7 @@ provenance:
       Catalog name ("Discrete Structures") and operational display name
       ("Discrete Structures and Critical Thinking") are both preserved,
       per explicit instruction, as separate fields.
-  - note: >-
-      Textbook block is intentionally empty/TBD -- no source was supplied
-      or found tracked; see the `textbook.note` field above.
+  - source: "Jeremy, directly, 2026-08-11 (Fall 2026 zyBooks URL)"
+    covers: "textbook.zybook_identifier/textbook.zybook_url"
+  - source: "Earlier Jeremy zyBooks page capture (underlying product, release, and top-level TOC)"
+    covers: "textbook.title/textbook.current_release/textbook.main_chapters; requires current-page verification"
