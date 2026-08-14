@@ -1,0 +1,8 @@
+Prompt 300D validation trail (exact command outcomes)
+
+python -m pytest -q: unavailable (python command not found)
+python3 -m pytest -q in marker/coach/dispatch/harbor/lab: unavailable (No module named pytest)
+ruff check . in synthetic_student_laboratory: unavailable (ruff command not found)
+PYTHONPATH=marker:coach python3 deterministic smoke: completed; four synthetic cases; no Ollama or remote backend.
+No Canvas/Savnac write function called. No NRP job submitted.
+

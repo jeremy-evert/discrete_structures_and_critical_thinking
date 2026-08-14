@@ -1,0 +1,16 @@
+edge,class,evidence,verdict
+DSCT rubric -> Marker,MISSING_DSCT_ADAPTER,"assignments/weekly-problem-solving-writeup.md; templates/weekly-rubric.md; marker/marker/markdown_rubric.py",NO-GO
+five-part evidence -> generic rubric,PARTIAL,"DSCT template has five observable headings but no offering-specific points or examples",GO WITH YELLOWS
+Marker grade -> AssessmentDraft,READY_GENERIC,"marker/marker/pipeline.py; AssessmentDraft and CriterionJudgment schemas",GO
+Marker receipt -> durable evidence,READY_GENERIC,"marker/marker/assessment_receipt.py; atomic v2 receipt and input hashes",GO WITH YELLOWS
+Marker safety gates,READY_GENERIC,"assertion_gate.py; draft_honesty.py; plausibility_gate.py; comprehension_gate.py",GO WITH YELLOWS
+AssessmentDraft -> Coach,READY_GENERIC,"coach/coach/pipeline.py; imports Marker schema and reads evidence/notes",GO
+DSCT materials -> Coach,BLOCKED_BY_CONTENT,"DSCT 300B: Week 2 NO-GO; skeleton lessons and no dated artifact/material bundle",NO-GO
+Coach -> future watcher,PARTIAL,"Coach returns CoachingNote with cited materials/next_steps/state",GO WITH YELLOWS
+future watcher -> Dispatch,EXTERNAL_WATCHER_DEPENDENCY,"separate watcher/valve effort owns detection/orchestration",UNKNOWN - NEEDS SPECIFIC EVIDENCE
+Dispatch comment report,READY_GENERIC,"dispatch/dispatch/writeback.py; build_writeback_report is non-writing",GO WITH YELLOWS
+Dispatch -> Canvas/Savnac write,EXTERNAL_WATCHER_DEPENDENCY,"execute_writeback requires live=True; not exercised",CAN WAIT
+synthetic cases -> Marker/Coach,READY_GENERIC,"run-local deterministic smoke receipt",GO WITH YELLOWS
+Synthetic Student Laboratory DSCT,SCALE_ONLY,"lab accepts profile/effort/assignment/rubric/material bundle; no DSCT config",NO-GO
+NRP battery,SCALE_ONLY,"nrp_k8s_launcher README/scripts; no job submitted",NO-GO
+

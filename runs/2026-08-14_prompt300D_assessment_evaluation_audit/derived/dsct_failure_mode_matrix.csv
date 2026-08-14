@@ -1,0 +1,10 @@
+failure_mode,existing_coverage,classification,evidence,next_action
+asserted proof without proof,assertion gate detects self-claims; low score alone does not force escalation,PARTIAL,"marker/marker/assertion_gate.py and CriterionJudgment.evidence_is_shown_not_claimed",DSCT criterion must require quoted proof steps
+fluent invalid argument,no generic truth gate; comprehension gate can inspect high-credit cited evidence,PARTIAL,"marker/marker/comprehension_gate.py",add proof-validity authoring examples; experiment locally
+unstated assumption,not mechanically detectable,needs DSCT-specific rubric criterion,"Marker applies rubric faithfully",require domain/assumption field and counterexample scope
+correct output with invalid reasoning,not generically resolved,needs DSCT-specific rubric criterion,"generic AssessmentDraft has evidence/notes but no proof semantics",criterion separates result from justification
+invalid counterexample,not generically resolved,needs DSCT-specific rubric criterion,"no domain-condition validator in Marker",require original-domain and refutation evidence
+simulation output overclaim,no generic simulator validator,needs DSCT-specific rubric criterion,"generic plain-text input contract",require code/output plus limitation/generalization check
+AI explanation conflicts with definition,comprehension gate may escalate a credited miss,PARTIAL,"comprehension_gate.py; DSCT blueprint AI verification",bundle exact definitions and add verification criterion
+cited source does not support conclusion,note/assessment grounding checks do not verify external source truth,needs DSCT-specific rubric criterion,"Marker receives plain submission text and rubric only",require source claim-to-definition linkage
+
