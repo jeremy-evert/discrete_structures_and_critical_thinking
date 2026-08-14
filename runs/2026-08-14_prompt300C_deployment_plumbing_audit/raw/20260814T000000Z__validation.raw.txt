@@ -1,0 +1,10 @@
+COMMAND: python3 -m pytest course_foundry/tests/test_load_adapters.py course_foundry/tests/test_graph.py course_foundry/tests/test_cs1_desired_course.py imprint/tests/test_reconcile.py imprint/tests/test_cli.py harbor/tests/test_harbor_config.py harbor/tests/test_harbor_list_endpoints.py -q
+/usr/bin/python3: No module named pytest
+
+COMMAND: python3 -m compileall -q course_foundry/course_foundry imprint/imprint harbor/harbor
+RESULT: exit 0
+
+COMMAND: PYTHONPATH=course_foundry:imprint:harbor python3 selector probe
+Traceback (most recent call last):
+  ...
+ModuleNotFoundError: No module named 'pydantic'

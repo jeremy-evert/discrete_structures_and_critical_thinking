@@ -1,0 +1,8 @@
+{
+  "highest_level": 0,
+  "label": "Static architecture only",
+  "achieved": false,
+  "reason": "No existing DSCT DesiredCourse producer or Course Foundry selector/adapter exists. No hand-authored plan was made.",
+  "first_seam_preventing_level_1": "course_foundry lacks a DSCT DesiredCourse builder from the DSCT repository.",
+  "network_attempt": "No DSCT plan exists to reconcile. A safe Savnac read was independently blocked on Maise by absent local config and an unavailable Brandy SSH route."
+}

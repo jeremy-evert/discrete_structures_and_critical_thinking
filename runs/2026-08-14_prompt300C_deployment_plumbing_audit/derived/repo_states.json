@@ -1,0 +1,14 @@
+{
+  "captured_at": "2026-08-14",
+  "host": "maise",
+  "repositories": [
+    {"repo":"jeremy_task_tracking","head":"14a85bd0f058ad830d709c6b507792136ac36581","branch":"main","tracking":"origin/main","status":"dirty: untracked bin/tmux-snag (preserved; unrelated)","used":true,"refresh":"not attempted because dirty"},
+    {"repo":"discrete_structures_and_critical_thinking","head":"69984ecead1b572203b9ac73291d9e6df74e7ed3","branch":"main","tracking":"origin/main","status":"clean","used":true,"refresh":"failed: SSH system proxy configuration rejected"},
+    {"repo":"course_foundry","head":"39208d7148bf7ae8a5676f7334d79c8219a8b4b6","branch":"main","tracking":"origin/main","status":"clean","used":true,"refresh":"failed: SSH system proxy configuration rejected"},
+    {"repo":"harbor","head":"a5b3eb2d9f58285aa7617c88bebcb2c505c7aaed","branch":"main","tracking":"origin/main","status":"clean","used":true,"refresh":"failed: SSH system proxy configuration rejected"},
+    {"repo":"imprint","head":"ef17850f905f20962674a2f5b52b06679e7d9c7f","branch":"main","tracking":"origin/main","status":"clean","used":true,"refresh":"failed: SSH system proxy configuration rejected"},
+    {"repo":"Savnac","head":"c2d11e96b7d4bc64b8550619281720f5fd4a2dbf","branch":"main","tracking":"origin/main","status":"clean","used":true,"refresh":"failed: SSH system proxy configuration rejected"},
+    {"repo":"semester_kickoff_week","head":"94d8591369c350996f6984b05d0a9d50cee764a8","branch":"main","tracking":"origin/main","status":"clean","used":true,"refresh":"failed: SSH system proxy configuration rejected"}
+  ],
+  "drift_from_prior_handoff":{"jeremy_task_tracking":"300B stated 2f49088; current is 14a85bd0","discrete_structures_and_critical_thinking":"matches 300B stated 69984ec"}
+}

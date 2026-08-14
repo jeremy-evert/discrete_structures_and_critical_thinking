@@ -1,0 +1,7 @@
+host=maise
+/home/jevert/.config/canvas/savnac.env: absent
+/home/jevert/.config/canvas/canvas.env: absent
+/home/jevert/.canvas.env: absent
+COMMAND: ssh -F /home/jevert/.ssh/config -o BatchMode=yes -o ConnectTimeout=10 brandy 'hostname; test -e ~/.config/canvas/savnac.env && echo savnac_env_exists || echo savnac_env_absent; curl --silent --show-error --max-time 10 --output /dev/null --write-out "savnac_login_http=%{http_code}\\n" http://192.168.122.172:3000/login/canvas'
+socket: Operation not permitted
+ssh: connect to host 10.2.0.48 port 22: failure
