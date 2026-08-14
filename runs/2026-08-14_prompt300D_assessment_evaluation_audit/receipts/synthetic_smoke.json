@@ -1,0 +1,13 @@
+{
+  "synthetic_only": true,
+  "backend": "deterministic fake LLM; no Ollama; no remote backend",
+  "rubric": "run-local five-part micro-rubric; neutral one-point mechanics only",
+  "cases": [
+    {"case":"strong","marker_state":"ready","coach_state":null,"qualitative":"expected pass"},
+    {"case":"unsupported_assertion","marker_state":"ready","coach_state":"escalate","qualitative":"weak case retained for human review/coaching"},
+    {"case":"invalid_counterexample","marker_state":"ready","coach_state":"escalate","qualitative":"weak case retained for human review/coaching"},
+    {"case":"bad_check","marker_state":"ready","coach_state":"escalate","qualitative":"weak case retained for human review/coaching"}
+  ],
+  "interpretation": "This smoke validates interfaces and fail-closed coaching behavior, not grading accuracy. The fake drafts did not invoke the full LLM grading path."
+}
+

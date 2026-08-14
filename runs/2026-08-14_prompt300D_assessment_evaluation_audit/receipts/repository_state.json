@@ -1,0 +1,16 @@
+{
+  "prompt": "300D",
+  "recorded_at": "2026-08-14",
+  "runtime": {"python": "3.14.4", "pytest": "unavailable: No module named pytest", "ruff": "unavailable"},
+  "repositories": {
+    "discrete_structures_and_critical_thinking": {"sha": "fb384c170eb889363b68ee4773037c4e0251cd2a", "branch": "main", "dirty": false},
+    "marker": {"sha": "14925a2022a9aab10fd3cf0ab8af0a95f480328a", "branch": "master", "dirty": false},
+    "coach": {"sha": "0d01f7a7377025e35da56bbb4f232153e8efeb9b", "branch": "master", "dirty": false},
+    "dispatch": {"sha": "1bfdfb82efd19c971d0b15cb641f6e38e66415ec", "branch": "master", "dirty": false},
+    "harbor": {"sha": "a5b3eb2d9f58285aa7617c88bebcb2c505c7aaed", "branch": "main", "dirty": false},
+    "synthetic_student_laboratory": {"sha": "54ef1a22ca25f77a914d34d1140feef23ea2969f", "branch": "main", "dirty": false},
+    "nrp_k8s_launcher": {"sha": "0bf946a139f3efc6dd0daf30dd4dae4cade499ec", "branch": "main", "dirty": false}
+  },
+  "boundaries": {"real_student_data": false, "canvas_writes": false, "savnac_writes": false, "nrp_jobs": false, "watcher_implemented": false}
+}
+
