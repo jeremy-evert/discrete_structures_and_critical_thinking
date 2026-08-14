@@ -1,0 +1,10 @@
+catalog_topic,week,coverage_note
+sets,4,Sets and representations
+functions,4,Domain codomain and composition
+propositional and predicate logic,3,Claims propositions predicates quantifiers
+Boolean algebra,13,Equivalence gates circuits SAT
+graph theory,11,Graphs networks paths connectivity
+matrices,10,Relation matrix and digraph representation
+proof techniques,3;7,Proof and induction
+combinatorics,8,Counting and case reasoning
+finite state machines,14,States transitions invariants and limits

@@ -1,0 +1,32 @@
+{
+  "run_date": "2026-08-14",
+  "start_directory": "/mnt/nora/git",
+  "repositories": {
+    "discrete_structures_and_critical_thinking": {
+      "branch": "main",
+      "head_before_commit": "565c13394e494c2d6b5782bea47b2d9daf8345ac",
+      "upstream": "origin/main",
+      "upstream_sha_before_commit": "565c13394e494c2d6b5782bea47b2d9daf8345ac",
+      "status_before": "clean",
+      "pull": "ff-only attempted; SSH proxy configuration rejected remote read before editing"
+    },
+    "jeremy_task_tracking": {
+      "branch": "main",
+      "head_before_commit": "0aed24324fdbca1b361f4f58bffa35785185a19c",
+      "upstream": "origin/main",
+      "upstream_sha_before_commit": "0aed24324fdbca1b361f4f58bffa35785185a19c",
+      "status_before": "clean",
+      "pull": "ff-only attempted; SSH proxy configuration rejected remote read before editing"
+    },
+    "professional_minds": "not present locally; no modification attempted"
+  },
+  "authoritative_inputs": {
+    "question_009": "jeremy_task_tracking/questions/009_dsct_week2_identity.md",
+    "week1_report": "discrete_structures_and_critical_thinking/reports/301_week1_launch_package.md",
+    "week1_source_map": "discrete_structures_and_critical_thinking/planning/week-01-source-map.md",
+    "course_metadata": "discrete_structures_and_critical_thinking/course_metadata.yaml",
+    "course_design": "discrete_structures_and_critical_thinking/planning/fall-2026-course-design.md",
+    "zybooks_decisions": "discrete_structures_and_critical_thinking/planning/zybooks-section-decisions.csv",
+    "lesson_directory": "discrete_structures_and_critical_thinking/lessons/"
+  }
+}

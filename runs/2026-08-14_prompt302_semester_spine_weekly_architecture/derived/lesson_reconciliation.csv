@@ -1,0 +1,15 @@
+historical_lesson,new_role,formal_week,notes
+01-orientation-and-learning-practice.md,Week 1/2 habits,1;2,Not a formal Weeks 3-14 topic
+02-logic-proofs-and-sequences.md,Logic/proof and sequence source,3;4;7,Split by semantics across formal weeks
+03-functions-and-matrices.md,Functions and matrix representation,4;10,Functions W4; matrices/digraph representation W10
+04-algorithms.md,Algorithms correctness and growth,5,Formal topic source
+05-cryptography.md,Integer properties and cryptography,6,Formal topic source
+06-recursion.md,Induction recursion and recurrences,7,Formal topic source
+07-counting.md,Counting and combinatorial reasoning,8,Formal topic source
+08-probability.md,Probability uncertainty and evidence,9,Thursday Fall Break exception
+09-relations.md,Relations equivalence orders matrices digraphs,10,Formal topic source
+10-graphs.md,Graphs and network reasoning,11,Formal topic source
+11-trees.md,Trees search and decision structures,12,Formal topic source
+12-boolean-algebra.md,Boolean algebra circuits SAT,13,Formal topic source
+13-finite-state-machines.md,Finite-state machines model limits,14,Formal topic source
+14-synthesis-and-applications.md,Week 14 mini-capstone and Week 16 source,14;16,Not an extra formal topic week

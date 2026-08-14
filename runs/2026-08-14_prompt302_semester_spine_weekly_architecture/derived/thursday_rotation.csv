@@ -1,0 +1,13 @@
+week,date_thursday,mode,artifact_family
+3,2026-09-03,Pair Programming,checker/counterexample generator/proof verifier
+4,2026-09-10,Show & Tell,representation comparison
+5,2026-09-17,Pair Programming,test harness/trace checker
+6,2026-09-24,Show & Tell,encode/decode checker
+7,2026-10-01,Pair Programming,recursion tracer/invariant checker
+8,2026-10-08,Show & Tell,enumerator/case witness
+9,2026-10-15,Fall Break — no class,Tuesday pair-style work folded in
+10,2026-10-22,Show & Tell,relation classifier/matrix-digraph model
+11,2026-10-29,Pair Programming,graph builder/traversal checker
+12,2026-11-05,Show & Tell,tree visualizer/search trace
+13,2026-11-12,Pair Programming,truth-table/SAT/circuit checker
+14,2026-11-19,Show & Tell / Reasoning Odyssey mini-capstone,state-machine runner/model defense

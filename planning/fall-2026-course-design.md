@@ -42,6 +42,16 @@ the student’s account of assumptions and checking.
 
 ## Semester spine and module blueprint
 
+The dated operational spine and weekly architecture were reconciled by
+Prompt 302. The table below is retained as pedagogical design intent and
+reading rationale, not as the dated week allocation. The authoritative
+calendar is [`fall-2026-spine.md`](fall-2026-spine.md), and the authoritative
+topic/source mapping is [`fall-2026-topic-map.md`](fall-2026-topic-map.md).
+Week 1 is the landed kickoff; Week 2 is Building Your AI Lab / Containers and
+Repeatability; formal DSCT topics begin in Week 3 and end in Week 14; Week 15
+is an asynchronous Thanksgiving/Mexico buffer; Week 16 is Farkle + ML; Week
+17 is Final Reflection. No points, grading weights, or due dates are implied.
+
 `KEEP` and `OPTIONAL` identifiers below are section references only; titles,
 classifications, and prerequisites are in the CSV.  Each module must include a
 Week at a Glance overview, accessible instructor slides/material, the linked

@@ -1,0 +1,10 @@
+{
+  "direct_jeremy_decisions": ["Question 009 resolved semester arc", "Prompt 302 frozen Weeks 3-14 sequence and chassis"],
+  "landed_week1_source": ["reports/301_week1_launch_package.md", "planning/week-01-source-map.md", "week-01/"],
+  "official_catalog": "course_metadata.yaml official.catalog_description",
+  "professional_minds": "architecture supplied by Prompt 302; local per-week anchors SOURCE_PENDING",
+  "zybooks": "planning/zybooks-section-decisions.csv; KEEP/OPTIONAL/UNUSED treated as source facts",
+  "historical_structure": "lessons/*.md and fall-2026-course-design.md; reconciled where stale",
+  "historical_reports": "300B-300E treated as evidence, not overriding current direct decisions",
+  "precedence": "current direct Jeremy decision > landed source > catalog constraint > historical design/report"
+}
