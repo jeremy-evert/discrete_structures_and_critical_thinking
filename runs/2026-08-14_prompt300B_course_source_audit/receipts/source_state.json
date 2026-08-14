@@ -1,0 +1,13 @@
+{
+  "run": "2026-08-14_prompt300B_course_source_audit",
+  "workspace": "/mnt/nora/git",
+  "repo": "/mnt/nora/git/discrete_structures_and_critical_thinking",
+  "branch": "main",
+  "audited_sha": "1fa96ee7bc8d45af2cb0d185743759d8d027c088",
+  "handoff_sha_300A": "1fa96ee7bc8d45af2cb0d185743759d8d027c088",
+  "status_before_audit": "clean; main...origin/main",
+  "fetch_attempt": "failed: Bad owner or permissions on /etc/ssh/ssh_config.d/20-systemd-ssh-proxy.conf; could not read from remote repository",
+  "pull_attempt": "not performed for DSCT because fetch failed; checked-out source remains the audited handoff SHA",
+  "source_changes_made": false,
+  "archive_method": "bounded Python structural summary; no archive snapshot was emitted wholesale"
+}

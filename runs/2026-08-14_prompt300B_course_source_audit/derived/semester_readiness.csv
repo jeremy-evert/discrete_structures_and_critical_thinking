@@ -1,0 +1,18 @@
+week,dates,central_topic,current_lesson,required_reading_mapped,activity_exists,assignment_exists,rubric_evidence_exists,instructor_material_exists,student_artifact_exists,status,blocking_decision
+1,2026-08-18/20,universal kickoff,semester_kickoff_week shared source,no DSCT reading,yes shared generic,yes shared generic,yes shared generic,yes generic guide,partial DSCT adaptation,PARTIAL,author DSCT framing and T/Th path before Tuesday
+2,2026-08-25/27,orientation and learning practice,lessons/01-orientation-and-learning-practice.md,no,template only,template only,template only,no,no,SKELETON ONLY,AUTHORING GAP
+3,2026-09-01/03,logic proofs and sequences,lessons/02-logic-proofs-and-sequences.md,yes manifest W3,no,no,template only,no,no,SKELETON ONLY,proof exemplar and Week 3 package
+4,2026-09-08/10,functions and matrices,lessons/03-functions-and-matrices.md,yes manifest W4,no,no,template only,no,no,SKELETON ONLY,matrix example and activity
+5,2026-09-15/17,algorithms,lessons/04-algorithms.md,yes manifest W5,no,template only,template only,no,no,SKELETON ONLY,algorithm activity and supported environment
+6,2026-09-22/24,cryptography,lessons/05-cryptography.md,yes manifest W6,template only,template only,template only,no,no,SKELETON ONLY,cryptography scenario and pair artifact
+7,2026-09-29/10-01,recursion,lessons/06-recursion.md,yes manifest W7,no,template only,template only,no,no,SKELETON ONLY,assessment and coding/non-code path
+8,2026-10-06/08,counting,lessons/07-counting.md,yes manifest W8,no,template only,template only,no,no,SKELETON ONLY,counting decision tree
+9,2026-10-13,probability,lessons/08-probability.md,yes manifest W9,no,template only,template only,no,no,SKELETON ONLY,simulation starter and holiday-aware plan
+10,2026-10-20/22,relations,lessons/09-relations.md,yes manifest W10,no,template only,template only,no,no,SKELETON ONLY,relation clinic
+11,2026-10-27/29,graphs,lessons/10-graphs.md,yes manifest W11,no,template only,template only,no,no,SKELETON ONLY,context-rich graph cases
+12,2026-11-03/05,trees,lessons/11-trees.md,yes manifest W12,no,template only,template only,no,no,SKELETON ONLY,tree examples and scope
+13,2026-11-10/12,Boolean algebra,lessons/12-boolean-algebra.md,yes manifest W13,no,template only,template only,no,no,SKELETON ONLY,logic-to-circuit bridge
+14,2026-11-17/19,finite-state machines,lessons/13-finite-state-machines.md,yes manifest W5 revisit,no,template only,template only,no,no,SKELETON ONLY,builder/material and reflection
+15,2026-11-24, synthesis and applications,lessons/14-synthesis-and-applications.md,targeted revisit,no,template only,template only,no,no,SKELETON ONLY,project guide and success criteria
+16,2026-12-01/03,review and integration buffer,no mapped lesson,targeted optional only,no,template only,template only,no,no,PLANNED ONLY,decide review/final structure
+17,2026-12-07/11,finals week,no mapped lesson,no,no,template only,template only,no,no,PLANNED ONLY,final format and grading policy
