@@ -1,0 +1,21 @@
+Prompt 300B deterministic source checks — 2026-08-14
+
+Command family: git -C discrete_structures_and_critical_thinking status -sb; git fetch origin; git rev-parse HEAD
+Observed status: ## main...origin/main
+Observed HEAD: 1fa96ee7bc8d45af2cb0d185743759d8d027c088
+Observed fetch failure: Bad owner or permissions on /etc/ssh/ssh_config.d/20-systemd-ssh-proxy.conf; fatal: Could not read from remote repository.
+
+Deterministic source facts:
+- current non-archive files inventoried: 44 files in the required families (including .gitkeep files)
+- Fall 2026 lesson files: 14
+- reusable assignment templates: 6
+- current quiz templates: 1
+- current reflection files: 0
+- current portfolio files: 0
+- current tests: 0 substantive files
+- planning/zybooks-section-decisions.csv rows: 126; classifications: 75 KEEP, 46 OPTIONAL, 5 UNUSED
+- unresolved Markdown links in the inventoried current source: none
+- `README.md` says the repository is a placeholder/under construction
+
+Archive handling: structural metadata was summarized with a Python script;
+large Canvas snapshots were not printed or manually read as whole files.

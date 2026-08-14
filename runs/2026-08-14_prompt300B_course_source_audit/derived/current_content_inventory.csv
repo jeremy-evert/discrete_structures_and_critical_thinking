@@ -1,0 +1,39 @@
+path,file_type,size_bytes,family,class,markers,assessment_of_content
+README.md,md,330,README,placeholder,PLACEHOLDER,placeholder repository description
+course_metadata.yaml,yaml,4627,metadata,current,,course and operational metadata; live vendor state explicitly unverified
+planning/fall-2026-course-design.md,md,10141,planning,current,,substantive blueprint; not finished curriculum
+planning/fall-2026-spine.md,md,5146,planning,placeholder,TBD|PLACEHOLDER,dated 17-week mapping; daily content explicitly TBD
+planning/zybooks-section-decisions.csv,csv,31128,planning,current,,126-row section decision manifest
+docs/curriculum/course-sequence.md,md,2631,docs,current,,arc summary with historical evidence
+docs/philosophy/teaching-patterns.md,md,1640,docs,current,,historical teaching-pattern summary
+docs/reports/curriculum-history-synthesis.md,md,3510,docs,current,,bounded archive synthesis and salvage notes
+assignments/career-artifact-sequence.md,md,489,assignments,current,,reusable template; not week-dated
+assignments/pair-programming-report.md,md,396,assignments,current,,reusable template; not week-dated
+assignments/programming-exam.md,md,555,assignments,current,,reusable template; current point policy absent
+assignments/project-and-final-reflection.md,md,474,assignments,current,,reusable template; current success criteria absent
+assignments/show-and-tell-artifact.md,md,379,assignments,current,,reusable template; not week-dated
+assignments/weekly-problem-solving-writeup.md,md,492,assignments,current,,usable evidence-format template; no current problem set or dates
+lessons/01-orientation-and-learning-practice.md,md,577,lessons,current,,objectives/key content/history only; not teachable lesson
+lessons/02-logic-proofs-and-sequences.md,md,513,lessons,current,,objectives/key content/history only; not teachable lesson
+lessons/03-functions-and-matrices.md,md,488,lessons,current,,objectives/key content/history only; not teachable lesson
+lessons/04-algorithms.md,md,404,lessons,current,,objectives/key content/history only; not teachable lesson
+lessons/05-cryptography.md,md,432,lessons,current,,objectives/key content/history only; not teachable lesson
+lessons/06-recursion.md,md,360,lessons,current,,objectives/key content/history only; not teachable lesson
+lessons/07-counting.md,md,404,lessons,current,,objectives/key content/history only; not teachable lesson
+lessons/08-probability.md,md,420,lessons,current,,objectives/key content/history only; not teachable lesson
+lessons/09-relations.md,md,353,lessons,current,,objectives/key content/history only; not teachable lesson
+lessons/10-graphs.md,md,412,lessons,current,,objectives/key content/history only; not teachable lesson
+lessons/11-trees.md,md,379,lessons,current,,objectives/key content/history only; not teachable lesson
+lessons/12-boolean-algebra.md,md,352,lessons,current,,objectives/key content/history only; not teachable lesson
+lessons/13-finite-state-machines.md,md,403,lessons,current,,objectives/key content/history only; not teachable lesson
+lessons/14-synthesis-and-applications.md,md,486,lessons,current,,objectives/key content/history only; not teachable lesson
+monday_moments/README.md,md,1018,monday_moments,current,,DSCT-shaped AI verification concept and template pointer
+monday_moments/template.md,md,370,monday_moments,template,,one reusable prompt template; no weekly entries
+quizzes/feedback-and-concept-check.md,md,501,quizzes,current,,adaptable quiz template; no actual check
+reflections/,dir,0,reflections,empty,,no substantive reflection artifact
+portfolio/,dir,0,portfolio,empty,,no portfolio artifact
+prompts/001_course_development_source_walk.md,md,571,prompts,current,,source-walk prompt only
+templates/career-evidence-pack.md,md,518,templates,template,,reusable template
+templates/weekly-rubric.md,md,627,templates,template,,five-part rubric template; point policy absent
+tests/,dir,0,tests,empty,,no substantive tests
+reports/010_fall_2026_zybooks_design.md,md,2716,reports,current,,ZyBooks design report; not instructional material

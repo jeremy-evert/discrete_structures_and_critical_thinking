@@ -1,0 +1,16 @@
+{
+  "source": "archive/*/canvas-*.json, summarized 2026-08-14 with bounded structural extraction",
+  "semesters_present": ["fall-2021", "spring-2021", "fall-2022", "spring-2022", "fall-2023", "spring-2023", "fall-2024", "spring-2024", "fall-2025", "spring-2025", "spring-2026"],
+  "interpretation": "Historical snapshots are salvage material, not Fall 2026 authority.",
+  "current_repo_synthesis_used": "docs/reports/curriculum-history-synthesis.md",
+  "recurring_salvage_candidates": [
+    "weekly problem-solving rubric with sources, assumptions, work, check, summary",
+    "small programming and simulation artifacts with visible tests/output",
+    "cryptography pair work",
+    "finite-state/Hamilton-path application material",
+    "coding-odyssey/project artifacts",
+    "Farkle and Q-learning material from spring 2026",
+    "end-of-semester reflection patterns"
+  ],
+  "not_current_truth": ["historical due dates", "historical grading weights", "historical final format", "historical Canvas object state"]
+}
