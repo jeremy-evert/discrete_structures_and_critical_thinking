@@ -1,0 +1,7 @@
+# DSCT Week 2 bounded example.
+# This recipe is inspected in class. It is executable only when the instructor
+# verifies the runtime and that python:3.12-slim is already available locally.
+FROM python:3.12-slim
+WORKDIR /app
+COPY repeatability_example.py .
+CMD ["python", "repeatability_example.py"]

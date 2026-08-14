@@ -1,0 +1,21 @@
+{
+  "run_date": "2026-08-14",
+  "checks": {
+    "tuesday_run_of_show_total_75": true,
+    "thursday_run_of_show_total_75": true,
+    "all_referenced_local_paths_exist": true,
+    "required_shared_source_paths_exist": true,
+    "shared_repositories_unmodified": true,
+    "windows_action_names_match_source": true,
+    "all_container_commands_are_conditional_or_demo_labeled": true,
+    "accurate_not_ready_branch_present": true,
+    "supplied_receipt_fallback_present": true,
+    "no_cloud_account_or_api_key_required": true,
+    "no_dsct_points_weights_or_due_dates_invented": true,
+    "no_week3_formal_lesson_authored": true,
+    "no_downstream_deployment_or_watcher_work": true,
+    "git_diff_check": true
+  },
+  "timing": {"tuesday_minutes": [7, 10, 8, 10, 8, 12, 8, 8, 4], "tuesday_total": 75, "thursday_minutes": [8, 10, 10, 10, 17, 10, 7, 3], "thursday_total": 75},
+  "verdict": "PASS_WITH_DOCUMENTED_RUNTIME_YELLOW"
+}
