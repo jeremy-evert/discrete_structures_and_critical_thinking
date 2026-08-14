@@ -1,0 +1,12 @@
+{
+  "run": "2026-08-14_prompt301_week1_launch_package",
+  "workspace": "/mnt/nora/git",
+  "refresh": "git pull --ff-only",
+  "repositories": {
+    "jeremy_task_tracking": {"branch": "main", "head": "d8a15d4167a8b39340856e7a31ecceeec88c13bf", "upstream": "origin/main", "status_before_authoring": "clean"},
+    "discrete_structures_and_critical_thinking": {"branch": "main", "head": "1ad378dd2f641edbcea6a200f06b4c242eb49869", "upstream": "origin/main", "status_before_authoring": "clean"},
+    "semester_kickoff_week": {"branch": "main", "head": "94d8591369c350996f6984b05d0a9d50cee764a8", "upstream": "origin/main", "status_before_authoring": "clean"}
+  },
+  "shared_repo_modified": false,
+  "external_writes": false
+}
