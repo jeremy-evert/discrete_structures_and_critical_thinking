@@ -1,0 +1,24 @@
+{
+  "run": "Prompt 302",
+  "checks": {
+    "exactly_17_weeks": "PASS",
+    "week1_landed_kickoff_reference": "PASS",
+    "week2_exact_resolved_identities": "PASS",
+    "weeks3_14_exactly_12_formal_topics": "PASS",
+    "catalog_topics_covered": "PASS",
+    "week9_no_thursday": "PASS",
+    "week15_async_reserved_no_new_topic": "PASS",
+    "week16_farkle_ml": "PASS",
+    "week17_final_reflection": "PASS",
+    "thursday_rotation": "PASS",
+    "no_old_one_lesson_per_week_spine": "PASS",
+    "no_formal_topic_in_week1_or_week2": "PASS",
+    "no_points_weights_or_due_dates": "PASS",
+    "source_paths_exist": "PASS",
+    "week16_prerequisites_before_week16": "PASS",
+    "tuesday_budget_75_minutes": "PASS",
+    "thursday_budget_75_minutes": "PASS",
+    "keep_zybooks_rows": "YELLOW — proposed remap is complete by section family, canonical CSV unchanged because malformed unquoted commas prevent safe row-preserving rewrite"
+  },
+  "structural_verdict": "GO WITH YELLOWS"
+}

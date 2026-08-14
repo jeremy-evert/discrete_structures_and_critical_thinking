@@ -1,0 +1,20 @@
+section_family,current_target_week_topic,proposed_target_week_topic,classification_preserved,remap_basis,status
+1.1-1.13 Logic,"W3 Logic, proof, and sequences","W3 Logic, Claims & Proof",yes,Topic semantics,PROPOSED
+2.1-2.7 Proofs,"W3 Logic, proof, and sequences","W3 Logic, Claims & Proof",yes,Topic semantics,PROPOSED
+3.1-3.7 Sets,"W3 Logic, proof, and sequences","W4 Sets, Functions & Sequences as Representations",yes,Sets belong to W4 formal representation topic,PROPOSED
+4.1-4.5 Functions,"W4 Functions and matrices","W4 Sets, Functions & Sequences as Representations",yes,Topic semantics,PROPOSED
+4.6-4.8 Functions,UNUSED,UNUSED,yes,Existing UNUSED preserved,UNCHANGED
+5.1-5.6 Boolean Algebra,"W13 Boolean algebra","W13 Boolean Algebra, Circuits & SAT",yes,Topic semantics,PROPOSED
+6.1-6.10 Relations / Digraphs,"W10 Relations","W10 Relations, Equivalence, Partial Orders, Matrices & Digraphs",yes,Topic semantics,PROPOSED
+7.1-7.3 Computation,"W5 Algorithms and efficiency","W5 Algorithms, Correctness & Growth",yes,Topic semantics,PROPOSED
+7.4 Finite state machines,"W5 Algorithms and efficiency","W14 Finite-State Machines, Invariants & Model Limits",yes,Topic semantics,PROPOSED
+7.5-7.6 Computation,"W5 Algorithms and efficiency","W14 Finite-State Machines, Invariants & Model Limits",yes,Existing OPTIONAL retained; contextual state/model family,PROPOSED
+8.1-8.17 Induction and Recursion,"W7 Recursion and induction","W7 Induction, Recursion & Recurrences",yes,Topic semantics,PROPOSED
+9.1-9.11 Integer Properties,"W6 Cryptography and integer reasoning","W6 Integer Properties & Cryptography",yes,Topic semantics,PROPOSED
+10.1-10.12 Introduction to Counting,"W8 Counting","W8 Counting & Combinatorial Reasoning",yes,Topic semantics,PROPOSED
+11.1-11.4 Advanced Counting,"W8 Counting","W8 Counting & Combinatorial Reasoning",yes,Topic semantics,PROPOSED
+12.1-12.8 Discrete Probability,"W9 Probability","W9 Probability, Uncertainty & Evidence",yes,Topic semantics,PROPOSED
+13.1-13.9 Graphs,"W11 Graphs","W11 Graphs & Network Reasoning",yes,Topic semantics,PROPOSED
+14.1-14.6 Trees,"W12 Trees","W12 Trees, Search & Decision Structures",yes,Topic semantics,PROPOSED
+15.1 Notation,UNUSED,UNUSED,yes,Existing UNUSED preserved,UNCHANGED
+15.2 Set notation and quantified logical statements,"W3 Logic, proof, and sequences","W3 Logic, Claims & Proof",yes,Optional reference follows logic,PROPOSED

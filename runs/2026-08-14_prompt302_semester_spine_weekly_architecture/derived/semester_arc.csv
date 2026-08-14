@@ -1,0 +1,18 @@
+week,date_tuesday,date_thursday,identity,status
+1,2026-08-18,2026-08-20,Semester Kickoff Week / Reasoning Odyssey,LANDED
+2,2026-08-25,2026-08-27,Building Your AI Lab / Containers and Repeatability,CONTRACTED_NOT_AUTHORED
+3,2026-09-01,2026-09-03,Logic Claims and Proof,CONTRACTED_NOT_AUTHORED
+4,2026-09-08,2026-09-10,Sets Functions and Sequences as Representations,CONTRACTED_NOT_AUTHORED
+5,2026-09-15,2026-09-17,Algorithms Correctness and Growth,CONTRACTED_NOT_AUTHORED
+6,2026-09-22,2026-09-24,Integer Properties and Cryptography,CONTRACTED_NOT_AUTHORED
+7,2026-09-29,2026-10-01,Induction Recursion and Recurrences,CONTRACTED_NOT_AUTHORED
+8,2026-10-06,2026-10-08,Counting and Combinatorial Reasoning,CONTRACTED_NOT_AUTHORED
+9,2026-10-13,2026-10-15,Probability Uncertainty and Evidence,CONTRACTED_NOT_AUTHORED
+10,2026-10-20,2026-10-22,Relations Equivalence Partial Orders Matrices and Digraphs,CONTRACTED_NOT_AUTHORED
+11,2026-10-27,2026-10-29,Graphs and Network Reasoning,CONTRACTED_NOT_AUTHORED
+12,2026-11-03,2026-11-05,Trees Search and Decision Structures,CONTRACTED_NOT_AUTHORED
+13,2026-11-10,2026-11-12,Boolean Algebra Circuits and SAT,CONTRACTED_NOT_AUTHORED
+14,2026-11-17,2026-11-19,Finite-State Machines Invariants and Model Limits,CONTRACTED_NOT_AUTHORED
+15,2026-11-24,2026-11-26,Thanksgiving Mexico asynchronous travel buffer,ASYNC_RESERVED
+16,2026-12-01,2026-12-03,Farkle and Machine Learning synthesis,CONTRACTED_NOT_AUTHORED
+17,2026-12-08,2026-12-10,Final Reflection write-up,CONTRACTED_NOT_AUTHORED
