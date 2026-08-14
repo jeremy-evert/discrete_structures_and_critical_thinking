@@ -1,0 +1,12 @@
+{
+  "source": "/mnt/nora/git/jeremy_task_tracking/questions",
+  "existing_dsct_questions": [
+    {"file": "004_dsct_grading_and_final_format.md", "status": "OPEN", "jeremy_answer": "blank"},
+    {"file": "005_dsct_project_and_tooling.md", "status": "OPEN", "jeremy_answer": "blank"},
+    {"file": "006_dsct_non_code_participation_path.md", "status": "OPEN", "jeremy_answer": "blank"},
+    {"file": "007_dsct_career_strand_assessment.md", "status": "OPEN", "jeremy_answer": "blank"},
+    {"file": "008_dsct_student_due_date_cadence.md", "status": "OPEN", "jeremy_answer": "blank"}
+  ],
+  "new_question_required": "Week 2 orientation-versus-logic/proof identity remains a material unresolved source conflict.",
+  "new_question_file": "jeremy_task_tracking/questions/009_dsct_week2_identity.md"
+}

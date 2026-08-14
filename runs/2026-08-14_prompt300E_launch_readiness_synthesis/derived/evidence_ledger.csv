@@ -1,0 +1,18 @@
+finding,source_report,verdict,evidence_class,tuesday_impact,week2_impact,semester_impact,owner,dependency,confidence
+repository runway,300A,READY,DEPLOYMENT_CODE,none,enables work,enables work,Maise/JTT,clean source checkouts,high
+shared kickoff and reasoning templates,300B,PARTIAL,COURSE_CONTENT,enables bounded teaching,needs DSCT adaptation,reusable spine,DSCT source owner,shared kickoff source,high
+DSCT framing and T/Th adaptation,300B,GO WITH YELLOWS,COURSE_CONTENT,yellow,required for student path,recurring authoring gap,Jeremy+DSCT,shared material,high
+five-part reasoning format,300B+300D,COHERENT BUT UNDER-INSTANTIATED,COURSE_CONTENT,useful spine,must become observable criteria,must recur weekly,DSCT author,real assignment package,high
+Week 2 orientation versus logic/proof,300B,UNRESOLVED,SOURCE_CONFLICT/JEREMY_DECISION,bare kickoff survives,first gate,cascades W2/W3,Jeremy/source owner,question 009,high
+complete Week 2 package,300B,NO-GO,COURSE_CONTENT,none,direct blocker,semester under-authoring,DSCT author,Week 2 identity,high
+DSCT desired-state producer/registration,300C,NO-GO,DEPLOYMENT_CODE,LMS path no-go,blocks intended deployment,blocks full deployment,Course Foundry+DSCT,stable source references,high
+Imprint and Harbor generic contracts,300C,GO WITH YELLOWS,DEPLOYMENT_CODE,none,reusable pipe,reusable later,Imprint/Harbor,DSCT producer,high
+M/W/F kickoff adapter,300C,NOT REUSABLE AS-IS,DEPLOYMENT_CODE,LMS path no-go,T/Th mapper required,legacy debt,Course Foundry+kickoff owner,DSCT T/Th contract,high
+Savnac target/read path,300C,UNKNOWN,RUNTIME_VERIFICATION,not needed locally,must verify before claim,real deployment gate,Harbor/Savnac operator,safe read access,high
+Marker generic engine,300D,GO,ASSESSMENT_CONTRACT,none,usable only with DSCT inputs,reusable,Marker,clean inputs,high
+DSCT rubric adapter/criteria,300D,NO-GO,ASSESSMENT_CONTRACT/COURSE_CONTENT,none,blocks automated feedback,needed later,DSCT+Marker,frozen W2 rubric,high
+Coach material grounding,300D,NO-GO,ASSESSMENT_CONTRACT,none,blocks grounded feedback,repeats per package,DSCT+Coach,approved material bundle,high
+watcher/Dispatch seam,300D,GO WITH YELLOWS,EXTERNAL_WATCHER,none,later integration,reusable,external watcher+Dispatch,frozen handoff,high
+synthetic DSCT acceptance,300D,NO-GO,ASSESSMENT_CONTRACT,none,after real inputs,precedes useful scale,DSCT+lab,W2 rubric/materials,high
+NRP,300D,SCALE_ONLY,RESEARCH_SCALE,none,none,research only,NRP/lab,stable local contract,high
+open policy questions,300B/JTT,OPEN,JEREMY_DECISION,none,due-date policy may affect publication,blocks honest mechanics,Jeremy,questions 004-008,high
