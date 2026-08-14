@@ -1,0 +1,4 @@
+{
+  "tuesday": {"file": "week-02/instructor/tuesday-run-of-show.md", "segments_minutes": [7, 10, 8, 10, 8, 12, 8, 8, 4], "total_minutes": 75, "pass": true},
+  "thursday": {"file": "week-02/instructor/thursday-run-of-show.md", "segments_minutes": [8, 10, 10, 10, 17, 10, 7, 3], "total_minutes": 75, "pass": true}
+}
