@@ -1,0 +1,13 @@
+path,role,audience,meeting,provenance
+week-01/README.md,overview,student,both,DSCT-authored grounded in course design and resolved arc
+week-01/instructor/tuesday-run-of-show.md,instructor guide,instructor,Tuesday,shared Monday guide adapted for DSCT
+week-01/instructor/thursday-run-of-show.md,instructor guide,instructor,Thursday,shared Wednesday/Friday habits adapted for DSCT
+week-01/student/tuesday-activity.md,activity,student,Tuesday,shared Monday activity plus DSCT method
+week-01/student/tuesday-exit-check.md,exit check,student,Tuesday,DSCT-authored
+week-01/student/thursday-activity.md,activity,student,Thursday,shared help/planning habits plus DSCT method
+week-01/student/thursday-exit-check.md,exit check,student,Thursday,DSCT-authored
+week-01/student/reasoning-method.md,reusable reference,student,both,DSCT weekly write-up and rubric
+week-01/student/ai-verification-expectation.md,AI expectation,student,Tuesday,DSCT course design and Monday Moments
+week-01/help-tools-status.md,help/accessibility/tools,instructor and student,both,current-source bounded status
+planning/week-01-source-map.md,canonical map,instructor,both,shared kickoff provenance and DSCT adaptation
+reports/301_week1_launch_package.md,readiness report,instructor,both,Prompt 301 required output

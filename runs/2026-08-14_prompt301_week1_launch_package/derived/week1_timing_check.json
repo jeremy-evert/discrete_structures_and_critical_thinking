@@ -1,0 +1,8 @@
+{
+  "tuesday_minutes": 75,
+  "thursday_minutes": 75,
+  "tuesday_segments": 11,
+  "thursday_segments": 10,
+  "timing_verdict": "GO",
+  "flex_points": ["protect Tuesday Check step and exit check", "protect Thursday repaired help request, evidence plan, exit check, and exact bridge"]
+}
