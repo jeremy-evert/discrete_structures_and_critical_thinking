@@ -46,21 +46,23 @@ instructional_working_cadence:
   time: "12:30 PM"
   label: "Same as the official Banner meeting time above -- no separate planning cadence for this course."
 
-# Reconciled 2026-08-11: this is the current course-specific Fall 2026
-# zyBook URL. It supersedes the older generic/custom identifier as the
-# operational link, while preserving it below as product-history provenance.
-# The known underlying product/release are prior evidence, not proof that the
-# current course configuration, roster, assignment, due-date, or LTI state is
-# identical; verify those from the authorized current page.
+# RECONCILED 2026-08-15: DSCT has no required textbook or external course for
+# Fall 2026. The prior zyBooks facts below are retained solely as historical
+# provenance; they are not an operational adoption, reading requirement, or
+# course spine. The known underlying product/release are prior evidence, not
+# proof of a current course configuration, roster, assignment, due-date, or
+# LTI state.
 textbook:
-  title: "Discrete Mathematics"
+  required: false
+  title: null
   authors: []
-  zybook_identifier: "SWOSUCOMSC2043EvertFall2026"
-  zybook_url: "https://learn.zybooks.com/zybook/SWOSUCOMSC2043EvertFall2026"
-  current_release: "March 2026 (intended for Summer/Fall 2026) -- prior page-capture evidence; current course page still requires verification"
+  external_course_required: false
+  historical_zybook_identifier: "SWOSUCOMSC2043EvertFall2026"
+  historical_zybook_url: "https://learn.zybooks.com/zybook/SWOSUCOMSC2043EvertFall2026"
+  historical_zybook_release: "March 2026 (intended for Summer/Fall 2026) -- prior page-capture evidence"
   historical_zybook_identifiers:
     - "EvertDiscreteMathDec2024"
-  main_chapters:
+  historical_zybook_main_chapters:
     - { number: 1, title: "Logic" }
     - { number: 2, title: "Proofs" }
     - { number: 3, title: "Sets" }
@@ -77,11 +79,11 @@ textbook:
     - { number: 14, title: "Trees" }
     - { number: 15, title: "Appendix" }
   note: >-
-    Fall 2026 strategy (Jeremy, 2026-08-11): ZyBooks-first for all four
-    courses. `EvertDiscreteMathDec2024` is historical provenance only;
-    `SWOSUCOMSC2043EvertFall2026` is the Fall 2026 operational identifier.
-    The chapter list and release are prior evidence and must not be assumed
-    byte-for-byte identical to the current page.
+    RECONCILED 2026-08-15: no required textbook or external course applies to
+    DSCT for Fall 2026. The 2026-08-11 ZyBooks-first strategy is superseded
+    for DSCT. `EvertDiscreteMathDec2024`,
+    `SWOSUCOMSC2043EvertFall2026`, its URL, chapter list, and release are
+    historical provenance only, not Fall 2026 operational requirements.
 
 provenance:
   - source: "Jeremy's directly supplied Fall 2026 catalog/section record (jeremy_task_tracking/prompts/045_add_week_at_a_glance_for_other_three_classes.md)"
@@ -91,6 +93,6 @@ provenance:
       ("Discrete Structures and Critical Thinking") are both preserved,
       per explicit instruction, as separate fields.
   - source: "Jeremy, directly, 2026-08-11 (Fall 2026 zyBooks URL)"
-    covers: "textbook.zybook_identifier/textbook.zybook_url"
+    covers: "textbook.historical_zybook_identifier/textbook.historical_zybook_url; superseded for DSCT on 2026-08-15"
   - source: "Earlier Jeremy zyBooks page capture (underlying product, release, and top-level TOC)"
-    covers: "textbook.title/textbook.current_release/textbook.main_chapters; requires current-page verification"
+    covers: "textbook.historical_zybook_release/textbook.historical_zybook_main_chapters; historical provenance only"
