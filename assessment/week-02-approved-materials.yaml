@@ -1,0 +1,83 @@
+schema_version: dsct-approved-materials/v1
+manifest_version: "2026-08-14.1"
+contract_key: week-02-local-ai-readiness
+scope: bounded Tuesday readiness reasoning bundle; no Thursday container material
+entries:
+  - citation_id: dsct-reasoning-method
+    repository: discrete_structures_and_critical_thinking
+    path: week-01/student/reasoning-method.md
+    source_revision: 85ea3a2cf446d2168d1d8210e297bf067389d51c
+    section_or_topic: DSCT five-part reasoning method
+    criteria: [sources_evidence_provenance, rules_assumptions_system_model, work_traceable_workflow, check_counterexample_verification, summary_evidence_limits]
+  - citation_id: dsct-ai-verification
+    repository: discrete_structures_and_critical_thinking
+    path: week-01/student/ai-verification-expectation.md
+    source_revision: 85ea3a2cf446d2168d1d8210e297bf067389d51c
+    section_or_topic: Love AI more. Trust AI less.
+    criteria: [sources_evidence_provenance, check_counterexample_verification, summary_evidence_limits]
+  - citation_id: dsct-week2-tuesday-guide
+    repository: discrete_structures_and_critical_thinking
+    path: week-02/student/tuesday/README.md
+    source_revision: 85ea3a2cf446d2168d1d8210e297bf067389d51c
+    section_or_topic: Tuesday evidence ladder and workflow
+    criteria: [rules_assumptions_system_model, work_traceable_workflow, check_counterexample_verification, summary_evidence_limits]
+  - citation_id: dsct-week2-reflection
+    repository: discrete_structures_and_critical_thinking
+    path: week-02/student/tuesday/dsct-evidence-reflection.md
+    source_revision: 85ea3a2cf446d2168d1d8210e297bf067389d51c
+    section_or_topic: DSCT evidence source labels and claim/evidence/limit reflection
+    criteria: [sources_evidence_provenance, work_traceable_workflow, check_counterexample_verification, summary_evidence_limits]
+  - citation_id: dsct-week2-help-status
+    repository: discrete_structures_and_critical_thinking
+    path: week-02/student/help-and-runtime-status.md
+    source_revision: 85ea3a2cf446d2168d1d8210e297bf067389d51c
+    section_or_topic: truthful NOT READY and runtime boundary
+    criteria: [sources_evidence_provenance, rules_assumptions_system_model, work_traceable_workflow, summary_evidence_limits]
+  - citation_id: shared-local-ai-architecture
+    repository: local_ai_lab_setup
+    path: curriculum/shared/week2/05_local_ai_architecture.md
+    source_revision: b2b2ec1afcea98c59a5ab3818cd361a29eb0f99c
+    section_or_topic: Aider, Ollama, model, and evidence layers
+    criteria: [rules_assumptions_system_model, check_counterexample_verification]
+  - citation_id: shared-localhost-boundary
+    repository: local_ai_lab_setup
+    path: curriculum/shared/week2/08_localhost_apis_and_local_vs_cloud.md
+    source_revision: b2b2ec1afcea98c59a5ab3818cd361a29eb0f99c
+    section_or_topic: localhost, API reachability, and evidence limits
+    criteria: [sources_evidence_provenance, rules_assumptions_system_model, summary_evidence_limits]
+  - citation_id: shared-readiness-check
+    repository: local_ai_lab_setup
+    path: curriculum/shared/week2/09_run_the_readiness_check.md
+    source_revision: b2b2ec1afcea98c59a5ab3818cd361a29eb0f99c
+    section_or_topic: Check READY/NOT READY status and safety boundary
+    criteria: [sources_evidence_provenance, work_traceable_workflow, summary_evidence_limits]
+  - citation_id: shared-first-local-ai-interaction
+    repository: local_ai_lab_setup
+    path: curriculum/shared/week2/10_first_local_ai_interaction.md
+    source_revision: b2b2ec1afcea98c59a5ab3818cd361a29eb0f99c
+    section_or_topic: Check → Baseline → Launch → Diff → Final
+    criteria: [work_traceable_workflow, check_counterexample_verification, summary_evidence_limits]
+  - citation_id: shared-troubleshooting-evidence
+    repository: local_ai_lab_setup
+    path: curriculum/shared/week2/11_troubleshoot_with_evidence.md
+    source_revision: b2b2ec1afcea98c59a5ab3818cd361a29eb0f99c
+    section_or_topic: claim → observation → diagnostic → bounded action → rerun
+    criteria: [sources_evidence_provenance, work_traceable_workflow, check_counterexample_verification, summary_evidence_limits]
+  - citation_id: shared-readiness-assignment
+    repository: local_ai_lab_setup
+    path: curriculum/shared/week2/12_readiness_assignment.md
+    source_revision: b2b2ec1afcea98c59a5ab3818cd361a29eb0f99c
+    section_or_topic: local-ai-readiness.md submission and privacy evidence
+    criteria: [sources_evidence_provenance, work_traceable_workflow, summary_evidence_limits]
+  - citation_id: dsct-week2-extension
+    repository: local_ai_lab_setup
+    path: curriculum/dsct/week2_extension.md
+    source_revision: b2b2ec1afcea98c59a5ab3818cd361a29eb0f99c
+    section_or_topic: claim, baseline/counterexample, diff, final-test limit
+    criteria: [work_traceable_workflow, check_counterexample_verification, summary_evidence_limits]
+  - citation_id: windows-week2-guide
+    repository: windows_classroom
+    path: docs/week2_student_guide.md
+    source_revision: f87e340aad4bf4e4e2c064abc676afdcc5260b48
+    section_or_topic: Windows Check/Baseline/Launch/Diff/Final command surface
+    criteria: [sources_evidence_provenance, work_traceable_workflow, summary_evidence_limits]
