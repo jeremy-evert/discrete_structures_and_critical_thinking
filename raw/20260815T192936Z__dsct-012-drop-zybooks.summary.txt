@@ -1,0 +1,12 @@
+Reconciled DSCT to have no required textbook/external course for Fall 2026, preserving ZyBooks details as historical provenance.
+
+Changed:
+- [course_metadata.yaml](/mnt/brandy_nvme/jevert/git/discrete_structures_and_critical_thinking/course_metadata.yaml)
+- [fall-2026-course-design.md](/mnt/brandy_nvme/jevert/git/discrete_structures_and_critical_thinking/planning/fall-2026-course-design.md)
+- [fall-2026-topic-map.md](/mnt/brandy_nvme/jevert/git/discrete_structures_and_critical_thinking/planning/fall-2026-topic-map.md)
+- [week-01-source-map.md](/mnt/brandy_nvme/jevert/git/discrete_structures_and_critical_thinking/planning/week-01-source-map.md)
+- [012_drop_zybooks_no_required_textbook.md](/mnt/brandy_nvme/jevert/git/discrete_structures_and_critical_thinking/reports/012_drop_zybooks_no_required_textbook.md)
+
+No grading, assignment structure, weekly topics, dates, or dependencies changed. `planning/zybooks-section-decisions.csv` remains as historical provenance.
+
+Validation: `git diff --check` passed. `pytest -q` passed with 0 tests collected/run.
