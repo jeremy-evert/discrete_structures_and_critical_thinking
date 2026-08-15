@@ -2,10 +2,24 @@
 
 ## Status
 
-READY. This is new construction, not a naming reconciliation (DSCT has zero
+**SUPERSEDED — never dispatched, 2026-08-15.** Staged, then a `git push`
+collision revealed concurrent Jeremy-authored commits (`f2e7977` "Contract
+DSCT Fall 2026 semester spine and weekly architecture", `565c133` "Author
+DSCT Week 1 launch package") had already landed a real, dated 17-week spine
+with different week numbers/topics than assumed below, and a Week 1 package
+(`week-01/`, `reports/301_week1_launch_package.md`) that already introduces
+"Reasoning Odyssey" framing. This prompt's Week-2-maps-to-logic-proofs
+assumption and its "no existing infrastructure" premise are both stale.
+**Do not execute this file.** See `FOREMAN_LOG.md` in `jeremy_task_tracking`
+for the Foreman's decision to stand down rather than dispatch against a
+moving target, and re-scope a fresh prompt against the current
+`planning/fall-2026-spine.md` /`fall-2026-weekly-architecture.md` /
+`fall-2026-topic-map.md` once that work stabilizes.
+
+~~READY. This is new construction, not a naming reconciliation (DSCT has zero
 existing Odyssey/World-Bible infrastructure, unlike CS1/CS2). Scoped
 deliberately small per Prompt 126's own execution rule — prove one week
-before fanning to all fifteen.
+before fanning to all fifteen.~~
 
 Governing precedent, must follow exactly:
 - `jeremy_task_tracking/questions/answered_questions/003_...` (Reasoning
