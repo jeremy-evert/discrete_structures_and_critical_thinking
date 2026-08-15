@@ -78,7 +78,7 @@ remain unset unless a later source-backed calendar supplies them.
 | 12 | How does Boolean reasoning connect claims, satisfiability, and machine behavior? Simplify and verify expressions; explain a gate/circuit model. | KEEP 5.1–5.3, 5.5–5.6. OPTIONAL 5.4. | Truth-table/simplification lab; focused evidence artifact. | Overview, Boolean examples, links, lab submission/rubric. Needs an instructor-created bridge from logic to circuits. |
 | 13 | How can a finite-state model make behavior inspectable? Design states/transitions; trace inputs; test a small machine. | KEEP 7.4 (revisited). OPTIONAL 7.5–7.6 as context. | State-machine pair build and individual validation reflection. | Overview, state-machine builder/material, link, pair report, individual reflection. Intentional reinforcement of Week 4 computation. |
 | 14 | How can discrete tools support an authentic claim or application? Scope a problem; choose a model; communicate limitations and evidence. | Revisit only the KEEP sections needed by each project; no new textbook march. | Synthesis project proposal/demo and career-evidence update. | Overview, project guide, selectable reference links, milestone/rubric. Needs current project choice and success criteria. |
-| 15 | What do we know, what remains uncertain, and how do we defend a conclusion? Integrate models; revise from feedback; reflect accurately. | Targeted OPTIONAL review only. | Project/final reflection and cumulative concept check. | Overview, review map, optional links, project/reflection, rubric. Final format/weight remains a Jeremy decision. |
+| 15 | What do we know, what remains uncertain, and how do we defend a conclusion? Integrate models; revise from feedback; reflect accurately. | Targeted OPTIONAL review only. | Project/final reflection and cumulative concept check. | Overview, review map, optional links, project/reflection, rubric. Use Question 004 for the resolved final-format and grading structure; leave operational details to later source-backed authoring. |
 | 16 | Finals week: demonstrate selected outcomes without adding new content. | No new reading. | Final only if the later approved assessment plan requires it. | Final instructions and accommodations information must be visible only after format/date are source-backed. |
 
 ## Limitations of the historical ZyBooks proposal
@@ -99,7 +99,12 @@ vendor-price question are superseded for DSCT by the 2026-08-15 decision: no
 required textbook or external course for Fall 2026. The counts and section
 classification are retained as planning provenance only.
 
-Jeremy decisions still needed: current grading weights and final format; whether
-the career strand is assessed course-wide or advisory-only; project choices and
-tooling; and the exact student-facing due-date cadence. These are intentionally
-not fabricated here.
+Question 004, `jeremy_task_tracking/questions/answered_questions/004_dsct_grading_and_final_format.md`,
+resolved the grading structure and final-format decision. The current source
+of truth is that decision: weekly Reasoning Odyssey write-ups and recurring
+weekly course work are the same integrated weekly work, not a second
+gradebook or parallel assignment. Future authors should use the current spine,
+weekly architecture, and topic map for the dated operational contract. Other
+design choices—career-strand treatment, project choices and tooling, and the
+exact student-facing due-date cadence—remain to be specified by later
+source-backed authoring.
