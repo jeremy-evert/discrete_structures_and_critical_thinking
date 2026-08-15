@@ -38,6 +38,40 @@ counterexamples, tests, or approaches, but fluent output is never evidence.
 The Tuesday AI Fluency slot targets the week's failure anatomy listed in the
 topic map. The course stance remains: **Love AI more. Trust AI less.**
 
+## Reasoning Odyssey continuity and grading map
+
+Where pedagogically appropriate, a student may carry a chosen world, system,
+organization, scenario, or problem space through the course. Claims,
+structures, data, or decisions from that World Bible can become the context
+for logic, proof, modeling, checking, or explanation. This is persistent
+context for the Reasoning Odyssey, not mandatory fiction and not a required
+connection every week; a topic should stand on its own when a continuity link
+would be artificial.
+
+The existing chassis provides the natural continuity handoffs. On Tuesday, the
+reasoning challenge / check / exit can ask the student to make one claim,
+counterexample, assumption, or conclusion legible in the chosen context when
+that context helps. On Thursday, the Pair Programming or Show & Tell artifact
+can apply or defend the week's formal structure in that context, with the
+existing critique / revision / evidence receipt preserving the individual
+reasoning trail. These are uses of existing slots, not new meetings,
+assignments, or time allocations.
+
+For Question 004's resolved grading categories, the mapping is:
+
+- The individual Tuesday reasoning trace and its Thursday evidence receipt,
+  when collected as the week's checked reasoning, feed the **weekly Reasoning
+  Odyssey write-up** category.
+- The existing Thursday pair artifact or Show & Tell artifact, plus the
+  existing concept check, lab, activity, critique, or revision evidence, feeds
+  the **recurring weekly course work (concept-checks/labs/activities)**
+  category. Pair work does not create a second Odyssey grade; the individual
+  receipt keeps accountability visible within the same weekly work.
+
+This is a planning contract only. It does not author Week 2–17 lesson content;
+future authors still select the week's real disciplinary task and use the
+continuity pattern only where it is instructionally natural.
+
 ## Exceptions
 
 - **Week 1:** the landed Prompt 301 kickoff package, not this formal-topic
@@ -53,7 +87,7 @@ topic map. The course stance remains: **Love AI more. Trust AI less.**
   on prior probability, expected outcomes/simulation, state models,
   finite-state machines, algorithms, evidence/checking, and model limits.
 - **Week 17:** Final Reflection write-up during finals week; no grading weight
-  or rubric is invented while Question 004 is open.
+  or rubric is invented in this planning contract.
 
 Professional Minds itself is not modified here. No local checkout was
 available on 2026-08-14, so per-week Wednesday/Friday anchors remain
