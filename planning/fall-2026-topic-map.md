@@ -1,11 +1,13 @@
 # DSCT Fall 2026 — canonical Weeks 3–14 topic/source map
 
-All rows are `CONTRACTED_NOT_AUTHORED`. Section families name the current
-ZyBooks source identity; the existing KEEP / OPTIONAL / UNUSED decisions remain
-unchanged in `zybooks-section-decisions.csv`. The malformed CSV seam and
-proposed remap are documented in the Prompt 302 report and run evidence.
+All rows are `CONTRACTED_NOT_AUTHORED`. RECONCILED 2026-08-15: DSCT has no
+required textbook or external course for Fall 2026. The historical ZyBooks
+families and KEEP / OPTIONAL / UNUSED decisions in
+`zybooks-section-decisions.csv` are retained only as source provenance, not as
+an assigned reading path or course spine. The malformed CSV seam and proposed
+remap are documented in the Prompt 302 report and run evidence.
 
-| Wk / dates | Technical core and primary concepts | Critical-thinking question | AI failure mode | Thu mode / intended artifact family | Historical source lesson | Catalog coverage | ZyBooks family | Prerequisites / dependencies |
+| Wk / dates | Technical core and primary concepts | Critical-thinking question | AI failure mode | Thu mode / intended artifact family | Historical source lesson | Catalog coverage | Historical ZyBooks family | Prerequisites / dependencies |
 |---|---|---|---|---|---|---|---|---|
 | 3 · Sep 1/3 | Logic, Claims & Proof: propositions, predicates, quantifiers, implication, proof, counterexample | Does a true conclusion mean the argument was valid? What follows from what? | True conclusion by invalid argument; fluent proof with unjustified step | Pair Programming · checker, counterexample generator, proof verifier | `02-logic-proofs-and-sequences.md` (logic/proof portion) | propositional and predicate logic; proof techniques | Ch. 1 Logic; Ch. 2 Proofs | Week 1 reasoning method; Week 2 lab/repeatability bridge |
 | 4 · Sep 8/10 | Sets, Functions & Sequences as Representations: sets, mappings, domain/codomain, composition, sequences | What did our representation assume, omit, or blur? | Silent domain/codomain change; representation hides a lost distinction | Show & Tell · representation comparison, table/sequence trace | `02-logic-proofs-and-sequences.md` (sequences); `03-functions-and-matrices.md` (functions) | sets; functions | Ch. 3 Sets; Ch. 4 Functions; Ch. 8.1 Sequences | Week 3 language and definitions |

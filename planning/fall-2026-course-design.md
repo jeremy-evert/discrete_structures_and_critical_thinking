@@ -1,15 +1,18 @@
 # Discrete Structures and Critical Thinking — Fall 2026 Course Design
 
-**Status:** design blueprint; no Canvas/Savnac or ZyBooks configuration has been changed.
+**Status:** historical design blueprint; no Canvas/Savnac configuration has
+been changed. RECONCILED 2026-08-15: DSCT has no required textbook or external
+course for Fall 2026. Its ZyBooks references and section decisions are
+historical planning provenance, not an operational adoption or course spine.
 
 ## Design stance
 
 COMSC-2043 is the reasoning bridge after CS1/CS2 and MATH-1513: students use
 precise language, definitions, proof, discrete representations, small programs,
-and simulations to make and test claims.  It is not a compressed tour of every
-available textbook topic.  The required ZyBooks path is deliberately bounded;
-the accompanying [section decisions](zybooks-section-decisions.csv) makes the
-optional/reference menu explicit.
+and simulations to make and test claims. It is not a compressed tour of every
+available textbook topic. The former ZyBooks path and accompanying
+[section decisions](zybooks-section-decisions.csv) are retained as historical
+planning provenance only; no path from them is required.
 
 ### Intended outcomes
 
@@ -52,15 +55,16 @@ Repeatability; formal DSCT topics begin in Week 3 and end in Week 14; Week 15
 is an asynchronous Thanksgiving/Mexico buffer; Week 16 is Farkle + ML; Week
 17 is Final Reflection. No points, grading weights, or due dates are implied.
 
-`KEEP` and `OPTIONAL` identifiers below are section references only; titles,
-classifications, and prerequisites are in the CSV.  Each module must include a
-Week at a Glance overview, accessible instructor slides/material, the linked
-ZyBooks selections, an activity/assignment, and a visible evidence or rubric.
-Due dates remain unset unless a later source-backed calendar supplies them.
+`KEEP` and `OPTIONAL` identifiers below are historical section references
+only; titles, classifications, and prerequisites are in the CSV. They do not
+describe required readings. Each module must include a Week at a Glance
+overview, accessible instructor slides/material, locally selected learning
+materials, an activity/assignment, and a visible evidence or rubric. Due dates
+remain unset unless a later source-backed calendar supplies them.
 
-| Week | Central question and student objectives | Reading menu | Activity, milestone, and evidence | Student-facing Canvas/Savnac module shape / readiness |
+| Week | Central question and student objectives | Historical reference menu (not required) | Activity, milestone, and evidence | Student-facing Canvas/Savnac module shape / readiness |
 |---|---|---|---|---|
-| 1 | How will we learn and show reasoning here? Locate course tools; set a study practice; distinguish help from evidence. | No DSCT ZyBooks required. Orientation lesson and career evidence pack. | Learning-practice plan; low-stakes 3-2-1 check. | Overview, Course Information, learning-practice material, study check, accessibility/help links. Must publish the kickoff path. |
+| 1 | How will we learn and show reasoning here? Locate course tools; set a study practice; distinguish help from evidence. | No textbook reading; orientation lesson and career evidence pack. | Learning-practice plan; low-stakes 3-2-1 check. | Overview, Course Information, learning-practice material, study check, accessibility/help links. Must publish the kickoff path. |
 | 2 | How do claims, definitions, proof, sequences, and sets work together? Translate claims; identify counterexamples; write a checked proof. | KEEP 1.1–1.4, 1.6–1.7, 1.11; 2.1–2.7; 3.1, 3.3–3.4, 3.6–3.7. OPTIONAL 1.5, 1.8–1.10, 1.12–1.13, 3.2, 3.5, 15.2. | Guided claim clinic and proof peer review; Write-up 1. | Overview, proof slides, selected links, write-up/rubric, concept check. Need an instructor-created proof-feedback exemplar. |
 | 3 | How can a function or matrix represent a discrete system? Identify mapping properties; use a matrix only when it clarifies. | KEEP 4.1, 4.3, 4.5. OPTIONAL 4.2, 4.4. | Representation comparison and small code/table trace; Write-up 2. | Overview, representation examples, links, problem write-up, rubric. Matrix scope needs a prepared instructor example. |
 | 4 | What makes a procedure reliable and efficient? State inputs/outputs; trace edge cases; compare growth informally. | KEEP 7.1–7.3. OPTIONAL 7.5–7.6. | Pair algorithm trace and complexity explanation; concept check. | Overview, trace worksheet, links, pair report, check. Relies on COMSC-1053 programming fluency. |
@@ -77,7 +81,7 @@ Due dates remain unset unless a later source-backed calendar supplies them.
 | 15 | What do we know, what remains uncertain, and how do we defend a conclusion? Integrate models; revise from feedback; reflect accurately. | Targeted OPTIONAL review only. | Project/final reflection and cumulative concept check. | Overview, review map, optional links, project/reflection, rubric. Final format/weight remains a Jeremy decision. |
 | 16 | Finals week: demonstrate selected outcomes without adding new content. | No new reading. | Final only if the later approved assessment plan requires it. | Final instructions and accommodations information must be visible only after format/date are source-backed. |
 
-## What ZyBooks does not cover sufficiently
+## Limitations of the historical ZyBooks proposal
 
 - Feedback-rich proof critique, including how to repair an unclear argument.
 - Contextual modeling problems that make critical-thinking choices visible.
@@ -89,16 +93,11 @@ Due dates remain unset unless a later source-backed calendar supplies them.
 
 ## Lean configuration and open decisions
 
-The manifest has 126 sections: 75 KEEP (59.5%), 46 OPTIONAL (36.5%), and 5
-UNUSED (4.0%). A lean required configuration would retain only the 75 KEEP
-sections; chapters/functions extensions, advanced recursion analysis,
-number-theory depth, alternate counting techniques, specialized graph topics,
-and appendices are candidates for optional/reference status. This is a
-pedagogical recommendation, not a price claim.
-
-Vendor question: *What student subscription price would apply to a Fall 2026
-configuration containing the 75 required sections, with the 46 optional
-sections retained only as reference, compared with the current configuration?*
+The historical manifest has 126 sections: 75 KEEP (59.5%), 46 OPTIONAL
+(36.5%), and 5 UNUSED (4.0%). Its proposed required/optional configuration and
+vendor-price question are superseded for DSCT by the 2026-08-15 decision: no
+required textbook or external course for Fall 2026. The counts and section
+classification are retained as planning provenance only.
 
 Jeremy decisions still needed: current grading weights and final format; whether
 the career strand is assessed course-wide or advisory-only; project choices and

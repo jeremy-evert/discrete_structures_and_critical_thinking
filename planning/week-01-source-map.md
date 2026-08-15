@@ -27,7 +27,8 @@ not alter the shared repository or the stale Weeks 2–17 planning allocation.
 
 ## Policy boundaries
 
-- No formal DSCT topic instruction or ZyBooks reading is assigned in Week 1.
+- No formal DSCT topic instruction or textbook reading is assigned in Week 1;
+  DSCT has no required textbook or external course for Fall 2026.
 - The five-part method is taught as a reusable habit, not a new grading rule.
 - No points, grades, due dates, required AI provider, local model, container
   runtime, or new account are invented here.
