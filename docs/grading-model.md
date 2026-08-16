@@ -1,53 +1,85 @@
 # COMSC-2043 — Grading Model (Fall 2026 source model)
 
-This source model gives DSCT named, Canvas-mappable categories while keeping
-the semester-level decision in Question 004: 45% weekly Reasoning Odyssey
-write-ups, 50% recurring course work, and 5% individual final reflection.
-The categories follow the Tuesday/Thursday chassis in the Prompt 302
-architecture contract. They do not imply a five-day course cadence.
+This is the DSCT source model for a 100% grade. It uses the small named
+category treatment established by CS1/CS2, adapted to DSCT's Tuesday/Thursday
+chassis. It is a source document; no Canvas, Savnac, or student-system write
+is implied.
 
 ## Final weights
 
-| Category | Weight | Canvas/Savnac object shape | Graded weeks / cadence |
+| Category | Weight | Canvas/Savnac object shape | Graded weeks |
 |---|---:|---|---|
-| Reasoning Odyssey technical write-up | 30% | Weekly individual text-entry/upload assignment with a rubric; the assignment is the week's readable problem-solving artifact | Weeks 2–16, on the active weekly cycle; Week 9 uses the Tuesday-only exception, Week 15 is asynchronous, and Week 16 uses the synthesis object below |
-| Reasoning Odyssey check, revision, and evidence receipt | 15% | Individual evidence/revision receipt linked to the Odyssey write-up, with rubric criteria for check, critique response, and carry-forward evidence | Weeks 2–16 when a chassis touchpoint is active; Thursday receipt on normal weeks, Tuesday-only evidence in Week 9, asynchronous evidence in Week 15 |
-| Tuesday AI Fluency failure-mode check | 5% | Short quiz, text-entry, or exit-ticket object with a completion/content rubric | Weekly Tuesday touchpoint in Weeks 2–14; Week 15 asynchronous adaptation and Week 16 synthesis adaptation where scheduled |
-| Tuesday Professional Minds Wednesday-strand response | 5% | Individual reflection/text-entry object tied to the shared Professional Minds source | Weekly Tuesday touchpoint in Weeks 2–14; Week 15 asynchronous adaptation; no separate Week 16 or Week 17 object |
-| Thursday Professional Minds Friday-strand / career-artifact response | 5% | Individual reflection or career-artifact-sequence submission with a rubric; may be a text entry, upload, or linked evidence receipt | Weekly Thursday touchpoint in Weeks 2–14 when Thursday meets; Week 9 Fall Break exception and Week 15 asynchronous adaptation |
-| Pair Programming report | 15% | Individual pair-programming-report upload/text-entry with partner/role, work evidence, win, stuck point, next step, and individual reflection | Pair rotation: Weeks 3, 5, 7, 9, 11, 13; Week 9 is Tuesday pair-style work because Thursday is Fall Break |
-| Show & Tell artifact and revision | 15% | Individual show-and-tell-artifact upload/link with explanation, peer-question evidence, critique, and revision rubric | Show & Tell rotation: Weeks 4, 6, 8, 10, 12, 14; never awarded in the same week as Pair Programming |
-| Week 16 Farkle + Machine Learning synthesis | 5% | Shared applied-experience evidence submission with individual reasoning/evidence receipt and rubric; belongs to recurring work, not a separate project bucket | Week 16 only |
-| Week 17 individual final reflection | 5% | Low-stress individual text-entry/upload reflection with choice among prompts and a rubric; not an exam or Reasoning Defense | Week 17 finals week only |
+| Semester kickoff week | 5% | Shared kickoff assignment group / exit-ticket objects | Week 1 |
+| Monday Moment quiz (Tuesday AI Fluency touchpoint) | 5% | Short quiz or text-entry object using shared AI Fluency content | Weekly Tuesday touchpoint, including the Tuesday-only Week 9 exception |
+| Wacky Wednesday reflection (Tuesday Professional Minds strand) | 5% | Professional Minds reflection object | Weekly Tuesday Professional Minds weeks |
+| Fun Friday reflection (Thursday Professional Minds strand) | 5% | Professional Minds reflection object | Weekly Thursday Professional Minds weeks, excluding the Week 9 break |
+| Paired-programming report (A3 equivalent) | 5% | Individual text-entry/upload report with rubric | Pair Programming weeks: 3, 5, 7, 9 pair-style work, 11, 13 |
+| Show-and-Tell reflection (A4 equivalent) | 5% | Individual text-entry/upload reflection with rubric | Show & Tell weeks: 4, 6, 8, 10, 12, 14 |
+| Friday feedback report (A7 equivalent) | 5% | Individual critique/revision/evidence receipt with rubric | Show & Tell weeks: 4, 6, 8, 10, 12, 14 |
+| Career artifact sequence | 5% | Connected artifact/update uploads with rubric; may be attached to the active Odyssey evidence package | Recurring career-strand weeks as scheduled; not a comprehensive exam |
+| Attendance & participation | 5% | Instructor-entered attendance/participation group | Course cadence: scheduled Tuesday/Thursday touchpoints |
+| Technical presentation/demo evidence | 3% | Individual presentation/demo evidence receipt with rubric; may be a text entry, upload, link, or live-demonstration receipt | Weekly Tuesday technical presentation/demo slot |
+| Course evaluation | 2% | End-of-term completion object | End of term |
+| Weekly reinforcement / Reasoning Odyssey gate | 30% | Weekly Odyssey gate objects with gate rubrics | Active recurring-work weeks, including Week 16 Farkle + ML synthesis; Weeks 3–14 are the formal technical sequence |
+| Reasoning Odyssey checkpoints | 15% | Larger Odyssey checkpoint objects with checkpoint rubrics | Checkpoint weeks selected within Weeks 3–14 and/or Week 16, with the specific weeks published in the course schedule |
+| Final individual reflection | 5% | Low-stress individual text-entry/upload reflection object with rubric | Week 17 finals period |
 | **Total** | **100%** | | |
 
-The two rows beginning “Reasoning Odyssey” are the 45% Odyssey family. The
-remaining recurring rows are the 50% course-work family, including the Week
-16 synthesis. Week 17 is the separate 5% final reflection.
+## Aggregate check
 
-## Object and cadence boundaries
+The weekly Reasoning Odyssey write-up family is deliberately explicit:
 
-- A weekly Odyssey submission is the actual DSCT reasoning work, not an
-  unrelated essay. Its evidence follows the reusable write-up shape:
-  **Sources**, **Rules/Assumptions**, **Work**, **Check Your Answer**, and
-  **One-Sentence Summary**. The check/revision row records what was tested,
-  questioned, revised, or carried forward.
-- Tuesday has four slots in the frozen chassis: AI Fluency, the Professional
-  Minds Wednesday strand, technical lecture/demo, and reasoning
-  challenge/check. The technical lecture/demo and challenge/check feed the
-  two Odyssey rows; the first two have their own named recurring rows.
-- Thursday has three slots: the Professional Minds Friday strand, either
-  Pair Programming **or** Show & Tell, and critique/revision/evidence receipt.
-  Pair Programming and Show & Tell are alternating categories; both are not
-  graded every week. The critique/revision/evidence receipt feeds the second
-  Odyssey row rather than creating a third Thursday assignment stream.
-- Week 9 is the explicit Fall Break exception: Tuesday pair-style work can
-  earn the Pair Programming report; there is no Thursday Show & Tell.
-- Week 16 Farkle + Machine Learning synthesis is recurring work inside the
-  50% family. It is not a separate high-weight project bucket.
-- Week 17 is an individual, low-stress reflection worth 5%. No comprehensive
-  programming exam or oral/written Reasoning Defense is part of this model.
+`Weekly reinforcement / Reasoning Odyssey gate 30% + Reasoning Odyssey checkpoints 15% = 45%`.
 
-Exact Canvas group IDs, due dates, late rules, and drop-lowest behavior remain
-deployment questions; this document fixes the category names, weights, object
-shapes, and cadence.
+Everything else is recurring course work or the final:
+
+`9 recurring categories × 5% + technical presentation/demo 3% + course evaluation 2% = 50%`
+(kickoff, Tuesday AI Fluency, the two Professional Minds strands, A3, A4, A7,
+career artifact sequence, and attendance, plus the Tuesday presentation and
+course evaluation) and `Final individual reflection 5%`.
+
+Therefore:
+
+`45% Odyssey + 50% other recurring work + 5% final = 100%`.
+
+The table's direct sum is also:
+
+`5 + 5 + 5 + 5 + 5 + 5 + 5 + 5 + 5 + 3 + 2 + 30 + 15 + 5 = 100%`.
+
+## Chassis and rotation boundaries
+
+Tuesday contains the Monday-Moment-equivalent AI Fluency touchpoint, the
+first Professional Minds day (the Wacky-Wednesday-equivalent strand), and the
+technical presentation/demo. Thursday contains the second Professional Minds
+day (the Fun-Friday-equivalent strand) and exactly one rotating technical
+activity. The technical presentation has its own small evidence-receipt
+category because it is an explicit Tuesday chassis touchpoint; it is not a new
+five-day-cadence category.
+
+The Thursday activity categories are not simultaneous. Pair Programming uses
+the A3-equivalent category on its live weeks; Show & Tell uses the
+A4-equivalent and A7-equivalent categories on its live weeks. The category
+weights are semester-level weighted groups, so each group contains only the
+objects that exist in its applicable rotation. Week 9 is the frozen exception:
+Thursday is Fall Break and its pair-style work is folded into Tuesday. Week 14
+is the Show & Tell / mini-capstone end of the rotation.
+
+The weekly gate is the evidence receipt for the actual technical work, not a
+second unrelated essay. Its package may include sources/rules/work/check/
+summary reasoning and the active Thursday artifact when that week has one;
+the Tuesday presentation/demo receipt is recorded in its separate 3% group.
+The checkpoint group contains larger Odyssey evidence packages and remains
+inside the 45% Odyssey family.
+
+Week 16 Farkle + Machine Learning synthesis is recurring work inside the 30%
+weekly gate, not a separate project bucket. Week 17 is the individual
+reflection at 5%; this model creates no comprehensive programming exam or
+Reasoning Defense category. The existing `assignments/programming-exam.md`
+template is therefore not used as a grading category until a later explicit
+policy decision.
+
+Exact Canvas/Savnac object IDs, due dates, late rules, drop-lowest behavior,
+and the exact checkpoint-week selection remain deployment questions. The
+career artifact sequence is named because the repository contains that real
+artifact family, but its per-week schedule still needs to be published by the
+course build.
