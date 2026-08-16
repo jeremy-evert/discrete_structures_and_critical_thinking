@@ -24,9 +24,13 @@ their commands or technical prose.
 - Thursday Container Connections evidence and reflection: **20 points**.
 - Portfolio total: **40 points**.
 
-The 40 points represent this week's share of the recurring-work category. They
-do not alter the course split of 45% weekly Reasoning Odyssey write-ups, 50%
-recurring weekly course work, and 5% final reflection.
+This portfolio sits inside the **Weekly reinforcement / Reasoning Odyssey
+gate** category (`docs/grading-model.md`, 30%) as Week 2's readiness/setup
+entry — the substantive technical-evidence work for the week, the same role
+that category plays for Weeks 3–14's formal Odyssey gates, even though Week
+2 itself is setup rather than a formal Odyssey topic. It does not alter the
+course split of 45% weekly Reasoning Odyssey write-ups, 50% recurring weekly
+course work, and 5% final reflection.
 
 ## Acceptance boundary
 

@@ -41,13 +41,18 @@ shared rubric's 5/4/4/4/3 structure; Thursday uses five evidence-first
 criteria worth 4 points each, shown in the authored rubric. These are
 assignment points, not percentage weights or a new grading category.
 
-Under answered Question 004, the portfolio belongs entirely in the **50%
-recurring weekly course-work** bucket because it is a lab/evidence activity.
-It is not one of the 45% weekly Reasoning Odyssey write-ups and does not use
-the 5% final reflection. Optional World Bible notes do not receive a separate
-grade. An infrastructure-caused `NOT READY` or instructor-directed stop is
-handled by preserving accurate evidence and an approved substitute, consistent
-with the shared source rubric.
+**Foreman correction (post-Prompt-304):** the named-category grading model
+(`docs/grading-model.md`, Prompt 304) supersedes the vaguer bucket framing
+this report originally used. The portfolio lands in the **Weekly
+reinforcement / Reasoning Odyssey gate** category (30%) as Week 2's
+readiness/setup entry — the same functional role that category plays for
+Weeks 3–14's formal Odyssey gates — not a generic "50% recurring bucket"
+placement. It is still not one of the 5%-weighted weekly-touchpoint
+categories (AI Fluency, Professional Minds strands, A3/A4/A7) and does not
+use the 5% final reflection. Optional World Bible notes do not receive a
+separate grade. An infrastructure-caused `NOT READY` or instructor-directed
+stop is handled by preserving accurate evidence and an approved substitute,
+consistent with the shared source rubric.
 
 ## Reused versus newly written
 
