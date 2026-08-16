@@ -1,281 +1,154 @@
 # Postmortem — DSCT Week 16 Farkle + Machine Learning
 
 **Date:** 2026-08-16  
-**Status:** AUTHORED AND WIRED FOR SHARED CONSUMPTION; REAL-CHECKOUT VALIDATION YELLOW
+**Status:** GREEN — AUTHORED, SYNCHRONIZED, AND VALIDATED AGAINST CANONICAL SHARED CORE
 
 ## What we set out to do
 
-DSCT had a contracted Week 16 identity but no authored Week 16 package.
+DSCT had a contracted Week 16 identity but no authored Week 16 package. At the same time, Farkle + ML was the common computing-family week without its own canonical computational repository.
 
-At the same time, Farkle + ML had become the only shared computing-family week without its own canonical computational repository.
-
-Rather than build another course-local copy, this campaign used DSCT as the first clean consumer of the newly consolidated:
+Rather than build another course-local fork, this campaign used DSCT as the first clean consumer of:
 
 `jeremy-evert/Farkle_and_Machine_Learning`
 
-The two goals reinforced each other:
+The goals reinforced each other:
 
 1. make the shared package general enough to serve a genuinely different course;
-2. make DSCT Week 16 as complete as the stronger sibling-course weeks without inheriting their pedagogical lens by copy/paste.
+2. make DSCT Week 16 as complete as the stronger sibling-course weeks without copying their pedagogical lens.
 
----
-
-# Development workflow used
+## Development workflow used
 
 The campaign followed:
 
 > **report -> map -> plan -> implementation/work orders -> raw receipts -> postmortem**
 
-and the operating rule:
+and:
 
 > **Ask once: leave breadcrumbs. Ask twice: script it. Ask three times: automate it.**
 
-The third-consumer pattern was applied in the shared repository: validation and consumer synchronization are now centralized scripts rather than another manual sequence.
+Because DSCT became the third serious consumer pattern, shared validation and synchronization were promoted into canonical scripts rather than another manual sequence.
 
----
+## What DSCT contributed back to the shared machine
 
-# What DSCT contributed back to the shared machine
-
-The most important DSCT requirement was simple:
+The key DSCT requirement was:
 
 > A percentage is not enough evidence if the student cannot inspect the denominator that produced it.
 
-That requirement caused the canonical shared simulation/result surface to retain:
+That caused the shared result contract to preserve:
 
 - raw wins A/B;
 - ties;
-- raw starts A/B;
-- raw turns A/B;
-- raw Farkles A/B;
+- starts A/B;
+- turns A/B;
+- Farkles A/B;
 - derived rates alongside those counts.
 
-DSCT also caused repeated deterministic seed bundles to become a first-class shared helper so students can inspect multiple samples without each course inventing its own loop.
+DSCT also caused repeated deterministic seed bundles to become first-class shared evidence, while deliberately stopping short of turning Week 16 into a new statistics course.
 
-The helper deliberately stays descriptive. It does not smuggle a new statistics course into Week 16.
-
----
-
-# How DSCT differs from the sibling courses
-
-## CS1
-
-CS1's Week 16 asks students to understand how precise rules, functions, randomness, and a transparent learner produce program behavior.
-
-DSCT does not ask students to rebuild or deeply read the game code.
-
-## CS2
-
-CS2 asks whether added software complexity/experiment machinery earns its keep while preserving contracts.
-
-DSCT uses the resulting contract/evidence but does not make software architecture the central judgment.
-
-## Computer Architecture
-
-Architecture asks what additional computation/hardware cost buys and whether that cost is worth paying.
-
-DSCT may notice cost as an alternate ordering criterion, but its central problem is what the evidence justifies claiming.
-
-## DSCT
-
-DSCT's central question is:
+## DSCT's course-specific question
 
 > **When a Farkle strategy appears better, what are we actually justified in believing?**
 
-Its successful final outputs are not restricted to naming a winner.
+Students may defend a limited claim, revise an overbroad claim, or refuse to declare a winner under their predeclared criterion. A supported refusal is a valid reasoning outcome.
 
-Students may:
+The authored week resurfaces the strongest prior DSCT ideas:
 
-- defend a limited claim;
-- revise an overbroad claim;
-- refuse to declare a winner under their predeclared criterion.
+- logic/claims: define `better` operationally;
+- algorithms/correctness: inspect fairness and rules before trusting output;
+- counting/probability: preserve outcomes and denominators across random samples;
+- expectation/evidence: interpret simulation without treating it as proof;
+- relations/order: alternate criteria can reverse which strategy is preferred;
+- counterexample habits: look for evidence that breaks an overclaim;
+- finite-state/model limits: identify state the model sees and omits;
+- AI Fluency: treat fluent interpretation as a claim, never as evidence.
 
-That refusal is a feature, not an escape hatch.
-
----
-
-# Prior DSCT ideas that actually resurfaced
-
-The authored Week 16 uses:
-
-- **logic/claims:** operationally define `better`;
-- **algorithm/correctness:** inspect the fairness/rules contract before trusting output;
-- **counting/probability:** preserve outcomes/denominators and reason about repeated random samples;
-- **expectation/evidence:** compare observed outcomes without treating simulation as proof;
-- **relations/order:** alternate metrics can change which strategy is preferred;
-- **Boolean/counterexample habit:** search for a case/interpretation that breaks an overclaim;
-- **finite-state/model limits:** identify which state the strategy/learner sees and what it omits;
-- **AI Fluency:** audit fluent interpretation as a claim, not as evidence.
-
-The Week 16 lab does not force every topic in the semester to make a cameo.
-
----
-
-# Student package authored
-
-## Planning / overview
+## Student/instructor package
 
 - `planning/week-16.md`
 - `week-16/README.md`
-
-## Student work
-
 - `week-16/student/farkle-evidence-lab.md`
 - `assignments/week-16-farkle-evidence-receipt.md`
-
-## Instructor support
-
 - `week-16/instructor/guide.md`
-
-## Course-facing technical wrapper
-
 - `lessons/week-16-farkle-evidence.py`
-
-## DSCT seam validation
-
 - `scripts/validate_week16_farkle.py`
+- `week-16/fallback/quick_v1_results.csv`
 
-## Build trail
+The required student path remains CPU-only and requires no GPU, cloud, NRP, paid AI, or large new programming task.
 
-- `sidecar/reports/week16_farkle_ml_current_state.md`
-- `planning/week-16-farkle-ml-target-map.md`
-- `planning/week-16-farkle-ml-plan.md`
-- `sidecar/runs/week16_farkle_ml_connector_receipt.md`
-
----
-
-# Student burden
-
-The required path is intentionally small.
-
-Students do not write a new game or ML system.
-
-They:
-
-1. define a claim and criterion;
-2. predict;
-3. inspect/run one initial sample;
-4. identify how it could mislead;
-5. inspect a repeated seed bundle;
-6. compare descriptive stability/spread;
-7. inspect one alternate metric;
-8. name one model limitation;
-9. critique one confident interpretation;
-10. defend, revise, or refuse the claim.
-
-The required computational path is CPU-only and has no paid AI, GPU, cloud, or NRP dependency.
-
----
-
-# Grading alignment
+## Grading alignment
 
 No new grading category was invented.
 
-Week 16 remains part of the existing:
-
-**Weekly reinforcement / Reasoning Odyssey gate**
-
-The receipt uses the course's established:
+Week 16 remains inside the existing **Weekly reinforcement / Reasoning Odyssey gate** and uses:
 
 **Sources -> Rules/Assumptions -> Work -> Check Your Answer -> One-Sentence Summary**
 
-The numerical winner is not an evidence criterion.
+The numerical winner is not itself an evidence criterion.
 
----
+## Canonical consumer mechanism
 
-# Integration mechanism
+The course consumes a generated vendor snapshot under:
 
-The intended Fall 2026 consumer path is a generated vendor snapshot synchronized from the canonical shared repository.
+`lessons/vendor/farkle_ml/`
 
-Canonical shared script:
+`_SHARED_PROVENANCE.json` records the shared source repository, source commit, source hashes, and synchronization audit context.
 
-```text
-python scripts/sync_consumer.py ../discrete_structures_and_critical_thinking/lessons/vendor/farkle_ml --apply
-```
+Validated shared source commit:
 
-The generated package records:
+`d3a1ed379a652731b0b6237c33b4fe42c518ac9e`
 
-`_SHARED_PROVENANCE.json`
+The course-local generated snapshot is not independent source truth and should not be hand-edited.
 
-This preserves a self-contained course checkout without pretending DSCT owns an independent Farkle fork.
+## Real validation evidence
 
-No generated vendor files were manually created during connector authoring.
+Shared core validation was completed first on a real Windows checkout.
 
----
+DSCT validation receipt:
 
-# What we cannot truthfully claim yet
+`sidecar/runs/week16_farkle_validation_20260816T211906Z.md`
 
-This environment can write the private GitHub repositories through the connector but cannot execute their current private checkouts.
+Status: **GREEN**.
 
-Therefore this postmortem does **not** claim:
+It proved:
 
-- shared unit-test pass count;
-- observed shared validation runtime;
-- actual strategy win rates;
-- successful shared -> DSCT synchronization;
-- DSCT seam-validator pass count;
-- generated fallback evidence.
+- shared provenance exists in the consumer;
+- the DSCT course-facing runner executes against the synchronized package;
+- raw starts/wins/ties/turns/Farkles survive into the evidence surface;
+- the repeated `quick_v1` bundle preserved multiple per-seed rows;
+- the required path completed without GPU, cloud, or paid-service dependency.
 
-No plausible-looking sample evidence was fabricated.
+A real observed `quick_v1` result set was retained at:
 
----
+`week-16/fallback/quick_v1_results.csv`
 
-# Named yellows
+That fallback is actual validated evidence, not invented sample output. In the three 10-game fallback rows, the learner-vs-threshold A-B win-rate difference moved from -40 to +20 to +60 percentage points, which is particularly useful for the DSCT discussion of sample stability and overclaiming.
 
-## YELLOW 1 — shared validator
+Validated consumer commit:
 
-Run from `Farkle_and_Machine_Learning`:
+`bab5ef89fa08e73b88bcdabd736600b58c45ec13`
 
-```text
-python scripts/validate.py
-```
+## What real execution taught us
 
-## YELLOW 2 — first real consumer synchronization
+The first synchronization attempt targeted a path where the DSCT repository had not actually been cloned. The original sync tool created a convincing vendor-only directory. That exposed a trust bug in the automation.
 
-From the shared checkout:
+The shared synchronization tool was then hardened to require an existing Git worktree before writing. Provenance was also improved so consumers pin to the last commit that actually changed `src/farkle_ml/`, rather than becoming artificially stale after README or housekeeping changes.
 
-```text
-python scripts/sync_consumer.py ../discrete_structures_and_critical_thinking/lessons/vendor/farkle_ml --apply
-python scripts/sync_consumer.py ../discrete_structures_and_critical_thinking/lessons/vendor/farkle_ml --check
-```
+That is exactly the desired escalation rule working: repeated work became a script, and the script remembered the failure after the humans stopped thinking about it.
 
-## YELLOW 3 — DSCT seam validation
+## Remaining work outside DSCT
 
-From DSCT:
+No DSCT Week 16 release yellow remains.
 
-```text
-python scripts/validate_week16_farkle.py
-```
+Do **not** continue reorganizing this course merely because further shared cleanup is imaginable.
 
-## YELLOW 4 — fallback fixture
+CS1 and CS2 legacy/local Farkle ownership can be migrated later using the proven shared sync/check pattern, and Computer Architecture can consume the shared package when its Week 16 build is deliberately executed. Those are separate controlled campaigns.
 
-After the above succeeds, preserve one validated `classroom_v1` evidence bundle for classroom fallback use and record the synchronized shared commit.
+## Closure
 
----
-
-# What should happen after the yellows are green
-
-Do **not** immediately continue reorganizing repositories for aesthetic reasons.
-
-Once shared + DSCT are validated:
-
-1. record the runtime receipts;
-2. repair any defects found by real execution;
-3. freeze the shared contract for the first Fall 2026 consumer;
-4. then plan/migrate CS1 and CS2 away from accidental shared-code forks using the same sync/check mechanism;
-5. let Computer Architecture consume the stable package when its Prompt 005 is deliberately executed.
-
-The migration of existing working courses is a separate controlled step.
-
----
-
-# Closure
-
-DSCT Week 16 is no longer `CONTRACTED_NOT_AUTHORED` in substance.
-
-It now has a complete reasoning-centered student/instructor surface and is wired to consume the canonical shared machine through a scripted, provenance-pinned mechanism.
+DSCT Week 16 is now a complete, validated reasoning-centered synthesis experience and the first proven clean consumer of the canonical shared Farkle + Machine Learning computational core.
 
 Current classification:
 
-> **AUTHORED AND WIRED; REAL-CHECKOUT VALIDATION YELLOW**
+> **GREEN — DEFEND, REVISE, OR REFUSE.**
 
-Promote to GREEN only after the shared validator, sync apply/check, and DSCT seam validator have produced real receipts.
+Then stop.
