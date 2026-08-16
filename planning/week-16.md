@@ -5,7 +5,7 @@ COMSC-2043-1420 · 12:30–1:45 PM · Gen. Thomas P. Stafford Center, Room 259
 
 ## Status
 
-**Student/instructor package authored; shared-package runtime + synchronization receipt required before release is fully GREEN.**
+**GREEN — student/instructor package authored and validated against the canonical shared Farkle + ML core on a real Windows checkout.**
 
 ## Central question
 
@@ -82,6 +82,10 @@ Instructor guide:
 
 - `week-16/instructor/guide.md`
 
+Validated classroom fallback:
+
+- `week-16/fallback/quick_v1_results.csv`
+
 ## Grading placement
 
 This work belongs to the existing **Weekly reinforcement / Reasoning Odyssey gate** category.
@@ -104,14 +108,26 @@ The evidence receipt uses the existing course method:
 
 AI critique may use a live zero-cost tool when available or an instructor-provided example when it is not.
 
-## Release yellow
+## Validation evidence
 
-Before Week 16 is classified fully GREEN:
+The canonical shared core was validated on Windows and retained its real receipt in the shared repository.
 
-1. run the shared repository validator;
-2. use the shared synchronization script to generate `lessons/vendor/farkle_ml/`;
-3. run the DSCT Week 16 seam validator;
-4. retain the resulting raw receipts;
-5. generate/retain validated fallback evidence for classroom use.
+DSCT then consumed the generated, provenance-pinned package in:
 
-Do not hand-edit generated shared source in the DSCT repository.
+`lessons/vendor/farkle_ml/`
+
+The DSCT seam validator completed **GREEN** and retained:
+
+`sidecar/runs/week16_farkle_validation_20260816T211906Z.md`
+
+The validated consumer proved that:
+
+- shared provenance is present;
+- the course-facing runner executes against the generated shared package;
+- raw starts/wins/ties/turns/Farkles survive into the evidence surface;
+- repeated seed rows survive into the evidence table;
+- the required path needs no GPU, cloud, or paid service.
+
+The curated fallback CSV is real observed evidence from that validated run, not fabricated sample output.
+
+Do not hand-edit generated shared source in the DSCT repository. Refresh it only through the canonical synchronization script and validate again after a shared-source change.
