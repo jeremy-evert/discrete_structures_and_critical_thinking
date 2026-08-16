@@ -1,92 +1,110 @@
 # Prompt 304 — DSCT grading model
 
+## Foreman note on this report's history
+
+The worker container ran this dispatch twice against the same shared
+working tree (the first attempt was interrupted early by Foreman for
+sharper instructions, but its process finished committing before the kill
+fully landed — commit `9497896`). Its self-written report described that
+first table. A second pass (commit `bad75e0`) then refined the table in
+place based on the sharpened instructions (Jeremy's exact Tuesday/Thursday
+mapping and explicit request to reuse CS1's small buckets), but the
+worker's standing footer told it not to write a second report, so the
+committed report described the superseded first table. Foreman rewrote
+this report to describe the actual final `docs/grading-model.md` on this
+branch, and reconciled one real inconsistency found during review — see
+"Week 2 reconciliation" below.
+
 ## Deliverable
 
-Created `docs/grading-model.md` with an explicit named-category table modeled
-on the CS2 source-model table. The model uses DSCT's Tuesday/Thursday chassis,
-including the alternating Thursday Pair Programming / Show & Tell rotation.
-It does not create a five-day cadence or a separate large synthesis-project
-bucket.
+`docs/grading-model.md` — an explicit named-category table using CS1's
+small-bucket treatment (5%-sized named categories rather than lump-sum
+buckets), adapted to DSCT's real Tuesday/Thursday chassis and the
+alternating Thursday Pair-Programming/Show-and-Tell rotation. Lands
+exactly on Question 004's 45%/50%/5% aggregate.
 
-## Full table
+## Full table (as committed, `bad75e0`)
 
-| Category | Weight | Canvas/Savnac object shape | Graded weeks / cadence |
-|---|---:|---|---|
-| Reasoning Odyssey technical write-up | 30% | Weekly individual text-entry/upload assignment with a rubric; the week's readable problem-solving artifact | Weeks 2–16 active cycle; Week 9 Tuesday-only, Week 15 asynchronous, Week 16 synthesis object |
-| Reasoning Odyssey check, revision, and evidence receipt | 15% | Individual linked evidence/revision receipt with rubric for check, critique response, and carry-forward evidence | Weeks 2–16 when active; Thursday normally, Tuesday-only Week 9, asynchronous Week 15 |
-| Tuesday AI Fluency failure-mode check | 5% | Short quiz, text-entry, or exit-ticket object with rubric | Weekly Tuesday Weeks 2–14; Week 15 async and Week 16 adapted where scheduled |
-| Tuesday Professional Minds Wednesday-strand response | 5% | Individual reflection/text-entry object tied to shared Professional Minds source | Weekly Tuesday Weeks 2–14; Week 15 async |
-| Thursday Professional Minds Friday-strand / career-artifact response | 5% | Individual reflection or career-artifact-sequence submission with rubric | Weekly Thursday Weeks 2–14 when Thursday meets; Week 15 async |
-| Pair Programming report | 15% | Individual pair-programming-report upload/text-entry with roles, evidence, win, stuck point, next step, and reflection | Weeks 3, 5, 7, 9, 11, 13; Week 9 is Tuesday pair-style work |
-| Show & Tell artifact and revision | 15% | Individual show-and-tell-artifact upload/link with explanation, peer-question evidence, critique, and revision rubric | Weeks 4, 6, 8, 10, 12, 14; never same week as Pair Programming |
-| Week 16 Farkle + Machine Learning synthesis | 5% | Shared applied-experience evidence submission with individual reasoning/evidence receipt and rubric | Week 16 only |
-| Week 17 individual final reflection | 5% | Low-stress individual text-entry/upload reflection with prompt choice and rubric; not an exam or Reasoning Defense | Week 17 only |
-| **Total** | **100%** | | |
+| Category | Weight | Graded weeks / cadence |
+|---|---:|---|
+| Semester kickoff week | 5% | Week 1 |
+| Monday Moment quiz (Tuesday AI Fluency touchpoint) | 5% | Weekly Tuesday, incl. Week 9 exception |
+| Wacky Wednesday reflection (Tuesday Professional Minds strand) | 5% | Weekly Tuesday PM weeks |
+| Fun Friday reflection (Thursday Professional Minds strand) | 5% | Weekly Thursday PM weeks, excl. Week 9 |
+| Paired-programming report (A3 equivalent) | 5% | Pair Programming weeks: 3, 5, 7, 9 (pair-style), 11, 13 |
+| Show-and-Tell reflection (A4 equivalent) | 5% | Show & Tell weeks: 4, 6, 8, 10, 12, 14 |
+| Friday feedback report (A7 equivalent) | 5% | Show & Tell weeks: 4, 6, 8, 10, 12, 14 |
+| Career artifact sequence | 5% | Recurring career-strand weeks as scheduled |
+| Attendance & participation | 5% | Course cadence |
+| Technical presentation/demo evidence | 3% | Weekly Tuesday technical presentation/demo slot |
+| Course evaluation | 2% | End of term |
+| Weekly reinforcement / Reasoning Odyssey gate | 30% | Weeks 3–14 formal sequence + Week 16 synthesis + Week 2 readiness/setup (see reconciliation below) |
+| Reasoning Odyssey checkpoints | 15% | Selected checkpoint weeks within 3–14/16 |
+| Final individual reflection | 5% | Week 17 |
+| **Total** | **100%** | |
 
-## Arithmetic check
+## Arithmetic check (independently re-verified by Foreman)
 
-The complete table sums to:
+- 9 categories at 5% each (kickoff, AI Fluency, Wacky Wednesday, Fun Friday,
+  A3, A4, A7, career artifact, attendance) = 45%.
+- + technical presentation 3% + course evaluation 2% = 50%.
+- + Weekly reinforcement/Odyssey gate 30% + checkpoints 15% = 45%.
+- + final 5%.
+- Total: 50% + 45% + 5% = **100%**. Confirmed correct.
+- Reasoning Odyssey family alone: 30% + 15% = **45%**, matching Question
+  004's aggregate exactly.
+- Everything else recurring: 50%, final: 5% — both match Question 004.
 
-`30 + 15 + 5 + 5 + 5 + 15 + 15 + 5 + 5 = 100%`.
+## Week 2 reconciliation (Foreman, this pass)
 
-The named Reasoning Odyssey family is exactly:
+CS2 sidecar Prompt 303 (dispatched before this grading table existed) used
+the answered Question 004's original vaguer "50% recurring bucket"
+language to grade DSCT's own Week 2 evidence portfolio (40 points: 20
+Tuesday local-AI-readiness + 20 Thursday Container Connections). That
+language is now stale against the named-category table above — none of
+the specific 5%-weighted weekly-touchpoint categories (AI Fluency, PM
+strands, A3/A4/A7) are the right fit, since those name *recurring
+touchpoint types*, not the week's substantive technical-evidence work.
 
-`30% technical write-up + 15% check/revision/evidence receipt = 45%`.
-
-The recurring non-Odyssey rows are:
-
-`5% AI Fluency + 5% Tuesday Professional Minds + 5% Thursday Professional Minds/career artifact + 15% Pair Programming + 15% Show & Tell + 5% Week 16 synthesis = 50%`.
-
-The final is:
-
-`5% Week 17 individual reflection`.
-
-Therefore:
-
-`45% + 50% + 5% = 100%`.
-
-There is no rounding issue: all rows use whole percentages and the Odyssey
-family is exactly 45%, not an approximation.
+Resolved by mapping Week 2's evidence portfolio into the **Weekly
+reinforcement / Reasoning Odyssey gate** category (30%) as the week's
+readiness/setup entry — the same functional role that category plays for
+Weeks 3–14's formal Odyssey gates (this week's substantive technical
+evidence), even though Week 2 itself is setup rather than a formal Odyssey
+topic. This mirrors CS2's own precedent: CS2's real graded Week 2 object
+(the shared local-AI-lab readiness check) is likewise the week's
+substantive evidence work, not one of CS2's specific weekly-touchpoint
+categories. Updated both `docs/grading-model.md`'s Odyssey-gate row and
+`week-02/student/week-02-evidence-assignment.md`'s points section to state
+this explicitly.
 
 ## Chassis trace
 
-| Chassis touchpoint | Table category or categories | Reason it maps |
-|---|---|---|
-| Tuesday AI Fluency (~8 min) | Tuesday AI Fluency failure-mode check (5%) | The contract names this as a durable Tuesday slot; the object captures the week's convincing-wrong-answer lens and check. |
-| Tuesday Professional Minds Wednesday strand (~12 min) | Tuesday Professional Minds response (5%) | This is the contract's named Tuesday Professional Minds strand. |
-| Tuesday technical lecture/demo (~47 min) | Reasoning Odyssey technical write-up (30%) | The write-up is the readable artifact of applying the week's technical concept in the persistent context. |
-| Tuesday reasoning challenge/check (~8 min) | Reasoning Odyssey technical write-up (30%) and check/revision/evidence receipt (15%) | The challenge supplies the work; the check supplies evidence that the reasoning was tested and understood. |
-| Thursday Professional Minds Friday strand (~10–12 min) | Thursday Professional Minds Friday-strand / career-artifact response (5%) | The response is the named receipt for this Thursday strand and can use the existing career-artifact-sequence template where that strand calls for career evidence. |
-| Thursday Pair Programming (~50–55 min), alternating weeks | Pair Programming report (15%) | Directly uses the existing pair-programming-report artifact and the frozen rotation. |
-| Thursday Show & Tell (~50–55 min), alternating weeks | Show & Tell artifact and revision (15%) | Directly uses the existing show-and-tell-artifact template; peer questions and revision are part of the object. |
-| Thursday critique/revision/evidence receipt (~8–10 min) | Reasoning Odyssey check, revision, and evidence receipt (15%) | This is the receipt/carry-forward portion of the Odyssey family, not an extra weekly cadence. |
-| Week 16 Farkle + ML synthesis | Week 16 Farkle + ML synthesis (5%) | Question 004 explicitly places it inside recurring work, so it is a named recurring row within the 50%. |
-| Week 17 final reflection | Week 17 individual final reflection (5%) | Question 004 explicitly defines a low-stress individual reflection, not a comprehensive exam or defense. |
+Tuesday = Monday-Moment-equivalent AI Fluency + first Professional Minds
+day (Wacky-Wednesday-equivalent) + technical presentation. Thursday =
+second Professional Minds day (Fun-Friday-equivalent) + one rotating
+technical activity (Pair Programming or Show & Tell, never both the same
+week) — exactly Jeremy's own stated day-mapping. The technical
+presentation gets its own small 3% category because it is a real, distinct
+Tuesday chassis touchpoint, not folded into the Odyssey gate (which is
+Thursday-anchored evidence/reasoning work in this model).
 
-The Tuesday and Thursday categories are stated as weekly touchpoints, not as a
-claim that both Thursday artifact types occur in one week. The Prompt 302
-rotation is Pair Programming in Weeks 3, 5, 7, 11, 13 and Show & Tell in Weeks
-4, 6, 8, 10, 12, 14, with Week 9's Tuesday pair-style exception and Thursday
-Fall Break.
+## Underspecified items (worker-flagged, not resolved here)
 
-## Underspecified items and known inconsistency
-
-No grading category was left unnameable: the frozen contract gives enough
-information to name each category and its object shape. The exact
-Professional Minds Wednesday/Friday source anchors remain `SOURCE_PENDING` in
-the contract, so this model names their response objects and cadence without
-inventing lesson-specific prompts.
-
-The existing `assignments/programming-exam.md` stub is intentionally not used
-as a category. It is inconsistent with Question 004's explicit “not a
-comprehensive exam” decision and should remain a separate known issue for a
-future pass.
+Exact career-artifact weeks and Reasoning-Odyssey-checkpoint weeks remain
+to be scheduled in the course calendar — flagged, not guessed. The
+existing `assignments/programming-exam.md` stub remains intentionally
+unused as a grading category (inconsistent with Question 004's "not a
+comprehensive exam" decision) — a separate known cleanup item.
 
 ## Validation
 
 - No test suite applies to this planning-markdown-only repository.
-- `git diff --check`: PASS.
-- `make task-check`: unavailable; `/bin/bash: line 1: make: command not found`.
-- `make check`: unavailable; `/bin/bash: line 1: make: command not found`.
-- Push attempt: blocked; `origin` uses SSH and the environment has no `ssh`
-  executable (`error: cannot run ssh: No such file or directory`).
+- `git diff --check`: PASS (worker + Foreman's Week 2 reconciliation edits).
+- Percentage arithmetic independently re-verified by Foreman (see above).
+- Push attempt from the worker container was blocked (no `ssh` executable);
+  Foreman pushes on the host.
+
+## Foreman acceptance
+
+Accepted with the Week 2 reconciliation above folded in.

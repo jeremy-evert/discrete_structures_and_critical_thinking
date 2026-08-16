@@ -20,7 +20,7 @@ is implied.
 | Attendance & participation | 5% | Instructor-entered attendance/participation group | Course cadence: scheduled Tuesday/Thursday touchpoints |
 | Technical presentation/demo evidence | 3% | Individual presentation/demo evidence receipt with rubric; may be a text entry, upload, link, or live-demonstration receipt | Weekly Tuesday technical presentation/demo slot |
 | Course evaluation | 2% | End-of-term completion object | End of term |
-| Weekly reinforcement / Reasoning Odyssey gate | 30% | Weekly Odyssey gate objects with gate rubrics | Active recurring-work weeks, including Week 16 Farkle + ML synthesis; Weeks 3–14 are the formal technical sequence |
+| Weekly reinforcement / Reasoning Odyssey gate | 30% | Weekly Odyssey gate objects with gate rubrics | Active recurring-work weeks, including Week 16 Farkle + ML synthesis; Weeks 3–14 are the formal technical sequence; Week 2's local-AI-lab/Container-Connections evidence portfolio also lands here as the week's readiness/setup entry (this week's substantive technical evidence, not a formal Odyssey topic) |
 | Reasoning Odyssey checkpoints | 15% | Larger Odyssey checkpoint objects with checkpoint rubrics | Checkpoint weeks selected within Weeks 3–14 and/or Week 16, with the specific weeks published in the course schedule |
 | Final individual reflection | 5% | Low-stress individual text-entry/upload reflection object with rubric | Week 17 finals period |
 | **Total** | **100%** | | |
