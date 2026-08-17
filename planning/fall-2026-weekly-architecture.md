@@ -31,6 +31,65 @@ not limited to a conventional application. Show & Tell is explanation and
 defense followed by required professional critique of a peer and revision,
 not presentation theater.
 
+### Pair Reasoning / Show & Tell cadence (Prompt 313)
+
+A normal Week 4–14 formal-content week carries exactly **one** named
+recurring social-reasoning mode on Thursday — Pair Reasoning **or** Show &
+Tell, never both as separate required recurring graded events in the same
+normal week. This does not restrict ordinary discussion, peer questions, or
+brief partner checks inside other lessons; it governs only the named graded
+recurring event family.
+
+The baseline formal-core alternation, expressed in `fall-2026-topic-map.md`'s
+"Thu mode / intended artifact family" column, is:
+
+- Week 4: **Show & Tell** (first formal core week)
+- Week 5: **Pair Reasoning**
+- Week 6: **Show & Tell**
+- Week 7: **Pair Reasoning**
+- Week 8: **Show & Tell**
+- Week 9: **Pair-style work folded into Tuesday** (Thursday is Fall Break;
+  see Exceptions below — no Thursday artifact is promised)
+- Week 10: **Show & Tell**
+- Week 11: **Pair Reasoning**
+- Week 12: **Show & Tell**
+- Week 13: **Pair Reasoning**
+- Week 14: **Show & Tell / Reasoning Odyssey mini-capstone**
+
+This is the predictable alternation the design decision calls for: it starts
+with Show & Tell in Week 4, then Pair Reasoning in Week 5, and continues in
+strict alternation except where an explicit calendar or special-week
+exception intervenes (currently only Week 9). The topic map remains the
+frozen per-week source of truth; this section restates its cadence so the
+rule does not have to be re-derived from the table.
+
+Weeks 2 and 3 are runway weeks and sit outside the Week 4–14 alternation.
+Week 3's own contract (Prompts 307/316, pinned-container skill ladder) may
+include pair-style reproducibility work; that work belongs to Week 3's own
+tooling contract and does not make Week 4 a Pair Reasoning week or otherwise
+shift the baseline alternation above.
+
+**Known open seam (not resolved by this cadence contract):**
+`fall-2026-topic-map.md` still carries a Week 3 row ("Logic, Claims & Proof")
+labeled with a Pair Reasoning Thursday mode, and `docs/grading-model.md`
+still lists Week 3 inside the Pair Reasoning graded-week list. Both predate
+the settled Week 3 runway/pinned-container direction (Prompts 307/316) and
+the design-decision quarry's own note that Week 3 is "tools runway rather
+than formal discrete math." Whether Week 3's historical technical bundle
+folds into another Week 4–14 slot, is dropped, or is reorganized is an
+unresolved topic-placement question (see design-decision quarry, "Decision
+cluster E: What are the eleven formal Week 4–14 core weeks?") that this
+cadence contract does not decide. The Week 4–14 alternation above is correct
+and stable regardless of how that seam resolves, because it is anchored to
+Week 4 (Show & Tell), not to Week 3.
+
+Pair Reasoning and Show & Tell remain separate 5% semester grading
+categories (`docs/grading-model.md`). This cadence contract does not change
+either weight, does not merge the categories, and does not require the two
+categories to contain the same number of graded weeks — the odd eleven-week
+core and the Week 9 calendar exception make an even split impossible by
+construction.
+
 ## Recurring reasoning and AI lens
 
 Every formal topic uses the Week 1 sequence: Sources → Rules/Assumptions →
