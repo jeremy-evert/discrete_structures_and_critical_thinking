@@ -1,0 +1,77 @@
+schema_version: dsct-week2-acceptance-fixtures/v1
+fixture_manifest_version: "2026-08-14.1"
+contract_key: week-02-local-ai-readiness
+synthetic_only: true
+cases:
+  - id: strong-complete-ready
+    submission_file: strong-complete-ready.md
+    control_kind: positive_control
+    expected_status: ready
+    must_not_full_credit: []
+    strong_criteria: [sources_evidence_provenance, rules_assumptions_system_model, work_traceable_workflow, check_counterexample_verification, summary_evidence_limits]
+    escalation: not_expected
+    critical_false_pass_condition: none
+    coach_topics: []
+  - id: strong-not-ready
+    submission_file: strong-not-ready.md
+    control_kind: positive_control
+    expected_status: not_ready
+    must_not_full_credit: []
+    strong_criteria: [sources_evidence_provenance, rules_assumptions_system_model, work_traceable_workflow, check_counterexample_verification, summary_evidence_limits]
+    escalation: acceptable_if_model_cannot resolve infrastructure branch; infrastructure failure alone is not a reasoning failure
+    critical_false_pass_condition: none
+    coach_topics: []
+  - id: assertion-only
+    submission_file: assertion-only.md
+    control_kind: adversarial_control
+    expected_status: ready
+    must_not_full_credit: [sources_evidence_provenance, work_traceable_workflow, check_counterexample_verification, summary_evidence_limits]
+    strong_criteria: []
+    escalation: acceptable
+    critical_false_pass_condition: ready with all criteria full despite no inspectable evidence
+    coach_topics: [shared-readiness-assignment, shared-first-local-ai-interaction]
+  - id: passing-test-universal-overclaim
+    submission_file: passing-test-universal-overclaim.md
+    control_kind: adversarial_control
+    expected_status: ready
+    must_not_full_credit: [check_counterexample_verification, summary_evidence_limits]
+    strong_criteria: [sources_evidence_provenance, rules_assumptions_system_model, work_traceable_workflow]
+    escalation: acceptable
+    critical_false_pass_condition: ready with all criteria full despite universal correctness or AI-understanding overclaim
+    coach_topics: [dsct-week2-extension, dsct-reasoning-method]
+  - id: wrong-system-model
+    submission_file: wrong-system-model.md
+    control_kind: adversarial_control
+    expected_status: ready
+    must_not_full_credit: [rules_assumptions_system_model]
+    strong_criteria: [sources_evidence_provenance, work_traceable_workflow]
+    escalation: acceptable
+    critical_false_pass_condition: all criteria full while component roles and localhost meaning are wrong
+    coach_topics: [shared-local-ai-architecture, shared-localhost-boundary]
+  - id: supplied-receipt-as-own-evidence
+    submission_file: supplied-receipt-as-own-evidence.md
+    control_kind: adversarial_control
+    expected_status: not_ready
+    must_not_full_credit: [sources_evidence_provenance, summary_evidence_limits]
+    strong_criteria: [rules_assumptions_system_model, work_traceable_workflow, check_counterexample_verification]
+    escalation: acceptable
+    critical_false_pass_condition: ready with all criteria full while supplied READY receipt is claimed as personal READY evidence
+    coach_topics: [dsct-week2-reflection, shared-readiness-check]
+  - id: invalid-counterexample
+    submission_file: invalid-counterexample.md
+    control_kind: adversarial_control
+    expected_status: ready
+    must_not_full_credit: [check_counterexample_verification]
+    strong_criteria: [sources_evidence_provenance, rules_assumptions_system_model, work_traceable_workflow, summary_evidence_limits]
+    escalation: acceptable
+    critical_false_pass_condition: all criteria full while irrelevant container observation is accepted as a string-behavior counterexample
+    coach_topics: [dsct-week2-extension, dsct-reasoning-method]
+  - id: deliciously-wrong-ai-style
+    submission_file: deliciously-wrong-ai-style.md
+    control_kind: adversarial_control
+    expected_status: ready
+    must_not_full_credit: [sources_evidence_provenance, rules_assumptions_system_model, check_counterexample_verification, summary_evidence_limits]
+    strong_criteria: [work_traceable_workflow]
+    escalation: expected_or_acceptable
+    critical_false_pass_condition: ready with all criteria full despite multiple subtle provenance, system-model, and scope errors
+    coach_topics: [dsct-ai-verification, shared-local-ai-architecture, dsct-week2-extension]
