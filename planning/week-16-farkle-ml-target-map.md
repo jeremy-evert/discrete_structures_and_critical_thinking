@@ -241,7 +241,9 @@ The target is:
 
 # Evidence receipt map
 
-The weekly Reasoning Odyssey gate should use the existing five-part reasoning shape.
+The Farkle + Machine Learning Synthesis evidence receipt (its own 5% category
+as of Prompt 315, not the weekly Decision Gate) should use the existing
+five-part reasoning shape.
 
 ## Sources
 
