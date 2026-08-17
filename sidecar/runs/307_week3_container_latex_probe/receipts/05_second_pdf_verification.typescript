@@ -1,0 +1,17 @@
+Script started on 2026-08-17 00:58:20-05:00 [<not executed on terminal>]
+path=sidecar/runs/307_week3_container_latex_probe/fixture/week3-reasoning.pdfsidecar/runs/307_week3_container_latex_probe/fixture/week3-reasoning.pdfsize=52756 bytessidecar/runs/307_week3_container_latex_probe/fixture/week3-reasoning.pdfmtime=2026-08-17 00:58:20.423040528 -0500
+4712329da65e79c7eac4bfe6c115fa26896a43386cc03ce20d668f38599737b1  sidecar/runs/307_week3_container_latex_probe/fixture/week3-reasoning.pdf
+
+Extracted readable text after second edit:
+Week 3 reasoning probe
+For a finite set S with |S| = 6, the power set has
+|P(S)| = 26 = 64.
+This second bounded edit says: the claim is auditable when the source
+and the typesetting command are both explicit.
+
+1
+
+
+Expected first hash: 74c27d2738081f88502acf74618000fb23bb7fa7ceb61da192df8438d7b53fe3
+
+Script done on 2026-08-17 00:58:20-05:00 [COMMAND_EXIT_CODE="0"]

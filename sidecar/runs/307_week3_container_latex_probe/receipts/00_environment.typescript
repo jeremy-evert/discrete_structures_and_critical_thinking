@@ -1,0 +1,12 @@
+Script started on 2026-08-17 00:57:49-05:00 [<not executed on terminal>]
+UTC: 2026-08-17T05:57:49Z
+Starting commit: e0e7ef0eb31c141a9df1ff21ff592ac53ca222b2
+OS: Rocky Linux 9.6 (Blue Onyx) 9.6
+Shell: GNU bash, version 5.1.8(1)-release (x86_64-redhat-linux-gnu)
+Podman: podman version 5.4.0
+pdflatex: pdfTeX 3.141592653-2.6-1.40.28 (TeX Live 2025)
+latexmk: tectonic: Network probe not performed; no image pull or package installation was requested.
+Privileges: uid=1000
+ paid-service: none observed
+
+Script done on 2026-08-17 00:57:49-05:00 [COMMAND_EXIT_CODE="0"]
