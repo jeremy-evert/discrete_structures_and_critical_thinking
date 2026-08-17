@@ -166,8 +166,8 @@ job.
 
 - **Branch:** `worker/prompt306-reuse`
 - **Worktree:** `/tmp/dsct-prompt306`
-- **Commit:** to be recorded after Foreman review and commit
-- **Validation:** provenance inventory complete; nine loop roles mapped; Windows test battery 81/81 with `PYTHONPATH=src`; sibling status clean; write-scope audit pending final commit
+- **Commit:** `851c5f481cc69df54283cacca24d16e36684940b` (report package; follow-up receipt repair commits may supersede this exact report blob)
+- **Validation:** provenance inventory complete; nine loop roles mapped; Windows test battery 81/81 with `PYTHONPATH=src`; sibling status clean; `git diff --check` passed and the changed-path audit contained only this report
 - **Yellows:** no Windows execution on this host; local AI test discovery has no tests; DSCT-specific exercise, reflection, and grading/schedule choices remain open; historical DSCT runtime package may conflict with shared Windows ownership
 - **Boundary check:** report-only write; no source edits, merges, installations, resets, Canvas/Savnac/JTT actions, or pedagogical decisions
 - **Recommendation:** Foreman should independently review this report, then accept/promote only the report commit. Later DSCT authoring should begin with canonical pointers and an explicitly selected DSCT exercise rather than copying the CS2 extension.
