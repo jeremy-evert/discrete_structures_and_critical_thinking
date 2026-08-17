@@ -141,6 +141,15 @@ continuity pattern only where it is instructionally natural.
   chassis.
 - **Week 2:** Tuesday is Building Your AI Lab and Thursday is Containers and
   Repeatability; no lessons are authored by Prompt 302.
+- **Week 3 infrastructure note:** the formal-topic chassis above still
+  applies to Week 3 (Logic, Claims & Proof); this is not a chassis
+  exception. Prompt 316 additionally supplies the pinned-container LaTeX
+  baseline (`week-03/container/`, `week-03/student/container-latex-skill-ladder.md`)
+  that Pair Reasoning artifacts needing a typeset claim/proof run on top of.
+  Students start from a supplied, pinned, ready-to-run image rather than an
+  install/build-from-scratch tax; see
+  `sidecar/reports/316_week3_pinned_container_skill_ladder.md` for the
+  validated contract and its returned action items.
 - **Week 9:** Thursday Oct 15 is Fall Break and has no class. Pair-style work
   is folded into Tuesday's reasoning activity; no Thursday artifact is
   promised.
