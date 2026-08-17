@@ -255,7 +255,7 @@ It should state:
 
 Do not create a new grading percentage.
 
-Week 16 remains inside the existing weekly Reasoning Odyssey gate.
+Week 16 remains Decision Gate work, inside the existing weekly Reasoning Odyssey gate category.
 
 The evidence criteria should reward whether the student:
 
