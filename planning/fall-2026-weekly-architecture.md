@@ -60,12 +60,13 @@ assignments, or time allocations.
 For Question 004's resolved grading categories, the mapping is:
 
 - The individual Tuesday reasoning trace and its Thursday evidence receipt,
-  when collected as the week's checked reasoning, feed the **weekly Reasoning
-  Odyssey write-up** category.
+  when collected as the week's checked reasoning, feed the student's one
+  weekly **Decision Gate** (gradebook category: weekly reinforcement /
+  Reasoning Odyssey gate).
 - The existing Thursday pair artifact or Show & Tell artifact, plus the
   existing concept check, lab, activity, critique, or revision evidence, feeds
   the **recurring weekly course work (concept-checks/labs/activities)**
-  category. Pair work does not create a second Odyssey grade; the individual
+  category. Pair work does not create a second Decision Gate; the individual
   receipt keeps accountability visible within the same weekly work.
 
 This is a planning contract only. It does not author Week 2–17 lesson content;

@@ -42,7 +42,7 @@ They answer three small questions:
 2. **What course evidence supports that claim?**
 3. **Where might that ability matter outside this class?**
 
-Possible evidence may include a Reasoning Odyssey Gate or checkpoint, a proof or counterexample, a graph/model, an analysis, a technical explanation, a Pair Reasoning artifact, a Show & Tell artifact, or another piece of work that genuinely demonstrates the student's reasoning.
+Possible evidence may include a Decision Gate or checkpoint, a proof or counterexample, a graph/model, an analysis, a technical explanation, a Pair Reasoning artifact, a Show & Tell artifact, or another piece of work that genuinely demonstrates the student's reasoning.
 
 The student is not required to turn that evidence into a resume bullet, LinkedIn update, portfolio page, or job-search package unless doing so is naturally useful to them.
 

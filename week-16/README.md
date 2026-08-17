@@ -65,7 +65,7 @@ Your final move can be any of these if the evidence supports it:
 
 Refusing is not failure. Pretending the evidence is stronger than it is would be.
 
-## Your Reasoning Odyssey evidence
+## Your Decision Gate evidence
 
 Use:
 

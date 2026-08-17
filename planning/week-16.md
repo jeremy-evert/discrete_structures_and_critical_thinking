@@ -88,7 +88,8 @@ Validated classroom fallback:
 
 ## Grading placement
 
-This work belongs to the existing **Weekly reinforcement / Reasoning Odyssey gate** category.
+This work is Week 16's **Decision Gate** — the existing **weekly
+reinforcement / Reasoning Odyssey gate** grading category.
 
 No new grading percentage, checkpoint, final project, or comprehensive exam is created here.
 

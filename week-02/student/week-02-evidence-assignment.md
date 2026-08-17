@@ -1,8 +1,10 @@
 # Week 2 Evidence Portfolio — 40 points
 
-This graded assignment is recurring weekly course work. It is not a
-Reasoning Odyssey write-up, a final project, or a new semester grading
-category.
+This graded assignment is recurring weekly course work. It functions as
+Week 2's Decision Gate — the same role a formal Odyssey write-up plays in
+Weeks 3–14 — even though Week 2 itself is setup rather than a formal Odyssey
+topic. It is not a second, separate weekly submission, a final project, or a
+new semester grading category.
 
 ## Submit
 
@@ -24,13 +26,13 @@ their commands or technical prose.
 - Thursday Container Connections evidence and reflection: **20 points**.
 - Portfolio total: **40 points**.
 
-This portfolio sits inside the **Weekly reinforcement / Reasoning Odyssey
-gate** category (`docs/grading-model.md`, 30%) as Week 2's readiness/setup
-entry — the substantive technical-evidence work for the week, the same role
-that category plays for Weeks 3–14's formal Odyssey gates, even though Week
-2 itself is setup rather than a formal Odyssey topic. It does not alter the
-course split of 45% weekly Reasoning Odyssey write-ups, 50% recurring weekly
-course work, and 5% final reflection.
+This portfolio sits inside the **Decision Gate** category (gradebook label:
+weekly reinforcement / Reasoning Odyssey gate; `docs/grading-model.md`, 30%)
+as Week 2's readiness/setup entry — the substantive technical-evidence work
+for the week, the same role that category plays for Weeks 3–14's formal
+Decision Gates, even though Week 2 itself is setup rather than a formal
+Odyssey topic. It does not alter the course split of 45% weekly Decision
+Gates, 50% recurring weekly course work, and 5% final reflection.
 
 ## Acceptance boundary
 
