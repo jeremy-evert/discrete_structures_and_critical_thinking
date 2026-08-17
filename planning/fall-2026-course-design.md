@@ -101,7 +101,7 @@ classification are retained as planning provenance only.
 
 Question 004, `jeremy_task_tracking/questions/answered_questions/004_dsct_grading_and_final_format.md`,
 resolved the grading structure and final-format decision. The current source
-of truth is that decision: weekly Reasoning Odyssey write-ups and recurring
+of truth is that decision: weekly Decision Gates and recurring
 weekly course work are the same integrated weekly work, not a second
 gradebook or parallel assignment. Future authors should use the current spine,
 weekly architecture, and topic map for the dated operational contract. Other

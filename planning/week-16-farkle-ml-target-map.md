@@ -241,7 +241,7 @@ The target is:
 
 # Evidence receipt map
 
-The weekly Reasoning Odyssey gate should use the existing five-part reasoning shape.
+The weekly Decision Gate (Reasoning Odyssey gate category) should use the existing five-part reasoning shape.
 
 ## Sources
 
