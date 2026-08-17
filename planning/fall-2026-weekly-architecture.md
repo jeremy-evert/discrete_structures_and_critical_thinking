@@ -1,6 +1,6 @@
 # DSCT Fall 2026 — weekly instructional architecture contract
 
-This contract applies to Weeks 3–14 and gives later authoring one stable
+This contract applies to Weeks 4–14 and gives later authoring one stable
 Tuesday/Thursday cadence. It adapts Professional Minds' historical Monday /
 Wednesday / Friday rhythm to DSCT's Tuesday/Thursday meeting pattern.
 
@@ -69,19 +69,13 @@ include pair-style reproducibility work; that work belongs to Week 3's own
 tooling contract and does not make Week 4 a Pair Reasoning week or otherwise
 shift the baseline alternation above.
 
-**Known open seam (not resolved by this cadence contract):**
-`fall-2026-topic-map.md` still carries a Week 3 row ("Logic, Claims & Proof")
-labeled with a Pair Reasoning Thursday mode, and `docs/grading-model.md`
-still lists Week 3 inside the Pair Reasoning graded-week list. Both predate
-the settled Week 3 runway/pinned-container direction (Prompts 307/316) and
-the design-decision quarry's own note that Week 3 is "tools runway rather
-than formal discrete math." Whether Week 3's historical technical bundle
-folds into another Week 4–14 slot, is dropped, or is reorganized is an
-unresolved topic-placement question (see design-decision quarry, "Decision
-cluster E: What are the eleven formal Week 4–14 core weeks?") that this
-cadence contract does not decide. The Week 4–14 alternation above is correct
-and stable regardless of how that seam resolves, because it is anchored to
-Week 4 (Show & Tell), not to Week 3.
+**Seam resolved 2026-08-17 (Jeremy, executed by Cleo/Lead Foreman):**
+Decision cluster E is settled. `fall-2026-topic-map.md` and
+`docs/grading-model.md` are renumbered to Weeks 4–14; Week 3 carries no
+formal topic and Boolean Algebra/Finite-State Machines are merged into
+Week 14. See `fall-2026-spine.md`'s "The Week 14 merge" for the full
+rationale. The Week 4–14 alternation above needed no change, because it was
+already anchored to Week 4 (Show & Tell), not to Week 3.
 
 Pair Reasoning and Show & Tell remain separate 5% semester grading
 categories (`docs/grading-model.md`). This cadence contract does not change
