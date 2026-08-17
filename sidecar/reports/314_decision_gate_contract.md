@@ -260,4 +260,7 @@ explicitly not decided here, per the authority boundary:
 
 Branch: `worker/prompt314-decision-gate`
 Committed and pushed to `origin/worker/prompt314-decision-gate`.
-Final commit SHA: see companion message (recorded after commit/push below).
+Final commit SHA (includes this report's initial version, prior to the
+follow-up amend that filled in this SHA): `f6a1492882ffb3009132b3cc856e98e8dd987186`.
+Not merged to `main` — left for Foreman to reconcile with sibling
+Prompt 309–313/316 worker branches.
