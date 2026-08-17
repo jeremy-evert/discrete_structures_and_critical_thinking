@@ -2,11 +2,7 @@
 
 ## Purpose
 
-This is Week 16's Decision Gate — the one weekly individual reasoning
-submission — using an evidence-receipt format because that format best fits
-this week's task. It belongs to the existing Decision Gate / Reasoning
-Odyssey gate grading category, not a second assignment.
-
+This is the Week 16 evidence for the **Farkle + Machine Learning Synthesis** category (5%), a special end-of-semester synthesis in its own right — not an ordinary Decision Gate and not one of the three Reasoning Odyssey Checkpoints (Weeks 7, 11, 14).
 You are **not graded on which strategy wins**.
 
 You are graded on whether your conclusion is precise, inspectable, checked, and appropriately limited by the evidence.
