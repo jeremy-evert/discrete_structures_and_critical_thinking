@@ -13,7 +13,7 @@ is implied.
 | Monday Moment quiz (Tuesday AI Fluency touchpoint) | 5% | Short quiz or text-entry object using shared AI Fluency content | Weekly Tuesday touchpoint, including the Tuesday-only Week 9 exception |
 | Wacky Wednesday reflection (Tuesday Professional Minds strand) | 5% | Professional Minds reflection object | Weekly Tuesday Professional Minds weeks |
 | Fun Friday reflection (Thursday Professional Minds strand) | 5% | Professional Minds reflection object | Weekly Thursday Professional Minds weeks, excluding the Week 9 break |
-| Paired-programming report (A3 equivalent) | 5% | Individual text-entry/upload report with rubric | Pair Programming weeks: 3, 5, 7, 9 pair-style work, 11, 13 |
+| Pair Reasoning report (A3 equivalent) | 5% | Individual text-entry/upload report with rubric | Pair Reasoning weeks: 3, 5, 7, 9 pair-style work, 11, 13 |
 | Show-and-Tell reflection (A4 equivalent) | 5% | Individual text-entry/upload reflection with rubric | Show & Tell weeks: 4, 6, 8, 10, 12, 14 |
 | Friday feedback report (A7 equivalent) | 5% | Individual critique/revision/evidence receipt with rubric | Show & Tell weeks: 4, 6, 8, 10, 12, 14 |
 | Career artifact sequence | 5% | Connected artifact/update uploads with rubric; may be attached to the active Odyssey evidence package | Recurring career-strand weeks as scheduled; not a comprehensive exam |
@@ -56,7 +56,7 @@ activity. The technical presentation has its own small evidence-receipt
 category because it is an explicit Tuesday chassis touchpoint; it is not a new
 five-day-cadence category.
 
-The Thursday activity categories are not simultaneous. Pair Programming uses
+The Thursday activity categories are not simultaneous. Pair Reasoning uses
 the A3-equivalent category on its live weeks; Show & Tell uses the
 A4-equivalent and A7-equivalent categories on its live weeks. The category
 weights are semester-level weighted groups, so each group contains only the

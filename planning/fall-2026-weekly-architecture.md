@@ -21,10 +21,10 @@ source-backed lesson requires them; the four functions remain present.
 | Segment | Default time | Contract |
 |---|---:|---|
 | Professional Minds: Friday strand | ~10–12 min | Reflection, communication, career/professional judgment, or evidence-receipt slot; content is `SOURCE_PENDING` unless source-backed. |
-| Pair Programming or Show & Tell | ~50–55 min | Make reasoning inspectable through a pair artifact or a defended artifact/model/argument. |
+| Pair Reasoning or Show & Tell | ~50–55 min | Make reasoning inspectable through a pair artifact or a defended artifact/model/argument. |
 | Critique / revision / evidence receipt / exit | ~8–10 min | Receive critique, revise, expose evidence, and record the individual reasoning receipt. |
 
-The chosen mode is frozen per week in the topic map. Pair Programming may
+The chosen mode is frozen per week in the topic map. Pair Reasoning may
 produce a checker, simulator, counterexample generator, traversal, verifier,
 Boolean evaluator, state-machine runner, or other inspectable artifact; it is
 not limited to a conventional application. Show & Tell is explanation and
@@ -51,7 +51,7 @@ would be artificial.
 The existing chassis provides the natural continuity handoffs. On Tuesday, the
 reasoning challenge / check / exit can ask the student to make one claim,
 counterexample, assumption, or conclusion legible in the chosen context when
-that context helps. On Thursday, the Pair Programming or Show & Tell artifact
+that context helps. On Thursday, the Pair Reasoning or Show & Tell artifact
 can apply or defend the week's formal structure in that context, with the
 existing critique / revision / evidence receipt preserving the individual
 reasoning trail. These are uses of existing slots, not new meetings,
