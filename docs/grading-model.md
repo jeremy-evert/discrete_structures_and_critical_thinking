@@ -14,8 +14,7 @@ is implied.
 | Wacky Wednesday reflection (Tuesday Professional Minds strand) | 5% | Professional Minds reflection object | Weekly Tuesday Professional Minds weeks |
 | Fun Friday reflection (Thursday Professional Minds strand) | 5% | Professional Minds reflection object | Weekly Thursday Professional Minds weeks, excluding the Week 9 break |
 | Pair Reasoning report (A3 equivalent) | 5% | Individual text-entry/upload report with rubric | Pair Reasoning weeks: 3, 5, 7, 9 pair-style work, 11, 13 |
-| Show-and-Tell reflection (A4 equivalent) | 5% | Individual text-entry/upload reflection with rubric | Show & Tell weeks: 4, 6, 8, 10, 12, 14 |
-| Friday feedback report (A7 equivalent) | 5% | Individual critique/revision/evidence receipt with rubric | Show & Tell weeks: 4, 6, 8, 10, 12, 14 |
+| Show & Tell report (A4 equivalent; the separate A7 Friday-feedback category is retired and folded in here — see Prompt 312 note below) | 5% | Individual text-entry/upload report with rubric, covering both public defense of a claim and required professional critique of a peer | Show & Tell weeks: 4, 6, 8, 10, 12, 14 |
 | Career artifact sequence | 5% | Connected artifact/update uploads with rubric; may be attached to the active Odyssey evidence package | Recurring career-strand weeks as scheduled; not a comprehensive exam |
 | Attendance & participation | 5% | Instructor-entered attendance/participation group | Course cadence: scheduled Tuesday/Thursday touchpoints |
 | Technical presentation/demo evidence | 3% | Individual presentation/demo evidence receipt with rubric; may be a text entry, upload, link, or live-demonstration receipt | Weekly Tuesday technical presentation/demo slot |
@@ -23,7 +22,20 @@ is implied.
 | Decision Gate (weekly reinforcement category) | 30% | Weekly Decision Gate objects with gate rubrics | Active recurring-work weeks, including Week 16 Farkle + ML synthesis; Weeks 3–14 are the formal technical sequence; Week 2's local-AI-lab/Container-Connections evidence portfolio also lands here as the week's readiness/setup entry (this week's substantive technical evidence, not a formal Odyssey topic) |
 | Reasoning Odyssey checkpoints | 15% | Larger Odyssey checkpoint objects with checkpoint rubrics | Checkpoint weeks selected within Weeks 3–14 and/or Week 16, with the specific weeks published in the course schedule |
 | Final individual reflection | 5% | Low-stress individual text-entry/upload reflection object with rubric | Week 17 finals period |
-| **Total** | **100%** | | |
+| **Direct table sum** | **95%** | | |
+
+**Prompt 312 arithmetic seam (unresolved, reported rather than invented):**
+Prompt 312 (2026-08-17, Jeremy+ChatGPT) settled that the separate inherited
+Friday-feedback/A7-style 5% grade category is removed as a standalone
+recurring category — its unique critique skill is now assessed inside the
+Show & Tell report above — while the Show & Tell category itself stays
+exactly 5%. Removing that separate 5% bucket without reopening the rest of
+the grading model leaves the table's direct sum at 95%, not 100%. Prompt 312
+is scoped to the semantic category structure only; it does not decide where
+the freed 5 percentage points go (a new final total that still sums to 100%
+some other way, a genuinely reduced total, redistribution across existing
+categories, or something else). That reallocation decision is returned to
+Jeremy + ChatGPT and must not be inferred or invented here.
 
 ## Aggregate check
 
@@ -37,18 +49,20 @@ submission:
 
 Everything else is recurring course work or the final:
 
-`9 recurring categories × 5% + technical presentation/demo 3% + course evaluation 2% = 50%`
-(kickoff, Tuesday AI Fluency, the two Professional Minds strands, A3, A4, A7,
-career artifact sequence, and attendance, plus the Tuesday presentation and
-course evaluation) and `Final individual reflection 5%`.
+`8 recurring categories × 5% + technical presentation/demo 3% + course evaluation 2% = 45%`
+(kickoff, Tuesday AI Fluency, the two Professional Minds strands, A3, the
+folded A4/Show & Tell category, career artifact sequence, and attendance,
+plus the Tuesday presentation and course evaluation) and
+`Final individual reflection 5%`.
 
 Therefore:
 
-`45% Odyssey + 50% other recurring work + 5% final = 100%`.
+`45% Odyssey + 45% other recurring work + 5% final = 95%` — see the Prompt
+312 arithmetic-seam note above; this 95% is not yet a final total.
 
 The table's direct sum is also:
 
-`5 + 5 + 5 + 5 + 5 + 5 + 5 + 5 + 5 + 3 + 2 + 30 + 15 + 5 = 100%`.
+`5 + 5 + 5 + 5 + 5 + 5 + 5 + 5 + 3 + 2 + 30 + 15 + 5 = 95%`.
 
 ## Chassis and rotation boundaries
 
@@ -61,10 +75,11 @@ category because it is an explicit Tuesday chassis touchpoint; it is not a new
 five-day-cadence category.
 
 The Thursday activity categories are not simultaneous. Pair Reasoning uses
-the A3-equivalent category on its live weeks; Show & Tell uses the
-A4-equivalent and A7-equivalent categories on its live weeks. The category
-weights are semester-level weighted groups, so each group contains only the
-objects that exist in its applicable rotation. Week 9 is the frozen exception:
+the A3-equivalent category on its live weeks; Show & Tell uses the single
+A4-equivalent category (now also covering the retired A7-equivalent
+critique skill) on its live weeks. The category weights are semester-level
+weighted groups, so each group contains only the objects that exist in its
+applicable rotation. Week 9 is the frozen exception:
 Thursday is Fall Break and its pair-style work is folded into Tuesday. Week 14
 is the Show & Tell / mini-capstone end of the rotation.
 

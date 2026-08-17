@@ -21,14 +21,15 @@ source-backed lesson requires them; the four functions remain present.
 | Segment | Default time | Contract |
 |---|---:|---|
 | Professional Minds: Friday strand | ~10–12 min | Reflection, communication, career/professional judgment, or evidence-receipt slot; content is `SOURCE_PENDING` unless source-backed. |
-| Pair Reasoning or Show & Tell | ~50–55 min | Make reasoning inspectable through a pair artifact or a defended artifact/model/argument. |
-| Critique / revision / evidence receipt / exit | ~8–10 min | Receive critique, revise, expose evidence, and record the individual reasoning receipt. |
+| Pair Reasoning or Show & Tell | ~50–55 min | Make reasoning inspectable through a pair artifact, or a public defense of a claim/artifact/model/argument in which every participating student also gives at least one professional critique of a peer's reasoning. |
+| Critique / revision / evidence receipt / exit | ~8–10 min | Receive critique, revise, expose evidence, and record the individual reasoning receipt — on Show & Tell weeks this receipt is the individual Show & Tell report, which records both the critique received and the critique the student gave a peer (see `assignments/show-and-tell-artifact.md`; Prompt 312 folds the retired separate Friday-feedback/A7 category into this same report). |
 
 The chosen mode is frozen per week in the topic map. Pair Reasoning may
 produce a checker, simulator, counterexample generator, traversal, verifier,
 Boolean evaluator, state-machine runner, or other inspectable artifact; it is
 not limited to a conventional application. Show & Tell is explanation and
-defense followed by critique and revision, not presentation theater.
+defense followed by required professional critique of a peer and revision,
+not presentation theater.
 
 ## Recurring reasoning and AI lens
 
