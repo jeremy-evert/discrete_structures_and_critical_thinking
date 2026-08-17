@@ -2,7 +2,7 @@
 
 This graded assignment is recurring weekly course work. It functions as
 Week 2's Decision Gate — the same role a formal Odyssey write-up plays in
-Weeks 3–14 — even though Week 2 itself is setup rather than a formal Odyssey
+Weeks 4–14 — even though Week 2 itself is setup rather than a formal Odyssey
 topic. It is not a second, separate weekly submission, a final project, or a
 new semester grading category.
 
@@ -29,7 +29,7 @@ their commands or technical prose.
 This portfolio sits inside the **Decision Gate** category (gradebook label:
 weekly reinforcement / Reasoning Odyssey gate; `docs/grading-model.md`, 30%)
 as Week 2's readiness/setup entry — the substantive technical-evidence work
-for the week, the same role that category plays for Weeks 3–14's formal
+for the week, the same role that category plays for Weeks 4–14's formal
 Decision Gates, even though Week 2 itself is setup rather than a formal
 Odyssey topic. It does not alter the course split of 45% weekly Decision
 Gates, 50% recurring weekly course work, and 5% final reflection.
