@@ -117,13 +117,15 @@ Reasoning Defense category. The existing `assignments/programming-exam.md`
 template is therefore not used as a grading category until a later explicit
 policy decision.
 
-Exact Canvas/Savnac object IDs, due dates, late rules, drop-lowest behavior,
-and per-checkpoint rubric polish remain deployment questions. The checkpoint
-weeks themselves (7, 11, 14) and the Farkle + ML Synthesis category placement
-(Week 16, 5%) are settled by Prompt 315 and are not open deployment
-questions. The career artifact sequence is named because the repository
-contains that real artifact family, but its per-week schedule still needs to
-be published by the course build.
+Exact Canvas/Savnac object IDs, due dates, and per-checkpoint rubric polish
+remain deployment questions. The checkpoint weeks themselves (7, 11, 14), the
+Farkle + ML Synthesis category placement (Week 16, 5%), and the drop-lowest
+regular Decision Gate rule (see the "Drop one regular Decision Gate" section
+below) are settled by Prompts 315 and 318 and are not open policy questions;
+only their exact gradebook/compiler wiring remains a deployment seam. The
+career artifact sequence is named because the repository contains that real
+artifact family, but its per-week schedule still needs to be published by the
+course build.
 
 ## Revision, resubmission, and highest-score policy
 
@@ -187,8 +189,63 @@ late-work adjustment as any other late work; and substantive revision is
 encouraged because this course values changed reasoning in response to
 evidence.
 
-Exact Canvas/Savnac resubmission-window mechanics, the precise end-of-course
-hard-close date imposed by the institutional grading deadline, and how the
-highest-recorded-score comparison is wired into the gradebook are deployment
-seams, not open policy questions — the doctrine above is settled, and those
-remain implementation work for the course build.
+Exact Canvas/Savnac resubmission-window mechanics and the precise
+end-of-course hard-close date imposed by the institutional grading deadline
+are deployment seams, not open policy questions — the doctrine above is
+settled, and those remain implementation work for the course build. How the
+highest-recorded-score comparison and the drop-lowest rule below are wired
+into the gradebook is likewise a deployment seam.
+
+## Drop one regular Decision Gate (settled, Jeremy + ChatGPT, 2026-08-17)
+
+This is a narrow resilience policy, not a substitute for the revision/
+resubmission/highest-score policy above:
+
+> **Drop one regular Decision Gate:** after each Decision Gate has resolved
+> to its retained highest recorded score across attempts, omit the single
+> lowest regular Decision Gate score from the 30% Decision Gate category
+> calculation.
+
+The order of operations is fixed:
+
+1. Grade each attempt for academic quality.
+2. Apply the canonical late-work adjustment to that attempt where
+   applicable.
+3. For each regular Decision Gate, retain the student's highest recorded
+   attempt score (the policy above).
+4. Across the student's regular Decision Gates, omit the single lowest
+   retained Decision Gate score from the 30% category calculation.
+
+Because the drop is evaluated after step 3, a student can keep revising a
+weak gate; if its retained score rises above another gate's, the identity of
+the dropped gate changes automatically to whichever regular gate is now
+lowest.
+
+**Eligible for the drop:** regular Decision Gates in the recurring 30%
+Decision Gate category only, including a never-submitted regular gate
+recorded as zero/missing — a missing gate is eligible to be the single
+dropped gate. That does not close the assignment: it remains open for late
+submission/revision under the policy above and the canonical late-work
+policy while the course submission system is open, and a later submission
+that raises its retained score simply changes which regular gate is
+currently lowest.
+
+**Not eligible for the drop:** Reasoning Odyssey Checkpoints (15%, Weeks 7,
+11, 14), the Week 16 Farkle + Machine Learning Synthesis (5%, already outside
+the Decision Gate category), Pair Reasoning reports, Show & Tell reports, or
+any other non-Decision-Gate category. This rule does not broaden without a
+new explicit Jeremy + ChatGPT decision.
+
+The one-drop rule solves a different problem from the policies above:
+continuous late work says getting behind should not eliminate the reason to
+finish; revision/highest-score says better reasoning later can still improve
+the record; one dropped Decision Gate says one bad week should not define the
+semester. Deadlines remain pacing signals; this policy does not create a
+`too late, do not bother` incentive, and it does not change the 30% Decision
+Gate weight, the 15% checkpoint weight, or the 5% Farkle + ML weight.
+
+Exactly how the drop-lowest comparison is computed and applied inside the
+gradebook/compiler (e.g. Course Foundry or a Canvas/Savnac weighted-group
+mechanism) is a deployment seam, not an open policy question — the doctrine
+above is settled, and the mechanics remain implementation work for the
+course build.
