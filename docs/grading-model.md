@@ -20,16 +20,20 @@ is implied.
 | Attendance & participation | 5% | Instructor-entered attendance/participation group | Course cadence: scheduled Tuesday/Thursday touchpoints |
 | Technical presentation/demo evidence | 3% | Individual presentation/demo evidence receipt with rubric; may be a text entry, upload, link, or live-demonstration receipt | Weekly Tuesday technical presentation/demo slot |
 | Course evaluation | 2% | End-of-term completion object | End of term |
-| Weekly reinforcement / Reasoning Odyssey gate | 30% | Weekly Odyssey gate objects with gate rubrics | Active recurring-work weeks, including Week 16 Farkle + ML synthesis; Weeks 3–14 are the formal technical sequence; Week 2's local-AI-lab/Container-Connections evidence portfolio also lands here as the week's readiness/setup entry (this week's substantive technical evidence, not a formal Odyssey topic) |
+| Decision Gate (weekly reinforcement category) | 30% | Weekly Decision Gate objects with gate rubrics | Active recurring-work weeks, including Week 16 Farkle + ML synthesis; Weeks 3–14 are the formal technical sequence; Week 2's local-AI-lab/Container-Connections evidence portfolio also lands here as the week's readiness/setup entry (this week's substantive technical evidence, not a formal Odyssey topic) |
 | Reasoning Odyssey checkpoints | 15% | Larger Odyssey checkpoint objects with checkpoint rubrics | Checkpoint weeks selected within Weeks 3–14 and/or Week 16, with the specific weeks published in the course schedule |
 | Final individual reflection | 5% | Low-stress individual text-entry/upload reflection object with rubric | Week 17 finals period |
 | **Total** | **100%** | | |
 
 ## Aggregate check
 
-The weekly Reasoning Odyssey write-up family is deliberately explicit:
+The weekly Decision Gate family is deliberately explicit. Every normal week's
+one individual reasoning submission is a **Decision Gate**; the internal
+gradebook category name (`weekly reinforcement`) and the separate, larger
+Reasoning Odyssey checkpoint objects are not a second student-facing weekly
+submission:
 
-`Weekly reinforcement / Reasoning Odyssey gate 30% + Reasoning Odyssey checkpoints 15% = 45%`.
+`Decision Gate (weekly reinforcement category) 30% + Reasoning Odyssey checkpoints 15% = 45%`.
 
 Everything else is recurring course work or the final:
 
@@ -64,7 +68,7 @@ objects that exist in its applicable rotation. Week 9 is the frozen exception:
 Thursday is Fall Break and its pair-style work is folded into Tuesday. Week 14
 is the Show & Tell / mini-capstone end of the rotation.
 
-The weekly gate is the evidence receipt for the actual technical work, not a
+The Decision Gate is the evidence receipt for the actual technical work, not a
 second unrelated essay. Its package may include sources/rules/work/check/
 summary reasoning and the active Thursday artifact when that week has one;
 the Tuesday presentation/demo receipt is recorded in its separate 3% group.
@@ -72,7 +76,7 @@ The checkpoint group contains larger Odyssey evidence packages and remains
 inside the 45% Odyssey family.
 
 Week 16 Farkle + Machine Learning synthesis is recurring work inside the 30%
-weekly gate, not a separate project bucket. Week 17 is the individual
+Decision Gate category, not a separate project bucket. Week 17 is the individual
 reflection at 5%; this model creates no comprehensive programming exam or
 Reasoning Defense category. The existing `assignments/programming-exam.md`
 template is therefore not used as a grading category until a later explicit

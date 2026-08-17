@@ -1,8 +1,11 @@
-# Week 16 Reasoning Odyssey Receipt — Farkle + Machine Learning
+# Week 16 Decision Gate — Farkle + Machine Learning Evidence Receipt
 
 ## Purpose
 
-This is the Week 16 weekly reasoning evidence. It belongs to the existing Reasoning Odyssey gate structure.
+This is Week 16's Decision Gate — the one weekly individual reasoning
+submission — using an evidence-receipt format because that format best fits
+this week's task. It belongs to the existing Decision Gate / Reasoning
+Odyssey gate grading category, not a second assignment.
 
 You are **not graded on which strategy wins**.
 
