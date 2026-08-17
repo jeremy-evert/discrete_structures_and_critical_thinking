@@ -60,8 +60,11 @@ assignments, or time allocations.
 For Question 004's resolved grading categories, the mapping is:
 
 - The individual Tuesday reasoning trace and its Thursday evidence receipt,
-  when collected as the week's checked reasoning, feed the **weekly Reasoning
-  Odyssey write-up** category.
+  when collected as the week's checked reasoning, feed the **Decision Gate**
+  category (30%), **except in Weeks 7, 11, and 14**, where the same evidence
+  instead feeds that week's **Reasoning Odyssey Checkpoint** (15% category,
+  one-third per checkpoint) as the week's sole Odyssey submission — see
+  `docs/grading-model.md` (Prompt 315).
 - The existing Thursday pair artifact or Show & Tell artifact, plus the
   existing concept check, lab, activity, critique, or revision evidence, feeds
   the **recurring weekly course work (concept-checks/labs/activities)**
@@ -86,6 +89,8 @@ continuity pattern only where it is instructionally natural.
 - **Week 16:** Farkle + Machine Learning synthesis; later authoring may draw
   on prior probability, expected outcomes/simulation, state models,
   finite-state machines, algorithms, evidence/checking, and model limits.
+  Graded under its own **Farkle + Machine Learning Synthesis** category (5%,
+  Prompt 315) — not the Decision Gate category and not an Odyssey checkpoint.
 - **Week 17:** Final Reflection write-up during finals week; no grading weight
   or rubric is invented in this planning contract.
 

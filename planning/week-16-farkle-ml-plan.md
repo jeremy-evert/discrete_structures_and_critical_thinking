@@ -253,9 +253,13 @@ It should state:
 
 # Evidence criteria
 
-Do not create a new grading percentage.
-
-Week 16 remains inside the existing weekly Reasoning Odyssey gate.
+Per Prompt 315 (2026-08-17, Jeremy+ChatGPT), Week 16 now has its own
+**Farkle + Machine Learning Synthesis** category (5%), funded by the Prompt
+312 retirement of the separate Friday-feedback/A7 5% category rather than by
+inventing new points or taking weight from another category. Week 16 is no
+longer inside the weekly Decision Gate (Reasoning Odyssey gate) category and
+is not one of the three Reasoning Odyssey Checkpoints. See
+`docs/grading-model.md` for the full arithmetic.
 
 The evidence criteria should reward whether the student:
 

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This is the Week 16 weekly reasoning evidence. It belongs to the existing Reasoning Odyssey gate structure.
+This is the Week 16 evidence for the **Farkle + Machine Learning Synthesis** category (5%), a special end-of-semester synthesis in its own right — not an ordinary Decision Gate and not one of the three Reasoning Odyssey Checkpoints (Weeks 7, 11, 14).
 
 You are **not graded on which strategy wins**.
 

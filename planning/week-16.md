@@ -88,9 +88,14 @@ Validated classroom fallback:
 
 ## Grading placement
 
-This work belongs to the existing **Weekly reinforcement / Reasoning Odyssey gate** category.
-
-No new grading percentage, checkpoint, final project, or comprehensive exam is created here.
+Per Prompt 315 (2026-08-17, Jeremy+ChatGPT), this work belongs to its own
+semester-level **Farkle + Machine Learning Synthesis** category (**5%**),
+distinct from the recurring 30% Decision Gate category and from the 15%
+Reasoning Odyssey Checkpoints (Weeks 7, 11, 14). Week 16 is not an ordinary
+Decision Gate and is not one of the three Odyssey checkpoints; it is not a
+comprehensive exam, and it is not graded on which strategy wins, on coding
+polish, or on compute resources used. See `docs/grading-model.md` for the
+full category table and arithmetic.
 
 The evidence receipt uses the existing course method:
 
