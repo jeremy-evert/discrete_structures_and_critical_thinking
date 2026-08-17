@@ -1,0 +1,34 @@
+$ ./run-latex.sh week3-claim.tex   # introduced an undefined control sequence
+Latexmk: Sometimes, the -f option can be used to get latexmk
+  to try to force complete processing.
+  But normally, you will need to correct the file(s) that caused the
+  error, and then rerun latexmk.
+  In some cases, it is best to clean out generated files before rerunning
+  latexmk after you've corrected the files.
+!  ==> Fatal error occurred, no output PDF file produced!
+Transcript written on week3-claim.log.
+Latexmk: Getting log file 'week3-claim.log'
+Latexmk: Examining 'week3-claim.fls'
+Latexmk: Examining 'week3-claim.log'
+Latexmk: Errors, so I did not complete making targets
+Collected error summary (may duplicate other messages):
+  pdflatex: Command for 'pdflatex' gave return code 1
+      Refer to 'week3-claim.log' and/or above output for details
+
+RESULT: FAIL
+REASON: latexmk exited 12; inspect /tmp/dsct-316-scratch/D_texerror/week3-claim.log for the LaTeX error
+
+--- diagnosis: log names the undefined command and source line; remove it and rerun ---
+$ ./run-latex.sh week3-claim.tex   # repaired
+Latexmk: Log file says output to 'week3-claim.pdf'
+Latexmk: All targets (week3-claim.pdf) are up-to-date
+
+RESULT: PASS
+PDF: /tmp/dsct-316-scratch/D_texerror/week3-claim.pdf
+
+Week 3 claim
+Claim. For all integers n, if n is even then n2 is even.
+Proof. Suppose n is even. Then there exists an integer k such that
+n = 2k. Squaring both sides, n2 = (2k)2 = 4k 2 = 2(2k 2 ). Since 2k 2 is an
+integer, n2 is of the form 2m for integer m = 2k 2 , so n2 is even. ■
+Counterexample check. The claim is a conditional. It says nothing

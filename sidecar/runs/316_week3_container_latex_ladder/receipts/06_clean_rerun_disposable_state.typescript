@@ -1,0 +1,13 @@
+$ podman ps -a --filter name=dsct-week3   # no leftover containers from prior scenarios
+CONTAINER ID  IMAGE       COMMAND     CREATED     STATUS      PORTS       NAMES
+
+$ ./run-latex.sh week3-claim.tex   # fresh fixture copy, fresh directory, no prior recovery state
+Latexmk: Examining 'week3-claim.log'
+Latexmk: Log file says output to 'week3-claim.pdf'
+Latexmk: All targets (week3-claim.pdf) are up-to-date
+
+RESULT: PASS
+PDF: /tmp/dsct-316-scratch/F_clean_rerun/week3-claim.pdf
+
+$ sha256sum week3-claim.pdf
+7b3473054a7a59359e947aa5c29a13b959b977b9d19fe4c6ab7c6d437ae97881  /tmp/dsct-316-scratch/F_clean_rerun/week3-claim.pdf
