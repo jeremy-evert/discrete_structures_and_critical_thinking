@@ -1,4 +1,4 @@
-# Reusable Template: Pair Programming Report
+# Reusable Template: Pair Reasoning Report
 
 **Historical basis:** fall 2024 and spring/fall 2025, formalized in spring 2026.
 
