@@ -15,7 +15,7 @@ DSCT has six recurring event families across the semester:
 3. Professional Minds strand 2
 4. Pair Reasoning
 5. Show & Tell
-6. the weekly Decision / Reasoning Odyssey gate
+6. the weekly Decision Gate / Reasoning Odyssey evidence stream
 
 This does **not** mean all six fire every instructional week.
 
@@ -25,7 +25,9 @@ For the recurring social-reasoning mode, a normal formal-content week uses:
 
 Pair Reasoning and Show & Tell should follow a **predictable alternating cadence** across the formal-content sequence.
 
-The first formal DSCT core week should use **Pair Reasoning**, followed by Show & Tell, then Pair Reasoning, then Show & Tell, continuing in alternation unless an explicit calendar or special-week exception intervenes.
+The first formal DSCT core week, **Week 4**, should use **Show & Tell**, followed by Pair Reasoning in Week 5, then Show & Tell, then Pair Reasoning, continuing in alternation unless an explicit calendar or special-week exception intervenes.
+
+This starting point is deliberate. The design quarry already identified **Week 4 as the first Show & Tell**, and Weeks 2–3 are special runway weeks rather than ordinary members of the Week 4–14 formal-core alternation. Week 3 may contain pair-style reproducibility work under its own tooling contract; that does not convert Week 4 into a Pair Reasoning week.
 
 The current Fall 2026 runway is:
 
@@ -34,10 +36,16 @@ The current Fall 2026 runway is:
 - Week 3: Containers + minimum-useful LaTeX
 - Weeks 4–14: eleven formal DSCT core weeks
 - Week 15: asynchronous travel/Thanksgiving buffer
-- Week 16: existing GREEN Farkle + Machine Learning synthesis
+- Week 16: special Farkle + Machine Learning synthesis
 - Week 17: final reflection/closeout
 
-Therefore, the **baseline** formal-week social cadence begins at Week 4 with Pair Reasoning.
+Therefore, the **baseline** formal-week social cadence begins:
+
+- Week 4: **Show & Tell**
+- Week 5: **Pair Reasoning**
+- Week 6: **Show & Tell**
+- Week 7: **Pair Reasoning**
+- and so on, subject to explicit calendar/special-week exceptions.
 
 ## Why this decision exists
 
@@ -65,12 +73,12 @@ This does not prohibit ordinary discussion, peer questions, brief partner checks
 
 ### 2. Predictable alternation
 
-The baseline alternation is:
+The baseline formal-core alternation is:
 
-- first formal core week: **Pair Reasoning**;
-- next formal core week: **Show & Tell**;
-- then Pair Reasoning;
+- first formal core week (Week 4): **Show & Tell**;
+- next formal core week (Week 5): **Pair Reasoning**;
 - then Show & Tell;
+- then Pair Reasoning;
 - continue the alternating pattern.
 
 Where the final Week 4–14 topic spine is still unresolved, implement the **cadence contract without inventing the final topic mapping**.
@@ -88,7 +96,7 @@ When an exception exists:
 - identify it explicitly;
 - preserve the baseline alternation as the default architecture;
 - do not silently invent a make-up assignment, extra asynchronous report, or grading penalty;
-- do not shift or re-balance later weeks unless current authoritative source already settles that behavior or an explicit course-design decision authorizes it.
+- do not shift or rebalance later weeks unless current authoritative source already settles that behavior or an explicit course-design decision authorizes it.
 
 If the exact exception treatment is unresolved, report the seam rather than deciding it.
 
@@ -111,7 +119,7 @@ Preserve:
 - Pair Reasoning as its settled 5% semester category;
 - Show & Tell as its settled 5% semester category.
 
-Do not redistribute grading weight, repair the broader grading arithmetic, or infer that each category must have the same number of weekly objects.
+Do not redistribute grading weight or infer that each category must have the same number of weekly objects.
 
 A semester category can contain only the events scheduled for that event family.
 
@@ -135,10 +143,10 @@ Do **not**:
 
 - make Pair Reasoning and Show & Tell both required recurring events in a normal formal week;
 - change either category's 5% weight;
-- repair the overall grading-model arithmetic;
+- repair unrelated grading-model arithmetic;
 - choose the final eleven Week 4–14 technical topics;
 - invent the exact treatment of a calendar exception when current doctrine does not settle it;
-- change Week 16's GREEN synthesis contract;
+- change Week 16's special synthesis contract;
 - write to Canvas or Savnac;
 - redesign AI Fluency or Professional Minds;
 - redesign the Pair Reasoning or Show & Tell semantic contracts owned by Prompts 311 and 312.
@@ -156,14 +164,18 @@ No normal week may require both.
 
 ### B. Alternation audit
 
-Verify that the baseline formal-core cadence starts with Pair Reasoning and alternates predictably thereafter, subject only to explicit exception markers.
+Verify that the baseline formal-core cadence starts with **Show & Tell in Week 4**, **Pair Reasoning in Week 5**, and alternates predictably thereafter, subject only to explicit exception markers.
 
 Where the current topic map is stale against the new Week 4–14 eleven-week spine, distinguish:
 
 - cadence truth that can be repaired now;
 - unresolved topic placement that must remain open.
 
-### C. Exception audit
+### C. Runway-boundary audit
+
+Verify that Week 2 and Week 3 special runway activities do not accidentally shift the Week 4–14 formal-core alternation. Pair-style work in Week 2 or Week 3 may exist under those weeks' own contracts without making Week 4 a Pair Reasoning week.
+
+### D. Exception audit
 
 Identify every Fall 2026 week in the current source where calendar/special-week structure prevents ordinary cadence.
 
@@ -175,7 +187,7 @@ For each, record whether the treatment is:
 
 Do not invent missing policy.
 
-### D. Category-boundary audit
+### E. Category-boundary audit
 
 Verify:
 
@@ -185,7 +197,7 @@ Verify:
 - no ordinary formal week accidentally creates both graded social-event objects;
 - the number of events in the two categories is allowed to differ because of the odd eleven-week core and calendar exceptions.
 
-### E. Diff hygiene
+### F. Diff hygiene
 
 Run and record:
 
@@ -206,19 +218,21 @@ Create `sidecar/reports/313_pair_show_alternating_cadence.md` containing:
 4. files changed;
 5. baseline cadence now expressed by current source;
 6. one-mode-per-week audit result;
-7. calendar/special-week exception table;
-8. grading-boundary audit;
-9. validation commands/results;
-10. unresolved seams returned to Jeremy + ChatGPT;
-11. final commit SHA or working-tree state.
+7. runway-boundary audit result;
+8. calendar/special-week exception table;
+9. grading-boundary audit;
+10. validation commands/results;
+11. unresolved seams returned to Jeremy + ChatGPT;
+12. final commit SHA or working-tree state.
 
 ## Definition of done
 
 Prompt 313 is complete only when another course author can answer, without guessing:
 
 - Do Pair Reasoning and Show & Tell both happen as required recurring events in the same normal week? **No.**
-- Which one starts the formal-content sequence? **Pair Reasoning.**
-- What happens next? **Predictable alternation.**
+- Which one starts the formal-content sequence? **Show & Tell in Week 4.**
+- What happens next? **Pair Reasoning in Week 5, then predictable alternation.**
+- Can Week 2/3 contain pair-style runway work without shifting that Week 4 start? **Yes.**
 - Can calendar/special weeks interrupt the pattern? **Yes, explicitly.**
 - Does an interruption authorize invented make-up work or grading changes? **No.**
 - Are Pair Reasoning and Show & Tell still separate 5% semester categories? **Yes.**
