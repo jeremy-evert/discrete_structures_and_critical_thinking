@@ -124,3 +124,71 @@ weeks themselves (7, 11, 14) and the Farkle + ML Synthesis category placement
 questions. The career artifact sequence is named because the repository
 contains that real artifact family, but its per-week schedule still needs to
 be published by the course build.
+
+## Revision, resubmission, and highest-score policy
+
+This is settled doctrine (Jeremy + ChatGPT, 2026-08-17):
+
+> **Too late, sucker is not the policy. Better reasoning later is still better reasoning.**
+
+For eligible DSCT evidence-bearing reasoning work — including the weekly
+Decision Gate objects and the Reasoning Odyssey Checkpoints —
+revisions and resubmissions remain open for as long as the course is open,
+not just until a nominal due date:
+
+1. **Revisions/resubmissions stay open while the course is open and the
+   submission system can still accept the work.** A later checkpoint
+   occurring after an earlier gate's due date does not, by itself, close
+   that earlier gate to revision. A checkpoint may mark an intellectual
+   milestone; it must not become a gradebook guillotine that removes the
+   incentive to finish or improve earlier work. The only things that can
+   actually close submission are an explicit, separately authoritative
+   course or institutional boundary — e.g. the end-of-course grading
+   deadline — never the mere existence of a later checkpoint.
+2. Each attempt is evaluated fresh for academic quality, on its own merits.
+3. **Lateness never contaminates the academic-quality judgment.** Marker and
+   Coach grade the submitted work itself, with no due/submission timestamps
+   in view. The deterministic late-work adjustment is applied afterward, at
+   the trusted course edge, to that attempt's own timestamp.
+4. That late-work adjustment is the existing shared curriculum default: 1%
+   per 24 hours late, calculated continuously to the second/hour rather than
+   rounded up by the day, with instructor-granted excused-late time reducing
+   the counted lateness. DSCT does not fork or reimplement this arithmetic.
+   The canonical policy lives at
+   `swosu_cs_curriculum/shared/philosophy/late_work_policy.md`, and the
+   canonical deterministic adapter is
+   `course_foundry/course_foundry/late_work_policy.py` (established by the
+   accepted Marker-sidecar late-work integration). DSCT reuses both as-is.
+5. **The student keeps the highest recorded score earned across attempts for
+   that item.** A later attempt's recorded score (its own fresh quality
+   score, adjusted for its own lateness) is compared against the highest
+   score already on record for that item, and the higher of the two becomes
+   the recorded grade. A later attempt can never lower an already-earned
+   grade — at worst it simply does not replace it.
+6. Because of (5), a strong-but-late revision can raise the recorded grade
+   even after a weak on-time first attempt, and a student who resubmits
+   weaker work risks nothing: the earlier higher score simply stands. This is
+   a deliberate incentive for students to keep improving weak reasoning
+   rather than treating a missed deadline or a rough first attempt as a
+   closed door.
+7. Revision means substantive improvement to the evidence or reasoning, not
+   cosmetic polish. Examples: correcting an invalid inference; narrowing or
+   changing a claim; adding stronger evidence; repairing a proof, test, or
+   model; responding to criticism or counterevidence surfaced in Pair
+   Reasoning or Show & Tell; sharpening an evidence boundary or uncertainty
+   statement; adding a discriminating test or counterexample.
+
+In plain terms for students: due dates matter and help you keep pace; missing
+one does not make the work worthless; late work is still worth doing;
+revisions and resubmissions are welcome for as long as the course accepts
+work; every new attempt may raise your grade; your highest recorded score is
+the one that counts; later submissions still receive the same continuous
+late-work adjustment as any other late work; and substantive revision is
+encouraged because this course values changed reasoning in response to
+evidence.
+
+Exact Canvas/Savnac resubmission-window mechanics, the precise end-of-course
+hard-close date imposed by the institutional grading deadline, and how the
+highest-recorded-score comparison is wired into the gradebook are deployment
+seams, not open policy questions — the doctrine above is settled, and those
+remain implementation work for the course build.
