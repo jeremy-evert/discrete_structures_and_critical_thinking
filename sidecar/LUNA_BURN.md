@@ -22,7 +22,9 @@ Canonical preflight report:
 
 Success marker:
 
-`**Verdict:** `GREEN TO WRITE``
+```text
+**Verdict:** `GREEN TO WRITE`
+```
 
 Production Canvas authority in this burn: **READ ONLY**.
 
@@ -44,7 +46,9 @@ Canonical closeout report:
 
 Success marker:
 
-`**Verdict:** `DEPLOYED``
+```text
+**Verdict:** `DEPLOYED`
+```
 
 The production invocation is fresh human authorization only for the bounded production plan proved by preflight and re-proved by the production freshness gate.
 
