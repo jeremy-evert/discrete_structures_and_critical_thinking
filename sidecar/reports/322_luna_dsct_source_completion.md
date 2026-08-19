@@ -3,7 +3,7 @@
 ## Outcome and Git state
 
 - Starting canonical DSCT `main`: `4b0e33a` (`Promote DSCT source completion as next Luna burn`).
-- Ending integration SHA: recorded in the final commit containing this report.
+- Ending material source-integration SHA: `8e355171df34beaadcaa72e3b66d972e6457f06a` (the final evidence-only report correction follows it).
 - Worksite: `jeremy-evert/discrete_structures_and_critical_thinking` only.
 - No SWOSU Canvas, Savnac, Course Foundry, sibling-course, or JTT writes were performed.
 
