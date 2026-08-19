@@ -73,23 +73,22 @@ CURRENT_BRANCH="$(git -C "$DSCT_ROOT" branch --show-current)"
 [[ "$CURRENT_BRANCH" == "main" ]] \
   || fail "expected canonical DSCT branch main, found $CURRENT_BRANCH"
 
-# Refuse tracked content dirt before updating canonical main. Untracked notes are
-# preserved and left for Luna to classify rather than silently deleted.
+# Refuse tracked content dirt before launch. Untracked notes are preserved and
+# left for Luna to classify rather than silently deleted.
 TRACKED_DIRT="$(git -C "$DSCT_ROOT" -c core.fileMode=false status --porcelain --untracked-files=no)"
 [[ -z "$TRACKED_DIRT" ]] || {
   echo "$TRACKED_DIRT" >&2
   fail "canonical DSCT main has tracked content changes; preserve/resolve them before launch"
 }
 
+# Fetch only. Do not mutate the launch script's own checkout while it is running.
 git -C "$DSCT_ROOT" -c core.fileMode=false fetch -q origin main \
   || fail "could not fetch DSCT origin/main"
-git -C "$DSCT_ROOT" -c core.fileMode=false pull -q --ff-only origin main \
-  || fail "could not fast-forward canonical DSCT main"
 
 CURRENT_SHA="$(git -C "$DSCT_ROOT" rev-parse HEAD)"
 ORIGIN_SHA="$(git -C "$DSCT_ROOT" rev-parse origin/main)"
 [[ "$CURRENT_SHA" == "$ORIGIN_SHA" ]] \
-  || fail "local DSCT main ($CURRENT_SHA) is not canonical origin/main ($ORIGIN_SHA)"
+  || fail "local DSCT main ($CURRENT_SHA) is not canonical origin/main ($ORIGIN_SHA). Run: git pull --ff-only origin main"
 
 # Do not clean or normalize Course Foundry. Only refuse interrupted Git control
 # operations. Luna's job requires isolated exact-SHA execution for shared tooling.
@@ -114,7 +113,7 @@ if [[ "$MODE" == "production" ]]; then
 
   AUTHORITY_TEXT=$(cat <<EOF
 PRODUCTION AUTHORIZATION:
-- Jeremy intentionally invoked `bash sidecar/launch_luna.sh production` at $LAUNCH_UTC.
+- Jeremy intentionally invoked bash sidecar/launch_luna.sh production at $LAUNCH_UTC.
 - This is fresh authorization ONLY for the bounded DSCT production reconcile described in $JOB_PROMPT after every freshness gate passes.
 - It is not authority for another Canvas course, cross-list/topology changes, unexplained destructive cleanup, or a materially changed plan.
 - Record this launcher timestamp and authorization provenance in the production report.
