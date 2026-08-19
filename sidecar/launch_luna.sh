@@ -6,7 +6,7 @@ FOREMAN_INTERFACE_DIR="${FOREMAN_INTERFACE_DIR:-$DSCT_ROOT/../foreman_interface}
 COURSE_FOUNDRY_DIR="${COURSE_FOUNDRY_DIR:-$DSCT_ROOT/../course_foundry}"
 CANVAS_ENV="${CANVAS_ENV:-$HOME/.config/canvas/canvas.env}"
 MODE="${1:-preflight}"
-LOCK="/tmp/dsct-luna-321.lock"
+LOCK="/tmp/dsct-luna.lock"
 
 fail() {
   echo "LUNA LAUNCH STOP: $*" >&2
@@ -22,11 +22,14 @@ require_repo() {
     || fail "$label has no origin remote: $path"
 }
 
-if [[ "${DSCT_LUNA_321_LAUNCHED:-0}" == "1" ]]; then
+if [[ "${DSCT_LUNA_LAUNCHED:-0}" == "1" ]]; then
   fail "this launcher is already inside a Luna shift; recursive launch refused"
 fi
 
 case "$MODE" in
+  source)
+    JOB_PROMPT="$DSCT_ROOT/sidecar/jobs/322_dsct_source_completion.md"
+    ;;
   preflight)
     JOB_PROMPT="$DSCT_ROOT/sidecar/jobs/321_dsct_preflight_to_green_to_write.md"
     ;;
@@ -34,7 +37,7 @@ case "$MODE" in
     JOB_PROMPT="$DSCT_ROOT/sidecar/jobs/321_dsct_production_closeout.md"
     ;;
   *)
-    fail "usage: bash sidecar/launch_luna.sh [production]"
+    fail "usage: bash sidecar/launch_luna.sh [source|production]"
     ;;
 esac
 
@@ -44,7 +47,9 @@ command -v flock >/dev/null 2>&1 || fail "flock is not available on PATH"
 
 require_repo "$DSCT_ROOT" "discrete_structures_and_critical_thinking"
 require_repo "$FOREMAN_INTERFACE_DIR" "foreman_interface"
-require_repo "$COURSE_FOUNDRY_DIR" "course_foundry"
+if [[ "$MODE" != "source" ]]; then
+  require_repo "$COURSE_FOUNDRY_DIR" "course_foundry"
+fi
 
 ORIGIN_URL="$(git -C "$DSCT_ROOT" remote get-url origin 2>/dev/null || true)"
 [[ "$ORIGIN_URL" =~ github\.com[:/]jeremy-evert/discrete_structures_and_critical_thinking(\.git)?$ ]] \
@@ -62,7 +67,9 @@ do
   [[ -r "$required" ]] || fail "required file is missing or unreadable: $required"
 done
 
-[[ -r "$CANVAS_ENV" ]] || fail "Canvas environment file is missing or unreadable: $CANVAS_ENV"
+if [[ "$MODE" != "source" ]]; then
+  [[ -r "$CANVAS_ENV" ]] || fail "Canvas environment file is missing or unreadable: $CANVAS_ENV"
+fi
 
 exec 9>"$LOCK"
 if ! flock -n 9; then
@@ -90,16 +97,19 @@ ORIGIN_SHA="$(git -C "$DSCT_ROOT" rev-parse origin/main)"
 [[ "$CURRENT_SHA" == "$ORIGIN_SHA" ]] \
   || fail "local DSCT main ($CURRENT_SHA) is not canonical origin/main ($ORIGIN_SHA). Run: git pull --ff-only origin main"
 
-# Do not clean or normalize Course Foundry. Only refuse interrupted Git control
-# operations. Luna's job requires isolated exact-SHA execution for shared tooling.
-CF_GIT_DIR="$(git -C "$COURSE_FOUNDRY_DIR" rev-parse --git-dir)"
-case "$CF_GIT_DIR" in
-  /*) ;;
-  *) CF_GIT_DIR="$COURSE_FOUNDRY_DIR/$CF_GIT_DIR" ;;
-esac
-[[ ! -e "$CF_GIT_DIR/MERGE_HEAD" ]] || fail "unfinished merge in shared Course Foundry checkout"
-[[ ! -d "$CF_GIT_DIR/rebase-merge" && ! -d "$CF_GIT_DIR/rebase-apply" ]] \
-  || fail "unfinished rebase in shared Course Foundry checkout"
+# Source completion deliberately does not depend on Course Foundry. For live
+# preflight/production, preserve the shared checkout and refuse only interrupted
+# Git control operations; Luna must use isolated exact-SHA tooling worktrees.
+if [[ "$MODE" != "source" ]]; then
+  CF_GIT_DIR="$(git -C "$COURSE_FOUNDRY_DIR" rev-parse --git-dir)"
+  case "$CF_GIT_DIR" in
+    /*) ;;
+    *) CF_GIT_DIR="$COURSE_FOUNDRY_DIR/$CF_GIT_DIR" ;;
+  esac
+  [[ ! -e "$CF_GIT_DIR/MERGE_HEAD" ]] || fail "unfinished merge in shared Course Foundry checkout"
+  [[ ! -d "$CF_GIT_DIR/rebase-merge" && ! -d "$CF_GIT_DIR/rebase-apply" ]] \
+    || fail "unfinished rebase in shared Course Foundry checkout"
+fi
 
 LAUNCH_UTC="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 
@@ -117,6 +127,15 @@ PRODUCTION AUTHORIZATION:
 - This is fresh authorization ONLY for the bounded DSCT production reconcile described in $JOB_PROMPT after every freshness gate passes.
 - It is not authority for another Canvas course, cross-list/topology changes, unexplained destructive cleanup, or a materially changed plan.
 - Record this launcher timestamp and authorization provenance in the production report.
+EOF
+)
+elif [[ "$MODE" == "source" ]]; then
+  AUTHORITY_TEXT=$(cat <<EOF
+SOURCE AUTHORIZATION:
+- DSCT source authoring and DSCT-local validation/commit/promotion are authorized by $JOB_PROMPT.
+- SWOSU production Canvas writes are NOT authorized.
+- Savnac writes are NOT authorized.
+- Course Foundry/shared dependency mutation is NOT authorized in this source-completion shift.
 EOF
 )
 else
@@ -160,10 +179,10 @@ Operating boundaries:
 - DSCT is the owning worksite and center of gravity.
 - Do not take CS1, Computer Architecture, CS2, or JTT work.
 - Preserve unexplained local/shared-worktree dirt. Isolate work rather than cleaning someone else's state.
-- The shared Course Foundry checkout may contain active runtime state. Do not reset, stash, clean, or normalize it. Use isolated exact-SHA worktrees/clones for deployment-defining work.
+- Do not treat historical Prompt 320/Report 319 or the blocked Job 321 report as current completion truth; use them as provenance and verify current Git.
 - You may dispatch bounded workers yourself. Jeremy is not your message bus.
 - Inspect worker receipts yourself, repair/retry bounded failures, and promote accepted DSCT work/evidence yourself when allowed by the governing contract.
-- Do not confuse historical Prompt 320/Report 319 with current truth. Verify Git and live state.
+- If a worker repeatedly fails to create artifacts, narrow the unit or use the Foreman tiny-work exception rather than looping the same failed dispatch.
 - Keep moving until the job's DONE condition or a genuine stop condition.
 
 Pre-existing untracked DSCT paths observed at launch, preserved for your classification:
@@ -173,7 +192,7 @@ Begin now.
 EOF
 )
 
-export DSCT_LUNA_321_LAUNCHED=1
+export DSCT_LUNA_LAUNCHED=1
 export DSCT_LUNA_ROOT="$DSCT_ROOT"
 export DSCT_LUNA_JOB="$JOB_PROMPT"
 export DSCT_LUNA_FOREMAN_INTERFACE="$FOREMAN_INTERFACE_DIR"
@@ -193,6 +212,8 @@ echo ">>> DSCT main: $CURRENT_SHA"
 echo ">>> Launch UTC: $LAUNCH_UTC"
 if [[ "$MODE" == "production" ]]; then
   echo ">>> SWOSU production authority: BOUNDED WRITE AUTHORIZED, subject to freshness gates"
+elif [[ "$MODE" == "source" ]]; then
+  echo ">>> SWOSU production authority: NONE; source completion only"
 else
   echo ">>> SWOSU production authority: READ ONLY"
 fi
