@@ -1,67 +1,151 @@
-# Job 321 — Luna preflight
+# Job 321 — Luna DSCT preflight
 
-## Verdict basis
+## Scope and authority
 
-This is a read-only preflight. No SWOSU production Canvas mutation was attempted. Three bounded Golem dispatches (broad current-truth audit, repair, and a smaller week-source audit) failed to produce their required evidence package; the Foreman therefore used only independently observed repository facts below and did not infer readiness from historical reports.
+This was a DSCT-only preflight. SWOSU production Canvas was read only; no
+Canvas, Savnac, JTT, sibling-course, or shared Course Foundry mutation was
+performed. The canonical report supersedes the older blocked Job 321 report;
+the Job 322 source-completion handoff was independently checked against
+current Git.
 
 ## SHA set
 
-| Component | SHA / state | Evidence |
-|---|---|---|
-| DSCT working `main` | `a0f5b09e656ea5d2d32a91e15e732c65d2e91e5a` | `git rev-parse HEAD` |
-| DSCT `origin/main` | `e0085d499826e0ec848d233defa31543141f52eb` | `git rev-parse origin/main` |
-| DSCT relation | local `main` ahead by one local prompt-framing commit | `git status --short --branch` |
-| Course Foundry | `9ca412b4e9f75dd46fe183626b52309f3107bfcc` | `git -C ../course_foundry rev-parse HEAD` |
-| Course Foundry state | materially dirty with tracked runtime/config changes and untracked receipts, raw logs, reports, and queue state | `git -C ../course_foundry status --short --branch` |
+| Component | Exact SHA / state |
+|---|---|
+| DSCT `main` and `origin/main` | `40658baaac87c81a81654ddf7c83bfa9d3be3558` |
+| `../local_ai_lab_setup` | `b2b2ec1afcea98c59a5ab3818cd361a29eb0f99c` (clean) |
+| `../windows_classroom` | `f87e340aad4bf4e4e2c064abc676afdcc5260b48` (clean) |
+| Course Foundry inspected commit | `9ca412b4e9f75dd46fe183626b52309f3107bfcc` |
+| Harbor inspected commit | `5d69e3ede4b6f1ab4cb32cf003faea79f7df8cc` |
 
-The shared Course Foundry checkout was not cleaned, reset, stashed, normalized, or mutated. No isolated exact-SHA Course Foundry deployment worktree was created because the source preflight failed first.
+The shared Course Foundry checkout is materially dirty and diverged; it was
+not cleaned or mutated. Tooling was inspected from an isolated disposable
+clone pinned to the exact Course Foundry SHA above.
 
-## Current week-by-week source classification
+## Job 322 handoff verification
 
-The authoritative spine is `planning/fall-2026-spine.md`; its status is explicitly `CONTRACTED_NOT_AUTHORED` unless marked otherwise. The following classification uses actual student-facing paths, not spine labels.
+`sidecar/reports/322_luna_dsct_source_completion.md` is present in current
+canonical `main` and its source-ready verdict is consistent with the current
+tree. Current source contains student-facing Weeks 1–17 coverage; the prior
+report's claim that Weeks 4–15 and 17 were missing is stale and was not used.
 
-| Week | Classification | Current evidence |
-|---:|---|---|
-| 1 | SOURCE READY | `week-01/` contains student activities, exit checks, reasoning method, AI expectation, help/tools status, and instructor run-of-show files; spine marks the package landed. |
-| 2 | PARTIAL | `week-02/student/` and instructor run-of-show files exist, including evidence assignment/rubric, but the spine marks the AI-lab package `CONTRACTED_NOT_AUTHORED`; a complete deployable package is not proven. |
-| 3 | SOURCE READY | `week-03/container/`, student skill ladder, instructor notes, and pinned-container evidence exist; it is a validated runway/toolchain rather than a formal topic chassis. |
-| 4 | STRUCTURE ONLY | Spine names Logic, Claims & Proof, but no `week-04/` student package exists; `lessons/02-logic-proofs-and-sequences.md` is legacy lesson material, not a dated week package. |
-| 5 | STRUCTURE ONLY | Spine names Sets, Functions & Sequences; no `week-05/` student package exists. |
-| 6 | STRUCTURE ONLY | Spine names Algorithms, Correctness & Growth; no `week-06/` student package exists. |
-| 7 | STRUCTURE ONLY | Spine names Integer Properties & Cryptography; no `week-07/` student package exists. |
-| 8 | STRUCTURE ONLY | Spine names Induction, Recursion & Recurrences; no `week-08/` student package exists. |
-| 9 | STRUCTURE ONLY | Spine names Counting; no `week-09/` student package exists; Thursday is explicitly no class. |
-| 10 | STRUCTURE ONLY | Spine names Probability, Uncertainty & Evidence; no `week-10/` student package exists. |
-| 11 | STRUCTURE ONLY | Spine names Relations/Orders/Matrices/Digraphs; no `week-11/` student package exists. |
-| 12 | STRUCTURE ONLY | Spine names Graphs & Network Reasoning; no `week-12/` student package exists. |
-| 13 | STRUCTURE ONLY | Spine names Trees, Search & Decision Structures; no `week-13/` student package exists. |
-| 14 | STRUCTURE ONLY | Spine names Boolean/Circuits/Finite-State Machines; no `week-14/` student package exists. |
-| 15 | STRUCTURE ONLY | Spine reserves Thanksgiving/travel asynchronous integration, but no `week-15/` package or declared assignment exists. |
-| 16 | SOURCE READY | `week-16/`, `planning/week-16.md`, Farkle/ML planning, assignments, validator, and validation receipts exist; spine marks it validated. |
-| 17 | STRUCTURE ONLY | Spine names final reflection during finals week, but no `week-17/` package exists and grading/final format remains open. |
+Week classification from current source:
 
-Only four week directories exist in the current tree (`week-01`, `week-02`, `week-03`, `week-16`), plus assessment fixtures. Legacy `lessons/01`–`14` files and the planning spine do not constitute student-facing weekly source.
+| Week | Current classification |
+|---:|---|
+| 1 | Source ready |
+| 2 | Authored; external sibling paths now resolve |
+| 3 | Container/LaTeX toolchain runway |
+| 4–6 | Authored formal packages |
+| 7 | Authored; Odyssey Checkpoint 1 replaces Decision Gate |
+| 8 | Authored formal package |
+| 9 | Authored Tuesday-only package; Thursday Fall Break |
+| 10 | Authored formal package |
+| 11 | Authored; Odyssey Checkpoint 2 replaces Decision Gate |
+| 12–13 | Authored formal packages |
+| 14 | Authored; Boolean/FSM mini-capstone; Checkpoint 3 replaces Decision Gate |
+| 15 | Authored asynchronous Thanksgiving/Mexico travel buffer |
+| 16 | Validated Farkle + Machine Learning synthesis |
+| 17 | Authored final reflection and rubric |
 
-## Grading, dates, and behavior
+The source contract preserves the 100% grading model, 30% Decision Gates with
+one regular drop, 15% Odyssey checkpoints in Weeks 7/11/14, the separate 5%
+Week 16 category, and the 5% Week 17 reflection. Week 15 adds no required
+meeting, topic, or due date.
 
-Current grading evidence is distributed among `docs/grading-model.md`, `assignments/`, `templates/`, `planning/fall-2026-spine.md`, and accepted policy reports 317–318. The repository contains reusable weekly write-up, pair-reasoning, show-and-tell, project/final-reflection, programming-exam, career-artifact, and Week 16 receipt materials, but no single deterministic deployment model proving all assignment groups, weights, drop rules, dated assignment instances, and complete Week 1–17 module coverage. Week 15 is reserved asynchronous travel/buffer behavior; Week 16 has validated Farkle/ML source; Week 17's final format and weight remain open per the spine. Therefore the required grading/date validation and semantic diff cannot truthfully pass.
+## Validation
 
-## Deployment and live-target state
+Fresh checks from the real Brandy checkout:
 
-The DSCT repository has `sidecar/scripts/320_launch_cleo_dsct_shipping.sh` and historical deployment reports, but no current DSCT-side complete desired course model was independently verified in this shift. The only direct production-target hint found in current launcher material is historical course `74035`; no fresh read-only Canvas identity/module/assignment readback was completed. The Canvas environment file exists locally, but its secrets were not read or exposed. Production remains untouched.
+```text
+python3 scripts/validate_fall2026_source.py
+PASS: Fall 2026 DSCT source package contract satisfied
 
-No Savnac reconcile was attempted. The dirty shared Course Foundry checkout and absent complete desired model mean the dry-run, zero-delta proof, post-write readback, and production semantic diff requirements were not met.
+python3 assessment/verify_week02_contract_paths.py
+17 passed, 0 failed — ALL PATHS RESOLVED
 
-## Useful current evidence and yellows
+python3 scripts/validate_weeks_07_09.py
+PASS: Weeks 7–9 package contract satisfied
 
-- Accepted Week 1, Week 3, and Week 16 evidence is present in the paths named above and can support later bounded implementation.
-- Remote worker branches contain historical prompt/report work, but no worker receipt from this shift was produced and no stale branch was promoted.
-- The local DSCT prompt-framing commit is not yet on `origin/main`; it is intentionally preserved for the next promotion checkpoint.
-- Production target identity, production module state, assignment state, enrollment/submission facts, and a final semantic diff remain unverified.
+python3 scripts/validate_week16_farkle.py
+PASS / exit 0
 
-## Exact remaining action
+git diff --check
+PASS
+```
 
-Author and validate the missing student-facing Week 4–15 and Week 17 packages, resolve the Week 2 partial package and complete grading/final-format contract, then generate a deterministic desired-course model in an isolated exact-SHA Course Foundry worktree. Only after that should a fresh read-only production identity readback and semantic diff be attempted.
+The Week 16 validator emitted the untracked local receipt
+`sidecar/runs/week16_farkle_validation_20260819T142036Z.md`; it was preserved
+and is not part of this report commit. No DSCT implementation source needed
+repair. The accepted source commits are recorded in the Job 322 handoff; this
+shift promotes only this preflight evidence report.
+
+## Fresh production read-only identity and state
+
+Read-only Canvas calls against `https://swosu.instructure.com` authenticated as
+Jeremy Paul Evert (`id=24406`, `login_id=evertj`). Course discovery returned
+129 courses and exactly one matching Fall 2026 DSCT target:
+
+```text
+id=74035
+name=Fall 2026 Discrete Structures (COMSC-2043-1420)
+course_code=COMSC-2043-1420.2026FA
+workflow_state=available
+account_id=39
+enrollment_term_id=290
+default_view=modules
+```
+
+The target has 15 active students and 1 active teacher. Existing submissions
+are present on A01 (2), A02 (2), A03 (1), A04 (1), and A05 (1); none are graded.
+All other inspected assignments have zero submissions.
+
+## Production semantic diff and safety result
+
+The fresh live readback does not match the desired full-semester DSCT shape:
+
+- Live Canvas has 7 published modules and 38 items: `DSCT Week 1` (8),
+  `DSCT Week 2` (7), three unrelated kickoff/career modules (20 total), an
+  advisor module (1), and an optional/bonus module (2).
+- Live has 13 published assignments, all in `Semester kickoff week` (5%).
+  The `Assignments` group is 0%, and `apply_assignment_group_weights=false`.
+- Live assignments have rubrics, no lock/unlock dates, and due dates ranging
+  from 2026-08-18 through 2026-08-22; two optional/advisor assignments have no
+  due date.
+- Live has one visible unlocked PDF (`DSCT_Day1_Own_Your_Path.pdf`) and three
+  external SharePoint slide links.
+
+The source desired state is a complete Weeks 1–17 course with its frozen
+grading topology and Fall 2026 dates. The observed module, assignment,
+grading, and asset facts therefore establish a material semantic mismatch.
+An exact create/update/delete inventory was not generated because doing so
+would require choosing whether the five unrelated published modules, their
+assignments, and existing student submissions are intended content. No
+deletes or writes are authorized in this shift.
+
+## Savnac / non-production
+
+No Savnac target read or dry-run was used. Current Course Foundry support is
+explicitly DSCT-scoped: sandbox course `4`, production registry `74035`, and
+the DSCT operator pins `dry_run=True`, `force=False`, and
+`prune_scope="none"`. A future bounded Savnac preflight may use the exact
+tooling/source SHA set above after independently confirming course 4 and its
+runtime identity. This shift does not claim a non-production result.
+
+## Yellows and exact remaining action
+
+Non-blocking yellow: a few planning documents retain stale generic status
+words such as `CONTRACTED_NOT_AUTHORED`/`SOURCE_PENDING`, although the current
+spine, packages, and validators are green.
+
+**BLOCKED: the freshly identified production course contains unrelated
+published content, a conflicting kickoff-only grading topology, and existing
+student submissions, so a safe production semantic diff/reconcile cannot be
+approved without human adjudication of that live state.**
+
+Exact remaining action: obtain that adjudication in a separately authorized
+production-closeout shift, then regenerate the desired-vs-live semantic diff
+and independently re-read the target immediately before any bounded write.
 
 **Verdict:** `BLOCKED`
-BLOCKED: current DSCT source is not a complete teachable Weeks 1–17 course; Weeks 4–15 and Week 17 remain structure-only or missing, so the required desired-course and production semantic diff cannot be proven.
+BLOCKED: live course 74035 has unrelated published content, conflicting grading topology, and existing submissions requiring human adjudication before a safe reconcile.
