@@ -160,11 +160,15 @@ It must include:
 
 End the report with exactly one machine-readable verdict line:
 
-`**Verdict:** `GREEN TO WRITE``
+```text
+**Verdict:** `GREEN TO WRITE`
+```
 
 or
 
-`**Verdict:** `BLOCKED``
+```text
+**Verdict:** `BLOCKED`
+```
 
 For `BLOCKED`, immediately state the single blocking reason.
 
