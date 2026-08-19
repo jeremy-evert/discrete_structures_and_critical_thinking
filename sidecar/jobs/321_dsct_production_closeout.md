@@ -10,7 +10,9 @@ This job is authorized only when launched through:
 
 and only when canonical `origin/main` contains the accepted preflight report with:
 
-`**Verdict:** `GREEN TO WRITE``
+```text
+**Verdict:** `GREEN TO WRITE`
+```
 
 ## Freshness gate before any write
 
@@ -89,11 +91,15 @@ Include:
 
 End with exactly one verdict:
 
-`**Verdict:** `DEPLOYED``
+```text
+**Verdict:** `DEPLOYED`
+```
 
 or
 
-`**Verdict:** `NOT DEPLOYED``
+```text
+**Verdict:** `NOT DEPLOYED`
+```
 
 ## Done
 
