@@ -15,26 +15,28 @@ justification.
 | Week | Tuesday | Thursday | Semester identity | Status |
 |---:|---|---|---|---|
 | 1 | Aug 18 | Aug 20 | Semester Kickoff Week / Reasoning Odyssey; landed Week 1 package | `LANDED` |
-| 2 | Aug 25 | Aug 27 | Building Your AI Lab | `CONTRACTED_NOT_AUTHORED` |
+| 2 | Aug 25 | Aug 27 | Building Your AI Lab | `AUTHORED_EXTERNAL_YELLOW` |
 | 3 | Sep 1 | Sep 3 | Containers + minimum-useful LaTeX (runway, not a formal topic week) | `CONTAINER_TOOLCHAIN_AUTHORED` |
-| 4 | Sep 8 | Sep 10 | Logic, Claims & Proof | `CONTRACTED_NOT_AUTHORED` |
-| 5 | Sep 15 | Sep 17 | Sets, Functions & Sequences as Representations | `CONTRACTED_NOT_AUTHORED` |
-| 6 | Sep 22 | Sep 24 | Algorithms, Correctness & Growth | `CONTRACTED_NOT_AUTHORED` |
-| 7 | Sep 29 | Oct 1 | Integer Properties & Cryptography — **Odyssey Checkpoint 1** | `CONTRACTED_NOT_AUTHORED` |
-| 8 | Oct 6 | Oct 8 | Induction, Recursion & Recurrences | `CONTRACTED_NOT_AUTHORED` |
-| 9 | Oct 13 | Oct 15 — Fall Break, no class | Counting & Combinatorial Reasoning (Tuesday only) | `CONTRACTED_NOT_AUTHORED` |
-| 10 | Oct 20 | Oct 22 | Probability, Uncertainty & Evidence | `CONTRACTED_NOT_AUTHORED` |
-| 11 | Oct 27 | Oct 29 | Relations, Equivalence, Partial Orders, Matrices & Digraphs — **Odyssey Checkpoint 2** | `CONTRACTED_NOT_AUTHORED` |
-| 12 | Nov 3 | Nov 5 | Graphs & Network Reasoning | `CONTRACTED_NOT_AUTHORED` |
-| 13 | Nov 10 | Nov 12 | Trees, Search & Decision Structures | `CONTRACTED_NOT_AUTHORED` |
-| 14 | Nov 17 | Nov 19 | Boolean Algebra, Circuits & Finite-State Machines: Model Limits — **Odyssey Checkpoint 3**, Show & Tell mini-capstone | `CONTRACTED_NOT_AUTHORED` |
+| 4 | Sep 8 | Sep 10 | Logic, Claims & Proof | `AUTHORED` |
+| 5 | Sep 15 | Sep 17 | Sets, Functions & Sequences as Representations | `AUTHORED` |
+| 6 | Sep 22 | Sep 24 | Algorithms, Correctness & Growth | `AUTHORED` |
+| 7 | Sep 29 | Oct 1 | Integer Properties & Cryptography — **Odyssey Checkpoint 1** | `AUTHORED` |
+| 8 | Oct 6 | Oct 8 | Induction, Recursion & Recurrences | `AUTHORED` |
+| 9 | Oct 13 | Oct 15 — Fall Break, no class | Counting & Combinatorial Reasoning (Tuesday only) | `AUTHORED` |
+| 10 | Oct 20 | Oct 22 | Probability, Uncertainty & Evidence | `AUTHORED` |
+| 11 | Oct 27 | Oct 29 | Relations, Equivalence, Partial Orders, Matrices & Digraphs — **Odyssey Checkpoint 2** | `AUTHORED` |
+| 12 | Nov 3 | Nov 5 | Graphs & Network Reasoning | `AUTHORED` |
+| 13 | Nov 10 | Nov 12 | Trees, Search & Decision Structures | `AUTHORED` |
+| 14 | Nov 17 | Nov 19 | Boolean Algebra, Circuits & Finite-State Machines: Model Limits — **Odyssey Checkpoint 3**, Show & Tell mini-capstone | `AUTHORED` |
 | 15 | Nov 24 | Nov 26 — Thanksgiving, no normal class | Thanksgiving / Mexico asynchronous-travel buffer; no new formal DSCT topic | `ASYNC_RESERVED` |
 | 16 | Dec 1 | Dec 3 | Farkle + Machine Learning synthesis experience | `VALIDATED` |
-| 17 | Dec 8 | Dec 10 | Final Reflection write-up during finals week (Dec 7–11) | `CONTRACTED_NOT_AUTHORED` |
+| 17 | Dec 8 | Dec 10 | Final Reflection write-up during finals week (Dec 7–11) | `AUTHORED` |
 
 Week 1 is the landed Prompt 301 package: `reports/301_week1_launch_package.md`,
-`planning/week-01-source-map.md`, and `week-01/`. Week 2 names are resolved by
-Question 009 and are identities/contracts only in this pass. Week 3 is the
+`planning/week-01-source-map.md`, and `week-01/`. Week 2 now has an authored
+DSCT wrapper and assessment source; its shared local-AI/container dependencies
+remain an external validation yellow until sibling repositories are available.
+Week 3 is the
 pinned-container/minimum-useful-LaTeX runway (Prompts 307/316); its toolchain
 (`week-03/container/`, `week-03/student/container-latex-skill-ladder.md`,
 `week-03/instructor/container-latex-instructor-notes.md`) is authored and
