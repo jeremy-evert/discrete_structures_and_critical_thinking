@@ -4,6 +4,8 @@ This contract applies to Weeks 4–14 and gives later authoring one stable
 Tuesday/Thursday cadence. It adapts Professional Minds' historical Monday /
 Wednesday / Friday rhythm to DSCT's Tuesday/Thursday meeting pattern.
 
+**Status update (Decision 029, 2026-08-25 — Olivia recovery mission):** the "Professional Minds: AI Fluency/Wednesday/Friday" chassis segments below were never source-backed (`SOURCE_PENDING` throughout) and the actual authored `week-04/` through `week-14/` content confirms they were never built as separate graded slots — the real weeks go straight from orientation to technical content. Decision 029 makes this the correct outcome, not a gap: AI Fluency/Professional Minds are optional Computing Commons enrichment, not required DSCT chassis segments, going forward. Pair Reasoning/Show & Tell remain real Thursday activities but produce no separate graded Canvas object — see `docs/grading-model.md`'s reconciled table. The table below is preserved as historical planning intent; do not source-fill the `SOURCE_PENDING` rows going forward.
+
 ## Tuesday chassis — 75 minutes
 
 | Segment | Default time | Contract |
