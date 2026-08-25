@@ -1,5 +1,7 @@
 # Reusable Template: Pair Reasoning Report
 
+> **RETIRED (Decision 029, 2026-08-25 -- Olivia recovery mission).** This category is no longer required, graded DSCT coursework; preserved here as provenance only. Career-pathway paperwork moves to optional Computing Commons; Pair Reasoning and Show & Tell remain real in-class practices with no separate Canvas assignment, reflection, receipt, or points. See `docs/grading-model.md`.
+
 **Historical basis:** fall 2024 and spring/fall 2025 pair work, formalized in spring 2026, renamed from Pair Programming and defined as a reasoning contract in Prompt 311 (2026-08-17).
 
 **Category:** Pair Reasoning report, 5% of the semester grade (see `docs/grading-model.md`). Graded weeks are set in `planning/fall-2026-topic-map.md`.

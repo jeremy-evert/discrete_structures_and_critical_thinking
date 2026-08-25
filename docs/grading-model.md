@@ -1,76 +1,53 @@
 # COMSC-2043 — Grading Model (Fall 2026 source model)
 
-This is the DSCT source model for a 100% grade. It uses the small named
-category treatment established by CS1/CS2, adapted to DSCT's Tuesday/Thursday
-chassis. It is a source document; no Canvas, Savnac, or student-system write
-is implied.
+This is the DSCT source model. It uses the small named category treatment
+established by CS1/CS2, adapted to DSCT's Tuesday/Thursday chassis. It is a
+source document; no Canvas, Savnac, or student-system write is implied.
 
-## Final weights
+**Status update (Decision 029, 2026-08-25 — Olivia recovery mission `owner_20260825_cs2_dsct_pure_course_recovery_map_april.md`):** the six categories struck through below (30% total) are **retired from the required DSCT grade**. They were never backed by real per-week authored content in the first place — a full inventory of `week-04/` through `week-14/` found no separate Monday Moment/Wacky Wednesday/Fun Friday/career-artifact deliverable files anywhere; only the generic reusable templates in `assignments/` existed as category placeholders (now marked retired in place: `career-artifact-sequence.md`, `show-and-tell-artifact.md`, `pair-reasoning-report.md`). Pair Reasoning and Show & Tell remain real in-class Tuesday/Thursday activities (`week-NN/student/thursday-pair-reasoning.md`, `thursday-show-and-tell.md` stay as real lesson-plan content) — they simply no longer get a separate Canvas assignment, reflection, receipt, or grade category, per Decision 029's explicit language.
 
-| Category | Weight | Canvas/Savnac object shape | Graded weeks |
-|---|---:|---|---|
-| Semester kickoff week | 5% | Shared kickoff assignment group / exit-ticket objects | Week 1 |
-| Monday Moment quiz (Tuesday AI Fluency touchpoint) | 5% | Short quiz or text-entry object using shared AI Fluency content | Weekly Tuesday touchpoint, including the Tuesday-only Week 9 exception |
-| Wacky Wednesday reflection (Tuesday Professional Minds strand) | 5% | Professional Minds reflection object | Weekly Tuesday Professional Minds weeks |
-| Fun Friday reflection (Thursday Professional Minds strand) | 5% | Professional Minds reflection object | Weekly Thursday Professional Minds weeks, excluding the Week 9 break |
-| Pair Reasoning report (A3 equivalent) | 5% | Individual text-entry/upload report with rubric | Pair Reasoning weeks: 5, 7, 9 pair-style work, 11, 13 |
-| Show & Tell report (A4 equivalent; the separate A7 Friday-feedback category is retired and folded in here — see Prompt 312 note below) | 5% | Individual text-entry/upload report with rubric, covering both public defense of a claim and required professional critique of a peer | Show & Tell weeks: 4, 6, 8, 10, 12, 14 |
-| Career artifact sequence | 5% | Connected artifact/update uploads with rubric; may be attached to the active Odyssey evidence package | Recurring career-strand weeks as scheduled; not a comprehensive exam |
-| Attendance & participation | 5% | Instructor-entered attendance/participation group | Course cadence: scheduled Tuesday/Thursday touchpoints |
-| Technical presentation/demo evidence | 3% | Individual presentation/demo evidence receipt with rubric; may be a text entry, upload, link, or live-demonstration receipt | Weekly Tuesday technical presentation/demo slot |
-| Course evaluation | 2% | End-of-term completion object | End of term |
-| Decision Gate (weekly reinforcement category) | 30% | Weekly Decision Gate objects with gate rubrics | Active recurring-work weeks; Weeks 4–14 are the formal technical sequence, **excluding Weeks 7, 11, and 14, which submit their Reasoning Odyssey Checkpoint instead of an ordinary Decision Gate that week (no double submission)**; Week 2's local-AI-lab/Container-Connections evidence portfolio also lands here as the week's readiness/setup entry (this week's substantive technical evidence, not a formal Odyssey topic); **Week 16 Farkle + ML synthesis is no longer part of this category — see the separate Farkle + Machine Learning Synthesis row below** |
-| Reasoning Odyssey checkpoints | 15% | Three Odyssey checkpoint objects with checkpoint rubrics, each an equal one-third (5%) of the category; a checkpoint is the week's *only* Odyssey submission — it replaces, not adds to, that week's Decision Gate | Checkpoint 1 — Week 7; Checkpoint 2 — Week 11; Checkpoint 3 — Week 14 (see Prompt 315 note below) |
-| Farkle + Machine Learning Synthesis | 5% | Individual evidence-receipt/synthesis object with rubric (`assignments/week-16-farkle-evidence-receipt.md`); not a Decision Gate, not an Odyssey checkpoint, and not graded on which strategy wins | Week 16 only |
-| Final individual reflection | 5% | Low-stress individual text-entry/upload reflection object with rubric | Week 17 finals period |
-| **Total** | **100%** | | |
+## Final weights — RECONCILED, gap flagged, not guessed
 
-**Prompt 312 note (fold applied):** Prompt 312 (2026-08-17, Jeremy+ChatGPT)
-settled that the separate inherited Friday-feedback/A7-style 5% grade
-category is removed as a standalone recurring category — its unique
-critique skill is now assessed inside the Show & Tell report above — while
-the Show & Tell category itself stays exactly 5%. This source model applies
-that fold directly.
+| Category | Weight | Canvas/Savnac object shape | Graded weeks | Status |
+|---|---:|---|---|---|
+| Semester kickoff week | 5% | Shared kickoff assignment group / exit-ticket objects | Week 1 | keep |
+| ~~Monday Moment quiz (Tuesday AI Fluency touchpoint)~~ | ~~5%~~ | — | — | **RETIRED (Decision 029)** — optional Commons enrichment, no per-week content ever existed |
+| ~~Wacky Wednesday reflection~~ | ~~5%~~ | — | — | **RETIRED (Decision 029)** |
+| ~~Fun Friday reflection~~ | ~~5%~~ | — | — | **RETIRED (Decision 029)** |
+| ~~Pair Reasoning report (A3 equivalent)~~ | ~~5%~~ | — | — | **RETIRED (Decision 029)** — Pair Reasoning stays a real in-class activity, ungraded |
+| ~~Show & Tell report (A4 equivalent)~~ | ~~5%~~ | — | — | **RETIRED (Decision 029)** — Show & Tell stays a real in-class activity, ungraded |
+| ~~Career artifact sequence~~ | ~~5%~~ | — | — | **RETIRED (Decision 029)** — optional Commons enrichment |
+| Attendance & participation | 5% | Instructor-entered attendance/participation group | Course cadence: scheduled Tuesday/Thursday touchpoints | keep |
+| Technical presentation/demo evidence | 3% | Individual presentation/demo evidence receipt with rubric | Weekly Tuesday technical presentation/demo slot | keep |
+| Course evaluation | 2% | End-of-term completion object | End of term | keep |
+| Decision Gate (weekly reinforcement category) | 30% | Weekly Decision Gate objects with gate rubrics | Weeks 4–14 excluding 7/11/14 (checkpoint weeks); Week 2's local-AI-lab evidence also lands here | keep |
+| Reasoning Odyssey checkpoints | 15% | Three Odyssey checkpoint objects, each one-third (5%) | Checkpoint 1 — Week 7; Checkpoint 2 — Week 11; Checkpoint 3 — Week 14 | keep |
+| Farkle + Machine Learning Synthesis | 5% | `assignments/week-16-farkle-evidence-receipt.md` | Week 16 only | keep |
+| Final individual reflection | 5% | `assignments/week-17-final-individual-reflection.md` | Week 17 finals period | keep |
+| **Surviving total** | **70%** | | | **30 points unresolved — see owner question below** |
 
-**Prompt 315 note (checkpoint/Farkle placement):** Prompt 315 (2026-08-17,
-Jeremy+ChatGPT) settled the three-tier Odyssey evidence structure below and
-assigns the Prompt 312 fold's freed 5 percentage points to the new Farkle +
-Machine Learning Synthesis category, so the total remains exactly 100%
-without reducing Decision Gates, checkpoints, Show & Tell, Pair Reasoning,
-or any other category.
+### Open owner question (recorded, not guessed)
 
-## Aggregate check
+Removing the six retired categories leaves the surviving disciplinary categories summing to **70%, not 100%** — a real 30-percentage-point gap this pass does not resolve unilaterally, per the recovery mission's explicit instruction not to invent final production weights. Two precedent-backed options, neither selected here:
+
+1. **Proportional redistribution** (Architecture's Prompt 030A and CS2's Prompt 030 precedent): scale the 8 surviving categories up so they sum to 100% while preserving their relative proportions — e.g. Decision Gate 30% → ~42.9%, Checkpoints 15% → ~21.4%, Attendance 5% → ~7.1%, etc. (70% → 100% is a ×1.4286 scale factor).
+2. **Flat top-up to the Odyssey family only**: leave Attendance/Tech-presentation/Course-eval/Kickoff/Final-reflection/Farkle at their current point values and add the freed 30 points entirely to Decision Gate + Checkpoints (matching the shape of Architecture's own Prompt 030A: nearly all reclaimed weight went to the disciplinary Reasoning Odyssey category, not spread evenly).
+
+Both are live-weight decisions in any case, and per this mission's own doctrine, **no live Canvas weight change happens until the required objects exist and a grade-impact preview is computed** — so this question does not block deployment-manifest preparation or safe structure work, only the eventual weight-migration step.
+
+**Prompt 312/315 notes (historical, pre-Decision-029):** Prompt 312 (2026-08-17) folded the old Friday-feedback/A7-style category into the Show & Tell report; Prompt 315 (2026-08-17) placed the freed 5 points onto Farkle + ML Synthesis, landing the pre-Decision-029 model at exactly 100%. Both are superseded by Decision 029's retirement of the Show & Tell report entirely — preserved here as provenance for why the historical table looked the way it did, not as current doctrine.
+
+## Aggregate check (reconciled)
 
 The weekly Decision Gate family is deliberately explicit. Every normal
-week's one individual reasoning submission is a **Decision Gate**; the
-internal gradebook category name (`weekly reinforcement`) and the separate,
-larger Reasoning Odyssey checkpoint objects are not a second student-facing
-weekly submission on non-checkpoint weeks, and a checkpoint week has no
-separate ordinary Decision Gate submission at all:
+week's one individual reasoning submission is a **Decision Gate**; a
+checkpoint week has no separate ordinary Decision Gate submission at all:
 
-`Decision Gate (weekly reinforcement category) 30% + Reasoning Odyssey checkpoints 15% = 45%`.
+`Decision Gate 30% + Reasoning Odyssey checkpoints 15% = 45%` of the surviving 70%.
 
-Farkle + Machine Learning Synthesis is its own third Odyssey-adjacent tier,
-distinct from both of the above:
+Farkle + Machine Learning Synthesis (5%) and Final individual reflection (5%) are their own tiers, unaffected by the retirement.
 
-`Farkle + Machine Learning Synthesis 5%` (Week 16 only; not folded into the
-45% above).
-
-Everything else is recurring course work or the final:
-
-`8 recurring categories × 5% + technical presentation/demo 3% + course evaluation 2% = 45%`
-(kickoff, Tuesday AI Fluency, the two Professional Minds strands, A3, the
-folded A4/Show & Tell category, career artifact sequence, and attendance,
-plus the Tuesday presentation and course evaluation) and
-`Final individual reflection 5%`.
-
-Therefore:
-
-`45% Odyssey (Decision Gates + checkpoints) + 45% other recurring work + 5% Farkle + ML Synthesis + 5% final = 100%`.
-
-The table's direct sum is also:
-
-`5 + 5 + 5 + 5 + 5 + 5 + 5 + 5 + 3 + 2 + 30 + 15 + 5 + 5 = 100%`.
+Surviving categories: `5 (kickoff) + 5 (attendance) + 3 (tech presentation) + 2 (course eval) + 30 (Decision Gate) + 15 (checkpoints) + 5 (Farkle) + 5 (final) = 70%`. The missing 30 points is the open owner question above — this is a reconciled, honest gap, not an arithmetic error.
 
 ## Chassis and rotation boundaries
 
@@ -82,12 +59,14 @@ activity. The technical presentation has its own small evidence-receipt
 category because it is an explicit Tuesday chassis touchpoint; it is not a new
 five-day-cadence category.
 
-The Thursday activity categories are not simultaneous. Pair Reasoning uses
-the A3-equivalent category on its live weeks; Show & Tell uses the single
-A4-equivalent category (now also covering the retired A7-equivalent critique
-skill) on its live weeks. The category weights are semester-level weighted
-groups, so each group contains only the objects that exist in its applicable
-rotation. Week 9 is the frozen exception: Thursday is Fall Break and its
+The Thursday activity rotation (Pair Reasoning on its weeks, Show & Tell on
+its weeks) is real, still happens, and still alternates as scheduled — it is
+just no longer a separately graded Canvas category (Decision 029). Its
+evidence value is not lost: per the paragraph below, the Decision Gate
+package "may include...the active Thursday artifact when that week has one,"
+so a strong Pair Reasoning/Show & Tell moment can still show up as evidence
+inside that week's one graded Decision Gate submission. Week 9 is the frozen
+exception: Thursday is Fall Break and its
 pair-style work is folded into Tuesday. Week 14 is the Show & Tell /
 mini-capstone end of the rotation and is also Odyssey Checkpoint 3 (see
 below); the two are distinct objects, not a merged double submission.

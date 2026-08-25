@@ -1,5 +1,7 @@
 # Reusable Template: Show & Tell Report
 
+> **RETIRED (Decision 029, 2026-08-25 -- Olivia recovery mission).** This category is no longer required, graded DSCT coursework; preserved here as provenance only. Career-pathway paperwork moves to optional Computing Commons; Pair Reasoning and Show & Tell remain real in-class practices with no separate Canvas assignment, reflection, receipt, or points. See `docs/grading-model.md`.
+
 **Historical basis:** spring 2021 "Show and Tell" work, the spring 2026
 alternating Thursday plan, and the Prompt 312 (2026-08-17) Jeremy+ChatGPT
 decision that folds the separate Friday-feedback/A7 critique category into
