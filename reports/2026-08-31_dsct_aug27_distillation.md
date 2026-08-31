@@ -21,3 +21,5 @@ No Canvas write was performed. No authorized Canvas client/credential lane is av
 ## Privacy and follow-up
 
 Raw media/VTT stays outside Git. Student names and incidental classroom dialogue were not carried into student-facing artifacts. The two unidentified recap clips remain protected under `protected_raw/2026-08-27/unsorted/`; metadata alone cannot establish course identity, so they were not published.
+
+Unsorted clip receipts: `teams_audio_recap_full_audio.mp4` SHA-256 `2a4d995ef9d1ceb2bfec71a9308108163601a7d224ef84843c9531c69ad7f27c`, 390.182292 seconds; `teams_audio_recap_full_audio(1).mp4` SHA-256 `97a240d64387e578eef751d134345d48a1a325fc216237e39bdff9db9db38d16`, 450.034292 seconds. Both are MP4 containers carrying MP3 audio and remain unmodified.
