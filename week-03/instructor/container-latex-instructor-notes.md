@@ -26,12 +26,15 @@ disposable clean rerun, and no premium-hardware/paid-account dependency
 for the full report and `sidecar/runs/316_week3_container_latex_ladder/` for
 receipts.
 
-**Not yet done:** publishing the validated image to
-`ghcr.io/jeremy-evert/dsct-week3-latex` and re-pinning `run-latex.sh`'s
-default to the resulting registry digest. This requires registry-push
-credentials this worker session did not have permission to use. See
-`week-03/container/IMAGE_CONTRACT.md` for the exact two-command action a
-maintainer with push rights needs to run before the semester launch.
+**Done (2026-08-31):** the validated image is published to
+`ghcr.io/jeremy-evert/dsct-week3-latex` (tag `v1`, digest
+`sha256:a842f3e8a0ef11cd946a631b4f3fdc69ae7a0592710f3a17a80e86d7642496f1`),
+the GHCR package is **public**, anonymous pull is verified, and
+`run-latex.sh`'s `DEFAULT_IMAGE_REF` is re-pinned to that digest. Jeremy
+refreshed the GitHub credential and ran the push by hand from `april` (the
+automated worker was classifier-blocked from pushing). See
+`week-03/container/IMAGE_CONTRACT.md` → "Registry publication (2026-08-31)"
+for the full record and the offline-fallback override.
 
 **Not yet done:** a live LLM-assisted repair trial (Scenario F) — the
 skill-ladder doc's guidance on distinguishing an AI *proposal* from a

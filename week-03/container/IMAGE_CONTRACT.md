@@ -23,7 +23,7 @@ immutable digest.
 | Build/runtime tested | rootless Podman 5.4.0, Rocky Linux 9.6, x86_64 |
 | `latexmk` version in image | 4.86 (TeX Live 2025/dev/Debian) |
 | Image size | ~602 MB |
-| Registry publication | **PENDING** — see below |
+| Registry publication | **PUBLISHED 2026-08-31** — `ghcr.io/jeremy-evert/dsct-week3-latex@sha256:a842f3e8a0ef11cd946a631b4f3fdc69ae7a0592710f3a17a80e86d7642496f1` (tag `v1`), package visibility **public**, anonymous pull verified. See "Registry publication (2026-08-31)" below. |
 
 The local image ID above is content-addressed and immutable for this build;
 it is what `run-latex.sh` and the receipts under
@@ -55,61 +55,56 @@ shape, and `latexmk` version are identical, and the fixture artifact is
 byte-content-equivalent. This is treated as reconfirmed reproducibility from
 source, not a divergence in the design.
 
-**GHCR push attempted again and still blocked** — this time explicitly by the
-executing worker's own action-permission classifier (`podman push
+**GHCR push during the automated validation run was blocked** — explicitly by
+the executing worker's own action-permission classifier (`podman push
 ghcr.io/jeremy-evert/dsct-week3-latex:v1` was denied before any network call:
 *"Permission for this action was denied by the Claude Code auto mode
 classifier... publishing to an external registry is outside this worker's
 granted permissions"*), independent of and in addition to the missing/expired
-registry credentials found on this host (`gh auth status` reports an expired
-token for `jeremy-evert` on `github.com`; no `ghcr.io` or `docker.io` login is
-configured). This is a genuine `HUMAN_GATE`, not a build or design defect — see
-below.
+registry credentials found on that host (`gh auth status` reported an expired
+token for `jeremy-evert` on `github.com`; no `ghcr.io` or `docker.io` login was
+configured). This was a genuine `HUMAN_GATE`. **It has since been cleared by
+Jeremy — see "Registry publication (2026-08-31)" immediately below.**
 
-## Registry publication is a returned action item, not a design gap
+## Registry publication (2026-08-31)
 
-The intended course-operational reference is a registry-pinned digest, e.g.:
+The `HUMAN_GATE` above is resolved. Jeremy refreshed the GitHub credential and
+performed the push by hand from `april`:
+
+| Field | Value |
+| --- | --- |
+| Credential | `gh auth login -h github.com` (device flow) as `jeremy-evert`; token scopes include `write:packages`. `podman login ghcr.io` via `gh auth token` → `Login Succeeded`. |
+| Push | `podman push ghcr.io/jeremy-evert/dsct-week3-latex:v1` (image tagged from `localhost/dsct-week3-latex:v1`, config `sha256:251c9f2e506f6be294c5050b88e2ec13709223d29c5a80c921a6344035dbb9ea`) |
+| Published tag | `ghcr.io/jeremy-evert/dsct-week3-latex:v1` |
+| **Manifest digest (operational pin)** | `sha256:a842f3e8a0ef11cd946a631b4f3fdc69ae7a0592710f3a17a80e86d7642496f1` |
+| Package visibility | **public** (`gh api user/packages/container/dsct-week3-latex` → `"visibility":"public"`) |
+| Anonymous pull check | `podman logout ghcr.io && podman pull ghcr.io/jeremy-evert/dsct-week3-latex:v1` → success, exit 0 — students can pull with no credentials |
+| Package page | <https://github.com/users/jeremy-evert/packages/container/package/dsct-week3-latex> |
+
+The operational, course-facing reference is therefore now:
 
 ```
-ghcr.io/jeremy-evert/dsct-week3-latex@sha256:<digest-after-publish>
+ghcr.io/jeremy-evert/dsct-week3-latex@sha256:a842f3e8a0ef11cd946a631b4f3fdc69ae7a0592710f3a17a80e86d7642496f1
 ```
 
-Pushing to `ghcr.io/jeremy-evert/dsct-week3-latex:v1` was attempted from this
-worker session and was blocked by the local agent sandbox's action
-classifier (publishing to an external registry is outside this worker's
-granted permissions), not by any technical or design failure. The image
-builds deterministically and reproducibly from the committed `Containerfile`
-(confirmed by an identical rebuild reusing Podman's content-addressed layer
-cache during this validation run).
+`DEFAULT_IMAGE_REF` in `run-latex.sh` has been re-pinned to that digest (was
+`localhost/dsct-week3-latex:v1`). The local build tag remains the offline
+fallback: any maintainer or student machine with Podman can reproduce the
+identical image locally with the build commands under "Reproducing the build",
+and `DSCT_WEEK3_IMAGE=localhost/dsct-week3-latex:v1 ./run-latex.sh …` overrides
+back to it for offline work.
 
-**Action for a maintainer with registry-push rights (Jeremy):**
+### Historical: why publication was a returned action item
 
-As of 2026-08-31 this also requires a fresh GitHub credential — the stored
-`gh` token for `jeremy-evert` is expired on every worker host checked
-(april, brandy), and no `ghcr.io`/`docker.io` login is configured. Refresh
-credentials first (e.g. `gh auth login -h github.com`, or `podman login
-ghcr.io -u jeremy-evert` with a PAT carrying `write:packages`), then:
-
-```bash
-cd week-03/container
-podman build -t localhost/dsct-week3-latex:v1 -f Containerfile .
-podman tag localhost/dsct-week3-latex:v1 ghcr.io/jeremy-evert/dsct-week3-latex:v1
-podman push ghcr.io/jeremy-evert/dsct-week3-latex:v1
-podman inspect ghcr.io/jeremy-evert/dsct-week3-latex:v1 --format '{{.Digest}}'
-```
-
-After pushing, confirm the GHCR package visibility is set to **public** (GHCR
-packages default to private) so students can pull without instructor-only
-credentials — this is also a decision only Jeremy can make (Package settings
-→ Change visibility → Public on the `dsct-week3-latex` package page).
-
-Then update `DEFAULT_IMAGE_REF` in `run-latex.sh` to the resulting
-`ghcr.io/jeremy-evert/dsct-week3-latex@sha256:...` reference so the
-student-facing default is the registry-pinned digest rather than a
-locally-built tag. Until that happens, `run-latex.sh`'s documented default
-(`localhost/dsct-week3-latex:v1`, built from this exact `Containerfile`) is
-the validated fallback: any maintainer or student machine with Podman can
-reproduce the identical image locally with the two build commands above.
+Pushing to GHCR was attempted twice from automated worker sessions and blocked
+both times — first by missing/expired registry credentials, then additionally
+by the worker's own action classifier (publishing to an external registry is
+outside an automated worker's granted permissions), never by any technical or
+design failure. The image builds deterministically and reproducibly from the
+committed `Containerfile` (confirmed by an identical rebuild reusing Podman's
+content-addressed layer cache during the 2026-08-31 validation run). The push
+above was performed by a human maintainer with push rights, which is the
+intended resolution for that class of gate.
 
 ## Reproducing the build
 
