@@ -6,6 +6,16 @@ environment. Registry publication of the pinned image is a returned action
 item (blocked by this worker's sandbox permissions, not by design or
 technical failure).
 
+> **Update 2026-08-31:** the returned action item is closed. Jeremy refreshed
+> the GitHub credential and pushed the image by hand from `april`. The pinned
+> reference is now
+> `ghcr.io/jeremy-evert/dsct-week3-latex@sha256:a842f3e8a0ef11cd946a631b4f3fdc69ae7a0592710f3a17a80e86d7642496f1`
+> (tag `v1`), the GHCR package is **public**, anonymous pull is verified, and
+> `run-latex.sh`'s `DEFAULT_IMAGE_REF` is re-pinned to that digest. See
+> `week-03/container/IMAGE_CONTRACT.md` → "Registry publication (2026-08-31)".
+> The `<pending-publish>` placeholder below is left as the 2026-08-17
+> point-in-time record.
+
 **Starting DSCT commit:** `419b55b` (main)
 **Evidence consumed:** Prompt 307 report
 (`sidecar/reports/307_week3_container_latex_student_path_probe.md`, PASS as
