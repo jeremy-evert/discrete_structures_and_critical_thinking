@@ -21,7 +21,7 @@
 # used so a student or grader can tell if they drifted off the pinned path.
 set -u
 
-DEFAULT_IMAGE_REF="ghcr.io/jeremy-evert/dsct-week3-latex@sha256:a842f3e8a0ef11cd946a631b4f3fdc69ae7a0592710f3a17a80e86d7642496f1"
+DEFAULT_IMAGE_REF="ghcr.io/jeremy-evert/dsct-week3-latex@sha256:e7987919298c909f1a7f52247b8a7b54395cbde2400e2d6f3e8c5078425e2fca"
 IMAGE_REF="${DSCT_WEEK3_IMAGE:-$DEFAULT_IMAGE_REF}"
 RUNTIME="${DSCT_WEEK3_RUNTIME:-podman}"
 

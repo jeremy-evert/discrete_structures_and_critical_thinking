@@ -28,7 +28,7 @@ receipts.
 
 **Done (2026-08-31):** the validated image is published to
 `ghcr.io/jeremy-evert/dsct-week3-latex` (tag `v1`, digest
-`sha256:a842f3e8a0ef11cd946a631b4f3fdc69ae7a0592710f3a17a80e86d7642496f1`),
+`sha256:e7987919298c909f1a7f52247b8a7b54395cbde2400e2d6f3e8c5078425e2fca`),
 the GHCR package is **public**, anonymous pull is verified, and
 `run-latex.sh`'s `DEFAULT_IMAGE_REF` is re-pinned to that digest. Jeremy
 refreshed the GitHub credential and ran the push by hand from `april` (the
