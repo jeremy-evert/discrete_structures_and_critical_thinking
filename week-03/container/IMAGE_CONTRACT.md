@@ -23,7 +23,7 @@ immutable digest.
 | Build/runtime tested | rootless Podman 5.4.0, Rocky Linux 9.6, x86_64 |
 | `latexmk` version in image | 4.86 (TeX Live 2025/dev/Debian) |
 | Image size | ~602 MB |
-| Registry publication | **PUBLISHED 2026-08-31** — `ghcr.io/jeremy-evert/dsct-week3-latex@sha256:a842f3e8a0ef11cd946a631b4f3fdc69ae7a0592710f3a17a80e86d7642496f1` (tag `v1`), package visibility **public**, anonymous pull verified. See "Registry publication (2026-08-31)" below. |
+| Registry publication | **PUBLISHED 2026-08-31** — `ghcr.io/jeremy-evert/dsct-week3-latex@sha256:e7987919298c909f1a7f52247b8a7b54395cbde2400e2d6f3e8c5078425e2fca` (tag `v1`), package visibility **public**, anonymous pull verified. See "Registry publication (2026-08-31)" below. |
 
 The local image ID above is content-addressed and immutable for this build;
 it is what `run-latex.sh` and the receipts under
@@ -76,7 +76,7 @@ performed the push by hand from `april`:
 | Credential | `gh auth login -h github.com` (device flow) as `jeremy-evert`; token scopes include `write:packages`. `podman login ghcr.io` via `gh auth token` → `Login Succeeded`. |
 | Push | `podman push ghcr.io/jeremy-evert/dsct-week3-latex:v1` (image tagged from `localhost/dsct-week3-latex:v1`, config `sha256:251c9f2e506f6be294c5050b88e2ec13709223d29c5a80c921a6344035dbb9ea`) |
 | Published tag | `ghcr.io/jeremy-evert/dsct-week3-latex:v1` |
-| **Manifest digest (operational pin)** | `sha256:a842f3e8a0ef11cd946a631b4f3fdc69ae7a0592710f3a17a80e86d7642496f1` |
+| **Manifest digest (operational pin)** | `sha256:e7987919298c909f1a7f52247b8a7b54395cbde2400e2d6f3e8c5078425e2fca` |
 | Package visibility | **public** (`gh api user/packages/container/dsct-week3-latex` → `"visibility":"public"`) |
 | Anonymous pull check | `podman logout ghcr.io && podman pull ghcr.io/jeremy-evert/dsct-week3-latex:v1` → success, exit 0 — students can pull with no credentials |
 | Package page | <https://github.com/users/jeremy-evert/packages/container/package/dsct-week3-latex> |
@@ -84,7 +84,7 @@ performed the push by hand from `april`:
 The operational, course-facing reference is therefore now:
 
 ```
-ghcr.io/jeremy-evert/dsct-week3-latex@sha256:a842f3e8a0ef11cd946a631b4f3fdc69ae7a0592710f3a17a80e86d7642496f1
+ghcr.io/jeremy-evert/dsct-week3-latex@sha256:e7987919298c909f1a7f52247b8a7b54395cbde2400e2d6f3e8c5078425e2fca
 ```
 
 `DEFAULT_IMAGE_REF` in `run-latex.sh` has been re-pinned to that digest (was
@@ -93,6 +93,38 @@ fallback: any maintainer or student machine with Podman can reproduce the
 identical image locally with the build commands under "Reproducing the build",
 and `DSCT_WEEK3_IMAGE=localhost/dsct-week3-latex:v1 ./run-latex.sh …` overrides
 back to it for offline work.
+
+### Correction (2026-09-01): the reported manifest digest was wrong
+
+The digest first reported after the hand-run push
+(`sha256:a842f3e8a0ef11cd946a631b4f3fdc69ae7a0592710f3a17a80e86d7642496f1`) does
+**not exist** on GHCR — confirmed directly against the registry API
+(`GET /v2/jeremy-evert/dsct-week3-latex/manifests/<digest>` → `404`), not merely
+against local tooling. The image itself was published correctly; only the
+digest value that was written down and pinned into `run-latex.sh` was wrong
+(most likely a transcription error, since the config digest quoted alongside
+it, `sha256:251c9f2e50...`, was correct and matches this build).
+
+Independent verification on `april` (Flo), after removing every local copy of
+the image and logging out of `ghcr.io` to force a genuine anonymous fresh
+pull:
+
+- `GET /v2/.../manifests/v1` (tag) on the live registry → resolves to
+  `sha256:e7987919298c909f1a7f52247b8a7b54395cbde2400e2d6f3e8c5078425e2fca`,
+  config digest `sha256:251c9f2e506f6be294c5050b88e2ec13709223d29c5a80c921a6344035dbb9ea`
+  (matches the 2026-08-31 rebuild above);
+- fresh anonymous `podman pull` by that corrected digest succeeds;
+- `run-latex.sh` (re-pinned to the corrected digest) against the
+  `week3-claim.tex` fixture → `RESULT: PASS`, PDF text content verified;
+- two bounded-failure checks against the same pulled image (missing source
+  file; a LaTeX source with an undefined control sequence) both produced the
+  documented `RESULT: FAIL` / non-zero-exit / log-pointer contract.
+
+The corrected, verified operational pin is
+`sha256:e7987919298c909f1a7f52247b8a7b54395cbde2400e2d6f3e8c5078425e2fca` (the
+value now recorded throughout this file, `run-latex.sh`, the instructor
+notes, and Prompt 316's report). The earlier `a842f3e8...` value should be
+treated as never having been a real pin.
 
 ### Historical: why publication was a returned action item
 

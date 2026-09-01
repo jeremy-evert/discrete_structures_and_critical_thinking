@@ -9,7 +9,7 @@ technical failure).
 > **Update 2026-08-31:** the returned action item is closed. Jeremy refreshed
 > the GitHub credential and pushed the image by hand from `april`. The pinned
 > reference is now
-> `ghcr.io/jeremy-evert/dsct-week3-latex@sha256:a842f3e8a0ef11cd946a631b4f3fdc69ae7a0592710f3a17a80e86d7642496f1`
+> `ghcr.io/jeremy-evert/dsct-week3-latex@sha256:e7987919298c909f1a7f52247b8a7b54395cbde2400e2d6f3e8c5078425e2fca`
 > (tag `v1`), the GHCR package is **public**, anonymous pull is verified, and
 > `run-latex.sh`'s `DEFAULT_IMAGE_REF` is re-pinned to that digest. See
 > `week-03/container/IMAGE_CONTRACT.md` → "Registry publication (2026-08-31)".
