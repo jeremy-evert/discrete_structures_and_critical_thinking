@@ -1,5 +1,37 @@
 # Week 3 — running your reasoning in a container
 
+> **Week 3 Question: How do you know an experiment is repeatable?**
+>
+> If the code stays the same, what else can change?
+>
+> This week you will run a tiny experiment, preserve evidence about its
+> environment, compare observations, and decide exactly how much confidence
+> that evidence deserves. Along the way, you will meet containers. You are
+> not learning containers for their own sake. We use one because it lets us
+> deliberately control part of an experiment while leaving other parts of
+> the machine/environment outside that boundary.
+
+## Start here: the shared Commons lesson
+
+Before Step 1 below, work through the shared Computing Commons module —
+`computing_commons/curriculum/containers-and-repeatable-environments.md`
+(deck: `computing_commons/slides/week3_containers/week3_containers.pdf`). It
+teaches the concept once: repeatability vs. reproducibility, image vs.
+container, pinned digest identity, bind mounts, and what a container does
+and does not control. This page is DSCT's application of that shared
+concept, not a second copy of it.
+
+Your disciplinary question for this week is:
+
+> **What claim can the evidence justify?**
+
+You will use the container skill below to reason about evidence,
+uncertainty, what was controlled versus what was recorded, failure and
+recovery, and the bounded claim your receipt can actually carry — not to
+memorize container syntax.
+
+---
+
 Week 3 is where your Pair Reasoning artifacts (checkers, counterexample
 generators, proof write-ups) start needing a real toolchain, starting with a
 small typeset `.tex` claim/proof. You will run that toolchain inside a
