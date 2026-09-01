@@ -43,6 +43,18 @@ Scenarios C/D/E (read the message, decide the category, fix it yourself,
 verify with the PDF), but no live model session was run against this
 specific wrapper.
 
+## Worked example available for in-class use
+
+`lectures/ai_reasoning_latex_from_data/` (compiled report:
+`final/build/main.pdf`) is a real, evidence-backed worked example of
+claim/evidence/assumptions/check/confidence, built on a local-model GPU
+concurrency benchmark and tied to DSCT via an ordering relation and a
+product-rule count. It is linked from the student skill-ladder doc as
+required reading before Step 1. Useful if you want a second concrete
+instance of "a clean run is not proof" beyond the container wrapper itself
+-- the overlap-factor check in that report and the "verify the PDF content,
+not the exit code" instruction in Step 4 below are the same move.
+
 ## Suggested in-class use of the failure matrix
 
 Any of Scenarios C, D, or E can be assigned as a "find the bug" exercise

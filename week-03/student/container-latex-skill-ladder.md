@@ -30,6 +30,47 @@ uncertainty, what was controlled versus what was recorded, failure and
 recovery, and the bounded claim your receipt can actually carry — not to
 memorize container syntax.
 
+## Worked example: claim, evidence, assumptions, check, confidence
+
+Before you run anything yourself, read
+[`lectures/ai_reasoning_latex_from_data/`](../../lectures/ai_reasoning_latex_from_data/README.md)
+(compiled report: `final/build/main.pdf`, 3 pages). It is a full worked
+example of this week's disciplinary question, built on a real local-model
+GPU concurrency benchmark rather than a toy dataset.
+
+The report tests one claim — "more concurrency raises throughput, and a
+bigger GPU is faster" — against 24 measured observations (4
+hardware/parallel-setting series x 6 batch sizes) and finds the honest
+version is narrower than the tempting one: throughput only rises while
+genuine parallel generation is available, then flattens near the
+configured parallel limit. "Bigger GPU = faster" does not survive as a
+universal claim.
+
+Read it for the reasoning shape, not the GPU trivia:
+
+- **Claim** — stated before the data, falsifiable;
+- **Evidence** — a generated table and figure, not hand-picked numbers;
+- **Assumptions** — named explicitly (comparable token counts, placement
+  read from the recorded setting, not measured directly);
+- **Check** — an overlap-factor calculation (aggregate rate ÷ per-request
+  rate) that tests whether requests were actually running concurrently,
+  not just tests whether the exit code was clean;
+- **Confidence** — a bounded decision ("medium-high confidence" on the
+  narrow claim, explicitly *not* on the universal one).
+
+It also works two DSCT moves directly: an ordering relation (does
+"larger batch size implies higher throughput" stay true once you condition
+on the parallel limit — it does not, once the ceiling is reached) and a
+product-rule count (4 series x 6 sizes = 24 observations). The steps under
+`lectures/ai_reasoning_latex_from_data/steps/01`–`07` show the same report
+built up one reasoning move at a time, if you want to see how each piece
+gets added rather than reading only the finished version.
+
+This pairs directly with the container lesson: a `RESULT: PASS` line or a
+clean benchmark run is not itself proof of anything. In both cases, the
+evidence has to be inspected and the claim has to be no bigger than what
+the evidence actually supports.
+
 ---
 
 Week 3 is where your Pair Reasoning artifacts (checkers, counterexample
