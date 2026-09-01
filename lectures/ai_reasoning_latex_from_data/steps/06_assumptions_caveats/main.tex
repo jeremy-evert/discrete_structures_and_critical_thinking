@@ -1,0 +1,6 @@
+\documentclass{article}\usepackage[margin=1in]{geometry}\usepackage{booktabs}\usepackage{graphicx}\usepackage{xcolor}\usepackage{hyperref}
+\title{Love AI More. Trust AI Less.}\author{DSCT lecture walkthrough}\date{}
+\begin{document}\sloppy\maketitle
+\section{Claim, evidence, and reading}\textbf{Claim:} Increasing simultaneous requests should increase throughput until parallelism is saturated. The generated table and plot show a knee near the configured limit; serial rows mostly hide setup overhead.
+\section{Assumptions and caveats}\begin{itemize}\item Token counts and per-request rates are roughly comparable.\item The filename-derived parallel limit is a control, not a directly instrumented server measurement.\item GPU placement is an outcome: the 3 GB card's limit-4 run was 84\% GPU / 16\% CPU.\item More hosts, repeated runs, and direct timing of generation would strengthen the conclusion.\end{itemize}
+\section{The check}Compute $\mathrm{overlap}=\mathrm{aggregate\ rate}/\mathrm{per\mbox{-}request\ rate}$. For the T4 at limit 8 and $N=16$, $125.3/25.5\approx4.91$: about five requests were generating at once. For the same card at limit 1 and $N=16$, $76.4/138.3\approx0.55$: no batching claim is justified.\end{document}

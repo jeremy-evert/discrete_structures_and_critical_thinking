@@ -1,0 +1,10 @@
+note: "version 2" Tectonic command-line interface activated
+note: Running TeX ...
+note: downloading color.sty
+note: Rerunning TeX because "main.out" changed ...
+note: Running xdvipdfmx ...
+note: downloading cmmi7.pfb
+note: Writing `build/main.log` (10.7763671875 KiB)
+note: Writing `build/main.out` (1.9033203125 KiB)
+note: Writing `build/main.pdf` (68.4267578125 KiB)
+note: Writing `build/main.aux` (2.3076171875 KiB)
