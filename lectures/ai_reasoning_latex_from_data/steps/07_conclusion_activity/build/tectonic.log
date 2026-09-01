@@ -1,0 +1,9 @@
+note: "version 2" Tectonic command-line interface activated
+note: Running TeX ...
+note: downloading lmroman10-italic.otf
+note: Rerunning TeX because "main.out" changed ...
+note: Running xdvipdfmx ...
+note: Writing `build/main.log` (10.3076171875 KiB)
+note: Writing `build/main.pdf` (21.5419921875 KiB)
+note: Writing `build/main.out` (503 B)
+note: Writing `build/main.aux` (1.076171875 KiB)

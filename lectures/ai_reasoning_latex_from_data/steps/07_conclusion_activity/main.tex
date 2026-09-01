@@ -1,0 +1,8 @@
+\documentclass{article}\usepackage[margin=1in]{geometry}\usepackage{booktabs}\usepackage{graphicx}\usepackage{xcolor}\usepackage{hyperref}
+\title{Love AI More. Trust AI Less.}\author{DSCT lecture walkthrough}\date{}
+\begin{document}\maketitle
+\section{The call}\textbf{Claim:} Increasing simultaneous requests should increase throughput until parallelism is saturated. The evidence and overlap check support this conditionally: “bigger GPU = faster” does not hold as a universal explanation; actual parallelism and memory placement matter.\textbf{Confidence decision:} medium-high for these measured settings, not a universal law.
+\section{Instructor notes}\textit{Say:} “An AI could narrate the curve beautifully and still be wrong about what was measured.” Ask students to point to the claim, evidence, assumption, check, and confidence sentence before discussing causes.
+\section{Student activity (5 minutes)}In pairs, choose one series. Write (1) a one-sentence claim, (2) two numbers as evidence, (3) one assumption, and (4) a check using the overlap ratio. Then mark the claim supported, refuted, or undecidable.
+\section{Reflection}What would you measure next to distinguish “the GPU is saturated” from “the benchmark's setup overhead is hidden”? Why would that measurement change your confidence?
+\end{document}
