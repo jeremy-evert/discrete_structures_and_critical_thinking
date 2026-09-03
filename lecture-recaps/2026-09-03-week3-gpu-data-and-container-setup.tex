@@ -1,0 +1,59 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+\usetheme{Madrid}
+\title{Discrete Structures: Evidence Before Claims}
+\subtitle{Sept. 3 recap — GPU data reasoning and container setup}
+\author{COMSC 2043}
+\date{}
+\begin{document}
+\frame{\titlepage}
+\begin{frame}{The lesson}{\Large\centering
+A clean exit code is not proof of anything. Inspect the evidence before you trust the claim.}
+\end{frame}
+\begin{frame}{Cold start vs. warm start}
+\begin{itemize}
+\item Not about temperature — about whether the GPU already has a job queued.
+\item A warmed-up pipeline finishes the next job faster than the same hardware starting cold.
+\item Same idea as a car engine, applied to model calls on a GPU.
+\end{itemize}
+\end{frame}
+\begin{frame}{From observation to modest claim}
+\begin{enumerate}
+\item Notice something in the data (e.g. the newest GPU wasn't the fastest).
+\item That is an observation, not yet a claim.
+\item A \textbf{modest claim} is no bigger than what the evidence actually supports.
+\item Ask: what would it take to convince a skeptic?
+\end{enumerate}
+\end{frame}
+\begin{frame}{Sampling bias, live}
+\begin{itemize}
+\item Six machines, one building, is not a random sample of ``all GPUs.''
+\item Same failure mode as the WWII ``armor the bullet holes'' story.
+\item You can only reason about the evidence you actually have.
+\end{itemize}
+\end{frame}
+\begin{frame}{Hitting a real wall, live}
+\begin{itemize}
+\item Podman/WSL2 setup verification failed live, unstaged, on the instructor's own machine.
+\item Correct response to an administrative/platform wall: stop, file a help desk ticket, move on.
+\item Not every failure is yours to fix with more elbow grease.
+\end{itemize}
+\end{frame}
+\begin{frame}{The AI assistant got it wrong, live}
+\begin{itemize}
+\item Asked to find a folder while already standing inside it.
+\item Like using your phone as a flashlight to find your phone.
+\item The skill is noticing the mismatch, not typing the first prompt.
+\end{itemize}
+\end{frame}
+\begin{frame}{Two-pass builds and Git hygiene}
+\begin{itemize}
+\item LaTeX's first pass writes supporting files (e.g. a table of contents).
+\item The second pass reads that back in and renders it correctly.
+\item One pass with no visible change is normal, not a failure.
+\item \texttt{.gitignore} the build byproduct (\texttt{main.pdf}); track the source.
+\end{itemize}
+\end{frame}
+\begin{frame}{Your next move}
+Write one observation from the GPU Showdown table as a single, modest, falsifiable claim. Bring your exact Podman/WSL2 error text if you're still stuck. Next class: on to the discrete mathematics and critical thinking content.
+\end{frame}
+\end{document}
