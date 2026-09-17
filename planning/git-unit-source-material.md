@@ -15,11 +15,20 @@ here is committed to a week or a shape yet.
   boundary in `video_mechanics/README.md`/`AGENTS.md`). Already published to
   Canvas as lecture notes/digest — see
   `video_mechanics/reports/2026-09-12_cs1_week4_sept11_publish.md`.
-- **CS2, 2026-09-14** (course 74031, today's Monday class — GitHub setup was
-  a secondary thread inside a broader session, not the day's dedicated
-  topic) — `.../protected_raw/teams/2026-09-14/incoming/out/transcript.txt`
-  on april. Not yet published anywhere; transcribed today as part of
-  checking whether today's recordings had anything usable.
+- **CS2, 2026-09-14** (course 74031, that Monday's class) —
+  `.../protected_raw/teams/2026-09-14/incoming/out/transcript.txt` on
+  april. **Correction, 2026-09-17 (Anna):** this file originally
+  characterized GitHub as "a secondary thread inside a broader session,
+  not the day's dedicated topic." Checked directly against the transcript
+  (not against a downstream summary) and that's wrong — Git/GitHub/SSH-key
+  language runs continuously from roughly 3% to 99% through the session;
+  the class opens on repo/GitHub setup and closes still mid-SSH-key setup
+  with "we'll practice it Wednesday." **Git/GitHub setup was the day's
+  dedicated topic**, matching the live Canvas recap's own framing ("Today's
+  class focused on setting up Git and GitHub for our course projects").
+  This error had already propagated once (into an early Concept Hub entry
+  draft) before being caught; fixing it here at the source rather than in
+  each downstream artifact.
 
 ## Reusable analogies/framing, already proven live in front of students
 
