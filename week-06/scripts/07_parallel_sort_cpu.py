@@ -132,8 +132,8 @@ def main() -> None:
             parallel = benchmark_parallel(source, expected, pool, workers, repeats, batch)
             rows.extend(
                 (
-                    {"backend": "cpu_sequential", "n": n, "workers": 1, "median_ms": f"{sequential:.6f}"},
-                    {"backend": "cpu_parallel", "n": n, "workers": workers, "median_ms": f"{parallel:.6f}"},
+                    {"backend": "cpu_sequential", "n": n, "workers": 1, "median_ms": f"{sequential:.6f}", "timed_sorts": batch},
+                    {"backend": "cpu_parallel", "n": n, "workers": workers, "median_ms": f"{parallel:.6f}", "timed_sorts": batch},
                 )
             )
             print(
@@ -147,7 +147,7 @@ def main() -> None:
     with temporary.open("w", newline="") as file:
         writer = csv.DictWriter(
             file,
-            fieldnames=("backend", "n", "workers", "median_ms"),
+            fieldnames=("backend", "n", "workers", "median_ms", "timed_sorts"),
             lineterminator="\n",
         )
         writer.writeheader()

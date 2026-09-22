@@ -1,6 +1,7 @@
-cpu_model=Intel(R) Core(TM) i7-8700K CPU @ 3.70GHz
-cpu_logical_threads=12
-parallel_workers=12
-timing_method=median steady-state milliseconds per sort; tiny inputs batch identical operations per timed sample
-cpu_parallel_backend=Python multiprocessing chunk sort plus merge
-gpu_status=No accessible CUDA backend on this host
+cpu_model=13th Gen Intel(R) Core(TM) i7-13700
+cpu_logical_threads=24
+parallel_workers=24
+cpu_parallel_implementation=GNU libstdc++ parallel multiway mergesort via OpenMP
+gpu_host_model=NVIDIA GeForce RTX 3060 Ti
+gpu_access=inaccessible_from_hanna_sandbox
+gpu_note=GPU is present in the host WSL session but unavailable to this Hanna sandbox; no GPU timings were recorded.

@@ -47,4 +47,9 @@ Or open any HTML file directly in a browser. The pages are self-contained and do
    - The experiment compares sequential CPU sort, GNU/OpenMP parallel CPU sort,
      optional CUDA/Thrust GPU sort-only time, and GPU end-to-end time including transfers.
    - Use the 1× speedup line to find where overhead loses and where scale finally pays for it.
+   - Tiny inputs are timed in batches and labeled as clock-noise-scale; use their
+     direction as an overhead cue, not as a meaningful contest decided by nanoseconds.
+   - This host's RTX 3060 Ti is visible to the host WSL session but not to Hanna's
+     sandbox. Run `bash week-06/scripts/12_collect_gpu_parallelism_showdown.sh`
+     outside that sandbox to append real GPU measurements and regenerate the page.
    - Finish with the reveal: parallelism changes throughput and constants, but growth still matters.

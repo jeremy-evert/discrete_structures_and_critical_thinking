@@ -1,30 +1,51 @@
-# Week 6 Parallelism Showdown — Summary
+# Week 6 Parallelism Plot Twist — COMPLETE
 
-**Status:** HUMAN_GATE — implementation and validation are complete, but the authorized push cannot authenticate from this host.
+Open `week-06/websites/07_parallelism_plot_twist.html`. The self-contained page
+is generated from the committed CPU measurements and now visibly extends to
+20,000,000 values.
 
-Open `week-06/websites/07_parallelism_plot_twist.html` directly from disk.
-The class-ready benchmark/page implementation is commit
-`e5a9362c82cd8e5c8099361ee08665e8c4cc5e3a`.
+## What ran
 
-## What this host actually provided
+- CPU: 13th Gen Intel Core i7-13700 with 24 logical processors.
+- CPU paths: `std::sort` versus GNU libstdc++ parallel multiway mergesort via
+  OpenMP. A 16-versus-24 worker calibration found that 24 workers win at the
+  large far-right points, so 24 is the default. Every output matches an
+  independently sorted reference, validating order and multiset preservation.
+- GPU: an NVIDIA GeForce RTX 3060 Ti is present in Jeremy's host WSL session,
+  but unavailable to this Hanna sandbox. No GPU measurement was fabricated and
+  the webpage states that distinction next to the GPU hardware card.
 
-- Intel Core i7-8700K exposed as 12 logical processors; the experiment used 12 worker processes.
-- No C++ compiler was installed, so the launcher selected its standard-library Python multiprocessing fallback: concurrent chunk sorts plus the required final merge.
-- No usable GPU backend was available: NVML was inaccessible, `nvcc` was absent, and CuPy, PyTorch, and Numba were not installed. No GPU result was fabricated.
+## Measured classroom story
 
-## Measured lesson
+The final fresh 24-worker dataset has nine logarithmic sizes and 18 unique CPU
+rows. Parallel sorting loses at `n=10` and `1,000`, first wins at `10,000`, and
+has useful far-right separation: `23.30 ms` versus `287.89 ms` at 5 million,
+`42.45 ms` versus `604.34 ms` at 10 million, and `86.96 ms` versus `1,274.12 ms`
+at 20 million (about 14.7×). An earlier worker calibration also found 24 workers
+faster than 16 at 1, 5, 10, and 20 million. The retained small-point overhead,
+including minor noise-scale variation, is described honestly rather than smoothed.
 
-The CPU-parallel path was slower at small sizes because dispatching chunks and merging results has a real cover charge. On the final fresh run it first beat the sequential CPU baseline at 1,048,576 values and remained ahead at 2,097,152 values. The exact medians are committed in `week-06/results/parallel_sort_results.csv`; the webpage embeds that data and labels the GPU gap.
+## GPU collection outside this sandbox
 
-Each backend receives deterministic identical input. The pool is warmed, medians are recorded, tiny inputs are batched before timing, and every result is checked against an exact sequential sorted oracle (therefore sorted and multiset-preserving). The parallel timing honestly includes process dispatch, coordination, and merge.
+From Jeremy's device-enabled WSL terminal, run exactly:
 
-## Repair history and verification
+```bash
+bash week-06/scripts/12_collect_gpu_parallelism_showdown.sh
+```
 
-The original launcher failed because it unconditionally required `g++`. It now retains the GNU/OpenMP path when `g++` exists and otherwise runs the tested multiprocessing fallback. Results are overwritten atomically, so a fresh rerun has one header and exactly one row per backend/size. A second fresh run verified 14 finite, nonnegative CPU rows with no duplicate append contamination. The generated local HTML has embedded data, a 1× speedup reference, the CPU/GPU-units caveat, and no external dependencies.
+The helper verifies `nvcc` and NVIDIA device access before mutation, preserves
+the CPU rows, transactionally replaces only existing GPU rows, records honest
+GPU sort-only and end-to-end medians in the same CSV schema, and regenerates the
+webpage. Its sandbox preflight failed safely here before changing any evidence.
 
-## Publication gate
+## Validation and publication
 
-The local branch is two ordinary forward commits ahead of `origin/main`:
-`e5a9362` and `4afa9a7`. A normal `git push origin main` was blocked before authentication because the host's `/etc/ssh/ssh_config.d/20-systemd-ssh-proxy.conf` has unsafe ownership or permissions. Retrying with that config bypassed reached GitHub, which rejected the connection with `Permission denied (publickey)`; `ssh-add -l` also reported no authentication agent.
+- Two heavy CPU runs completed in roughly 12–14 seconds each, within the live
+  demo budget; the second left exactly 18 finite, non-duplicated rows.
+- CPU source compiled; Bash scripts and the page generator passed syntax checks.
+- The generated page contains the measured 20-million point, 1× speedup line,
+  GPU-host-versus-sandbox distinction, overhead reveal, Big-O explanation, and
+  no external dependency.
 
-The smallest required human action is to make an authorized GitHub SSH key/agent available to this host (or provide an approved authenticated Git transport), then run a normal non-force push of the existing commits. No code, benchmark, driver, or system change remains needed.
+Accepted payload: `216803d4a9cb88b9b64671eca04fab33703444c8`
+(`Extend Week 6 parallelism benchmark scale`), pushed to `origin/main`.
