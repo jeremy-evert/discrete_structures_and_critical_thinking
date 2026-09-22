@@ -37,3 +37,18 @@
 - Tool probe found Python and `htop`; no `latexmk`, `pdflatex`, `g++`, or `nvcc`,
   and `nvidia-smi` reported blocked NVML access. The source and runbook state
   these constraints honestly; no system software or drivers were changed.
+
+## 2026-09-22 — Commit and publication gate
+
+- Committed the validated Week 6-only package as
+  `a7e399e4283643259ab8d9027c6b90880c0e80e2`
+  (`Prepare Week 6 presentation package`). The working tree was clean after
+  that commit.
+- An authorized ordinary HTTPS push was attempted directly to the canonical
+  GitHub remote. Git returned `could not read Username ... No such device or
+  address`; no credential prompt or usable credential was available in this
+  non-interactive host context. The configured SSH remote had already failed on
+  a system SSH proxy configuration error.
+- Classified the only remaining condition as `HUMAN_GATE_PUSH_AUTH`. The local
+  package is class-ready and committed; no history was rewritten and no further
+  transport workaround can safely supply authentication.
