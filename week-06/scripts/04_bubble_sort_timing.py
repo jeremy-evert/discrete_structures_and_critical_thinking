@@ -4,7 +4,7 @@ This intentionally uses reverse-sorted input so Bubble Sort experiences
 its classic worst-case behavior. No third-party Python packages are required.
 
 The script:
-1. sorts 10, 100, 1,000, and 10,000 values,
+1. sorts 10, 100, 1,000, 10,000, 20,000, and 30,000 values,
 2. counts comparisons and swaps,
 3. measures wall-clock time,
 4. verifies the result,
@@ -17,7 +17,7 @@ import json
 import time
 
 
-SIZES = [10, 100, 1_000, 10_000]
+SIZES = [10, 100, 1_000, 10_000, 20_000, 30_000]
 
 
 def bubble_sort(values):
@@ -200,7 +200,7 @@ draw();
 def main():
     print("BUBBLE SORT: WATCH QUADRATIC WORK GROW")
     print("=" * 76)
-    print("Reverse-sorted input gives Bubble Sort its worst-case workout.")
+    print("Reverse-sorted input gives Bubble Sort its worst-case workout.")\n    print("The 20,000 and 30,000 runs are intentionally heavy so you can watch one CPU core work in htop.")
     print()
 
     results = []
