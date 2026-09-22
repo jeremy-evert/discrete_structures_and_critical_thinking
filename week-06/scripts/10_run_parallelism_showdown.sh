@@ -14,23 +14,23 @@ set -euo pipefail
 # Optional:
 #   DSCT_THREADS=8 bash week-06/scripts/10_run_parallelism_showdown.sh
 
-SCRIPT_DIR="$(cd "$(dirname "\${BASH_SOURCE[0]}")" && pwd)"
-WEEK_DIR="$(cd "\${SCRIPT_DIR}/.." && pwd)"
-RESULT_DIR="\${WEEK_DIR}/results"
-WEB_DIR="\${WEEK_DIR}/websites"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+WEEK_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
+RESULT_DIR="${WEEK_DIR}/results"
+WEB_DIR="${WEEK_DIR}/websites"
 
-CSV="\${RESULT_DIR}/parallel_sort_results.csv"
-META="\${RESULT_DIR}/parallel_sort_hardware.txt"
-HTML="\${WEB_DIR}/07_parallelism_plot_twist.html"
+CSV="${RESULT_DIR}/parallel_sort_results.csv"
+META="${RESULT_DIR}/parallel_sort_hardware.txt"
+HTML="${WEB_DIR}/07_parallelism_plot_twist.html"
 
-CPU_SRC="\${SCRIPT_DIR}/07_parallel_sort_cpu.cpp"
-GPU_SRC="\${SCRIPT_DIR}/08_parallel_sort_gpu.cu"
-GENERATOR="\${SCRIPT_DIR}/09_build_parallelism_webpage.py"
+CPU_SRC="${SCRIPT_DIR}/07_parallel_sort_cpu.cpp"
+GPU_SRC="${SCRIPT_DIR}/08_parallel_sort_gpu.cu"
+GENERATOR="${SCRIPT_DIR}/09_build_parallelism_webpage.py"
 
 CPU_BIN="/tmp/dsct_week06_parallel_sort_cpu"
 GPU_BIN="/tmp/dsct_week06_parallel_sort_gpu"
 
-mkdir -p "\${RESULT_DIR}" "\${WEB_DIR}"
+mkdir -p "${RESULT_DIR}" "${WEB_DIR}"
 
 if ! command -v g++ >/dev/null 2>&1; then
     echo "ERROR: g++ is required for the CPU benchmark."
@@ -44,15 +44,15 @@ fi
 
 LOGICAL_THREADS="$(nproc 2>/dev/null || echo 2)"
 
-if [[ -n "\${DSCT_THREADS:-}" ]]; then
-    THREADS="\${DSCT_THREADS}"
+if [[ -n "${DSCT_THREADS:-}" ]]; then
+    THREADS="${DSCT_THREADS}"
 else
     # Enough workers to demonstrate parallelism without accidentally spawning
     # a ridiculous number of threads on a large server.
     if (( LOGICAL_THREADS > 16 )); then
         THREADS=16
     elif (( LOGICAL_THREADS > 1 )); then
-        THREADS="\${LOGICAL_THREADS}"
+        THREADS="${LOGICAL_THREADS}"
     else
         THREADS=2
     fi
@@ -63,33 +63,33 @@ CPU_MODEL="$(
     awk -F: '/Model name/ {sub(/^[[:space:]]+/, "", $2); print $2; exit}'
 )"
 
-if [[ -z "\${CPU_MODEL}" ]]; then
+if [[ -z "${CPU_MODEL}" ]]; then
     CPU_MODEL="Unknown CPU"
 fi
 
-cat > "\${META}" <<EOF
+cat > "${META}" <<EOF
 host=$(hostname)
-cpu_model=\${CPU_MODEL}
-cpu_logical_threads=\${LOGICAL_THREADS}
-parallel_workers=\${THREADS}
+cpu_model=${CPU_MODEL}
+cpu_logical_threads=${LOGICAL_THREADS}
+parallel_workers=${THREADS}
 EOF
 
 echo
 echo "============================================================"
 echo "WEEK 6 PARALLELISM SHOWDOWN"
 echo "============================================================"
-echo "CPU: \${CPU_MODEL}"
-echo "Logical processors: \${LOGICAL_THREADS}"
-echo "Parallel workers for this run: \${THREADS}"
+echo "CPU: ${CPU_MODEL}"
+echo "Logical processors: ${LOGICAL_THREADS}"
+echo "Parallel workers for this run: ${THREADS}"
 echo
 
 echo "[1/4] Compiling CPU benchmark..."
-g++ -O3 -std=c++17 -fopenmp "\${CPU_SRC}" -o "\${CPU_BIN}"
+g++ -O3 -std=c++17 -fopenmp "${CPU_SRC}" -o "${CPU_BIN}"
 
 echo "[2/4] Running sequential CPU vs parallel CPU..."
-"\${CPU_BIN}" \
-    --output "\${CSV}" \
-    --threads "\${THREADS}" \
+"${CPU_BIN}" \
+    --output "${CSV}" \
+    --threads "${THREADS}" \
     --repeats 3
 
 GPU_RAN=0
@@ -100,11 +100,11 @@ if command -v nvcc >/dev/null 2>&1 &&
 
     echo
     echo "[3/4] CUDA detected. Compiling and running GPU benchmark..."
-    nvcc -O3 -std=c++17 "\${GPU_SRC}" -o "\${GPU_BIN}"
+    nvcc -O3 -std=c++17 "${GPU_SRC}" -o "${GPU_BIN}"
 
-    "\${GPU_BIN}" \
-        --output "\${CSV}" \
-        --metadata "\${META}" \
+    "${GPU_BIN}" \
+        --output "${CSV}" \
+        --metadata "${META}" \
         --repeats 3
 
     GPU_RAN=1
@@ -116,18 +116,18 @@ fi
 
 echo
 echo "[4/4] Building self-contained classroom webpage..."
-python3 "\${GENERATOR}" \
-    --csv "\${CSV}" \
-    --metadata "\${META}" \
-    --output "\${HTML}"
+python3 "${GENERATOR}" \
+    --csv "${CSV}" \
+    --metadata "${META}" \
+    --output "${HTML}"
 
 echo
 echo "============================================================"
 echo "READY FOR CLASS"
 echo "============================================================"
-echo "Results: \${CSV}"
-echo "Hardware: \${META}"
-echo "Website: \${HTML}"
+echo "Results: ${CSV}"
+echo "Hardware: ${META}"
+echo "Website: ${HTML}"
 echo
 
 if (( GPU_RAN == 1 )); then
@@ -138,5 +138,5 @@ fi
 
 echo
 echo "Open it with:"
-echo "  xdg-open \"\${HTML}\""
+echo "  xdg-open \"${HTML}\""
 echo
