@@ -42,3 +42,14 @@ Adapted from `planning/fall-2026-topic-map.md`,
 The reasoning, Show & Tell, and grading contracts are local reusable sources:
 `assignments/weekly-problem-solving-writeup.md`,
 `assignments/show-and-tell-artifact.md`, and `docs/grading-model.md`.
+
+
+## Classroom growth visualizations
+
+Interactive, self-contained classroom webpages are in [`websites/`](websites/README.md).
+They are numbered in teaching order, beginning immediately after the recursive
+Fibonacci trace in `scripts/01_recursive_fibonacci_trace.py`.
+
+The sequence moves from general Big O growth, to recursive-vs-iterative
+Fibonacci, to Bubble Sort's quadratic growth, to Bubble-vs-Merge, and finally
+to a live browser timing race.
