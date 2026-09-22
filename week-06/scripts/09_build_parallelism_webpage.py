@@ -189,13 +189,15 @@ function hardware(){{
   const cpu=meta.cpu_model||'CPU detected by benchmark machine';
   const logical=meta.cpu_logical_threads||'?';
   const workers=meta.parallel_workers||((grouped.cpu_parallel||[])[0]?.workers??'?');
-  const gpu=meta.gpu_name||'No CUDA GPU benchmarked';
-  const sms=meta.gpu_sms||'—';
+  const gpu=meta.gpu_name||meta.gpu_host_model||'No GPU information recorded';
+  const gpuStatus=meta.gpu_access==='inaccessible_from_hanna_sandbox'
+    ? 'Present in host WSL; inaccessible to Hanna sandbox — no timings'
+    : (meta.gpu_sms ? meta.gpu_sms+' streaming multiprocessors' : 'No GPU timing recorded');
 
   document.getElementById('hardware').innerHTML=
     '<div class="card">CPU<b>'+esc(cpu)+'</b><span>'+esc(logical)+' logical processors</span></div>'+
     '<div class="card">Parallel CPU run<b>'+esc(workers)+' workers</b><span>'+esc(meta.cpu_parallel_implementation||'parallel sort')+'</span></div>'+
-    '<div class="card">GPU<b>'+esc(gpu)+'</b><span>'+esc(sms)+' streaming multiprocessors</span></div>';
+    '<div class="card">GPU<b>'+esc(gpu)+'</b><span>'+esc(gpuStatus)+'</span></div>';
 }}
 
 function drawRuntime(){{

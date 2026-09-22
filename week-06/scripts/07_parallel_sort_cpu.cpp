@@ -30,7 +30,7 @@
 using Clock = std::chrono::steady_clock;
 
 static std::vector<std::size_t> sizes() {
-    return {10, 100, 1000, 10000, 100000, 1000000, 5000000, 10000000};
+    return {10, 100, 1000, 10000, 100000, 1000000, 5000000, 10000000, 20000000};
 }
 
 static std::vector<std::uint32_t> make_data(std::size_t n, std::uint32_t seed) {
@@ -96,7 +96,7 @@ static double median_ms(
 
 int main(int argc, char** argv) {
     std::string output = "parallel_sort_results.csv";
-    int threads = std::min(16, std::max(2, omp_get_max_threads()));
+    int threads = std::max(2, omp_get_max_threads());
     int base_repeats = 3;
 
     for (int i = 1; i < argc; ++i) {

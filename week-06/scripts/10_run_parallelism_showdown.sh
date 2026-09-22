@@ -47,15 +47,7 @@ LOGICAL_THREADS="$(nproc 2>/dev/null || echo 2)"
 if [[ -n "${DSCT_THREADS:-}" ]]; then
     THREADS="${DSCT_THREADS}"
 else
-    # Enough workers to demonstrate parallelism without accidentally spawning
-    # a ridiculous number of threads on a large server.
-    if (( LOGICAL_THREADS > 16 )); then
-        THREADS=16
-    elif (( LOGICAL_THREADS > 1 )); then
-        THREADS="${LOGICAL_THREADS}"
-    else
-        THREADS=2
-    fi
+    THREADS="${LOGICAL_THREADS}"
 fi
 
 CPU_MODEL="$(
@@ -72,6 +64,9 @@ cpu_model=${CPU_MODEL}
 cpu_logical_threads=${LOGICAL_THREADS}
 parallel_workers=${THREADS}
 cpu_parallel_implementation=GNU libstdc++ parallel multiway mergesort via OpenMP
+gpu_host_model=NVIDIA GeForce RTX 3060 Ti
+gpu_access=inaccessible_from_hanna_sandbox
+gpu_note=GPU is present in the host WSL session but unavailable to this Hanna sandbox; no GPU timings were recorded.
 EOF
 
 echo
@@ -102,6 +97,8 @@ if command -v nvcc >/dev/null 2>&1 &&
     echo "[3/4] CUDA detected. Compiling and running GPU benchmark..."
     nvcc -O3 -std=c++17 "${GPU_SRC}" -o "${GPU_BIN}"
 
+    printf 'gpu_access=available_from_hanna_sandbox\n' >> "${META}"
+
     "${GPU_BIN}" \
         --output "${CSV}" \
         --metadata "${META}" \
@@ -110,8 +107,9 @@ if command -v nvcc >/dev/null 2>&1 &&
     GPU_RAN=1
 else
     echo
-    echo "[3/4] No usable CUDA toolchain/GPU detected."
-    echo "      Skipping the GPU benchmark. CPU results are still valid."
+    echo "[3/4] GPU is reported present in the host WSL session, but is inaccessible"
+    echo "      from this Hanna sandbox (no usable CUDA toolchain/device access here)."
+    echo "      Skipping GPU timing without treating that as GPU absence. CPU results are valid."
 fi
 
 echo
@@ -133,7 +131,9 @@ echo
 if (( GPU_RAN == 1 )); then
     echo "GPU data is included."
 else
-    echo "GPU data is not included on this machine."
+    echo "GPU data is not included from this Hanna sandbox."
+    echo "To collect real GPU data outside this sandbox:"
+    echo "  bash week-06/scripts/12_collect_gpu_parallelism_showdown.sh"
 fi
 
 echo

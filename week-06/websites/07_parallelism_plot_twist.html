@@ -71,8 +71,8 @@ th,td{padding:9px 11px;border-bottom:1px solid #e3e8ef;text-align:right}th:first
 </div>
 
 <script>
-const data=[{"backend": "cpu_sequential", "n": 10, "workers": 1, "median_ms": 1.3e-05, "timed_sorts": 10000}, {"backend": "cpu_parallel", "n": 10, "workers": 16, "median_ms": 2e-05, "timed_sorts": 10000}, {"backend": "cpu_sequential", "n": 100, "workers": 1, "median_ms": 0.000362, "timed_sorts": 1000}, {"backend": "cpu_parallel", "n": 100, "workers": 16, "median_ms": 0.000389, "timed_sorts": 1000}, {"backend": "cpu_sequential", "n": 1000, "workers": 1, "median_ms": 0.005062, "timed_sorts": 100}, {"backend": "cpu_parallel", "n": 1000, "workers": 16, "median_ms": 0.011449, "timed_sorts": 100}, {"backend": "cpu_sequential", "n": 10000, "workers": 1, "median_ms": 0.313136, "timed_sorts": 10}, {"backend": "cpu_parallel", "n": 10000, "workers": 16, "median_ms": 0.022943, "timed_sorts": 10}, {"backend": "cpu_sequential", "n": 100000, "workers": 1, "median_ms": 4.049962, "timed_sorts": 1}, {"backend": "cpu_parallel", "n": 100000, "workers": 16, "median_ms": 0.434295, "timed_sorts": 1}, {"backend": "cpu_sequential", "n": 1000000, "workers": 1, "median_ms": 48.151929, "timed_sorts": 1}, {"backend": "cpu_parallel", "n": 1000000, "workers": 16, "median_ms": 6.944073, "timed_sorts": 1}, {"backend": "cpu_sequential", "n": 5000000, "workers": 1, "median_ms": 245.844467, "timed_sorts": 1}, {"backend": "cpu_parallel", "n": 5000000, "workers": 16, "median_ms": 25.451654, "timed_sorts": 1}, {"backend": "cpu_sequential", "n": 10000000, "workers": 1, "median_ms": 540.7429, "timed_sorts": 1}, {"backend": "cpu_parallel", "n": 10000000, "workers": 16, "median_ms": 52.051139, "timed_sorts": 1}];
-const meta={"cpu_model": "13th Gen Intel(R) Core(TM) i7-13700", "cpu_logical_threads": "24", "parallel_workers": "16", "cpu_parallel_implementation": "GNU libstdc++ parallel multiway mergesort via OpenMP"};
+const data=[{"backend": "cpu_sequential", "n": 10, "workers": 1, "median_ms": 1.6e-05, "timed_sorts": 10000}, {"backend": "cpu_parallel", "n": 10, "workers": 24, "median_ms": 1.8e-05, "timed_sorts": 10000}, {"backend": "cpu_sequential", "n": 100, "workers": 1, "median_ms": 0.000351, "timed_sorts": 1000}, {"backend": "cpu_parallel", "n": 100, "workers": 24, "median_ms": 0.00035, "timed_sorts": 1000}, {"backend": "cpu_sequential", "n": 1000, "workers": 1, "median_ms": 0.005282, "timed_sorts": 100}, {"backend": "cpu_parallel", "n": 1000, "workers": 24, "median_ms": 0.019254, "timed_sorts": 100}, {"backend": "cpu_sequential", "n": 10000, "workers": 1, "median_ms": 0.318761, "timed_sorts": 10}, {"backend": "cpu_parallel", "n": 10000, "workers": 24, "median_ms": 0.045163, "timed_sorts": 10}, {"backend": "cpu_sequential", "n": 100000, "workers": 1, "median_ms": 4.42712, "timed_sorts": 1}, {"backend": "cpu_parallel", "n": 100000, "workers": 24, "median_ms": 0.373125, "timed_sorts": 1}, {"backend": "cpu_sequential", "n": 1000000, "workers": 1, "median_ms": 50.685608, "timed_sorts": 1}, {"backend": "cpu_parallel", "n": 1000000, "workers": 24, "median_ms": 4.175839, "timed_sorts": 1}, {"backend": "cpu_sequential", "n": 5000000, "workers": 1, "median_ms": 287.887082, "timed_sorts": 1}, {"backend": "cpu_parallel", "n": 5000000, "workers": 24, "median_ms": 23.297511, "timed_sorts": 1}, {"backend": "cpu_sequential", "n": 10000000, "workers": 1, "median_ms": 604.340799, "timed_sorts": 1}, {"backend": "cpu_parallel", "n": 10000000, "workers": 24, "median_ms": 42.449595, "timed_sorts": 1}, {"backend": "cpu_sequential", "n": 20000000, "workers": 1, "median_ms": 1274.120146, "timed_sorts": 1}, {"backend": "cpu_parallel", "n": 20000000, "workers": 24, "median_ms": 86.962783, "timed_sorts": 1}];
+const meta={"cpu_model": "13th Gen Intel(R) Core(TM) i7-13700", "cpu_logical_threads": "24", "parallel_workers": "24", "cpu_parallel_implementation": "GNU libstdc++ parallel multiway mergesort via OpenMP", "gpu_host_model": "NVIDIA GeForce RTX 3060 Ti", "gpu_access": "inaccessible_from_hanna_sandbox", "gpu_note": "GPU is present in the host WSL session but unavailable to this Hanna sandbox; no GPU timings were recorded."};
 const labels={"cpu_sequential": "CPU sequential", "cpu_parallel": "CPU parallel", "gpu_sort_only": "GPU sort only", "gpu_end_to_end": "GPU end-to-end"};
 const colors={"cpu_sequential": "#334155", "cpu_parallel": "#2563eb", "gpu_sort_only": "#16a34a", "gpu_end_to_end": "#dc2626"};
 
@@ -95,13 +95,15 @@ function hardware(){
   const cpu=meta.cpu_model||'CPU detected by benchmark machine';
   const logical=meta.cpu_logical_threads||'?';
   const workers=meta.parallel_workers||((grouped.cpu_parallel||[])[0]?.workers??'?');
-  const gpu=meta.gpu_name||'No CUDA GPU benchmarked';
-  const sms=meta.gpu_sms||'—';
+  const gpu=meta.gpu_name||meta.gpu_host_model||'No GPU information recorded';
+  const gpuStatus=meta.gpu_access==='inaccessible_from_hanna_sandbox'
+    ? 'Present in host WSL; inaccessible to Hanna sandbox — no timings'
+    : (meta.gpu_sms ? meta.gpu_sms+' streaming multiprocessors' : 'No GPU timing recorded');
 
   document.getElementById('hardware').innerHTML=
     '<div class="card">CPU<b>'+esc(cpu)+'</b><span>'+esc(logical)+' logical processors</span></div>'+
     '<div class="card">Parallel CPU run<b>'+esc(workers)+' workers</b><span>'+esc(meta.cpu_parallel_implementation||'parallel sort')+'</span></div>'+
-    '<div class="card">GPU<b>'+esc(gpu)+'</b><span>'+esc(sms)+' streaming multiprocessors</span></div>';
+    '<div class="card">GPU<b>'+esc(gpu)+'</b><span>'+esc(gpuStatus)+'</span></div>';
 }
 
 function drawRuntime(){
