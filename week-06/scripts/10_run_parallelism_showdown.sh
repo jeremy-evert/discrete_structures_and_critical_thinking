@@ -68,10 +68,10 @@ if [[ -z "${CPU_MODEL}" ]]; then
 fi
 
 cat > "${META}" <<EOF
-host=$(hostname)
 cpu_model=${CPU_MODEL}
 cpu_logical_threads=${LOGICAL_THREADS}
 parallel_workers=${THREADS}
+cpu_parallel_implementation=GNU libstdc++ parallel multiway mergesort via OpenMP
 EOF
 
 echo

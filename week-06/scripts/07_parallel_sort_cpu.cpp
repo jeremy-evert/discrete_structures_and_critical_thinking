@@ -7,7 +7,9 @@
 //   g++ -O3 -std=c++17 -fopenmp 07_parallel_sort_cpu.cpp -o parallel_sort_cpu
 //
 // This deliberately times sorting only. Input generation and vector copying happen
-// outside the timer so we can discuss algorithm/runtime overhead separately.
+// outside the timer so we can discuss algorithm/runtime overhead separately. Tiny
+// inputs are batched into one timed sample; the reported value is milliseconds per
+// sort, which avoids teaching from a single clock-tick-sized measurement.
 
 #include <algorithm>
 #include <chrono>
@@ -19,6 +21,7 @@
 #include <parallel/algorithm>
 #include <parallel/tags.h>
 #include <random>
+#include <stdexcept>
 #include <string>
 #include <thread>
 #include <vector>
@@ -44,28 +47,46 @@ static int repeats_for(std::size_t n, int base) {
     return base;
 }
 
+static int sorts_per_timed_sample(std::size_t n) {
+    if (n <= 10) return 10000;
+    if (n <= 100) return 1000;
+    if (n <= 1000) return 100;
+    if (n <= 10000) return 10;
+    return 1;
+}
+
 template <typename F>
 static double median_ms(
     const std::vector<std::uint32_t>& source,
+    const std::vector<std::uint32_t>& expected,
     int repeats,
+    int sorts_per_sample,
     F sorter
 ) {
     std::vector<double> times;
     times.reserve(repeats);
 
     for (int r = 0; r < repeats; ++r) {
-        auto work = source;  // outside timer
+        // Source-vector preparation is deliberately outside the timed region.
+        std::vector<std::vector<std::uint32_t>> work(
+            static_cast<std::size_t>(sorts_per_sample), source
+        );
 
         const auto t0 = Clock::now();
-        sorter(work);
+        for (auto& item : work) sorter(item);
         const auto t1 = Clock::now();
 
-        if (!std::is_sorted(work.begin(), work.end())) {
-            throw std::runtime_error("sort produced incorrect output");
+        for (const auto& item : work) {
+            // Equality to a separately sorted reference confirms both ordering
+            // and preservation of the complete input multiset.
+            if (item != expected) {
+                throw std::runtime_error("sort produced incorrect output");
+            }
         }
 
         times.push_back(
-            std::chrono::duration<double, std::milli>(t1 - t0).count()
+            std::chrono::duration<double, std::milli>(t1 - t0).count() /
+            static_cast<double>(sorts_per_sample)
         );
     }
 
@@ -101,7 +122,7 @@ int main(int argc, char** argv) {
         return 1;
     }
 
-    out << "backend,n,workers,median_ms\n";
+    out << "backend,n,workers,median_ms,timed_sorts\n";
     out << std::fixed << std::setprecision(6);
 
     std::cerr << "CPU hardware threads reported: "
@@ -128,10 +149,15 @@ int main(int argc, char** argv) {
 
         const auto source =
             make_data(n, static_cast<std::uint32_t>(0xC0FFEEu + n));
+        auto expected = source;
+        std::sort(expected.begin(), expected.end());
+        const int sorts_per_sample = sorts_per_timed_sample(n);
 
         const double sequential = median_ms(
             source,
+            expected,
             repeats,
+            sorts_per_sample,
             [](auto& work) {
                 std::sort(work.begin(), work.end());
             }
@@ -139,7 +165,9 @@ int main(int argc, char** argv) {
 
         const double parallel = median_ms(
             source,
+            expected,
             repeats,
+            sorts_per_sample,
             [threads](auto& work) {
                 __gnu_parallel::sort(
                     work.begin(),
@@ -150,14 +178,17 @@ int main(int argc, char** argv) {
             }
         );
 
-        out << "cpu_sequential," << n << ",1," << sequential << "\n";
-        out << "cpu_parallel," << n << "," << threads << "," << parallel << "\n";
+        out << "cpu_sequential," << n << ",1," << sequential << ","
+            << sorts_per_sample << "\n";
+        out << "cpu_parallel," << n << "," << threads << "," << parallel
+            << "," << sorts_per_sample << "\n";
         out.flush();
 
         std::cerr
             << "  sequential " << sequential << " ms"
             << " | parallel " << parallel << " ms"
-            << " | speedup " << (sequential / parallel) << "x\n";
+            << " | speedup " << (sequential / parallel) << "x"
+            << " | timed sorts/sample " << sorts_per_sample << "\n";
     }
 
     std::cerr << "Wrote " << output << "\n";

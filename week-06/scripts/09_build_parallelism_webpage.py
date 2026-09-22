@@ -46,6 +46,7 @@ def read_rows(path):
                 "n": int(row["n"]),
                 "workers": int(row["workers"]),
                 "median_ms": float(row["median_ms"]),
+                "timed_sorts": int(row.get("timed_sorts", "1")),
             })
     return rows
 
@@ -145,7 +146,7 @@ th,td{{padding:9px 11px;border-bottom:1px solid #e3e8ef;text-align:right}}th:fir
 <h2>Measured data</h2>
 <div class="tablewrap">
 <table>
-<thead><tr><th>Backend</th><th>n</th><th>Workers / SMs</th><th>Median ms</th><th>Speedup vs CPU sequential</th></tr></thead>
+<thead><tr><th>Backend</th><th>n</th><th>Workers / SMs</th><th>Median ms / sort</th><th>Timed sorts / sample</th><th>Speedup vs CPU sequential</th></tr></thead>
 <tbody id="rows"></tbody>
 </table>
 </div>
@@ -193,7 +194,7 @@ function hardware(){{
 
   document.getElementById('hardware').innerHTML=
     '<div class="card">CPU<b>'+esc(cpu)+'</b><span>'+esc(logical)+' logical processors</span></div>'+
-    '<div class="card">Parallel CPU run<b>'+esc(workers)+' workers</b><span>GNU/OpenMP parallel sort</span></div>'+
+    '<div class="card">Parallel CPU run<b>'+esc(workers)+' workers</b><span>'+esc(meta.cpu_parallel_implementation||'parallel sort')+'</span></div>'+
     '<div class="card">GPU<b>'+esc(gpu)+'</b><span>'+esc(sms)+' streaming multiprocessors</span></div>';
 }}
 
@@ -385,6 +386,7 @@ function table(){{
       '<td>'+fmtN(r.n)+'</td>'+
       '<td>'+r.workers+'</td>'+
       '<td>'+fmtMs(r.median_ms)+'</td>'+
+      '<td>'+r.timed_sorts+'</td>'+
       '<td>'+(speed?speed.toFixed(2)+'×':'1.00×')+'</td>'+
       '</tr>';
   }}
@@ -396,6 +398,14 @@ hardware();
 table();
 drawRuntime();
 drawSpeedup();
+
+const tinyRows=data.filter(r=>r.timed_sorts>1);
+if(tinyRows.length){{
+  const note=document.createElement('p');
+  note.className='note';
+  note.textContent='Tiny inputs were measured in batches of independent source copies, then divided to report milliseconds per sort. Their sub-microsecond differences are clock-noise-scale; use them only to show that overhead can erase a practical win.';
+  document.querySelector('#rows').closest('.panel').appendChild(note);
+}}
 
 document.getElementById('logY').onchange=drawRuntime;
 document.getElementById('guide').onchange=drawRuntime;

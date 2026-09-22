@@ -1,0 +1,4 @@
+cpu_model=13th Gen Intel(R) Core(TM) i7-13700
+cpu_logical_threads=24
+parallel_workers=16
+cpu_parallel_implementation=GNU libstdc++ parallel multiway mergesort via OpenMP
