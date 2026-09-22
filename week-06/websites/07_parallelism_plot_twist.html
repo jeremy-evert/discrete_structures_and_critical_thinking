@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Week 6 — Parallelism Plot Twist</title>
+<style>
+:root{font-family:Inter,system-ui,sans-serif;color:#102033;background:#f6f8fb}
+body{margin:0}.wrap{max-width:1000px;margin:auto;padding:32px}
+h1{font-size:clamp(2.3rem,5vw,4.6rem);margin:.12em 0}
+.sub{font-size:1.3rem;color:#4b5b70}
+.panel{background:white;border:1px solid #dbe2ea;border-radius:18px;padding:24px;margin-top:22px;box-shadow:0 8px 24px #1b35520f}
+code{background:#eef2f7;padding:3px 6px;border-radius:6px}
+pre{background:#102033;color:white;padding:18px;border-radius:14px;overflow:auto;font-size:1rem}
+.big{font-size:1.5rem;font-weight:800}
+</style>
+</head>
+<body><div class="wrap">
+<div>DSCT · Week 6 · Open #07</div>
+<h1>But what if we just throw more cores at it?</h1>
+<p class="sub">This page becomes the measured CPU/GPU parallelism experiment after one benchmark command is run on the classroom machine.</p>
+<div class="panel">
+<p class="big">Generate the real classroom graph on Morgan:</p>
+<pre>git pull
+bash week-06/scripts/10_run_parallelism_showdown.sh
+xdg-open week-06/websites/07_parallelism_plot_twist.html</pre>
+<p>The benchmark replaces this placeholder with a self-contained page containing measured runtime, speedup, hardware details, CPU parallel results, and GPU results when CUDA is available.</p>
+</div>
+<div class="panel">
+<h2>The prediction to plant first</h2>
+<p>“If one CPU core is good, many CPU cores must be better. And a GPU has a ridiculous amount of parallel hardware, so surely that must be fastest.”</p>
+<p><strong>Do not reveal the answer yet.</strong> Let the measurements pick the fight.</p>
+</div>
+</div></body></html>
