@@ -10,5 +10,5 @@ def fibonacci(n):
     return fibonacci(n - 1) + fibonacci(n - 2)
 
 
-for n in range(6):
+for n in range(4):
     print(f"fib({n}) = {fibonacci(n)}")
