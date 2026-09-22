@@ -53,3 +53,29 @@ Fibonacci trace in `scripts/01_recursive_fibonacci_trace.py`.
 The sequence moves from general Big O growth, to recursive-vs-iterative
 Fibonacci, to Bubble Sort's quadratic growth, to Bubble-vs-Merge, and finally
 to a live browser timing race.
+
+
+## Hanna implementation mission
+
+The bounded Codex mission for the parallelism plot twist is:
+
+- `instructor/HANNA_PARALLELISM_SHOWDOWN.md`
+
+Launch it through the Foreman Interface Hanna fire-and-forget control plane:
+
+```bash
+bash week-06/scripts/11_hanna_parallelism_showdown.sh go
+```
+
+Useful detached controls:
+
+```bash
+bash week-06/scripts/11_hanna_parallelism_showdown.sh status
+bash week-06/scripts/11_hanna_parallelism_showdown.sh tail
+bash week-06/scripts/11_hanna_parallelism_showdown.sh go-baby-go
+```
+
+The mission authorizes Hanna to inspect, benchmark, repair, validate, commit, and
+push the bounded `week-06/**` work. A genuine credential, destructive-system,
+driver, purchase, physical-action, or scope-expansion decision remains a human
+gate.
