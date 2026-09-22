@@ -1,10 +1,10 @@
-state: COMPLETE
+state: RUNNING
 mission: Week 6 Parallelism Plot Twist
 coordinator: Hanna the Helper
 host: local authorized development host
-current_phase: published
-last_accepted_checkpoint: 4aa02dd83ea4582c59fe7225c46cbd13011e052d pushed to origin/main
+current_phase: extended CPU benchmark and GPU-access clarification
+last_accepted_checkpoint: 16-versus-24 worker calibration completed through n=20,000,000
 summary: SUMMARY.md
 worker_index: WORKER_INDEX.md
-updated: 2026-09-22T12:23:00-05:00
-next_action: open week-06/websites/07_parallelism_plot_twist.html for class; rerun the benchmark only when intentionally collecting fresh local measurements
+updated: 2026-09-22T12:30:00-05:00
+next_action: run the selected 24-worker full staircase, validate regenerated evidence, then commit and push

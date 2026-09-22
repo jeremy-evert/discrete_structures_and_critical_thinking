@@ -1,46 +1,15 @@
-# Week 6 Parallelism Plot Twist — COMPLETE
+# Week 6 Parallelism Plot Twist — running follow-up
 
-Open `week-06/websites/07_parallelism_plot_twist.html`. It is self-contained,
-generated from the committed measured CSV, and needs no web server or external
-chart library.
+Publication is pending the final Git review of the extended 20-million-value
+CPU dataset and GPU-access clarification.
 
-## What actually ran
-
-- CPU: 13th Gen Intel Core i7-13700, 24 logical processors.
-- CPU benchmark: `std::sort` versus GNU libstdc++ parallel multiway mergesort
-  via OpenMP, with 16 requested parallel workers. Each output is compared with
-  an independently sorted reference, verifying both order and the input multiset.
-- GPU: no real GPU backend ran. NVML reports OS-blocked GPU access; `nvcc`,
-  CuPy, PyTorch, and Numba were unavailable. The page says so plainly and
-  includes no invented GPU curve.
-
-## Measured classroom story
-
-Parallel CPU sorting lost at the tiny points (`n=10`, `100`, and `1,000`) and
-first beat the sequential baseline at `n=10,000`. It remained ahead through
-`10,000,000`; the fresh run measured about 13.6× at the crossover point and
-roughly 6.9–10.4× at the larger points. Tiny points are batched independent
-sorts and labeled clock-noise-scale, so the lesson treats them as overhead
-evidence rather than pretending a nanosecond difference is decisive.
-
-The page separates measured runtime from speedup, draws a visible 1×
-break-even line, reveals parallelism's overhead, explains why CPU cores and
-GPU execution units are not interchangeable, and correctly connects hardware
-throughput back to `O(n log n)` growth.
-
-## Repairs and verification
-
-- Removed the host-name field from persisted metadata.
-- Added reference-output correctness checks and a `timed_sorts` CSV field.
-- Confirmed a second fresh run creates exactly 16 finite CPU rows with no stale
-  append contamination or duplicate header.
-- Compiled the CPU source; syntax-checked the runner and Python generator;
-  checked the generated HTML for its required classroom content and absence of
-  external dependencies.
-
-Accepted class-ready payload: `4aa02dd83ea4582c59fe7225c46cbd13011e052d`
-(`Finish Week 6 parallelism showdown benchmark`), pushed to `origin/main`.
-
-Deeper evidence: `AUTHORSHIP.md`, `WORKER_INDEX.md`,
-`../../results/parallel_sort_results.csv`, and
-`../../results/parallel_sort_hardware.txt`.
+- The benchmark now uses all 24 logical CPU workers by default after a direct
+  16-versus-24 calibration showed a 24-worker far-right advantage.
+- The committed result schema now has nine logarithmic CPU sizes through
+  20,000,000 values; a fresh rerun produced exactly 18 finite, non-duplicated
+  CPU rows and a real 20-million parallel win.
+- The host WSL session has an NVIDIA GeForce RTX 3060 Ti, but this Hanna sandbox
+  cannot access its NVIDIA device or CUDA toolchain. No GPU measurements were
+  fabricated. `scripts/12_collect_gpu_parallelism_showdown.sh` is the one-command
+  out-of-sandbox collector; it preserves CPU rows, replaces only prior GPU rows,
+  and regenerates the webpage after real CUDA measurements complete.
