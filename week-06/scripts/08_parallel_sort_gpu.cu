@@ -180,9 +180,9 @@ int main(int argc, char** argv) {
         const double end_to_end = median(end_to_end_times);
 
         out << "gpu_sort_only," << n << ","
-            << props.multiProcessorCount << "," << sort_only << "\n";
+            << props.multiProcessorCount << "," << sort_only << ",1\n";
         out << "gpu_end_to_end," << n << ","
-            << props.multiProcessorCount << "," << end_to_end << "\n";
+            << props.multiProcessorCount << "," << end_to_end << ",1\n";
         out.flush();
 
         std::cerr
