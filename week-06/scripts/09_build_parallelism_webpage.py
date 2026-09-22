@@ -4,6 +4,7 @@
 import argparse
 import csv
 import json
+import math
 from pathlib import Path
 
 LABELS = {
@@ -41,12 +42,15 @@ def read_rows(path):
     rows = []
     with p.open(newline="") as file:
         for row in csv.DictReader(file):
-            rows.append({
+            parsed = {
                 "backend": row["backend"],
                 "n": int(row["n"]),
                 "workers": int(row["workers"]),
                 "median_ms": float(row["median_ms"]),
-            })
+            }
+            if parsed["n"] <= 0 or parsed["workers"] <= 0 or not math.isfinite(parsed["median_ms"]) or parsed["median_ms"] < 0:
+                raise ValueError(f"Invalid benchmark row: {row}")
+            rows.append(parsed)
     return rows
 
 
@@ -142,6 +146,12 @@ th,td{{padding:9px 11px;border-bottom:1px solid #e3e8ef;text-align:right}}th:fir
 </div>
 
 <div class="panel">
+<h2>What this run showed</h2>
+<p id="finding" class="big"></p>
+<p class="note">Tiny inputs are measured as batches of identical sorts and reported per sort, so the clock is not being asked to distinguish a single near-zero operation. All values remain medians from this machine.</p>
+</div>
+
+<div class="panel">
 <h2>Measured data</h2>
 <div class="tablewrap">
 <table>
@@ -188,12 +198,13 @@ function hardware(){{
   const cpu=meta.cpu_model||'CPU detected by benchmark machine';
   const logical=meta.cpu_logical_threads||'?';
   const workers=meta.parallel_workers||((grouped.cpu_parallel||[])[0]?.workers??'?');
-  const gpu=meta.gpu_name||'No CUDA GPU benchmarked';
-  const sms=meta.gpu_sms||'—';
+  const backend=meta.cpu_parallel_backend||'parallel CPU sort';
+  const gpu=meta.gpu_name||meta.gpu_status||'No CUDA GPU benchmarked';
+  const sms=meta.gpu_sms||'No GPU timing data';
 
   document.getElementById('hardware').innerHTML=
     '<div class="card">CPU<b>'+esc(cpu)+'</b><span>'+esc(logical)+' logical processors</span></div>'+
-    '<div class="card">Parallel CPU run<b>'+esc(workers)+' workers</b><span>GNU/OpenMP parallel sort</span></div>'+
+    '<div class="card">Parallel CPU run<b>'+esc(workers)+' workers</b><span>'+esc(backend)+'</span></div>'+
     '<div class="card">GPU<b>'+esc(gpu)+'</b><span>'+esc(sms)+' streaming multiprocessors</span></div>';
 }}
 
@@ -392,8 +403,24 @@ function table(){{
   document.getElementById('rows').innerHTML=out;
 }}
 
+function finding(){{
+  const parallel=(grouped.cpu_parallel||[]).filter(r=>seq[r.n]);
+  const winner=parallel.find(r=>r.median_ms<seq[r.n]);
+  const smallest=parallel[0];
+  let text='No CPU comparison was recorded.';
+  if(winner){{
+    const speed=seq[winner.n]/winner.median_ms;
+    text='Parallel CPU sorting first beat the sequential baseline at n='+fmtN(winner.n)+
+      ': '+speed.toFixed(2)+'× faster in this run.';
+  }} else if(smallest) {{
+    text='The parallel path did not beat the sequential baseline in this measured range; its coordination and merge cost remained visible.';
+  }}
+  document.getElementById('finding').textContent=text;
+}}
+
 hardware();
 table();
+finding();
 drawRuntime();
 drawSpeedup();
 
