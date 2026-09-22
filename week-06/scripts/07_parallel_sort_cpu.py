@@ -145,7 +145,11 @@ def main() -> None:
     args.output.parent.mkdir(parents=True, exist_ok=True)
     temporary = args.output.with_suffix(args.output.suffix + ".tmp")
     with temporary.open("w", newline="") as file:
-        writer = csv.DictWriter(file, fieldnames=("backend", "n", "workers", "median_ms"))
+        writer = csv.DictWriter(
+            file,
+            fieldnames=("backend", "n", "workers", "median_ms"),
+            lineterminator="\n",
+        )
         writer.writeheader()
         writer.writerows(rows)
     temporary.replace(args.output)
