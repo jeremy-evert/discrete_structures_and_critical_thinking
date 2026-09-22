@@ -1,3 +1,3 @@
-# Worker Index — Hanna Week 6 Parallelism Showdown
+# Worker index
 
-No child workers were used. Hanna performed the bounded implementation and validation directly.
+No child workers were used. Hanna performed the bounded diagnosis, implementation, benchmark, and validation directly.

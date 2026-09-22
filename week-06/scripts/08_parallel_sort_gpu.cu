@@ -41,7 +41,7 @@ static void cuda_check(cudaError_t status, const char* where) {
 }
 
 static std::vector<std::size_t> sizes() {
-    return {10, 100, 1000, 10000, 100000, 1000000, 5000000, 10000000};
+    return {10, 100, 1000, 10000, 100000, 1000000, 5000000, 10000000, 20000000};
 }
 
 static std::vector<std::uint32_t> make_data(std::size_t n, std::uint32_t seed) {
@@ -114,6 +114,8 @@ int main(int argc, char** argv) {
 
         const auto source =
             make_data(n, static_cast<std::uint32_t>(0xC0FFEEu + n));
+        auto expected = source;
+        std::sort(expected.begin(), expected.end());
 
         thrust::device_vector<std::uint32_t> device_values(n);
         std::vector<std::uint32_t> host_output(n);
@@ -144,7 +146,7 @@ int main(int argc, char** argv) {
                 device_values.end(),
                 host_output.begin()
             );
-            if (!std::is_sorted(host_output.begin(), host_output.end())) {
+            if (host_output != expected) {
                 std::cerr << "GPU sort-only result was incorrect.\n";
                 return 1;
             }
@@ -170,7 +172,7 @@ int main(int argc, char** argv) {
                 ).count()
             );
 
-            if (!std::is_sorted(host_output.begin(), host_output.end())) {
+            if (host_output != expected) {
                 std::cerr << "GPU end-to-end result was incorrect.\n";
                 return 1;
             }
@@ -180,9 +182,9 @@ int main(int argc, char** argv) {
         const double end_to_end = median(end_to_end_times);
 
         out << "gpu_sort_only," << n << ","
-            << props.multiProcessorCount << "," << sort_only << "\n";
+            << props.multiProcessorCount << "," << sort_only << ",1\n";
         out << "gpu_end_to_end," << n << ","
-            << props.multiProcessorCount << "," << end_to_end << "\n";
+            << props.multiProcessorCount << "," << end_to_end << ",1\n";
         out.flush();
 
         std::cerr

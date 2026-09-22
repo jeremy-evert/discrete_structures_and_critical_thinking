@@ -43,15 +43,7 @@ LOGICAL_THREADS="$(nproc 2>/dev/null || echo 2)"
 if [[ -n "${DSCT_THREADS:-}" ]]; then
     THREADS="${DSCT_THREADS}"
 else
-    # Enough workers to demonstrate parallelism without accidentally spawning
-    # a ridiculous number of threads on a large server.
-    if (( LOGICAL_THREADS > 16 )); then
-        THREADS=16
-    elif (( LOGICAL_THREADS > 1 )); then
-        THREADS="${LOGICAL_THREADS}"
-    else
-        THREADS=2
-    fi
+    THREADS="${LOGICAL_THREADS}"
 fi
 
 CPU_MODEL="$(
@@ -67,7 +59,6 @@ cat > "${META}" <<EOF
 cpu_model=${CPU_MODEL}
 cpu_logical_threads=${LOGICAL_THREADS}
 parallel_workers=${THREADS}
-timing_method=median steady-state milliseconds per sort; tiny inputs batch identical operations per timed sample
 EOF
 
 echo
@@ -80,24 +71,16 @@ echo "Parallel workers for this run: ${THREADS}"
 echo
 
 if command -v g++ >/dev/null 2>&1; then
-    echo "[1/4] Compiling GNU/OpenMP CPU benchmark..."
+    echo "[1/4] Compiling CPU benchmark..."
     g++ -O3 -std=c++17 -fopenmp "${CPU_SRC}" -o "${CPU_BIN}"
-    echo "cpu_parallel_backend=GNU libstdc++ parallel sort (OpenMP)" >> "${META}"
-
+    echo "cpu_parallel_implementation=GNU libstdc++ parallel multiway mergesort via OpenMP" >> "${META}"
     echo "[2/4] Running sequential CPU vs parallel CPU..."
-    "${CPU_BIN}" \
-        --output "${CSV}" \
-        --threads "${THREADS}" \
-        --repeats 3
+    "${CPU_BIN}" --output "${CSV}" --threads "${THREADS}" --repeats 3
 else
-    echo "[1/4] No C++ compiler found; using the standard-library multiprocessing fallback."
-    echo "cpu_parallel_backend=Python multiprocessing chunk sort plus merge" >> "${META}"
-
-    echo "[2/4] Running sequential CPU vs genuinely multiprocess CPU sorting..."
-    python3 "${CPU_FALLBACK}" \
-        --output "${CSV}" \
-        --threads "${THREADS}" \
-        --repeats 3
+    echo "[1/4] No C++ compiler found; using Python multiprocessing."
+    echo "cpu_parallel_implementation=Python multiprocessing chunk sort plus merge" >> "${META}"
+    echo "[2/4] Running sequential CPU vs multiprocess CPU..."
+    python3 "${CPU_FALLBACK}" --output "${CSV}" --threads "${THREADS}" --repeats 3
 fi
 
 GPU_RAN=0
@@ -110,6 +93,8 @@ if command -v nvcc >/dev/null 2>&1 &&
     echo "[3/4] CUDA detected. Compiling and running GPU benchmark..."
     nvcc -O3 -std=c++17 "${GPU_SRC}" -o "${GPU_BIN}"
 
+    printf 'gpu_access=available\n' >> "${META}"
+
     "${GPU_BIN}" \
         --output "${CSV}" \
         --metadata "${META}" \
@@ -118,9 +103,8 @@ if command -v nvcc >/dev/null 2>&1 &&
     GPU_RAN=1
 else
     echo
-    echo "[3/4] No usable CUDA toolchain/GPU detected."
-    echo "      Skipping the GPU benchmark. CPU results are still valid."
-    echo "gpu_status=No accessible CUDA backend on this host" >> "${META}"
+    echo "[3/4] No accessible CUDA toolchain/device; skipping GPU timing. CPU results are valid."
+    echo "gpu_access=unavailable_on_this_run" >> "${META}"
 fi
 
 echo
@@ -142,7 +126,9 @@ echo
 if (( GPU_RAN == 1 )); then
     echo "GPU data is included."
 else
-    echo "GPU data is not included on this machine."
+    echo "GPU data is not included from this run."
+    echo "To collect real GPU data outside this sandbox:"
+    echo "  bash week-06/scripts/12_collect_gpu_parallelism_showdown.sh"
 fi
 
 echo
