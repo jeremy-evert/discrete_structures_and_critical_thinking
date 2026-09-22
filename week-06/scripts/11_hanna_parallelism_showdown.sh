@@ -12,7 +12,7 @@ set -Eeuo pipefail
 #
 # Other cockpit-free controls:
 #   bash week-06/scripts/11_hanna_parallelism_showdown.sh telemetry
-  bash week-06/scripts/11_hanna_parallelism_showdown.sh status
+#   bash week-06/scripts/11_hanna_parallelism_showdown.sh status
 #   bash week-06/scripts/11_hanna_parallelism_showdown.sh tail
 #   bash week-06/scripts/11_hanna_parallelism_showdown.sh follow
 #   bash week-06/scripts/11_hanna_parallelism_showdown.sh resume "message"
@@ -233,6 +233,7 @@ case "${action}" in
         cat >&2 <<EOF
 Usage:
   bash week-06/scripts/11_hanna_parallelism_showdown.sh go
+  bash week-06/scripts/11_hanna_parallelism_showdown.sh telemetry
   bash week-06/scripts/11_hanna_parallelism_showdown.sh status
   bash week-06/scripts/11_hanna_parallelism_showdown.sh tail
   bash week-06/scripts/11_hanna_parallelism_showdown.sh follow
