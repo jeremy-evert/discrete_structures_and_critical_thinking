@@ -38,3 +38,13 @@ xdg-open week-06/websites/02_big_o_growth.html
 ```
 
 Or open any HTML file directly in a browser. The pages are self-contained and do not require a Python server or external chart library.
+
+
+6. `07_parallelism_plot_twist.html`
+   - Ask whether more CPU cores and then GPU parallelism automatically make sorting faster.
+   - Before class, generate the measured version with:
+     `bash week-06/scripts/10_run_parallelism_showdown.sh`
+   - The experiment compares sequential CPU sort, GNU/OpenMP parallel CPU sort,
+     optional CUDA/Thrust GPU sort-only time, and GPU end-to-end time including transfers.
+   - Use the 1× speedup line to find where overhead loses and where scale finally pays for it.
+   - Finish with the reveal: parallelism changes throughput and constants, but growth still matters.
