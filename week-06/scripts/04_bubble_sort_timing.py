@@ -200,7 +200,8 @@ draw();
 def main():
     print("BUBBLE SORT: WATCH QUADRATIC WORK GROW")
     print("=" * 76)
-    print("Reverse-sorted input gives Bubble Sort its worst-case workout.")\n    print("The 20,000 and 30,000 runs are intentionally heavy so you can watch one CPU core work in htop.")
+    print("Reverse-sorted input gives Bubble Sort its worst-case workout.")
+    print("The 20,000 and 30,000 runs are intentionally heavy so you can watch one CPU core work in htop.")
     print()
 
     results = []
