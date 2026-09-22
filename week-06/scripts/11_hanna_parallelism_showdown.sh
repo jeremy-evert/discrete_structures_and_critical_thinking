@@ -11,7 +11,8 @@ set -Eeuo pipefail
 #   bash week-06/scripts/11_hanna_parallelism_showdown.sh go-baby-go
 #
 # Other cockpit-free controls:
-#   bash week-06/scripts/11_hanna_parallelism_showdown.sh status
+#   bash week-06/scripts/11_hanna_parallelism_showdown.sh telemetry
+  bash week-06/scripts/11_hanna_parallelism_showdown.sh status
 #   bash week-06/scripts/11_hanna_parallelism_showdown.sh tail
 #   bash week-06/scripts/11_hanna_parallelism_showdown.sh follow
 #   bash week-06/scripts/11_hanna_parallelism_showdown.sh resume "message"
@@ -92,6 +93,56 @@ wrapper() {
     bash "${WRAPPER}" "$@"
 }
 
+ensure_telemetry_tools() {
+    local missing=()
+
+    command -v htop >/dev/null 2>&1 || missing+=("htop")
+    command -v nvtop >/dev/null 2>&1 || missing+=("nvtop")
+
+    if (( ${#missing[@]} == 0 )); then
+        printf 'Telemetry tools ready: htop + nvtop\n'
+        return 0
+    fi
+
+    printf 'Telemetry tools missing: %s\n' "${missing[*]}"
+
+    if command -v apt-get >/dev/null 2>&1 && command -v sudo >/dev/null 2>&1; then
+        printf 'Installing missing classroom telemetry tools with apt...\n'
+        if sudo apt-get update && sudo apt-get install -y "${missing[@]}"; then
+            printf 'Telemetry tools installed.\n'
+        else
+            printf 'WARNING: telemetry install failed; benchmark launch will continue.\n' >&2
+        fi
+    else
+        printf 'No supported automatic apt/sudo path; benchmark launch will continue.\n'
+    fi
+}
+
+show_telemetry_cockpit() {
+    printf '\n============================================================\n'
+    printf 'OPTIONAL LIVE TELEMETRY\n'
+    printf '============================================================\n'
+
+    if command -v htop >/dev/null 2>&1; then
+        printf 'CPU/RAM:  htop\n'
+    else
+        printf 'CPU/RAM:  top   (press 1 for per-core view where supported)\n'
+    fi
+
+    if command -v nvtop >/dev/null 2>&1; then
+        printf 'GPU:      nvtop\n'
+    elif command -v nvidia-smi >/dev/null 2>&1; then
+        printf 'GPU:      watch -n 0.5 nvidia-smi\n'
+        printf 'GPU alt:  nvidia-smi dmon -s pucm\n'
+    else
+        printf 'GPU:      no nvtop or nvidia-smi detected on this host\n'
+    fi
+
+    printf 'HANNA:    bash week-06/scripts/11_hanna_parallelism_showdown.sh follow\n'
+    printf '============================================================\n'
+    printf 'Open those in separate terminals if you want the full cockpit.\n\n'
+}
+
 show_banner() {
     cat <<EOF
 
@@ -119,6 +170,7 @@ case "${action}" in
 
         refresh_foreman_if_safe
         require_launch_files
+        ensure_telemetry_tools
 
         if command -v tmux >/dev/null 2>&1 &&
            tmux has-session -t "=${SESSION}" 2>/dev/null; then
@@ -136,6 +188,12 @@ case "${action}" in
         printf '\nGO BABY GO.\n'
         printf 'Use this only when you want a quick look:\n'
         printf '  bash %q status\n' "$0"
+        show_telemetry_cockpit
+        ;;
+
+    telemetry)
+        ensure_telemetry_tools
+        show_telemetry_cockpit
         ;;
 
     status)
