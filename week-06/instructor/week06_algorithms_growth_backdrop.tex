@@ -1,0 +1,41 @@
+\documentclass[aspectratio=169,12pt]{beamer}
+\usetheme{default}
+\setbeamertemplate{navigation symbols}{}
+\setbeamercolor{structure}{fg=blue!55!black}
+\title{Algorithms, Correctness \& Growth}
+\subtitle{DSCT Week 6}
+\date{}
+\begin{document}
+\begin{frame}\titlepage\vfill\large A correct answer is not yet a scalable algorithm.\end{frame}
+\begin{frame}{What happens when the problem gets bigger?}
+\Large\begin{itemize}\item One successful input is evidence, not a guarantee.
+\item Count meaningful work and compare its growth.
+\item The shape matters more than one stopwatch reading.\end{itemize}\end{frame}
+\begin{frame}{Naive Fibonacci repeats work}
+\Large\[F(n)=F(n-1)+F(n-2)\]
+\begin{itemize}\item Base cases make it correct.\item Repeated subproblems make it expensive.
+\item Trace first; then predict the timing race.\end{itemize}\end{frame}
+\begin{frame}{Correct does not mean efficient}
+\Large Same Fibonacci answers: \[\text{naive recursion: repeated calls}\]
+\[\text{iteration: one progressing pass}\]
+\vfill The input/output contract can stay the same while the work changes radically.\end{frame}
+\begin{frame}{Bubble Sort: 10$\times$ bigger can mean about 100$\times$ work}
+\Large\[\frac{n(n-1)}{2}\approx\frac{n^2}{2}\]
+\vfill Reverse-sorted input exposes the worst case. Exact seconds depend on the machine; quadratic growth does not.\end{frame}
+\begin{frame}{Recursion was never the villain}
+\Large\begin{tabular}{rcl}Bubble Sort&:&$O(n^2)$\\Merge Sort&:&$O(n\log_2 n)$\end{tabular}
+\vfill Algorithm structure, not the word ``recursive,'' determines the growth story.\end{frame}
+\begin{frame}{Parallelism has a cover charge}
+\Large\begin{itemize}\item divide work;\item coordinate workers;\item synchronize results;
+\item sometimes move data to and from a device.\end{itemize}
+\vfill Small jobs can lose before scale makes parallel work worthwhile.\end{frame}
+\begin{frame}{Measured CPU crossover}
+\Large\begin{itemize}\item Compare sequential and parallel sorting on identical data.
+\item Use medians, not a flattering single run.\item Tiny timing differences are overhead clues, not universal facts.\end{itemize}\end{frame}
+\begin{frame}{GPU: present is not the same as accessible}
+\Large GPU lanes are not CPU cores with a different name.\vfill
+Separate sort-only time from end-to-end time including transfers and synchronization.\end{frame}
+\begin{frame}{Closing synthesis}
+\Large\begin{block}{Two complementary levers}Better algorithms change growth.\\[0.45em]Parallelism changes throughput and constants.\end{block}
+\vfill Measure honestly. State the contract. Ask what happens at scale.\end{frame}
+\end{document}
