@@ -1,0 +1,40 @@
+# Week 6 Classroom Websites
+
+Open these in this order during the lesson.
+
+1. `02_big_o_growth.html`
+   - Introduce Big O as a question about what happens when input size grows.
+   - Compare O(1), O(log n), O(n), O(n log n), O(n²), and O(2ⁿ).
+   - Use the slider first; turn on log scale after the exponential curve runs away.
+
+2. `03_fibonacci_recursive_vs_iterative.html`
+   - Compare exact call counts for naive recursive Fibonacci with iterative loop steps.
+   - Connect this page to `../scripts/01_recursive_fibonacci_trace.py`.
+   - Ask students where repeated work appears.
+
+3. `04_bubble_sort_quadratic_growth.html`
+   - Show worst-case Bubble Sort comparison growth.
+   - Have students predict the effect of doubling n before clicking the button.
+   - The multiplier approaches 4×.
+
+4. `05_bubble_vs_merge_growth.html`
+   - Reveal the recursion plot twist.
+   - Compare Bubble Sort O(n²) with the n log₂n growth model for Merge Sort.
+   - Use this to separate "recursive" from "slow."
+
+5. `06_live_sorting_runtime_race.html`
+   - Run both sorting algorithms on the same deterministic random arrays.
+   - Graph actual browser timings.
+   - Normal mode is the default classroom run; "turn up the pain" extends to n=8,000.
+   - Timings vary by machine, so discuss the shape rather than treating one millisecond value as universal.
+
+## Open locally
+
+From the repository root:
+
+```bash
+git pull
+xdg-open week-06/websites/02_big_o_growth.html
+```
+
+Or open any HTML file directly in a browser. The pages are self-contained and do not require a Python server or external chart library.
