@@ -24,6 +24,7 @@ META="${RESULT_DIR}/parallel_sort_hardware.txt"
 HTML="${WEB_DIR}/07_parallelism_plot_twist.html"
 
 CPU_SRC="${SCRIPT_DIR}/07_parallel_sort_cpu.cpp"
+CPU_FALLBACK="${SCRIPT_DIR}/07_parallel_sort_cpu.py"
 GPU_SRC="${SCRIPT_DIR}/08_parallel_sort_gpu.cu"
 GENERATOR="${SCRIPT_DIR}/09_build_parallelism_webpage.py"
 
@@ -31,11 +32,6 @@ CPU_BIN="/tmp/dsct_week06_parallel_sort_cpu"
 GPU_BIN="/tmp/dsct_week06_parallel_sort_gpu"
 
 mkdir -p "${RESULT_DIR}" "${WEB_DIR}"
-
-if ! command -v g++ >/dev/null 2>&1; then
-    echo "ERROR: g++ is required for the CPU benchmark."
-    exit 1
-fi
 
 if ! command -v python3 >/dev/null 2>&1; then
     echo "ERROR: python3 is required to build the classroom webpage."
@@ -68,10 +64,10 @@ if [[ -z "${CPU_MODEL}" ]]; then
 fi
 
 cat > "${META}" <<EOF
-host=$(hostname)
 cpu_model=${CPU_MODEL}
 cpu_logical_threads=${LOGICAL_THREADS}
 parallel_workers=${THREADS}
+timing_method=median steady-state milliseconds per sort; tiny inputs batch identical operations per timed sample
 EOF
 
 echo
@@ -83,14 +79,26 @@ echo "Logical processors: ${LOGICAL_THREADS}"
 echo "Parallel workers for this run: ${THREADS}"
 echo
 
-echo "[1/4] Compiling CPU benchmark..."
-g++ -O3 -std=c++17 -fopenmp "${CPU_SRC}" -o "${CPU_BIN}"
+if command -v g++ >/dev/null 2>&1; then
+    echo "[1/4] Compiling GNU/OpenMP CPU benchmark..."
+    g++ -O3 -std=c++17 -fopenmp "${CPU_SRC}" -o "${CPU_BIN}"
+    echo "cpu_parallel_backend=GNU libstdc++ parallel sort (OpenMP)" >> "${META}"
 
-echo "[2/4] Running sequential CPU vs parallel CPU..."
-"${CPU_BIN}" \
-    --output "${CSV}" \
-    --threads "${THREADS}" \
-    --repeats 3
+    echo "[2/4] Running sequential CPU vs parallel CPU..."
+    "${CPU_BIN}" \
+        --output "${CSV}" \
+        --threads "${THREADS}" \
+        --repeats 3
+else
+    echo "[1/4] No C++ compiler found; using the standard-library multiprocessing fallback."
+    echo "cpu_parallel_backend=Python multiprocessing chunk sort plus merge" >> "${META}"
+
+    echo "[2/4] Running sequential CPU vs genuinely multiprocess CPU sorting..."
+    python3 "${CPU_FALLBACK}" \
+        --output "${CSV}" \
+        --threads "${THREADS}" \
+        --repeats 3
+fi
 
 GPU_RAN=0
 
@@ -112,6 +120,7 @@ else
     echo
     echo "[3/4] No usable CUDA toolchain/GPU detected."
     echo "      Skipping the GPU benchmark. CPU results are still valid."
+    echo "gpu_status=No accessible CUDA backend on this host" >> "${META}"
 fi
 
 echo

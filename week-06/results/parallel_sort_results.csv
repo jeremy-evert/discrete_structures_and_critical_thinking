@@ -1,0 +1,15 @@
+backend,n,workers,median_ms
+cpu_sequential,32,1,0.001033
+cpu_parallel,32,12,1.464569
+cpu_sequential,256,1,0.018333
+cpu_parallel,256,12,1.606569
+cpu_sequential,2048,1,0.297600
+cpu_parallel,2048,12,2.446504
+cpu_sequential,16384,1,3.178605
+cpu_parallel,16384,12,7.005510
+cpu_sequential,131072,1,32.639950
+cpu_parallel,131072,12,47.719673
+cpu_sequential,1048576,1,409.141224
+cpu_parallel,1048576,12,378.232377
+cpu_sequential,2097152,1,930.267520
+cpu_parallel,2097152,12,783.498695
