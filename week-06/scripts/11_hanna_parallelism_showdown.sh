@@ -53,6 +53,28 @@ refresh_foreman_if_safe() {
     fi
 }
 
+ensure_local_dispatch() {
+    local dispatch="${FOREMAN_ROOT}/${MISSION}"
+
+    [[ -f "${PROJECT_MISSION}" ]] || \
+        fail "project mission missing: ${PROJECT_MISSION}"
+
+    if [[ -f "${dispatch}" ]]; then
+        return 0
+    fi
+
+    # The project-local Week 6 mission is the authority. If foreman_interface
+    # cannot be fast-forwarded because it contains unrelated local work, create
+    # a local-only dispatch copy instead of making Jeremy stash/commit/relay.
+    # Do not overwrite an existing dispatch and do not stage/commit this copy.
+    mkdir -p -- "$(dirname -- "${dispatch}")"
+    cp -- "${PROJECT_MISSION}" "${dispatch}"
+
+    printf 'Created local-only Hanna dispatch from the authoritative Week 6 mission:\n'
+    printf '  %s\n' "${dispatch}"
+    printf 'Existing foreman_interface work was left untouched.\n'
+}
+
 require_launch_files() {
     [[ -f "${PROJECT_MISSION}" ]] || \
         fail "project mission missing: ${PROJECT_MISSION}"
@@ -60,12 +82,10 @@ require_launch_files() {
     [[ -f "${WRAPPER}" ]] || \
         fail "Hanna fire-and-forget wrapper missing: ${WRAPPER}"
 
-    [[ -f "${FOREMAN_ROOT}/${MISSION}" ]] || {
-        printf '\nThe Foreman dispatch file is not present locally.\n' >&2
-        printf 'It exists upstream. Update foreman_interface safely, then rerun:\n\n' >&2
-        printf '  cd %q && git pull --ff-only\n\n' "${FOREMAN_ROOT}" >&2
-        fail "missing ${FOREMAN_ROOT}/${MISSION}"
-    }
+    ensure_local_dispatch
+
+    [[ -f "${FOREMAN_ROOT}/${MISSION}" ]] || \
+        fail "could not create Hanna dispatch: ${FOREMAN_ROOT}/${MISSION}"
 }
 
 wrapper() {
