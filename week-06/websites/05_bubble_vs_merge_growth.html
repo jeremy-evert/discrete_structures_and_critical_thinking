@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Week 6 — Bubble vs Merge Sort</title>
+<style>
+:root{font-family:Inter,system-ui,sans-serif;color:#102033;background:#f6f8fb}
+body{margin:0}.wrap{max-width:1180px;margin:auto;padding:32px}h1{font-size:clamp(2.2rem,5vw,4.4rem);margin:.1em 0}.sub{font-size:1.3rem;color:#4b5b70}
+.panel{background:#fff;border:1px solid #dbe2ea;border-radius:18px;padding:22px;margin-top:22px;box-shadow:0 8px 24px #1b35520f}
+.controls{display:flex;gap:18px;align-items:center;flex-wrap:wrap}input[type=range]{width:min(620px,75vw)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}.stat{background:#f2f5f9;border-radius:14px;padding:16px}.big{font-size:2rem;font-weight:800}
+canvas{width:100%;height:500px}.note{color:#607085}.question{font-size:1.45rem;font-weight:750}
+@media(max-width:760px){.stats{grid-template-columns:1fr}.wrap{padding:18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div>DSCT · Week 6 · Open #05</div>
+<h1>Recursion was never the villain.</h1>
+<p class="sub">Bubble Sort is iterative and grows quadratically. Merge Sort is recursive and grows around n log₂n.</p>
+<div class="panel">
+  <div class="controls">
+    <label>Input size n = <strong id="nVal">1000</strong></label>
+    <input id="n" type="range" min="2" max="10000" step="10" value="1000">
+    <label><input id="log" type="checkbox"> log-scale view</label>
+  </div>
+  <div class="stats">
+    <div class="stat"><div>Bubble comparisons</div><div class="big" id="bubble"></div></div>
+    <div class="stat"><div>Merge work model</div><div class="big" id="merge"></div></div>
+    <div class="stat"><div>Bubble / Merge</div><div class="big" id="ratio"></div></div>
+  </div>
+  <canvas id="chart" width="1120" height="500"></canvas>
+  <p class="note">Bubble uses exact worst-case comparisons n(n−1)/2. Merge uses n·log₂n as a teaching model of growth, not an exact comparison count for one implementation.</p>
+</div>
+<p class="question">Ask: If recursion were automatically slow, how could this happen?</p>
+</div>
+<script>
+const c=document.getElementById('chart'),ctx=c.getContext('2d'),slider=document.getElementById('n'),logToggle=document.getElementById('log');
+const bubble=n=>n*(n-1)/2, merge=n=>n*Math.log2(n),fmt=v=>Math.round(v).toLocaleString();
+function draw(){
+ const n=+slider.value,W=c.width,H=c.height,p={l:92,r:28,t:26,b:58},maxN=10000,maxY=bubble(maxN),log=logToggle.checked;
+ document.getElementById('nVal').textContent=n;document.getElementById('bubble').textContent=fmt(bubble(n));document.getElementById('merge').textContent=fmt(merge(n));document.getElementById('ratio').textContent=(bubble(n)/merge(n)).toFixed(1)+'×';
+ ctx.clearRect(0,0,W,H);ctx.font='16px system-ui';
+ const yTop=log?Math.log10(maxY):maxY;
+ const X=x=>p.l+x/maxN*(W-p.l-p.r),Y=v=>H-p.b-((log?Math.log10(Math.max(v,1)):v)/yTop)*(H-p.t-p.b);
+ ctx.strokeStyle='#d9e1ea';ctx.fillStyle='#5c6d80';ctx.lineWidth=1;
+ for(let i=0;i<=5;i++){let yy=p.t+i*(H-p.t-p.b)/5;ctx.beginPath();ctx.moveTo(p.l,yy);ctx.lineTo(W-p.r,yy);ctx.stroke();let raw=log?Math.pow(10,yTop*(1-i/5)):yTop*(1-i/5);ctx.fillText(raw>=10000?raw.toExponential(1):Math.round(raw),8,yy+5)}
+ for(let x=0;x<=maxN;x+=2000)ctx.fillText(x.toLocaleString(),X(x)-18,H-p.b+25);
+ const series=[['Bubble O(n²)',bubble,'#d62728'],['Merge O(n log n)',merge,'#1f77b4']];
+ for(const s of series){ctx.strokeStyle=s[2];ctx.lineWidth=4;ctx.beginPath();for(let x=10;x<=maxN;x+=10){let xx=X(x),yy=Y(s[1](x));x===10?ctx.moveTo(xx,yy):ctx.lineTo(xx,yy)}ctx.stroke()}
+ let gx=X(n);ctx.strokeStyle='#334155';ctx.lineWidth=2;ctx.setLineDash([6,6]);ctx.beginPath();ctx.moveTo(gx,p.t);ctx.lineTo(gx,H-p.b);ctx.stroke();ctx.setLineDash([]);
+ ctx.fillStyle='#d62728';ctx.fillText('Bubble O(n²)',W-185,44);ctx.fillStyle='#1f77b4';ctx.fillText('Merge O(n log n)',W-185,68);ctx.fillStyle='#334155';ctx.fillText('n',W-15,H-18);
+}
+slider.oninput=draw;logToggle.onchange=draw;draw();
+</script>
+</body></html>
