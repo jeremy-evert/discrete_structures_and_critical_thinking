@@ -44,15 +44,24 @@ The reasoning, Show & Tell, and grading contracts are local reusable sources:
 `assignments/show-and-tell-artifact.md`, and `docs/grading-model.md`.
 
 
-## Classroom growth visualizations
+## Present this week
 
-Interactive, self-contained classroom webpages are in [`websites/`](websites/README.md).
-They are numbered in teaching order, beginning immediately after the recursive
-Fibonacci trace in `scripts/01_recursive_fibonacci_trace.py`.
+Start with [`instructor/PRESENTATION_RUNBOOK.md`](instructor/PRESENTATION_RUNBOOK.md).
+It is the authoritative, sequential classroom path: what to open or run, what
+to say, what to ask, the intended reveal, and where to go next. The supporting
+pages remain in [`websites/`](websites/README.md) and are numbered in teaching
+order. They are self-contained and may be opened directly from local disk.
 
-The sequence moves from general Big O growth, to recursive-vs-iterative
-Fibonacci, to Bubble Sort's quadratic growth, to Bubble-vs-Merge, and finally
-to a live browser timing race.
+The sequence moves from Big-O growth and recursive Fibonacci through the
+measured Bubble Sort page, the Bubble-versus-Merge reveal, the live runtime
+race, and the CPU parallelism plot twist. Host-specific timings are labelled
+as measurements rather than universal facts.
+
+Before class, run:
+
+```bash
+bash week-06/scripts/13_preclass_check.sh
+```
 
 
 ## Hanna implementation mission
