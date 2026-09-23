@@ -42,7 +42,9 @@ inaccessible from the Hanna sandbox; no GPU timings are claimed.
 - Bounded smoke checks: PASS for the simple/trace/iterative Fibonacci scripts,
   small Bubble Sort correctness, the webpage generator, and C++ syntax. No
   heavy benchmark was rerun.
-- Final commit SHA: `9532d18` (`Archive DSCT Week 6 for semester reuse`).
-- Push state: PASS — pushed normally to `origin/main` (`958643f..9532d18`).
+- Final commit SHAs: `9532d18` (archive payload), `c48233e` (closeout receipt),
+  and `4fc0e7d` (portable validator repair).
+- Push state: PASS — all commits pushed normally to `origin/main`
+  (`958643f..4fc0e7d`).
 - Human gate: none. GPU collection remains optional and requires a separate
   device-enabled WSL shell; no GPU timing was fabricated.
