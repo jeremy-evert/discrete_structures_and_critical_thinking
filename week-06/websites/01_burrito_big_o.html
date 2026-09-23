@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Week 6 — The Burrito Explainer</title>
+<style>
+:root{font-family:Inter,system-ui,sans-serif;color:#102033;background:#f6f8fb}
+body{margin:0}.wrap{max-width:1000px;margin:auto;padding:32px}
+h1{font-size:clamp(2.2rem,5vw,4rem);margin:.1em 0}h2{margin:.2em 0 .4em}
+.sub{font-size:1.3rem;color:#4b5b70}
+.panel{background:white;border:1px solid #dbe2ea;border-radius:18px;padding:22px;margin-top:22px;box-shadow:0 8px 24px #1b35520f}
+.controls{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin:10px 0}.controls label{font-weight:700}
+input[type=range]{width:min(420px,70vw)}
+.timeline{display:flex;gap:6px;align-items:stretch;margin:14px 0}
+.step{border-radius:12px;padding:10px 12px;color:#fff;min-width:64px;display:flex;flex-direction:column;justify-content:center}
+.step b{font-size:1.15rem}.step span{font-size:.9rem;opacity:.95}
+.bread{background:#b7791f}.pb{background:#8a5a2b}.banana{background:#c9a400;color:#1d1600}
+.jar{background:#475569;border-radius:12px;padding:10px 12px;color:#fff;margin-top:8px;display:inline-block}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.card{padding:14px;border-radius:14px;background:#f2f5f9}.card b{font-size:1.3rem}.card span{display:block;color:#596b80;margin-top:4px}
+canvas{width:100%;height:380px}
+table{border-collapse:collapse;width:100%;margin-top:12px}th,td{border-bottom:1px solid #e3e9f0;padding:8px;text-align:right}th:first-child,td:first-child{text-align:left}
+.note{font-size:1rem;color:#607085}.question{font-size:1.35rem;font-weight:750;margin:18px 0 8px}
+button{font:inherit;padding:8px 14px;border-radius:10px;border:1px solid #9fb0c4;background:#eef3f9;cursor:pointer}
+.reveal{display:none;margin-top:10px;padding:12px;border-radius:12px;background:#eaf6ee}
+.real{border-left:6px solid #2f855a}.illus{border-left:6px solid #b7791f}
+.pill{font-size:.8rem;font-weight:700;padding:2px 8px;border-radius:99px;background:#e2e8f0;margin-left:6px}
+@media(max-width:760px){.cards{grid-template-columns:1fr 1fr}.wrap{padding:18px}canvas{height:300px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div>DSCT · Week 6 · Open #01 (before Big O growth)</div>
+  <h1>Big O, one burrito at a time.</h1>
+  <p class="sub">In class we built a peanut butter and banana burrito algorithm, timed every step, and accidentally derived Big O. Here it is again, slowly, so you can push on it.</p>
+
+  <div class="panel real">
+    <h2>1 · The recipe, as the class timed it <span class="pill">from class</span></h2>
+    <p>A student gave the steps ("burrito bread" was their phrase for the tortilla, and it stuck). The class put a time on each one:</p>
+    <div class="timeline" id="timeline"></div>
+    <p>Bread, spread, banana: <strong>every burrito needs all three</strong>, so they repeat once per burrito. That is <strong>31 seconds each</strong>.</p>
+    <p>The peanut butter jar is different. You open it <strong>once</strong>, leave it open while you work, and close it at the end. It does not matter whether you make 1 burrito or a million.</p>
+    <p class="question">Predict first: if you make 100 burritos, how many times do you open the jar?</p>
+    <button id="revealBtn">Reveal</button>
+    <div class="reveal" id="reveal">Once. Same as for 1 burrito, or 2, or 20. That is what "constant" means: the cost does not grow with n.</div>
+  </div>
+
+  <div class="panel illus">
+    <h2>2 · Turn the dial: n = number of burritos <span class="pill">illustrative</span></h2>
+    <div class="controls">
+      <label for="n">Burritos n = <strong id="nVal"></strong></label>
+      <input id="n" type="range" min="0" max="6" step="0.01" value="1">
+    </div>
+    <div class="controls">
+      <label for="jar">Jar open + close, once = <strong id="jarVal"></strong> s</label>
+      <input id="jar" type="range" min="0" max="300" step="1" value="30">
+    </div>
+    <p class="note">The class never timed the jar, so its time is <strong>your</strong> setting. Push it up to 300 seconds and see whether the answer to the big question changes.</p>
+    <canvas id="chart" width="960" height="380"></canvas>
+    <div class="cards" id="cards"></div>
+    <table id="table"></table>
+  </div>
+
+  <div class="panel real">
+    <h2>3 · From burritos to the formal statement</h2>
+    <p><strong>Constant time, O(1):</strong> the jar. One open, one close, whether n is 1 or a million. Its cost never gets worse as n grows.</p>
+    <p><strong>Linear time, O(n):</strong> the assembly. Total time is about <code>jar + n × (1 + 10 + 20)</code> seconds. Double the burritos and the assembly time doubles: a straight line.</p>
+    <p><strong>What wins as n grows:</strong> the per-burrito work. The fixed jar cost becomes a rounding error next to n copies of the banana step. The whole factory is <strong>O(n)</strong>.</p>
+    <p><strong>Why the class kept only the banana.</strong> To keep the conversation simple, the class kept the single biggest step (20 s) and ignored the 1 s and 10 s. The banana is the largest term, so it dominates the per-burrito cost. The cleaner reason all three can be dropped as far as O(n) goes is that a constant factor (31 s or 20 s per burrito) changes the slope of the line, not its shape. Either way, the answer is linear.</p>
+    <p><strong>Upper limits.</strong> Big O is a worst-case curve: real performance may sit below it, but should not rise above its shape.</p>
+    <p class="question">Ask the room: what would have to change about the recipe to make the factory <em>not</em> O(n)?</p>
+  </div>
+
+  <div class="panel real">
+    <h2>4 · What is real, and what isn't</h2>
+    <ul>
+      <li><strong>From class:</strong> 1 s for the bread, 10 s for the peanut butter, 20 s for the banana (chosen from a 10–20 s range the class looked up); the jar is opened once; the banana is the step that dominates.</li>
+      <li><strong>Jeremy's mental math in class:</strong> 10 bananas at 20 s is 200 s. That covers the banana step only. The full per-burrito time for 10 burritos is 310 s, and the table above shows both.</li>
+      <li><strong>A live wobble, kept honest:</strong> while explaining the jar, Jeremy said "constant" and "linear" in the same breath and then corrected himself. The clean version is above: one-time jar is constant, per-burrito work is linear.</li>
+      <li><strong>Not from class:</strong> the jar's duration (you set it), and the chart. No student names appear on this page; contributions are paraphrased.</li>
+    </ul>
+    <p>Next: <a href="02_big_o_growth.html">Open #02 — Big O growth curves</a> puts O(1), O(n) and four more shapes on one chart.</p>
+  </div>
+</div>
+<script>
+const BREAD=1,PB=10,BAN=20,PER=BREAD+PB+BAN;
+const nEl=document.getElementById('n'),jarEl=document.getElementById('jar');
+const canvas=document.getElementById('chart'),ctx=canvas.getContext('2d');
+const nOf=()=>Math.max(1,Math.round(Math.pow(10,+nEl.value)));
+const fmt=v=>v.toLocaleString('en-US',{maximumFractionDigits:0});
+const tl=document.getElementById('timeline');
+tl.innerHTML='<div class="step bread" style="flex:1"><b>1 s</b><span>lay down the burrito bread</span></div>'
+ +'<div class="step pb" style="flex:10"><b>10 s</b><span>peanut butter: load knife, spread</span></div>'
+ +'<div class="step banana" style="flex:20"><b>20 s</b><span>add banana, finish the burrito</span></div>';
+tl.insertAdjacentHTML('afterend','<div class="jar">Jar: open once, close once (per session, not per burrito)</div>');
+document.getElementById('revealBtn').onclick=()=>{document.getElementById('reveal').style.display='block'};
+function draw(){
+  const n=nOf(),jar=+jarEl.value;
+  document.getElementById('nVal').textContent=fmt(n);document.getElementById('jarVal').textContent=jar;
+  const assembly=n*PER,total=jar+assembly,jarShare=100*jar/total;
+  document.getElementById('cards').innerHTML=
+   `<div class="card"><b>${fmt(jar)} s</b><span>jar, once: O(1)</span></div>`
+  +`<div class="card"><b>${fmt(assembly)} s</b><span>assembly, n × 31: O(n)</span></div>`
+  +`<div class="card"><b>${jarShare<0.1&&jar>0?'<0.1':jarShare.toFixed(1)}%</b><span>of the total is the jar</span></div>`;
+  const rows=[1,10,100,1000,1000000];
+  document.getElementById('table').innerHTML='<tr><th>burritos n</th><th>jar (once)</th><th>banana step only (n × 20)</th><th>assembly (n × 31)</th><th>jar share of total</th></tr>'
+   +rows.map(r=>{const a=r*PER,t=jar+a;return `<tr><td>${fmt(r)}</td><td>${fmt(jar)} s</td><td>${fmt(r*BAN)} s</td><td>${fmt(a)} s</td><td>${(100*jar/t).toFixed(jar/t<0.001?4:1)}%</td></tr>`}).join('');
+  const W=canvas.width,H=canvas.height,p={l:80,r:20,t:24,b:44};
+  ctx.clearRect(0,0,W,H);ctx.font='15px system-ui';
+  const xMax=Math.max(n,10),yMax=Math.max(jar+PER*xMax,10);
+  const X=x=>p.l+x/xMax*(W-p.l-p.r),Y=y=>H-p.b-y/yMax*(H-p.t-p.b);
+  ctx.strokeStyle='#d9e1ea';ctx.fillStyle='#5c6d80';
+  for(let i=0;i<=4;i++){const yy=p.t+i*(H-p.t-p.b)/4;ctx.beginPath();ctx.moveTo(p.l,yy);ctx.lineTo(W-p.r,yy);ctx.stroke();ctx.fillText(fmt(yMax*(1-i/4))+' s',6,yy+5)}
+  ctx.fillText('burritos: 0 … '+fmt(xMax),p.l,H-14);
+  const line=(f,c)=>{ctx.strokeStyle=c;ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(X(0),Y(f(0)));ctx.lineTo(X(xMax),Y(f(xMax)));ctx.stroke()};
+  line(x=>jar+PER*x,'#111827');line(x=>PER*x,'#9467bd');line(x=>jar,'#1f77b4');
+  ctx.lineWidth=1;ctx.font='bold 15px system-ui';
+  ctx.fillStyle='#111827';ctx.fillText('total',W-p.r-120,Y(jar+PER*xMax)+18);
+  ctx.fillStyle='#9467bd';ctx.fillText('assembly O(n)',W-p.r-160,Y(PER*xMax)+36);
+  ctx.fillStyle='#1f77b4';ctx.fillText('jar O(1)',W-p.r-90,Y(jar)-8);
+}
+nEl.oninput=jarEl.oninput=draw;draw();
+</script>
+</body>
+</html>
