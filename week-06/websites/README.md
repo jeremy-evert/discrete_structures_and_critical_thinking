@@ -2,6 +2,11 @@
 
 Open these in this order during the lesson.
 
+1. `01_burrito_big_o.html`
+   - Concrete anchor for Big O, built from the peanut-butter-banana-burrito timing exercise in class.
+   - The jar is opened once (O(1)); the assembly repeats per burrito (O(n)); the largest step dominates as n grows.
+   - The jar's duration was never timed in class, so the page makes it a visitor-set slider. No student names appear.
+
 1. `02_big_o_growth.html`
    - Introduce Big O as a question about what happens when input size grows.
    - Compare O(1), O(log n), O(n), O(n log n), O(n²), and O(2ⁿ).
