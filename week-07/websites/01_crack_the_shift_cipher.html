@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Week 7 — Crack the Shift Cipher</title>
+<style>
+:root{font-family:Inter,system-ui,sans-serif;color:#102033;background:#f6f8fb}
+body{margin:0}.wrap{max-width:1000px;margin:auto;padding:32px}
+h1{font-size:clamp(2.2rem,5vw,4rem);margin:.1em 0}h2{margin:.2em 0 .4em}
+.sub{font-size:1.3rem;color:#4b5b70}
+.panel{background:white;border:1px solid #dbe2ea;border-radius:18px;padding:22px;margin-top:22px;box-shadow:0 8px 24px #1b35520f}
+.real{border-left:6px solid #2f855a}.illus{border-left:6px solid #b7791f}
+.pill{font-size:.8rem;font-weight:700;padding:2px 8px;border-radius:99px;background:#e2e8f0;margin-left:6px}
+.controls{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:10px 0}
+button,select,input[type=text]{font:inherit;padding:8px 14px;border-radius:10px;border:1px solid #9fb0c4;background:#eef3f9}
+button{cursor:pointer}button:disabled{opacity:.5;cursor:default}
+input[type=text]{background:#fff;min-width:min(420px,80vw);font-family:ui-monospace,monospace;text-transform:uppercase}
+.mono{font-family:ui-monospace,SFMono-Regular,monospace}
+.cipher{font-size:clamp(1.3rem,4vw,2.1rem);letter-spacing:.08em;background:#0f172a;color:#e2e8f0;border-radius:12px;padding:14px 18px;margin:10px 0;word-break:break-word}
+.wheel{overflow-x:auto}.wheel table{border-collapse:collapse;font-family:ui-monospace,monospace}
+.wheel td{width:26px;height:26px;text-align:center;border:1px solid #e3e9f0;font-size:.85rem}
+.wheel tr.top td{background:#eef3f9}.wheel tr.bot td{background:#fff7e0;font-weight:700}
+.wheel td.n{font-size:.7rem;color:#6b7c90}
+table.keys{border-collapse:collapse;width:100%;margin-top:10px}
+table.keys td,table.keys th{padding:6px 8px;border-bottom:1px solid #e3e9f0;text-align:left;font-size:.95rem}
+table.keys tr.hit td{background:#e6f7ec}table.keys tr.cur td{background:#fff7e0}table.keys tr.hidden td.txt{color:#a0aec0}
+.reveal{display:none;margin-top:10px;padding:12px;border-radius:12px;background:#eaf6ee}
+.warn{background:#fff4e5;border-radius:12px;padding:12px;margin-top:12px}
+.question{font-size:1.3rem;font-weight:750;margin:18px 0 8px}.note{color:#607085}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.card{padding:14px;border-radius:14px;background:#f2f5f9}.card b{font-size:1.3rem}.card span{display:block;color:#596b80;margin-top:4px}
+@media(max-width:760px){.cards{grid-template-columns:1fr}.wrap{padding:18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div>DSCT · Week 7 · Open #01 · a tool for the Tuesday activity</div>
+  <h1>Crack the shift cipher.</h1>
+  <p class="sub">The activity uses <span class="mono">A=0 … Z=25</span> and <span class="mono">E(x) = x + k (mod 26)</span>. This page attacks that exact system, so you can test the claim “it’s secure because nobody knows my key.”</p>
+
+  <div class="panel real">
+    <h2>1 · Predict first <span class="pill">the rule, from the activity</span></h2>
+    <p>Encryption: <span class="mono">E(x) = x + k (mod 26)</span>. Decryption: <span class="mono">D(y) = y − k (mod 26)</span>. The keys are k = 0, 1, …, 25.</p>
+    <p class="question">You have a ciphertext and no key. What is the most keys you would ever need to try?</p>
+    <button id="revealPred">Reveal</button>
+    <div class="reveal" id="pred">26. That is every key there is (k = 0 does nothing, so 25 keys really change the text). Keep that number in mind while you read the next section.</div>
+  </div>
+
+  <div class="panel illus">
+    <h2>2 · The attack <span class="pill">illustrative message</span></h2>
+    <div class="controls">
+      <label for="preset"><strong>Ciphertext:</strong></label>
+      <select id="preset">
+        <option value="a">A short English message (key hidden)</option>
+        <option value="b">Random-looking letters (a curveball)</option>
+        <option value="c">Your own ciphertext…</option>
+      </select>
+      <input id="custom" type="text" placeholder="paste letters, spaces allowed" style="display:none" aria-label="your ciphertext">
+    </div>
+    <div class="cipher" id="cipher" aria-live="polite"></div>
+    <div class="controls">
+      <button id="step">Try next key</button>
+      <button id="all">Try all 26 at once</button>
+      <button id="reset">Start over</button>
+      <label><input type="checkbox" id="meter"> let the computer flag rows that contain common English words</label>
+    </div>
+    <div class="cards">
+      <div class="card"><b id="tries">0</b><span>keys tried so far</span></div>
+      <div class="card"><b>26</b><span>keys that exist (worst case)</span></div>
+      <div class="card"><b>about 13</b><span>tries on average, if the key was picked at random</span></div>
+    </div>
+    <h3>The alphabet under key k = <span id="kShown">0</span></h3>
+    <div class="wheel" id="wheel"></div>
+    <p class="note">Top row: the ciphertext letter y. Bottom row: what <span class="mono">D(y) = y − k (mod 26)</span> turns it into.</p>
+    <table class="keys" id="keys"></table>
+    <div class="warn" id="verdict" style="display:none"></div>
+    <p class="note" id="worked"></p>
+  </div>
+
+  <div class="panel real">
+    <h2>3 · The activity's question <span class="pill">from the activity</span></h2>
+    <p class="question">“This cipher is secure because nobody knows my key.” Name two assumptions hidden in that claim, including one about what an adversary can observe or try.</p>
+    <p>Write your own answer first. Then compare it with what the attack above needed:</p>
+    <button id="revealAns">Compare with what the attack needed</button>
+    <div class="reveal" id="ans">
+      <ul>
+        <li><strong>The attacker could try every key.</strong> Only 26 exist, so “nobody knows it” quickly becomes “nobody has bothered yet.” The worst-case work grows with the size of the keyspace: with N possible keys, N tries. (Compare Week 6: that is linear in N.)</li>
+        <li><strong>The attacker knows the method.</strong> The attack only worked because we knew the cipher was a shift by k. The claim quietly assumes the <em>rule</em> is also secret, and nothing in “nobody knows my key” says so.</li>
+        <li><strong>The attacker can see the ciphertext, and can tell when they've succeeded.</strong> Try the random-looking preset with the word-flagging box on and off: when no row looks like anything, you cannot tell which key was “right.” Recognizing success is an ingredient of the attack, and part of the attacker model.</li>
+      </ul>
+      <p class="note">This is only about this one small system. It is not advice about how real-world security works.</p>
+    </div>
+  </div>
+
+  <div class="panel illus">
+    <h2>4 · Optional: why the gcd question matters <span class="pill">extension</span></h2>
+    <p>The activity asks for <span class="mono">53 (mod 12)</span>, <span class="mono">−5 (mod 12)</span>, and <span class="mono">gcd(35, 26)</span>. Do those by hand first.</p>
+    <button id="revealGcd">Check my hand work</button>
+    <div class="reveal" id="gcd">
+      <ul>
+        <li><span class="mono">53 = 4·12 + 5</span>, so <span class="mono">53 ≡ 5 (mod 12)</span>.</li>
+        <li><span class="mono">−5 + 12 = 7</span>, so <span class="mono">−5 ≡ 7 (mod 12)</span>. The remainder is taken to be non-negative.</li>
+        <li><span class="mono">gcd(35, 26) = 1</span> (35 = 5·7, 26 = 2·13, no shared prime). Because the gcd is 1, 35 has an inverse mod 26: <span class="mono">35 ≡ 9</span>, and <span class="mono">9 · 3 = 27 ≡ 1</span>, so multiplying by 3 undoes multiplying by 35.</li>
+      </ul>
+    </div>
+    <p>Why care whether an inverse exists? Suppose a cipher <em>multiplied</em> instead of added: <span class="mono">E(x) = a·x (mod 26)</span>. That idea is not in the activity; it just shows the gcd at work. Pick a:</p>
+    <div class="controls">
+      <label for="a"><strong>a =</strong></label>
+      <input id="a" type="range" min="1" max="25" value="9"> <strong id="aVal"></strong>
+    </div>
+    <div id="mult"></div>
+  </div>
+
+  <div class="panel real">
+    <h2>5 · What is real, and what isn't</h2>
+    <ul>
+      <li><strong>From the activity:</strong> the alphabet numbering, <span class="mono">E</span> and <span class="mono">D</span>, mod 26, the three numbers in question 1, and the “nobody knows my key” claim. The example message uses a different key than the activity's <span class="mono">k = 7</span> so it isn't the answer key.</li>
+      <li><strong>Illustrative:</strong> the message, its key, the random letters, and the common-word list (a short fixed list, only used to flag rows).</li>
+      <li><strong>Scope:</strong> a tool for this class's shift cipher. It makes no claim about real-world security. This page was built before the class met, so nothing here records what anyone said in class.</li>
+    </ul>
+  </div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const L='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const shift=(s,k)=>[...s.toUpperCase()].map(c=>{const x=L.indexOf(c);return x<0?c:L[(((x+k)%26)+26)%26]}).join('');
+const enc=(s,k)=>shift(s,k), dec=(s,k)=>shift(s,-k);
+const WORDS=new Set('THE AND ALL TRY KEY KEYS SIX TWENTY MATH YOU ARE FOR NOT WITH THAT THIS HAVE WAS CAN ONE TWO OUT BUT ITS NEW WHO HOW WHY WHAT KNOW NEED ONLY EVERY EACH SECRET MESSAGE CODE'.split(' '));
+const looksEnglish=t=>t.split(/[^A-Z]+/).some(w=>w.length>=3&&WORDS.has(w));
+const PRESETS={a:enc('TRY ALL TWENTY SIX KEYS',11),b:'QZKXW JVMPB HGDFY LCNRT'};
+let ct='',tried=0,cur=0,shown=0;
+function current(){return $('preset').value==='c'?$('custom').value.toUpperCase().replace(/[^A-Z ]/g,''):PRESETS[$('preset').value]}
+function load(){ct=current();tried=0;cur=0;shown=0;$('cipher').textContent=ct||'(type letters above)';render()}
+function wheel(k){
+  const top=[...L].map(c=>`<td>${c}</td>`).join(''),bot=[...L].map(c=>`<td>${dec(c,k)}</td>`).join('');
+  const nums=[...L].map((c,i)=>`<td class="n">${i}</td>`).join('');
+  $('wheel').innerHTML=`<table><tr class="top">${top}</tr><tr class="top n">${nums}</tr><tr class="bot">${bot}</tr></table>`;
+  $('kShown').textContent=k;
+}
+function render(){
+  const meter=$('meter').checked;let hits=[];
+  const rows=[];
+  for(let k=0;k<26;k++){
+    const t=dec(ct,k),vis=k<shown,hit=meter&&vis&&ct&&looksEnglish(t);if(hit)hits.push(k);
+    rows.push(`<tr class="${vis?'':'hidden'} ${hit?'hit':''} ${vis&&k===cur?'cur':''}"><td>k = ${k}</td><td class="txt mono">${vis?t:'· · · not tried yet · · ·'}</td><td>${hit?'contains common English words':''}</td></tr>`);
+  }
+  $('keys').innerHTML='<tr><th>key</th><th>D(y) = y − k</th><th></th></tr>'+rows.join('');
+  $('tries').textContent=shown;
+  wheel(shown?cur:0);
+  const v=$('verdict');
+  if(shown===26&&ct){
+    v.style.display='block';
+    v.innerHTML=hits.length?`All 26 keys tried. With the word-flagging box on, ${hits.length} row(s) flagged: k = ${hits.join(', ')}. Read them yourself, too.`
+      :meter?'All 26 keys tried, and no row was flagged. If you can’t recognize a right answer, trying every key doesn’t finish the job: the attacker also needs a way to tell success from failure. (Try the other preset, or turn the box off and judge by eye.)'
+      :'All 26 keys tried. Which row reads as a message? How did you decide?';
+  }else v.style.display='none';
+  if(shown&&ct){const c=ct.match(/[A-Z]/);if(c){const y=L.indexOf(c[0]);$('worked').innerHTML=`Row k = ${cur}, first letter: y = ${y} (${c[0]}), so D(y) = ${y} − ${cur} = ${y-cur} ≡ ${(((y-cur)%26)+26)%26} (mod 26) → ${dec(c[0],cur)}.`}}else $('worked').textContent='';
+  $('step').disabled=shown>=26||!ct;$('all').disabled=shown>=26||!ct;
+}
+$('step').onclick=()=>{cur=shown;shown++;render()};
+$('all').onclick=()=>{shown=26;cur=25;render()};
+$('reset').onclick=load;
+$('meter').onchange=render;
+$('preset').onchange=()=>{$('custom').style.display=$('preset').value==='c'?'inline-block':'none';load()};
+$('custom').oninput=load;
+$('revealPred').onclick=()=>$('pred').style.display='block';
+$('revealAns').onclick=()=>$('ans').style.display='block';
+$('revealGcd').onclick=()=>$('gcd').style.display='block';
+const gcd=(a,b)=>b?gcd(b,a%b):a;
+function mult(){
+  const a=+$('a').value;$('aVal').textContent=a;const g=gcd(a,26);
+  const map=[...L].map((c,x)=>L[(a*x)%26]);const seen={};[...map.keys()].forEach(i=>{(seen[map[i]]=seen[map[i]]||[]).push(L[i])});
+  const collide=Object.entries(seen).filter(([_,v])=>v.length>1);
+  let inv=null;for(let i=1;i<26;i++)if((a*i)%26===1)inv=i;
+  $('mult').innerHTML=`<p><span class="mono">gcd(${a}, 26) = ${g}</span>. `+(g===1?`An inverse exists: <span class="mono">${a} · ${inv} ≡ 1 (mod 26)</span>, so multiplying by ${inv} decodes. Every plaintext letter gets its own ciphertext letter.`:`No inverse mod 26. Different letters collide, so decoding is ambiguous: ${collide.slice(0,3).map(([c,v])=>v.join(' and ')+' both → '+c).join('; ')}${collide.length>3?'; …':''}.`)+`</p><div class="mono" style="overflow-x:auto;white-space:nowrap">plain:  ${L.split('').join(' ')}<br>cipher: ${map.join(' ')}</div>`;
+}
+$('a').oninput=mult;mult();load();
+</script>
+</body>
+</html>
