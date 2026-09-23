@@ -17,3 +17,17 @@
 - Added the next-semester map, archive manifest, reusable Beamer source,
   lightweight validation command, and closeout ledger files. Updated the Week
   6 and website indexes to point at the archived teaching sequence.
+
+## 2026-09-23 — validation and publication
+
+- Compiled `instructor/week06_algorithms_growth_backdrop.tex` with the existing
+  TeX Live `pdflatex` toolchain; the preserved PDF has 10 pages.
+- Ran `DSCT_GIT_BIN=/usr/bin/git bash week-06/scripts/13_archive_validation.sh`:
+  required files, 6 Python scripts, 4 Bash scripts, 7 non-empty HTML pages, and
+  source hygiene all passed. Optional tools were reported without making them
+  required; `g++` syntax-check of the CPU source also passed.
+- Ran bounded smoke checks for the simple/trace/iterative Fibonacci scripts,
+  Bubble Sort correctness on a small input, the webpage generator, and the CPU
+  C++ syntax. No heavy classroom benchmark was rerun.
+- Committed the archive as `9532d18` (`Archive DSCT Week 6 for semester reuse`)
+  and pushed `main` normally to `origin`.
