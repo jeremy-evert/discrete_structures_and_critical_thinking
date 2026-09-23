@@ -1,0 +1,116 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usetheme{default}
+\usepackage{amsmath}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+\title{Algorithms, Correctness \& Growth}
+\subtitle{A reusable Week 6 backdrop}
+\author{COMSC-2043}
+\date{Fall 2026 archive}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{What happens when the problem gets bigger?}
+  \begin{itemize}
+    \item A few successful examples do not establish an efficiency claim.
+    \item Count a meaningful operation, then ask how that count grows with $n$.
+    \item Big O describes growth shape, not one machine's stopwatch.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Naive recursive Fibonacci repeats work}
+  \begin{align*}
+    F(n) &= F(n-1)+F(n-2),\\
+    F(5) &= \underbrace{F(4)}_{\text{contains }F(3)}+\underbrace{F(3)}_{\text{repeats }F(3)}.
+  \end{align*}
+  \begin{itemize}
+    \item The answer is correct.
+    \item The same subproblems are recalculated again and again.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Correct does not mean efficient}
+  \begin{itemize}
+    \item A contract tells us what the procedure must return.
+    \item A trace and edge case test tell us more than friendly examples.
+    \item Correctness and efficiency are different questions.
+  \end{itemize}
+  \vfill
+  \centering
+  \Large Same Fibonacci answer. Very different amount of work.
+\end{frame}
+
+\begin{frame}{Bubble Sort: quadratic worst-case growth}
+  \begin{align*}
+    10n &\Rightarrow \text{roughly }100\text{ times the }n^2\text{ work},\\
+    C(n) &= \frac{n(n-1)}{2}.
+  \end{align*}
+  \begin{itemize}
+    \item The 10/100/1,000/10,000/20,000/30,000 progression makes the cost visible.
+    \item Hardware changes seconds; it does not change the quadratic shape.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Recursion was never the villain}
+  \begin{columns}[T]
+    \column{.48\textwidth}
+      \textbf{Bubble Sort}
+      \begin{itemize}
+        \item iterative
+        \item $O(n^2)$ worst case
+      \end{itemize}
+    \column{.48\textwidth}
+      \textbf{Merge Sort}
+      \begin{itemize}
+        \item recursive
+        \item about $O(n\log n)$
+      \end{itemize}
+  \end{columns}
+  \vfill
+  The growth pattern and repeated work matter more than whether a function calls itself.
+\end{frame}
+
+\begin{frame}{Parallelism has a cover charge}
+  \begin{itemize}
+    \item Divide work among workers.
+    \item Start, coordinate, and synchronize them.
+    \item Move data when the device is separate from the process.
+    \item Small inputs can lose before parallel work has enough to do.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Measured CPU crossover}
+  \begin{itemize}
+    \item The Fall 2026 reference uses 24 logical CPU workers.
+    \item Parallel sorting first beats the sequential reference at $n=10{,}000$.
+    \item At large $n$, throughput separation becomes useful; at tiny $n$, clock noise and overhead dominate.
+  \end{itemize}
+  \vfill
+  \centering
+  \Large Measure the crossover; do not assume it.
+\end{frame}
+
+\begin{frame}{GPU present versus process access}
+  \begin{itemize}
+    \item Hardware can exist on the host.
+    \item A sandbox or process may still be unable to see the device or CUDA toolchain.
+    \item The Fall 2026 archive records the RTX 3060 Ti fact but no fabricated GPU timings.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Closing synthesis}
+  \begin{itemize}
+    \item Algorithm choice changes growth.
+    \item Parallelism changes throughput and constants.
+    \item Correctness evidence, operation counts, and honest measurements belong together.
+    \item Ask both questions: \emph{Does it work?} and \emph{How does the work grow?}
+  \end{itemize}
+\end{frame}
+
+\end{document}

@@ -57,7 +57,13 @@ to a live browser timing race.
 
 ## Hanna implementation mission
 
-The bounded Codex mission for the parallelism plot twist is:
+The durable semester-closeout map for this package is:
+
+- [`NEXT_SEMESTER_START_HERE.md`](NEXT_SEMESTER_START_HERE.md)
+- [`instructor/FALL_2026_ARCHIVE_MANIFEST.md`](instructor/FALL_2026_ARCHIVE_MANIFEST.md)
+- [`sidecar/hanna_semester_closeout/SUMMARY.md`](sidecar/hanna_semester_closeout/SUMMARY.md)
+
+The bounded Codex mission that produced the parallelism plot twist was:
 
 - `instructor/HANNA_PARALLELISM_SHOWDOWN.md`
 
@@ -79,3 +85,6 @@ The mission authorizes Hanna to inspect, benchmark, repair, validate, commit, an
 push the bounded `week-06/**` work. A genuine credential, destructive-system,
 driver, purchase, physical-action, or scope-expansion decision remains a human
 gate.
+
+The live-presentation material is now archival. Start next semester with the
+entry point above rather than relaunching the former presentation mission.
