@@ -7,7 +7,13 @@ set -euo pipefail
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
 WEEK_DIR="$(cd -- "${SCRIPT_DIR}/.." && pwd -P)"
 REPO_ROOT="$(cd -- "${WEEK_DIR}/.." && pwd -P)"
-GIT_BIN="${DSCT_GIT_BIN:-git}"
+if [[ -n "${DSCT_GIT_BIN:-}" ]]; then
+    GIT_BIN="${DSCT_GIT_BIN}"
+elif [[ -x /usr/bin/git ]]; then
+    GIT_BIN=/usr/bin/git
+else
+    GIT_BIN=git
+fi
 
 failures=0
 require_file() {
