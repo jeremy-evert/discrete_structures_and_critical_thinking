@@ -1,7 +1,6 @@
-# DSCT Week 6 Fall 2026 Semester Closeout — in progress
+# DSCT Week 6 Fall 2026 Semester Closeout — COMPLETE
 
-This receipt will become the final digest after validation and the ordinary
-forward commit/push attempt. The archive is intentionally scoped to
+The archive is complete and published. Work was intentionally scoped to
 `week-06/**`.
 
 ## Git truth
@@ -22,6 +21,7 @@ was discarded.
 - `instructor/week06_algorithms_growth_backdrop.tex` is reusable Beamer source;
   its compile state will be recorded below.
 - `scripts/13_archive_validation.sh` performs the fast integrity checks.
+- The compiled PDF is `instructor/week06_algorithms_growth_backdrop.pdf`.
 
 ## Evidence decisions
 
@@ -33,9 +33,16 @@ inaccessible from the Hanna sandbox; no GPU timings are claimed.
 
 ## Validation and publication
 
-- Archive validation: PENDING.
-- LaTeX compilation: PENDING.
-- Final commit SHA(s): PENDING.
-- Push state: PENDING.
-- Human gate: none known yet; if authentication blocks push, this receipt will
-  state `HUMAN_GATE_PUSH_AUTH` and the exact safe command.
+- Archive validation: PASS. The validator found all required files, compiled 6
+  Python scripts, parsed 4 Bash scripts, found 7 non-empty HTML pages, and
+  found no merge-conflict markers. It reported missing `htop`, `nvcc`, and
+  `latexmk` as optional; `g++` and `pdflatex` were available.
+- LaTeX compilation: PASS with the existing TeX Live `pdflatex`; 10-page PDF
+  preserved.
+- Bounded smoke checks: PASS for the simple/trace/iterative Fibonacci scripts,
+  small Bubble Sort correctness, the webpage generator, and C++ syntax. No
+  heavy benchmark was rerun.
+- Final commit SHA: `9532d18` (`Archive DSCT Week 6 for semester reuse`).
+- Push state: PASS — pushed normally to `origin/main` (`958643f..9532d18`).
+- Human gate: none. GPU collection remains optional and requires a separate
+  device-enabled WSL shell; no GPU timing was fabricated.
