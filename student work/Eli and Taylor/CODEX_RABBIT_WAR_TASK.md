@@ -180,3 +180,26 @@ Earlier work produced standardized reference files for Hitler, Stalin, two Mao r
 
 ## Student intent
 The student wants all of the above incorporated into Rabbit War and does not want repeated clarification questions about this scope.
+
+## Charlie Kirk assassination — user-supplied visual reference
+
+Add the assassination of Charlie Kirk (Utah Valley University, September 10, 2025) to the American-event Rabbit War set.
+
+The student supplied a specific visual reference frame. Treat that frame as the requested composition reference for this entry.
+
+Expected asset identifiers/paths:
+- source/reference: `reference_images/american_events/charlie_kirk_assassination_reference.jpg`
+- rabbit-form output: `reference_images/american_events/charlie_kirk_assassination_rabbit.jpg`
+- event ID: `charlie_kirk_assassination`
+
+Rabbit transformation requirements for this specific frame:
+- Convert the seated human figure into a rabbit/bunny.
+- Preserve the green Robin Hood-style hat and feather.
+- Preserve the green tunic/costume, brown belt, cross-body strap, arm guards, and quiver/arrows.
+- Preserve the seated pose and approximate framing.
+- Preserve the arrow crossing the foreground/neck-area composition as a recognizable visual cue, but render the scene non-graphically: no blood, wound, gore, exposed injury, or corpse imagery.
+- Reproduce the event-stage/backdrop composition closely enough to remain recognizable, while avoiding the need to reproduce third-party logos perfectly.
+- Do not replace this with a generic bunny portrait.
+- Wire this event into Rabbit War's selectable event/asset pool.
+- As with every other requested item, the human figure must not remain human in the final Rabbit War asset.
+
