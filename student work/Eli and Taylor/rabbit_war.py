@@ -59,6 +59,7 @@ EVENTS = [
     ("afghanistan_withdrawal", "rushed through the final rabbit evacuation from Afghanistan", "afghanistan_withdrawal.jpg"),
     ("east_palestine", "derailed a rabbit freight train in East Palestine", "east_palestine.jpg"),
     ("key_bridge", "watched the Rabbit Key Bridge collapse", "baltimore_key_bridge.jpg"),
+    ("charlie_kirk_assassination", "entered a non-graphic bunny reenactment of the Charlie Kirk assassination reference", "charlie_kirk_assassination_rabbit.jpg"),
 ]
 
 FALLBACK_EVENTS = [
