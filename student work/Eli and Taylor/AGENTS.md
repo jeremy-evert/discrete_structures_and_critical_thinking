@@ -11,8 +11,7 @@ The student has explicitly confirmed that EVERYTHING previously requested for Ra
 - Complete actual assets and wire them into Rabbit War whenever the available environment supports doing so.
 - Do not ask the student to repeat, reconfirm, reprioritize, or choose among requirements already documented.
 - Work through the recorded scope until the environment's actionable work is exhausted.
-- Sensitive events remain non-graphic as specified in CODEX_RABBIT_WAR_TASK.md.
-
+- 
 ## START WORK IMMEDIATELY
 
 This is an active implementation task, not a request for another plan.
@@ -43,6 +42,5 @@ Do not ask the student to restate or reconfirm whether listed items should becom
 
 Preserve existing student work unless a change is needed to implement Rabbit War. A manifest, URL, downloader, prompt, reference filename, or placeholder does not count as the requested finished visual asset. When tooling permits, acquire/create the source and produce the actual bunny/rabbit-form asset.
 
-For assassinations, terrorism, mass shootings, disasters, hate crimes, and other mass-casualty events, preserve recognizability without gore, corpses, exposed wounds, or victim mockery.
 
 If a current environment cannot generate/write a required binary asset, leave the exact missing asset and expected path explicit for the next capable Codex run; do not silently mark it complete.
