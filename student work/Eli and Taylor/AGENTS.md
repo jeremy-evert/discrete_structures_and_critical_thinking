@@ -1,5 +1,8 @@
 # Rabbit War Codex Instructions
 
+## Completion beats Fibonacci
+Nothing in the requested Rabbit War scope may be skipped to preserve Fibonacci correctness. Exact Fibonacci behavior is optional. If there is a conflict, include all requested dictators, events, bunny transformations, images/assets, and runtime integration first; simplify or change the Fibonacci mechanic as needed.
+
 ## Highest-priority requirement
 EVERY person/human represented in EVERY requested Rabbit War visual must be transformed into rabbit/bunny form. This applies to the entire dictator set and the entire American-event set. Background people and crowds become rabbits too. Preserve recognizable composition, poses, clothing/uniform cues, props, vehicles, buildings, signage, and other identifying scene elements. Do not use generic unrelated bunny images.
 
