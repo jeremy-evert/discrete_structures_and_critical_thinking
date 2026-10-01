@@ -1,3 +1,19 @@
+## START WORK IMMEDIATELY
+
+This is an active implementation task, not a request for another plan.
+
+When Codex opens this project:
+1. Read `CODEX_RABBIT_WAR_TASK.md` completely.
+2. Inspect `rabbit_war.py` and the existing asset directories.
+3. Immediately implement as much of the complete requested Rabbit War as the environment permits.
+4. Create/acquire/generate the actual rabbit/bunny-form visual assets when image tooling is available.
+5. Wire every completed asset into Rabbit War.
+6. Continue through the entire recorded dictator and American-event scope; do not arbitrarily stop after a sample.
+7. Include the Charlie Kirk assassination entry and use the student's supplied Robin Hood-costume reference composition when that uploaded reference is available to the environment.
+8. Do not spend the task asking the student to reconfirm requirements already recorded in this repository.
+9. Do not prioritize exact Fibonacci behavior over completing the Rabbit War scope.
+10. Test the program after implementation and fix integration errors.
+
 # Rabbit War Codex Instructions
 
 ## Completion beats Fibonacci
