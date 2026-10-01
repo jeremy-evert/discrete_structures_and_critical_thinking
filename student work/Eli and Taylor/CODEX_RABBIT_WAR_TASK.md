@@ -26,8 +26,7 @@ This is the student's highest-priority visual requirement and overrides any weak
 - Rabbits may wear the corresponding period clothing, uniforms, suits, hats, glasses, medals, or other non-humanizing visual identifiers needed to preserve the reference.
 - Groups/crowds also become rabbit/bunny crowds. Do not transform only the central figure while leaving background people human.
 - Portrait references become rabbit portraits. Rally images become rabbit rallies. Political scenes become rabbit political scenes. War scenes become rabbit war scenes. Protest scenes become rabbit protests. Disaster/emergency scenes become rabbit emergency scenes.
-- For sensitive events, keep the rabbit conversion non-graphic. Do not depict gore, exposed wounds, corpses, or victim mockery. Use recognizable aftermath, memorial, architecture, vehicles, skyline, emergency response, newspapers, or symbolic scene elements as necessary.
-- Do not substitute a generic unrelated bunny picture. Each output must be tied to its intended reference/event through recognizable visual cues.
+- - Do not substitute a generic unrelated bunny picture. Each output must be tied to its intended reference/event through recognizable visual cues.
 - Do not consider an item complete merely because a filename, prompt, URL, manifest entry, or reference image exists. The requested end state is an actual usable Rabbit War bunny/rabbit-form asset whenever the environment provides image-generation/editing capability.
 - Do not ask the student again whether a listed item should be turned into rabbit/bunny form. The answer is YES for every listed person and event.
 
@@ -160,7 +159,7 @@ Normalize raster assets to:
 For each reference, preserve enough visual composition, architecture, clothing, signage, props, silhouettes, or other recognizable cues that the rabbit reinterpretation still reads as the intended reference.
 
 ## Rabbit transformation rule
-Replace human figures with expressive rabbits while retaining the recognizable scene. The tone may be absurd/darkly comic, but for assassinations, terrorism, mass shootings, disasters, hate crimes, and mass-casualty events, keep imagery non-graphic: no gore, exposed wounds, corpses, or victim mockery. Use aftermath, memorial, skyline, vehicle, architecture, newspaper, emergency-response, or symbolic compositions where appropriate.
+Replace human figures with expressive rabbits while retaining the recognizable scene. The tone and composition should follow the student's requested/reference material as closely as the available tools and applicable safety requirements permit. Do not invent additional project-wide visual restrictions that the student did not request.
 
 ## Runtime behavior
 `rabbit_war.py` should:
@@ -197,7 +196,7 @@ Rabbit transformation requirements for this specific frame:
 - Preserve the green Robin Hood-style hat and feather.
 - Preserve the green tunic/costume, brown belt, cross-body strap, arm guards, and quiver/arrows.
 - Preserve the seated pose and approximate framing.
-- Preserve the arrow crossing the foreground/neck-area composition as a recognizable visual cue, but render the scene non-graphically: no blood, wound, gore, exposed injury, or corpse imagery.
+- Preserve the arrow crossing the foreground/neck-area composition as a recognizable visual cue. Follow the supplied reference composition as closely as the available tools and applicable safety requirements permit.
 - Reproduce the event-stage/backdrop composition closely enough to remain recognizable, while avoiding the need to reproduce third-party logos perfectly.
 - Do not replace this with a generic bunny portrait.
 - Wire this event into Rabbit War's selectable event/asset pool.
