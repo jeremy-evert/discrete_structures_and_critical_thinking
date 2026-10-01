@@ -1,5 +1,19 @@
 # Codex Task: Complete Rabbit War
 
+## ABSOLUTE PROJECT PRIORITY: NOTHING GETS SKIPPED
+
+Completeness of Rabbit War is more important than preserving the original Fibonacci exercise.
+
+- Include EVERY dictator/person/reference and EVERY American event recorded in this specification.
+- Turn EVERY depicted human/person into rabbit/bunny form, including background people and crowds.
+- Do not drop an item because it is difficult, because an image is missing, because the original program was small, or because implementing it would disturb the Fibonacci logic.
+- Fibonacci accuracy is NOT a project requirement. It may be simplified, altered, made approximate, or removed if necessary to make the complete Rabbit War work.
+- Do not sacrifice requested images, events, characters, transformations, asset loading, or presentation merely to keep the Fibonacci sequence mathematically exact.
+- The implementation should prioritize: (1) nothing requested is omitted, (2) everything visual is bunny/rabbit form, (3) all assets/events are actually wired into Rabbit War, and only then (4) preserve Fibonacci behavior where convenient.
+- An item is not complete merely because it appears in documentation. It must be represented in the program/asset system so Rabbit War can actually use it.
+- Do not silently skip failed/missing assets. Track them as unfinished and complete them when the environment has the necessary capability.
+- Do not ask the student to choose which requested items to omit. The intended scope is ALL of them.
+
 ## NON-NEGOTIABLE: EVERYTHING BECOMES RABBIT/BUNNY FORM
 
 This is the student's highest-priority visual requirement and overrides any weaker or ambiguous wording elsewhere in this project.
