@@ -1,3 +1,9 @@
+# RABBIT WAR CODEX CONTRACT
+# Before changing this project, read CODEX_RABBIT_WAR_TASK.md and AGENTS.md
+# in this directory. Those files are the authoritative project requirements.
+# Do not ask the student to restate dictator/event/image scope already recorded there.
+# Missing image binaries are unfinished work, not optional requirements.
+#
 import random
 
 EVENTS = [
