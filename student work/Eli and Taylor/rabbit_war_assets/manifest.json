@@ -1,0 +1,19 @@
+[
+  {"id":"joseph_stalin","name":"Joseph Stalin","file":"images/joseph_stalin.jpg","width":1024,"height":1024,"format":"jpg","note":"Soviet propaganda/reference image"},
+  {"id":"mao_zedong_01","name":"Mao Zedong","file":"images/mao_zedong_01.jpg","width":1024,"height":1024,"format":"jpg","note":"Chinese propaganda/reference image"},
+  {"id":"mao_zedong_02","name":"Mao Zedong","file":"images/mao_zedong_02.jpg","width":1024,"height":1024,"format":"jpg","note":"Alternate Chinese propaganda/reference image"},
+  {"id":"adolf_hitler","name":"Adolf Hitler","file":"images/adolf_hitler.jpg","width":1024,"height":1024,"format":"jpg","note":"Nazi propaganda/reference image"},
+  {"id":"kim_il_sung","name":"Kim Il Sung","file":"images/kim_il_sung.jpg","width":1024,"height":1024,"format":"jpg","note":"North Korean propaganda/reference image"},
+  {"id":"khmer_rouge","name":"Khmer Rouge","file":"images/khmer_rouge.jpg","width":1024,"height":1024,"format":"jpg","note":"Khmer Rouge propaganda reference; not a Pol Pot portrait"},
+  {"id":"pol_pot","name":"Pol Pot","file":"images/pol_pot.jpg","width":1024,"height":1024,"format":"jpg","source_url":"https://upload.wikimedia.org/wikipedia/commons/3/38/PolPot.jpg"},
+  {"id":"leopold_ii","name":"Leopold II","file":"images/leopold_ii.jpg","width":1024,"height":1024,"format":"jpg","source_url":"https://upload.wikimedia.org/wikipedia/commons/e/ec/StoryoftheCongoFreeState_0.jpg"},
+  {"id":"saddam_hussein","name":"Saddam Hussein","file":"images/saddam_hussein.jpg","width":1024,"height":1024,"format":"jpg","source_url":"https://upload.wikimedia.org/wikipedia/commons/e/e1/Kanun_ath-thani.jpg"},
+  {"id":"idi_amin","name":"Idi Amin","file":"images/idi_amin.jpg","width":1024,"height":1024,"format":"jpg","source_url":"https://upload.wikimedia.org/wikipedia/commons/7/7f/Idi_Amin_cropped.jpg"},
+  {"id":"mengistu_haile_mariam","name":"Mengistu Haile Mariam","file":"images/mengistu_haile_mariam.jpg","width":1024,"height":1024,"format":"jpg","source_url":"https://upload.wikimedia.org/wikipedia/commons/2/20/Mengistu_Haile_Mariam_official_portrait%2C_1977-1978.jpg"},
+  {"id":"francisco_macias_nguema","name":"Francisco Macías Nguema","file":"images/francisco_macias_nguema.jpg","width":1024,"height":1024,"format":"jpg","source_url":"https://upload.wikimedia.org/wikipedia/commons/d/d2/Don_Francisco_Macias.jpg"},
+  {"id":"rafael_trujillo","name":"Rafael Trujillo","file":"images/rafael_trujillo.jpg","width":1024,"height":1024,"format":"jpg","source_url":"https://upload.wikimedia.org/wikipedia/commons/e/e6/Rafael_Trujillo.jpg"},
+  {"id":"hissene_habre","name":"Hissène Habré","file":"images/hissene_habre.jpg","width":1024,"height":1024,"format":"jpg","source_url":"https://upload.wikimedia.org/wikipedia/commons/2/2b/Hiss%C3%A8ne_Habr%C3%A9_in_1987_%28headshot%29.jpg"},
+  {"id":"augusto_pinochet","name":"Augusto Pinochet","file":"images/augusto_pinochet.jpg","width":1024,"height":1024,"format":"jpg","source_url":"https://upload.wikimedia.org/wikipedia/commons/0/0b/Augusto_Pinochet_official_portrait_%283x4_cropped_b%29.jpg"},
+  {"id":"jorge_rafael_videla","name":"Jorge Rafael Videla","file":"images/jorge_rafael_videla.jpg","width":1024,"height":1024,"format":"jpg","source_url":"https://upload.wikimedia.org/wikipedia/commons/e/e5/Retrato_Oficial_Jorge_Rafael_Videla_1976.jpg"},
+  {"id":"jean_bedel_bokassa","name":"Jean-Bédel Bokassa","file":"images/jean_bedel_bokassa.jpg","width":1024,"height":1024,"format":"jpg","source_url":"https://upload.wikimedia.org/wikipedia/commons/b/b9/Bokassa_portrait.jpg"}
+]
