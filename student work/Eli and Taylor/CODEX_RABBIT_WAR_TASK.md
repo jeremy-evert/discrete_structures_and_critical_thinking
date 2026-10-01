@@ -1,5 +1,22 @@
 # Codex Task: Complete Rabbit War
 
+## NON-NEGOTIABLE: EVERYTHING BECOMES RABBIT/BUNNY FORM
+
+This is the student's highest-priority visual requirement and overrides any weaker or ambiguous wording elsewhere in this project.
+
+- EVERY human/person shown in a selected source/reference image must be transformed into a rabbit/bunny character.
+- This applies to ALL dictator references and ALL American historical-event references listed in this file.
+- Do not leave ordinary human faces, heads, hands, or bodies in the finished Rabbit War reinterpretation when they represent people in the scene.
+- Preserve the source image's recognizable composition as closely as practical: pose, camera angle, number/placement of figures, clothing/uniform cues, facial-expression equivalent, flags, signs, furniture, microphones, vehicles, buildings, landscapes, smoke, lighting, and other important props.
+- Replace the people, not the identity of the scene. The finished image should still be recognizable as a bunny/rabbit reinterpretation of its source reference.
+- Rabbits may wear the corresponding period clothing, uniforms, suits, hats, glasses, medals, or other non-humanizing visual identifiers needed to preserve the reference.
+- Groups/crowds also become rabbit/bunny crowds. Do not transform only the central figure while leaving background people human.
+- Portrait references become rabbit portraits. Rally images become rabbit rallies. Political scenes become rabbit political scenes. War scenes become rabbit war scenes. Protest scenes become rabbit protests. Disaster/emergency scenes become rabbit emergency scenes.
+- For sensitive events, keep the rabbit conversion non-graphic. Do not depict gore, exposed wounds, corpses, or victim mockery. Use recognizable aftermath, memorial, architecture, vehicles, skyline, emergency response, newspapers, or symbolic scene elements as necessary.
+- Do not substitute a generic unrelated bunny picture. Each output must be tied to its intended reference/event through recognizable visual cues.
+- Do not consider an item complete merely because a filename, prompt, URL, manifest entry, or reference image exists. The requested end state is an actual usable Rabbit War bunny/rabbit-form asset whenever the environment provides image-generation/editing capability.
+- Do not ask the student again whether a listed item should be turned into rabbit/bunny form. The answer is YES for every listed person and event.
+
 ## Goal
 Implement the complete Rabbit War concept requested by the student. Do not stop at manifests or placeholder metadata. The final project must actually use visual assets where the runtime supports them.
 
