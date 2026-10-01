@@ -1,3 +1,18 @@
+## FINAL SCOPE LOCK — DO NOT ASK AGAIN
+
+The student has explicitly confirmed that EVERYTHING previously requested for Rabbit War is authorized scope. Treat the requirements already recorded in this repository as final.
+
+- Include ALL previously requested dictator references.
+- Include ALL previously requested American historical/event references.
+- Include the Charlie Kirk assassination reference already recorded in the project.
+- Convert ALL depicted people into rabbit/bunny form, including background figures and crowds.
+- Do not omit items for convenience, Fibonacci correctness, missing assets, implementation difficulty, or because only a subset has already been coded.
+- Exact Fibonacci behavior is secondary and may be changed or removed.
+- Complete actual assets and wire them into Rabbit War whenever the available environment supports doing so.
+- Do not ask the student to repeat, reconfirm, reprioritize, or choose among requirements already documented.
+- Work through the recorded scope until the environment's actionable work is exhausted.
+- Sensitive events remain non-graphic as specified in CODEX_RABBIT_WAR_TASK.md.
+
 ## START WORK IMMEDIATELY
 
 This is an active implementation task, not a request for another plan.
