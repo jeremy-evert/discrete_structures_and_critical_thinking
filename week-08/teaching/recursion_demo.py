@@ -3,7 +3,8 @@
 1. S(n)   -- sum 1..n, the gentle first example
 2. fact(n)
 3. fib(n) -- correctness: BOTH base cases (speed was Week 6)
-4. the bug demo -- definitions that fail, guarded so they cannot hang a laptop
+4. growth: n! vs 2^n vs n^k, Horner as a recurrence, odd numbers = n^2
+5. the bug demo -- definitions that fail, guarded so they cannot hang a laptop
 """
 from functools import lru_cache
 
@@ -53,7 +54,66 @@ def fib_wrong_base(n):
     return fib_wrong_base(n - 1) + fib_wrong_base(n - 2)
 
 
-# ---- 4. Find the bug ------------------------------------------------------
+# ---- 4a. Growth: factorial vs exponential vs polynomial ------------------
+def first_n_where_factorial_wins(base_fn, start=1, limit=200):
+    """Smallest n >= start with n! > base_fn(n) that stays true through limit."""
+    for n in range(start, limit):
+        if all(fact(m) > base_fn(m) for m in range(n, limit)):
+            return n
+    return None
+
+
+# ---- 4b. Polynomials as recurrences (Horner) -----------------------------
+# p_0(x) = a_n ;  p_k(x) = x * p_{k-1}(x) + a_{n-k}   (coefficients high -> low)
+def horner(coeffs, x):
+    """coeffs = [a_n, ..., a_0]. Returns (value, list of p_k(x) steps)."""
+    p = coeffs[0]
+    steps = [p]
+    for a in coeffs[1:]:
+        p = x * p + a
+        steps.append(p)
+    return p, steps
+
+
+def direct_eval(coeffs, x):
+    """Term-by-term, each power built from scratch by repeated multiplication."""
+    n = len(coeffs) - 1
+    total = 0
+    for i, a in enumerate(coeffs):
+        power = 1
+        for _ in range(n - i):
+            power *= x
+        total += a * power
+    return total
+
+
+def op_counts(n):
+    """(mults, adds) for degree n: direct (naive powers) vs Horner."""
+    direct_mults = sum(range(n + 1)) + n      # powers: n(n+1)/2, times a_i: n
+    return {"direct": (direct_mults, n), "horner": (n, n)}
+
+
+# ---- 4c. Sum of the first n odd numbers = n^2 ----------------------------
+def odd_sum(n):
+    if n == 0:
+        return 0
+    return odd_sum(n - 1) + (2 * n - 1)       # add the n-th L-shape
+
+
+def L_picture(n):
+    """ASCII square: the k-th L-shape is drawn with the digit k (mod 10)."""
+    return "\n".join(
+        " ".join(str(max(r, c) % 10 + 0) for c in range(1, n + 1))
+        for r in range(1, n + 1)
+    )
+
+
+def odd_sum_bogus_step(k, claim_for_k_plus_1):
+    """BROKEN on purpose: 'proves' P(k) from P(k+1) -- the arrow points backward."""
+    return claim_for_k_plus_1 - (2 * k + 1)
+
+
+# ---- 5. Find the bug ------------------------------------------------------
 def bad_no_base(n, depth=0):
     """S with the base case deleted: never terminates (guard stops it at 100)."""
     if depth > 100:

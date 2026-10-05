@@ -7,22 +7,26 @@
 
 Code and tests: `week-08/teaching/recursion_demo.py`, `test_recursion_demo.py` (run `python3 -m pytest -v` from that folder). Code is optional on screen; hand traces are the evidence. Tests are in teaching order, so reading them top to bottom replays the class.
 
-| Clock | Move |
-|---|---|
-| 0:00–0:08 | Opening hook |
-| 0:08–0:22 | Worked example 1: sum S(n), traced, then proved |
-| 0:22–0:32 | Worked example 2 (brief): factorial |
-| 0:32–0:47 | Worked example 3: Fibonacci, two base cases, proof |
-| 0:47–0:55 | Find the bug |
-| 0:55–1:08 | Students try: the Tuesday activity |
-| 1:08–1:13 | Check for understanding |
-| 1:13–1:15 | AI check and Decision Gate pointer |
+| Clock | Move | One-line takeaway |
+|---|---|---|
+| 0:00–0:05 | Hook A: the function that never stops | A recursion needs a place to stop. |
+| 0:05–0:12 | Hook B: 52! live | Factorial growth is beyond any polynomial or exponential. |
+| 0:12–0:22 | Demo 0: S(n), traced then proved | A definition computes; induction proves. |
+| 0:22–0:34 | **Demo 1: Fibonacci, both base cases** | The step only recombines; base cases carry the information. |
+| 0:34–0:44 | **Demo 2: n! > 2^n, base case n = 4** | Start where the claim is true, not where it is convenient. |
+| 0:44–0:54 | **Demo 3: odd numbers sum to n², L-shapes + dominoes** | Base case + "if one falls, the next falls" = all fall. |
+| 0:54–1:00 | Find the bug (four specimens) | A step that assumes its own result proves nothing. |
+| 1:00–1:10 | Students try: the Tuesday activity | |
+| 1:10–1:13 | Check for understanding | |
+| 1:13–1:15 | AI check and Decision Gate pointer | |
 
-(Timing is a suggestion. If you run long, shrink factorial to two minutes; it adds no new idea.)
+**The three headline demos are Fibonacci, n! > 2^n and the odd-number squares.** Optional extras (tested, ready, cut first if short on time): Horner polynomial recurrence; the factorial reduction trace.
+
+(Timing is a suggestion. If you run long, drop the optional extras first, then shorten S(n).)
 
 ---
 
-## 0:00 Opening hook (8 min)
+## 0:00 Hook A: the function that never stops (5 min)
 
 Put this on screen, say nothing about what is wrong with it:
 
@@ -39,7 +43,34 @@ Then the Week 8 question: "Where is the logical bridge, and are we assuming what
 
 ---
 
-## 0:08 Worked example 1: the sum S(n) (14 min)
+## 0:05 Hook B: 52! live (7 min)
+
+**n! counts orderings.** A shuffled deck is one ordering of 52 cards. Run it live:
+
+```python
+from math import factorial
+print(factorial(52))
+print(2 ** 52)
+print(52 ** 10)
+```
+
+Real output:
+
+```
+80658175170943878571660636856403766975289505440883277824000000000000
+4503599627370496
+144555105949057024
+```
+
+Say it: 52! is about 8 × 10^67. 2^52 is about 4.5 × 10^15. 52^10 is about 1.4 × 10^17. **Every well-shuffled deck in history is almost surely a one-off ordering.** Take a vote first: "Will factorial beat n^10 for large n?" Then it does, at n = 15 (`15! = 1,307,674,368,000` vs `15^10 = 576,650,390,625`; `14!` is still smaller than `14^10`).
+
+Factorial is recursive too: `0! = 1`, `n! = n · (n-1)!`. Trace for 5: `5! = 5·4! = 5·4·3! = 5·4·3·2! = 5·4·3·2·1! = 5·4·3·2·1·0! = 120` (base case `0! = 1`; each call lowers n by one).
+
+**Takeaway: we can compute the monster. Can we prove how big it is, for every n? That needs induction (Demo 2).**
+
+---
+
+## 0:12 Demo 0: the sum S(n) (10 min)
 
 ### Definition (write on board)
 
@@ -89,17 +120,13 @@ By induction, P(n) holds for all n ≥ 0.
 
 Point at the **bridge**: the step is the move from "true for k" to "true for k+1." The hypothesis is used for k, never for k+1.
 
----
-
-## 0:22 Worked example 2 (brief): factorial (10 min)
-
-`0! = 1`, `n! = n · (n-1)!` for n > 0. Trace `fact(4)`: `4·3·2·1·fact(0) = 24`. Ask one question: "What if the base case said `fact(0) = 0`?" (Every answer collapses to 0; same shape, wrong value. Hold that thought, because Fibonacci makes it sharper.)
+**Takeaway: a definition computes; induction proves.**
 
 ---
 
-## 0:32 Worked example 3: Fibonacci (15 min)
+## 0:22 Demo 1: Fibonacci, both base cases (12 min)
 
-*Why again?* In Week 6 we raced recursive Fibonacci against iterative. **One-line callback: "Remember the race in Week 6: why was it slow?"** Take one answer ("it recomputes the same values"), then park speed. Today's Fibonacci is about **correctness**: this is the reteach from the 2026-09-24 Class Pulse, where students mishandled initial conditions F(0) and F(1).
+*Why Fibonacci again?* In Week 6 we raced recursive Fibonacci against iterative. **One-line callback: "Remember the race in Week 6: why was it slow?"** Take one answer ("it recomputes the same values"), then park speed. Today's Fibonacci is about **correctness**: this is the reteach from the 2026-09-24 Class Pulse, where students mishandled initial conditions F(0) and F(1).
 
 ### Recurrence, with BOTH base cases (write all three lines)
 
@@ -163,9 +190,103 @@ Where the recurrence entered: the step's last line *is* the recursive definition
 
 *(Optional, if time: `F(n) < 2^n` needs the hypothesis for both n−1 and n−2 (strong induction), so it needs two base cases, n = 0 and n = 1. Same lesson from the proof side: step reaches back two, so base needs two. Tested for n < 20 only as evidence in `test_fib_less_than_2_pow_n`.)*
 
+**Takeaway: the recurrence only recombines. If the starting values are wrong or missing, every later value is wrong or undefined.**
+
 ---
 
-## 0:47 Find the bug (8 min)
+## 0:34 Demo 2: n! > 2^n, and why the base case is n = 4 (10 min)
+
+Back to the monster. **Claim P(n): n! > 2^n.**
+
+First, **do not start at 0 out of habit.** Test it (real run: `[n for n in range(0, 12) if fact(n) > 2 ** n]` gives `[4, 5, 6, 7, 8, 9, 10, 11]`):
+
+| n | 0 | 1 | 2 | 3 | **4** | 5 |
+|---|---|---|---|---|---|---|
+| n! | 1 | 1 | 2 | 6 | **24** | 120 |
+| 2^n | 1 | 2 | 4 | 8 | **16** | 32 |
+| n! > 2^n ? | no (1 > 1 false) | no | no | no | **yes** | yes |
+
+The claim is **false** for n = 0, 1, 2, 3. A "base case" at n = 0 would be checking a false statement. n = 4 is the first place it is true, so the honest claim is **P(n) for every integer n ≥ 4**, and the base case is n = 4. (This is the missing-base-case theme from the other direction: a base case in the wrong place is as bad as none. It is also the Week 6 growth idea: factorial eventually leaves exponential behind, but not from the start.)
+
+1. **Base case (n = 4):** 4! = 24 and 2^4 = 16, and 24 > 16. ✔
+2. **Inductive hypothesis:** assume P(k) for one k ≥ 4: k! > 2^k.
+3. **Inductive step (show P(k+1)):**
+   (k+1)! = (k+1) · k!  *(definition of factorial)*
+   > (k+1) · 2^k  *(hypothesis; (k+1) > 0 so the inequality survives multiplying)*
+   ≥ 2 · 2^k  *(because k+1 ≥ 5 ≥ 2)*
+   = 2^(k+1). ✔
+
+So (k+1)! > 2^(k+1), which is P(k+1). By induction P(n) holds for all n ≥ 4.
+
+Point at the exact line where "k ≥ 4" gets used: it makes k+1 ≥ 5 ≥ 2. (Truth of the base case is what the whole chain rests on; the *step* here would work from k ≥ 1, which is exactly why a lazy "it's fine from 0" feels plausible.)
+
+**Takeaway: start the induction where the claim is true. A proof is only as honest as its base case.**
+
+---
+
+## 0:44 Demo 3: the first n odd numbers add to n² (10 min)
+
+**Claim P(n): 1 + 3 + 5 + ... + (2n − 1) = n².** Real run: `[odd_sum(n) for n in range(6)]` gives `[0, 1, 4, 9, 16, 25]`.
+
+Draw it, growing an L-shape at a time (the digit is which odd number added that cell):
+
+```
+n=1   n=2     n=3       n=4         n=5
+1     1 2     1 2 3     1 2 3 4     1 2 3 4 5
+      2 2     2 2 3     2 2 3 4     2 2 3 4 5
+              3 3 3     3 3 3 4     3 3 3 4 5
+                        4 4 4 4     4 4 4 4 5
+                                    5 5 5 5 5
+```
+
+Each L has 1, then 3, then 5, then 7, then 9 cells. The n×n square becomes the (n+1)×(n+1) square by wrapping one more L around it. That L has n + n + 1 = **2n + 1** cells, the next odd number. (Real output of `print(L_picture(5))` is the last square.)
+
+Now the same thing in labeled form:
+
+1. **Base case (n = 0 or n = 1):** the empty sum is 0 = 0²; or 1 = 1². ✔
+2. **Inductive hypothesis:** assume P(k): the first k odd numbers add to k².
+3. **Inductive step (show P(k+1)):**
+   (first k odd numbers) + (2k + 1)
+   = k² + (2k + 1)  *(hypothesis)*
+   = (k + 1)²  *(algebra: the L-shape)*. ✔
+
+**Physical dominoes (take a row of dominoes or a stack of index cards into class):**
+- **Base case:** the first domino falls. (Push it.)
+- **Step:** if domino k falls, it hits domino k+1. (Show the spacing is right.)
+- Then all fall. **No base-case push, nothing falls. Spacing too wide, nothing continues.** That is exactly "base case + bridge."
+- Dominoes are a picture, not a proof. The proof is the algebra line, and the step must be a conditional ("if domino k falls, then k+1 falls"), not an assertion that every domino has fallen.
+
+**Takeaway: base case plus "if one falls, the next falls" means all fall.**
+
+---
+
+## Optional extras (tested and ready; use only if time remains)
+
+### Extra A: polynomials as recurrences (Horner)
+
+Evaluating `p(x) = a_n x^n + ... + a_0` can be a recurrence on partial results: `p_0(x) = a_n`, `p_k(x) = x · p_{k-1}(x) + a_{n-k}`. Same shape as a recursive definition: a start, then a step that uses the previous value.
+
+Trace for the cubic `p(x) = 2x³ − 6x² + 2x − 1` at `x = 3` (coefficients 2, −6, 2, −1):
+
+```
+p_0 = 2
+p_1 = 3·2 + (−6)  = 0
+p_2 = 3·0 + 2     = 2
+p_3 = 3·2 + (−1)  = 5      <- p(3)
+```
+
+Direct check: 2·27 − 6·9 + 2·3 − 1 = 54 − 54 + 6 − 1 = **5**. ✔ (Real run: `horner([2,-6,2,-1], 3)` gives `(5, [2, 0, 2, 5])`; the test also compares Horner with direct evaluation for x = −5 ... 5.)
+
+**Payoff, multiplications for degree n** (direct term-by-term with powers built from scratch, vs Horner): degree 3: **9 vs 3**; degree 10: **65 vs 10** (from `op_counts`; direct = n(n+1)/2 powers + n coefficient multiplies, Horner = n). Evaluate the same polynomial in far fewer steps by recognizing a recurrence.
+
+**Takeaway: a good recurrence is also a faster algorithm.**
+
+### Extra B: the factorial reduction trace
+Already in Hook B.
+
+---
+
+## 0:54 Find the bug (6 min)
 
 Show each, ask "what's wrong, and what's the smallest input that shows it?"
 
@@ -182,9 +303,20 @@ A base case exists, but it is never reached from `n = 1`: T(1) = T(2) = T(3) = .
 
 Ask: "What did the step prove?" Nothing: it restated the hypothesis for the *same* n. The bridge never reached n+1. Compare with the real step above, where we assumed P(k) and derived P(k+1) using the definition `S(k+1) = (k+1) + S(k)`. Circular leap = hypothesis and conclusion are about the same case.
 
+**Bug 4: the sneaky one, with the arrow pointing backward.** "Proof" of P(n): the first n odd numbers add to n²:
+
+> *Base case:* n = 1: 1 = 1². ✔
+> *Step:* assume the first **k + 1** odd numbers add to (k+1)². Take away the last one, 2k + 1. Then the first k odd numbers add to (k+1)² − (2k+1) = k². So P(k) holds. ∎
+
+Ask: "Which direction did the bridge go?" It assumed P(**k+1**) to derive P(k): the result for the *next* case is assumed, not earned. Every line of algebra is correct, which is why it hides. Tell-tale: ask "what is assumed" and "what is concluded" and see whether they are in the right order. The same recipe "proves" a false claim (in the code, `odd_sum_bogus_step(4, 26)` happily returns 17, a number that no first-4-odd-numbers sum equals). Real step: P(k) ⇒ P(k+1).
+
+**Bug 5 (factorial): a base case in the wrong place.** "Proof" of n! > 2^n for all n ≥ 0: *Base case n = 0: 0! = 1 > 1 = 2^0 ✔.* Catch: 1 > 1 is false. The claim only holds from n = 4 (see Demo 2).
+
+**Takeaway: check the base case's truth, and check the direction of the step.**
+
 ---
 
-## 0:55 Students try: the Tuesday activity (13 min)
+## 1:00 Students try: the Tuesday activity (10 min)
 
 Source: `week-08/student/tuesday-activity.md`. Individual work, they write Sources / Rules-Assumptions / Work / Check / One-Sentence Summary.
 
@@ -198,7 +330,7 @@ Circulate. Likely stuck points: students trace S(4) but never name the base case
 
 ---
 
-## 1:08 Check for understanding (5 min)
+## 1:10 Check for understanding (3 min)
 
 One question on a card or the board, 2 minutes silent, then cold-call:
 
@@ -231,4 +363,4 @@ Look at how far back the rule reaches. S(n) uses only S(n−1), so one starting 
 
 ## Run record (what actually ran)
 
-Python 3.12.3, pytest 9.0.3: `python3 -m pytest -v` in `week-08/teaching/` → 13 passed (receipt has the full output). The hand traces and induction proofs above were written by hand and spot-checked by the tests only where noted (sum identity and F(n) < 2^n for small n, evidence not proof).
+Python 3.12.3, pytest 9.0.3: `python3 -m pytest -v` in `week-08/teaching/` -> **24 passed in 0.07s**. Real output used above: `factorial(52)`, `2**52`, `52**10`, the n! vs 2^n table, `[odd_sum(n) for n in range(6)]`, `L_picture(5)`, `horner([2,-6,2,-1], 3)`, `op_counts(3)` and `op_counts(10)`, factorial overtaking n^10 at n = 15. The hand traces and induction proofs were written by hand and checked only by the small-n tests (evidence, not proof). The dominoes are a classroom prop, not code.
