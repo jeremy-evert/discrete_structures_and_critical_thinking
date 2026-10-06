@@ -27,6 +27,8 @@ Code and tests: `week-08/teaching/recursion_demo.py`, `test_recursion_demo.py` (
 | 1:08–1:12 | AI check as a critical-thinking drill | A | An answer that looks right still needs the smallest-input test. |
 | 1:12–1:15 | Wrap + Decision Gate pointer | | |
 
+**Thread A through-line:** the recursion R(n) = R(n-1) + (n-1) + C(n-1,3) is the worked recursion for Thread A, and the regular-hexagon 30-regions twist is the what-would-change-my-mind example (both are in the circle math block in the 0:00 section).
+
 If you run long: skip the Fibonacci part of "Five ways", then shorten the drills to two specimens. The Optional demos at the end are not needed.
 
 **How to read the script.** *SAY:* is a literal line you can read aloud. *BOARD:* is what to write. *ASK:* is a question to pose and then wait for (count to ten silently; the silence is the teaching). You do not have to know the answer in advance: every reveal is in this document.
@@ -60,6 +62,48 @@ print([regions(n) for n in range(1, 8)])
 ```
 
 **SAY:** "Thirty-one. Not thirty-two. The pattern 1, 2, 4, 8, 16 held five times and then failed. Five confirmations were not a proof. The real formula is C(n,4) + C(n,2) + 1, and it is not a power of two." (Optional: draw n = 6 with all chords and count; it is fiddly, so only do this if a student insists.)
+
+### The math behind the circle, step by step (read this before class; show it after the reveal if students ask "why 31?")
+
+**The picture.** Put n points on a circle. Draw every chord (a straight line joining two points). Assume the points are placed so that no three chords pass through the same spot inside the circle ("general position"). R(n) = number of regions the circle is cut into.
+
+**Step 1 — it is a recursion.** Build the picture one point at a time. Going from n-1 points to n points, you add one new point and draw its n-1 new chords. So:
+
+- Base case: R(1) = 1 (no chords, one region).
+- Recursive step: R(n) = R(n-1) + (what the n-1 new chords add).
+
+**Step 2 — what does one new chord add?** A chord that crosses k older chords is cut into k+1 pieces. Each piece splits one region in two. So that chord adds k+1 regions: one for the chord itself, plus one for each crossing.
+
+**Step 3 — add up the n-1 new chords.** Total added = (n-1 chords, each +1) + (total number of crossings the new chords make with old chords).
+
+**Step 4 — count those crossings.** Two chords cross inside the circle exactly when their four endpoints are all different and interleave around the circle (a, c, b, d). Take the new point n. Pick any 3 of the older points. Those 4 points (new point + 3 old) give exactly one crossing involving the new point: the new point's chord goes to the middle one of the three and crosses the chord joining the outer two. So the number of new crossings is the number of ways to choose 3 old points: C(n-1, 3).
+
+**Step 5 — the recursion, complete.**
+
+R(1) = 1
+R(n) = R(n-1) + (n-1) + C(n-1, 3)
+
+**Step 6 — fill in the table.**
+
+| n | new chords (n-1) | new crossings C(n-1,3) | added | R(n) |
+|---|---|---|---|---|
+| 1 | | | | 1 |
+| 2 | 1 | 0 | 1 | 2 |
+| 3 | 2 | 0 | 2 | 4 |
+| 4 | 3 | 1 | 4 | 8 |
+| 5 | 4 | 4 | 8 | 16 |
+| 6 | 5 | 10 | 15 | **31** |
+| 7 | 6 | 20 | 26 | 57 |
+
+The powers of two held for n = 1..5 only because the crossing term C(n-1,3) is zero or tiny at first (0, 0, 1, 4). At n = 6 it is 10, and the pattern breaks. That is the whole story: the pattern was a coincidence of small numbers.
+
+**Step 7 — the closed form (optional, for students who want it).** Add the increments: R(n) = 1 + sum over m = 1..n-1 of [ m + C(m,3) ]. The first part adds up to C(n,2) (that is 1+2+...+(n-1)). The second part adds up to C(n,4) (the "hockey stick" identity). So R(n) = C(n,4) + C(n,2) + 1.
+
+**Step 8 — the critical-thinking twist: check the assumption.** Everything above assumed no three chords meet at one point. If you space 6 points evenly (a regular hexagon), the three long diagonals all pass through the center, and you get **30** regions, not 31. A formula is only as good as its assumptions. Ask: "What would change my mind about 31?" Answer: points where three chords meet.
+
+**Where the induction is.** The recursion R(n) = R(n-1) + ... is a recursive *definition*. To prove R(n) = C(n,4) + C(n,2) + 1 for all n >= 1 you use induction: base case R(1) = 0 + 0 + 1 = 1; step: assume it holds for n-1, add (n-1) + C(n-1,3), and use Pascal's rule C(n-1,k) + C(n-1,k-1) = C(n,k) to get the formula for n.
+
+Code check (real output of `regions_recursive` and `regions_closed`: they agree for n = 1..20, and `[regions_recursive(n) for n in range(1, 8)]` is `[1, 2, 4, 8, 16, 31, 57]`).
 
 **Takeaway: a pattern is not a proof. Evidence says "so far"; it cannot say "always."**
 
