@@ -5,7 +5,7 @@ from recursion_demo import (
     fib_missing_base, fib_wrong_base, bad_no_base, bad_T,
     first_n_where_factorial_wins, horner, direct_eval, op_counts,
     odd_sum, L_picture, odd_sum_bogus_step,
-    regions, guess_pow2, sum_recursive, sum_loop, sum_closed, sum_memo,
+    regions, regions_recursive, regions_closed, guess_pow2, sum_recursive, sum_loop, sum_closed, sum_memo,
     sum_brute, fib_loop, fib_memo, fib_closed, first_fib_closed_failure,
     nested_sum, merge_sort, ai_sum,
 )
@@ -16,6 +16,11 @@ def test_circle_regions_pattern_breaks_at_6():
     assert [regions(n) for n in range(1, 8)] == [1, 2, 4, 8, 16, 31, 57]
     assert [guess_pow2(n) for n in range(1, 6)] == [regions(n) for n in range(1, 6)]
     assert guess_pow2(6) == 32 != regions(6) == 31
+
+def test_circle_regions_recursion_matches_closed_form():
+    assert all(regions_recursive(n) == regions_closed(n) == regions(n)
+               for n in range(1, 21))
+    assert [regions_recursive(n) for n in range(1, 8)] == [1, 2, 4, 8, 16, 31, 57]
 
 # 0b. Five strategies, one problem -----------------------------------------
 def test_five_sum_strategies_agree():

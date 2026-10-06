@@ -21,6 +21,16 @@ def regions(n):
     return comb(n, 4) + comb(n, 2) + 1
 
 
+def regions_recursive(n):
+    if n == 1:                      # base case
+        return 1
+    return regions_recursive(n - 1) + (n - 1) + comb(n - 1, 3)   # recursive step
+
+
+def regions_closed(n):
+    return comb(n, 4) + comb(n, 2) + 1
+
+
 def guess_pow2(n):
     """The tempting pattern 1, 2, 4, 8, 16, ... (evidence, not a warrant)."""
     return 2 ** (n - 1)
