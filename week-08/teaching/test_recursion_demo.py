@@ -5,8 +5,48 @@ from recursion_demo import (
     fib_missing_base, fib_wrong_base, bad_no_base, bad_T,
     first_n_where_factorial_wins, horner, direct_eval, op_counts,
     odd_sum, L_picture, odd_sum_bogus_step,
+    regions, guess_pow2, sum_recursive, sum_loop, sum_closed, sum_memo,
+    sum_brute, fib_loop, fib_memo, fib_closed, first_fib_closed_failure,
+    nested_sum, merge_sort, ai_sum,
 )
 
+
+# 0. Pattern is not proof: circle regions -------------------------------------
+def test_circle_regions_pattern_breaks_at_6():
+    assert [regions(n) for n in range(1, 8)] == [1, 2, 4, 8, 16, 31, 57]
+    assert [guess_pow2(n) for n in range(1, 6)] == [regions(n) for n in range(1, 6)]
+    assert guess_pow2(6) == 32 != regions(6) == 31
+
+# 0b. Five strategies, one problem -----------------------------------------
+def test_five_sum_strategies_agree():
+    for n in (0, 1, 10, 100, 500):
+        r = [sum_recursive(n), sum_loop(n), sum_closed(n), sum_memo(n), sum_brute(n)]
+        assert len(set(r)) == 1 and r[0] == n * (n + 1) // 2
+
+def test_recursion_limit_hit_at_5000():
+    with pytest.raises(RecursionError):
+        sum_recursive(5000)
+    assert sum_loop(5000) == sum_closed(5000) == sum_memo(5000) == 12502500
+
+def test_loop_and_closed_form_scale_to_a_billion():
+    assert sum_closed(10 ** 9) == 500000000500000000
+
+def test_fibonacci_strategies_agree_small_and_closed_form_fails_later():
+    assert all(fib_loop(n) == fib_memo(n) == fib_closed(n) for n in range(0, 70))
+    assert first_fib_closed_failure() == 71
+
+# When recursion is the natural fit: recursive data ------------------------
+def test_nested_sum_any_depth():
+    assert nested_sum([1, [2, [3, 4]], 5]) == 15
+    assert nested_sum([]) == 0
+
+def test_merge_sort_halves_down_to_base_case():
+    assert merge_sort([5, 2, 9, 1, 5, 6]) == [1, 2, 5, 5, 6, 9]
+    assert merge_sort([]) == [] and merge_sort([7]) == [7]
+
+def test_ai_answer_looks_right_until_smallest_input():
+    assert [ai_sum(n) for n in range(1, 6)] == [1, 3, 6, 10, 15]   # looks right
+    assert ai_sum(0) == 1 != sum_loop(0) == 0                       # smallest input exposes it
 
 # 1. Sum -----------------------------------------------------------------
 def test_S_base_case():

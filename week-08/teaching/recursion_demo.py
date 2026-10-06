@@ -1,5 +1,8 @@
 """Week 8 Tuesday live-coding examples, in teaching order.
 
+0. pattern is not proof: regions of a circle (2^(n-1) fails at n=6)
+0b. one problem, five strategies; when recursion is the natural fit
+
 1. S(n)   -- sum 1..n, the gentle first example
 2. fact(n)
 3. fib(n) -- correctness: BOTH base cases (speed was Week 6)
@@ -7,6 +10,98 @@
 5. the bug demo -- definitions that fail, guarded so they cannot hang a laptop
 """
 from functools import lru_cache
+
+
+# ---- 0. Pattern is not proof: regions cut by chords of a circle ----------
+from math import comb, sqrt
+
+
+def regions(n):
+    """Max regions when n points on a circle are joined by all chords."""
+    return comb(n, 4) + comb(n, 2) + 1
+
+
+def guess_pow2(n):
+    """The tempting pattern 1, 2, 4, 8, 16, ... (evidence, not a warrant)."""
+    return 2 ** (n - 1)
+
+
+# ---- 0b. One problem, five strategies: S(n) = 1 + 2 + ... + n ------------
+def sum_recursive(n):
+    return 0 if n == 0 else n + sum_recursive(n - 1)
+
+
+def sum_loop(n):
+    total = 0
+    for i in range(1, n + 1):
+        total += i
+    return total
+
+
+def sum_closed(n):
+    return n * (n + 1) // 2              # Gauss: pair 1 with n, 2 with n-1, ...
+
+
+def sum_memo(n, _table={0: 0}):
+    """Dynamic programming: fill a table bottom-up, reuse earlier entries."""
+    for i in range(len(_table), n + 1):
+        _table[i] = _table[i - 1] + i
+    return _table[n]
+
+
+def sum_brute(n):
+    """Brute-force enumeration: build every term, then add them all."""
+    return sum(list(range(1, n + 1)))
+
+
+# ... and Fibonacci, same idea (speed race = Week 6; here: which are *right*)
+def fib_loop(n):
+    a, b = 0, 1
+    for _ in range(n):
+        a, b = b, a + b
+    return a
+
+
+def fib_memo(n, _cache={0: 0, 1: 1}):
+    if n not in _cache:
+        _cache[n] = fib_memo(n - 1) + fib_memo(n - 2)
+    return _cache[n]
+
+
+def fib_closed(n):
+    """Binet's formula in floating point: elegant, and WRONG for large n."""
+    phi = (1 + sqrt(5)) / 2
+    return round(phi ** n / sqrt(5))
+
+
+def first_fib_closed_failure(limit=200):
+    for n in range(limit):
+        if fib_closed(n) != fib_loop(n):
+            return n
+
+
+# ---- When recursion is the natural fit: the DATA is recursive ------------
+def nested_sum(x):
+    """Add every number in a list that may contain lists, to any depth."""
+    if isinstance(x, int):
+        return x
+    return sum(nested_sum(item) for item in x)
+
+
+def merge_sort(xs):
+    if len(xs) <= 1:                      # base case
+        return xs
+    mid = len(xs) // 2
+    left, right = merge_sort(xs[:mid]), merge_sort(xs[mid:])   # halves
+    out = []
+    while left and right:
+        out.append(left.pop(0) if left[0] <= right[0] else right.pop(0))
+    return out + left + right
+
+
+def ai_sum(n):
+    """A plausible AI answer. Right for n = 1..4, wrong at the smallest input."""
+    return n + ai_sum(n - 1) if n > 1 else 1
 
 
 # ---- 1. Sum: S(0) = 0, S(n) = n + S(n-1) ---------------------------------
