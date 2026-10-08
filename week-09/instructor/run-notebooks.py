@@ -21,6 +21,7 @@ from pathlib import Path
 INSTRUCTOR_DIR = Path(__file__).resolve().parent
 NOTEBOOKS = sorted(INSTRUCTOR_DIR.glob("*.ipynb"))
 ACTIVE_OUTPUTS: list[dict] | None = None
+INITIAL_RECURSION_LIMIT = sys.getrecursionlimit()
 
 
 class SVG:
@@ -94,6 +95,9 @@ def save_notebook(path: Path, notebook: dict) -> None:
 def run_notebook(path: Path) -> bool:
     global ACTIVE_OUTPUTS
 
+    # A notebook kernel starts with the process's original recursion limit.
+    # Reset it so one notebook's depth experiment cannot affect the next one.
+    sys.setrecursionlimit(INITIAL_RECURSION_LIMIT)
     notebook = json.loads(path.read_text(encoding="utf-8"))
     namespace = {"__name__": "__main__"}
     execution_count = 0
