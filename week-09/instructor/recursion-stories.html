@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recursion, in three stories | COMSC-2043</title>
+  <style>
+    :root{--ink:#172a35;--muted:#536772;--paper:#f4f2eb;--card:#fffefa;--line:#d9dfd8;--teal:#087e78;--coral:#c94f36;--gold:#dda62e;--blue:#3567a6;--soft:#e8efeb;--shadow:0 14px 40px #1b343012}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 "Segoe UI",system-ui,-apple-system,sans-serif}
+    button,input{font:inherit} button{cursor:pointer} a{color:var(--teal)}
+    .wrap{max-width:1120px;margin:auto;padding:0 28px}.topbar{padding:20px 0;border-bottom:1px solid var(--line);font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+    header{padding:72px 0 46px;display:grid;grid-template-columns:1.2fr .8fr;gap:45px;align-items:center}.eyebrow{color:var(--teal);font-weight:750;letter-spacing:.12em;text-transform:uppercase;font-size:.78rem}h1{font-size:clamp(2.6rem,6vw,5rem);line-height:.98;letter-spacing:-.06em;margin:15px 0 24px;max-width:760px}header p{font-size:1.12rem;color:var(--muted);max-width:650px}.hero-art{background:var(--ink);border-radius:24px;padding:26px;color:#f4f2eb;box-shadow:var(--shadow);transform:rotate(1deg)}.hero-art .formula{font:clamp(1.2rem,3vw,2rem)/1.7 Georgia,serif}.hero-art .accent{color:#f1c45a}.hero-art small{display:block;color:#b9cbc8;margin-top:14px}
+    nav{display:flex;gap:10px;flex-wrap:wrap;padding:0 0 34px}nav a{text-decoration:none;background:#fffefa;padding:9px 15px;border:1px solid var(--line);border-radius:99px;font-weight:650;font-size:.9rem}nav a:hover{border-color:var(--teal)}
+    section.story{padding:34px 0 72px;scroll-margin-top:20px}.story-head{display:flex;gap:18px;align-items:flex-start;margin-bottom:22px}.number{width:44px;height:44px;flex:none;display:grid;place-items:center;border-radius:14px;background:var(--soft);font-weight:800;color:var(--teal)}h2{font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.1;letter-spacing:-.04em;margin:3px 0 8px}.story-head p{color:var(--muted);margin:0;max-width:760px}.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--shadow)}.card h3{margin:0 0 6px;font-size:1.05rem}.sub{color:var(--muted);font-size:.9rem;margin:0 0 17px}.controls{display:flex;gap:14px;align-items:center;flex-wrap:wrap}.controls label{font-weight:700}.controls input[type=range]{accent-color:var(--teal);flex:1;min-width:130px}.controls input[type=number],.controls input[type=text]{border:1px solid var(--line);border-radius:9px;padding:9px 10px;background:white;color:var(--ink);max-width:160px}.result-list{margin-top:18px;display:grid;gap:10px}.result{display:flex;justify-content:space-between;gap:10px;padding:11px 12px;border-radius:10px;background:#f0f4f0}.result strong{font-variant-numeric:tabular-nums}.tag{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}.visual{margin-top:16px;padding:15px;border-radius:12px;background:#f7f5ef;min-height:70px}.sequence{display:flex;align-items:end;gap:5px;min-height:74px;overflow:hidden}.bar{flex:1;min-width:7px;border-radius:5px 5px 2px 2px;background:var(--teal);position:relative;transition:height .2s}.bar span{position:absolute;top:-21px;left:50%;transform:translateX(-50%);font-size:.68rem;color:var(--muted)}.fib-bars .bar{background:var(--coral)}.callcount{font-size:2.2rem;font-weight:800;letter-spacing:-.04em;color:var(--coral);font-variant-numeric:tabular-nums}.comparison{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:16px}.metric{background:#f7f5ef;padding:12px;border-radius:11px}.metric b{display:block;font-size:1.15rem}.metric span{font-size:.78rem;color:var(--muted)}.input-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.input-row button{border:0;background:var(--teal);color:white;padding:10px 14px;border-radius:9px;font-weight:700}.input-row button:hover{background:#066560}.bars-label{font-weight:750;margin-bottom:8px}.sort-bars{display:flex;align-items:end;gap:5px;height:190px;padding:22px 5px 0}.sort-bars .bar{background:var(--blue)}.sort-bars .bar span{top:auto;bottom:-23px;color:var(--ink)}.sort-bars .bar.hot{background:var(--coral)}.lesson-note{border-left:4px solid var(--gold);padding:12px 16px;margin-top:18px;background:#fbf5e7;color:#4c4432;border-radius:0 10px 10px 0}.takeaway{margin:12px 0 0;color:var(--muted)}.closing{background:var(--ink);color:#f4f2eb;border-radius:22px;padding:28px 32px;margin:5px 0 56px}.closing h2{font-size:1.7rem}.closing p{color:#d0dcd7}.links{display:flex;gap:10px;flex-wrap:wrap;margin-top:17px}.links a{display:inline-block;color:#f4f2eb;border:1px solid #78908a;text-decoration:none;border-radius:9px;padding:8px 12px}.links a:hover{background:#29424a}.footer{border-top:1px solid var(--line);padding:18px 0 30px;color:var(--muted);font-size:.85rem}
+    @media(max-width:760px){.wrap{padding:0 18px}header{grid-template-columns:1fr;padding:48px 0 28px;gap:18px}.hero-art{transform:none}.grid{grid-template-columns:1fr}.story{padding-bottom:50px!important}.comparison{grid-template-columns:1fr 1fr 1fr}.card{padding:19px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
+  </style>
+</head>
+<body>
+  <div class="topbar"><div class="wrap">COMSC-2043 · Instructor exploration · Week 09</div></div>
+  <main class="wrap">
+    <header>
+      <div><div class="eyebrow">Three algorithms. One useful question.</div><h1>When does recursion fit?</h1><p>Recursion is a way to describe a problem in terms of smaller versions of itself. Sometimes that makes the structure clearer. Sometimes repeated work or call depth gets in the way. Explore three stories and compare what the computer has to do.</p></div>
+      <div class="hero-art" aria-label="Sum of 0 through n, built recursively"><div class="formula">S(n) = n + S(n − 1)<br><span class="accent">S(0) = 0</span></div><small>A smaller problem, a stopping point, and a result that comes back up.</small></div>
+    </header>
+    <nav aria-label="Explore the examples"><a href="#sum">01 · Sum</a><a href="#fibonacci">02 · Fibonacci</a><a href="#sorting">03 · Sorting</a></nav>
+
+    <section class="story" id="sum">
+      <div class="story-head"><div class="number">01</div><div><h2>A sum can shrink to a base case</h2><p>To add 0 through n, add n to the sum through n − 1. The recurrence is easy to state. Compare its call stack with a loop and a direct formula.</p></div></div>
+      <div class="grid"><article class="card"><h3>Choose n</h3><p class="sub">The three methods return the same sum.</p><div class="controls"><label for="sumN">n = <span id="sumNLabel">6</span></label><input id="sumN" type="range" min="0" max="20" value="6"></div><div class="result-list"><div class="result"><span>Closed form · n(n + 1) / 2</span><strong id="sumFormula"></strong></div><div class="result"><span>Loop · add each value</span><strong id="sumLoop"></strong></div><div class="result"><span>Recursion · n + sum(n − 1)</span><strong id="sumRecursive"></strong></div></div></article>
+      <article class="card"><h3>Watch the recursive calls</h3><p class="sub">Each call waits for the smaller sum to return.</p><div class="visual" id="sumTrace" aria-live="polite"></div><p class="takeaway">A clear recursive definition still uses O(n) calls. A loop uses O(1) extra space; the closed form takes a constant number of arithmetic operations.</p></article></div>
+    </section>
+
+    <section class="story" id="fibonacci">
+      <div class="story-head"><div class="number">02</div><div><h2>Fibonacci repeats the same questions</h2><p>Plain recursion follows F(n) = F(n − 1) + F(n − 2), but branches overlap. Memoization remembers answers; iteration avoids recursive calls entirely.</p></div></div>
+      <div class="grid"><article class="card"><h3>See the call count grow</h3><p class="sub">The call count includes base-case calls. Keep n modest for the plain recursive version.</p><div class="controls"><label for="fibN">n = <span id="fibNLabel">8</span></label><input id="fibN" type="range" min="0" max="20" value="8"></div><div class="result-list"><div class="result"><span>F(n)</span><strong id="fibValue"></strong></div></div><div class="comparison"><div class="metric"><b id="fibPlainCalls"></b><span>plain recursive calls</span></div><div class="metric"><b id="fibMemoCalls"></b><span>memoized calls</span></div><div class="metric"><b id="fibLoopOps"></b><span>loop iterations</span></div></div></article>
+      <article class="card"><h3>Repeated work vs. remembered work</h3><p class="sub">Bar height shows the relative number of calls.</p><div class="visual"><div class="sequence fib-bars" id="fibBars" aria-label="Comparison of Fibonacci call counts"></div></div><p class="takeaway">Plain recursion takes exponential time. Memoization makes the work O(n), at the cost of a cache. Both recursive approaches still have a call-depth limit.</p></article></div>
+    </section>
+
+    <section class="story" id="sorting">
+      <div class="story-head"><div class="number">03</div><div><h2>Sorting shows recursion's sweet spot</h2><p>Bubble sort makes adjacent passes. Merge sort splits the list, sorts the smaller pieces, then merges them. The built-in sort is the practical Python choice.</p></div></div>
+      <div class="grid"><article class="card"><h3>Try a list</h3><p class="sub">Enter up to 12 comma-separated numbers. The animation shows merge sort building sorted runs.</p><div class="input-row"><input id="sortInput" type="text" value="8, 3, 7, 4, 9, 2, 6, 5" aria-label="Comma-separated numbers"><button id="sortButton" type="button">Sort the list</button></div><div class="visual"><div class="bars-label">Starting values</div><div class="sort-bars" id="sortBars" aria-label="Sorting visualization"></div></div><div class="comparison"><div class="metric"><b id="bubbleCount">—</b><span>bubble comparisons</span></div><div class="metric"><b id="mergeCount">—</b><span>merge comparisons</span></div><div class="metric"><b id="builtinOutput">—</b><span>Python sorted() idea</span></div></div></article>
+      <article class="card"><h3>Why merge sort fits</h3><p class="sub">Sorting each half is the same kind of task on a smaller input.</p><div class="visual" id="mergeSteps" aria-live="polite">The sorted runs will appear here.</div><div class="lesson-note"><strong>Read the structure:</strong> split until a list has one item, then combine neighboring sorted lists. Bubble sort is simpler to trace, but its worst-case work grows quadratically. Merge sort grows about n log n and uses extra memory.</div><p class="takeaway">Recursion is a natural fit when a problem breaks into smaller problems of the same kind. It is less appealing when the calls repeat work or become too deep.</p></article></div>
+    </section>
+
+    <aside class="closing"><h2>Three takeaways</h2><p>Every recursive solution needs a base case and progress toward it. Recursion can make divide-and-conquer structure visible. The call pattern matters: repeated subproblems need a strategy such as memoization, and deep call chains can hit language limits.</p><p>Use the notebooks for runnable Python versions and instructor prompts:</p><div class="links"><a href="01-summing-recursion.ipynb">Sum notebook</a><a href="02-fibonacci-overlapping-work.ipynb">Fibonacci notebook</a><a href="03-sorting-and-decomposition.ipynb">Sorting notebook</a><a href="recursion-and-alternatives.ipynb">Combined notebook</a></div></aside>
+  </main>
+  <footer class="footer"><div class="wrap">COMSC-2043 · Week 09 instructor materials · Browser demo approximates the same algorithms in JavaScript; the linked notebooks contain the Python implementations.</div></footer>
+  <script>
+    const byId = id => document.getElementById(id);
+    function updateSum(){
+      const n = Number(byId('sumN').value); byId('sumNLabel').textContent=n;
+      byId('sumFormula').textContent=n*(n+1)/2;
+      let total=0; for(let i=0;i<=n;i++) total+=i; byId('sumLoop').textContent=total;
+      function rec(k){return k===0?0:k+rec(k-1)} byId('sumRecursive').textContent=rec(n);
+      const lines=[]; for(let k=n;k>0;k--) lines.push(`<div>S(${k}) = ${k} + S(${k-1})</div>`); lines.push('<div><strong>S(0) = 0</strong> ← base case</div>');
+      byId('sumTrace').innerHTML=lines.join('');
+    }
+    function updateFib(){
+      const n=Number(byId('fibN').value); byId('fibNLabel').textContent=n;
+      let a=0,b=1; for(let i=0;i<n;i++) [a,b]=[b,a+b]; byId('fibValue').textContent=a;
+      function plain(k){return k<2?1:plain(k-1)+plain(k-2)}
+      let calls=0; function counted(k){calls++;return k<2?k:counted(k-1)+counted(k-2)} counted(n);
+      const memo=new Map([[0,0],[1,1]]); let memoCalls=0; function remembered(k){memoCalls++;if(!memo.has(k))memo.set(k,remembered(k-1)+remembered(k-2));return memo.get(k)} remembered(n);
+      const plainCount=plain(n); byId('fibPlainCalls').textContent=plainCount.toLocaleString(); byId('fibMemoCalls').textContent=memoCalls.toLocaleString(); byId('fibLoopOps').textContent=n;
+      const max=Math.max(plainCount,memoCalls,n,1); byId('fibBars').innerHTML=[[plainCount,'plain'],[memoCalls,'memo'],[n,'loop']].map(([v,label])=>`<div class="bar" style="height:${Math.max(3,70*v/max)}px" title="${label}: ${v}"><span>${label}</span></div>`).join('');
+    }
+    function mergeCount(values){if(values.length<=1)return [values,0,[]];const m=Math.floor(values.length/2);const [left,lc,ls]=mergeCount(values.slice(0,m));const [right,rc,rs]=mergeCount(values.slice(m));let i=0,j=0,c=0,out=[];while(i<left.length&&j<right.length){c++;if(left[i]<=right[j])out.push(left[i++]);else out.push(right[j++])}out.push(...left.slice(i),...right.slice(j));const step=out.join(' · ');return [out,lc+rc+c,[...ls,...rs,step]]}
+    function bubbleCount(values){let a=[...values],c=0;for(let end=a.length-1;end>0;end--){let swapped=false;for(let i=0;i<end;i++){c++;if(a[i]>a[i+1]){[a[i],a[i+1]]=[a[i+1],a[i]];swapped=true}}if(!swapped)break}return c}
+    function drawBars(values,hotIndex=-1){const max=Math.max(...values.map(Math.abs),1);return values.map((v,i)=>`<div class="bar ${i===hotIndex?'hot':''}" style="height:${Math.max(5,145*Math.abs(v)/max)}px" title="${v}"><span>${v}</span></div>`).join('')}
+    function sortList(){
+      const values=byId('sortInput').value.split(',').map(x=>Number(x.trim()));
+      if(!values.length||values.some(x=>!Number.isFinite(x))||values.length>12){byId('mergeSteps').textContent='Enter 1–12 valid numbers, separated by commas.';return}
+      const [sorted,mc,steps]=mergeCount(values); byId('sortBars').innerHTML=drawBars(values);byId('bubbleCount').textContent=bubbleCount(values);byId('mergeCount').textContent=mc;byId('builtinOutput').textContent=sorted.join(', ');
+      byId('mergeSteps').innerHTML=steps.map((s,i)=>`<div class="result"><span>Merge ${i+1}</span><strong>${s}</strong></div>`).join('')||'<div>Already a one-item list: base case.</div>';
+      byId('mergeSteps').insertAdjacentHTML('beforeend',`<div class="visual"><div class="bars-label">Sorted result</div><div class="sort-bars">${drawBars(sorted)}</div></div>`)
+    }
+    byId('sumN').addEventListener('input',updateSum);byId('fibN').addEventListener('input',updateFib);byId('sortButton').addEventListener('click',sortList);byId('sortInput').addEventListener('keydown',e=>{if(e.key==='Enter')sortList()});
+    updateSum();updateFib();sortList();
+  </script>
+</body>
+</html>
