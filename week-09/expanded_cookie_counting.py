@@ -9,18 +9,18 @@ import math
 import itertools
 
 # ─────────────────────────────────────────────────────────────────
-#  An Example Cookie Lineup
+#  The Cookie Lineup  (anonymized student labels)
 # ─────────────────────────────────────────────────────────────────
 cookies = [
-    "Peanut Butter",
-    "Raspberry White Choc",
-    "Chocolate Chip",
-    "Macadamia Nut",
-    "Sugar Cookie",
-    "Snickerdoodle",
-    "PB Chocolate Chip",
-    "S'mores Cookie",
-    "Twix Ice Cream Cookie",
+    "Student 1: Peanut Butter",
+    "Student 2: Raspberry White Choc",
+    "Student 3: Chocolate Chip",
+    "Student 4: Macadamia Nut",
+    "Student 5: Sugar Cookie",
+    "Student 6: Snickerdoodle",
+    "Student 7: PB Chocolate Chip",
+    "Student 8: S'mores Cookie",
+    "Student 9: Twix Ice Cream Cookie",
 ]
 
 n = len(cookies)   # total varieties
