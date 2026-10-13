@@ -290,15 +290,15 @@ pause()
 section("CHAPTER 6 — Back to the Cookie Bakery  (n=9 flavors, k=3 per batch)")
 
 cookies = [
-    "Peanut Butter",
-    "Raspberry White Choc",
-    "Chocolate Chip",
-    "Macadamia Nut",
-    "Sugar Cookie",
-    "Snickerdoodle",
-    "PB Choc Chip",
-    "S'mores Cookie",
-    "Twix Ice Cream",
+    "Student 1: Peanut Butter",
+    "Student 2: Raspberry White Choc",
+    "Student 3: Chocolate Chip",
+    "Student 4: Macadamia Nut",
+    "Student 5: Sugar Cookie",
+    "Student 6: Snickerdoodle",
+    "Student 7: PB Choc Chip",
+    "Student 8: S'mores Cookie",
+    "Student 9: Twix Ice Cream",
 ]
 
 n_cookies = len(cookies)
@@ -309,15 +309,15 @@ total_sym = k_batch + bars
 print(f"""
   Now we swap "jars" for "cookie flavor bins":
 
-       Bin 1:  Peanut Butter
-       Bin 2:  Raspberry White Choc
-       Bin 3:  Chocolate Chip
-       Bin 4:  Macadamia Nut
-       Bin 5:  Sugar Cookie
-       Bin 6:  Snickerdoodle
-       Bin 7:  PB Choc Chip
-       Bin 8:  S'mores Cookie
-       Bin 9:  Twix Ice Cream
+       Bin 1:  Student 1 — Peanut Butter
+       Bin 2:  Student 2 — Raspberry White Choc
+       Bin 3:  Student 3 — Chocolate Chip
+       Bin 4:  Student 4 — Macadamia Nut
+       Bin 5:  Student 5 — Sugar Cookie
+       Bin 6:  Student 6 — Snickerdoodle
+       Bin 7:  Student 7 — PB Choc Chip
+       Bin 8:  Student 8 — S'mores Cookie
+       Bin 9:  Student 9 — Twix Ice Cream
 
   Each ★ represents one cookie slot landing in a flavor bin.
   The │ bars separate the bins from each other.
