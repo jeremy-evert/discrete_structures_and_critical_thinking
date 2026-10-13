@@ -17,10 +17,11 @@ can and cannot check.
 
 Pair-style comparison is folded into Tuesday's activity; there is **no
 Thursday meeting, Thursday artifact, Thursday reflection, or Thursday due
-date**. The individual technical reasoning artifact in
-`student/decision-gate.md` is this week's ordinary Decision Gate. It may
-include the Tuesday partner challenge, but it is not a separate Pair Reasoning
-report.
+date**. The technical reasoning artifact in `student/decision-gate.md` is
+this week's ordinary Decision Gate. Students post it as a graded discussion
+so peers can see and learn from one another's work; reading peers' posts is
+part of the assignment. It may include the Tuesday partner challenge, but it
+is not a separate Pair Reasoning report.
 
 ## AI check
 
