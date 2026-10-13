@@ -3,6 +3,9 @@
 Submit one individual artifact based on the Tuesday activity or a comparable
 counting problem. It must include:
 
+Post your artifact as a graded discussion. Your classmates will see your
+work, and reading their posts is part of the assignment.
+
 - **Sources:** problem statement and definitions of the objects counted.
 - **Rules / Assumptions:** whether order/repetition matters and why cases
   partition the outcomes.
