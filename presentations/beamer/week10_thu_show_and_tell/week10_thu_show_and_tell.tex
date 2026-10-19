@@ -1,0 +1,190 @@
+% week10_thu_show_and_tell.tex -- DSCT Week 10 Thursday, Oct 22 2026.
+% Sources: week-10/instructor/thursday-run-of-show.md, week-10/README.md,
+% assignments/show-and-tell-artifact.md (critique norm), docs/grading-model.md.
+% Numbers on the warm-up slide were recomputed in Python.
+% NOTE for the instructor: run-of-show and README still say "draft/submit the
+% individual Show & Tell report", but Decision 029 (2026-08-25) retired that
+% report. This deck follows Decision 029: Show & Tell is in-class and ungraded;
+% the Decision Gate is the one submission. Edit slide 13 if that is wrong.
+\documentclass[aspectratio=169,10pt]{beamer}
+\usetheme{Madrid}
+\title{Defend a Probability Claim}
+\subtitle{Week 10 Thursday --- Show \& Tell}
+\author{COMSC 2043 \textbullet\ Discrete Structures and Critical Thinking}
+\date{October 22, 2026}
+\begin{document}
+
+\frame{\titlepage
+\note{75 minutes. Protect critique and revision time. A hand calculation is sufficient; reward inspectable evidence, not polished slides. Run of show: 0:00 denominator check swap (10). 0:10 defense and critique norms (8). 0:18 rotating defenses (30). 0:48 peer questions and professional critique (15). 1:03 revise conclusion and boundary (13). 1:16 separate Show and Tell from the Decision Gate, preview relations (9).}}
+
+\begin{frame}{Today's destination}
+\begin{itemize}
+\item Swap one denominator check.
+\item Defend a claim in four beats: claim, table or simulation, assumption, boundary.
+\item Ask and receive professional critique of the reasoning, not the reasoner.
+\item Revise your conclusion so it is no stronger than the evidence.
+\end{itemize}
+\note{Show and Tell is public explanation and defense under questions, not presentation theater. Revision under challenge is not failure.}
+\end{frame}
+
+\begin{frame}{Warm-up: check a classmate's denominator}
+\begin{block}{Scenario}
+1{,}000 people. Prevalence 2\%. Sensitivity 80\%. Specificity 90\%.\\
+A classmate reports: ``$P(C\mid +) = 16/20 = 80\%$.''
+\end{block}
+\begin{itemize}
+\item Swap with a partner. Is the denominator right for $P(C\mid +)$?
+\item Rebuild the four-cell table, then confirm or correct.
+\end{itemize}
+\note{Ten minutes. Verified in Python: C = 20 people, 16 test positive, 4 negative; not-C = 980, of whom 98 test positive and 882 negative; cells total 1,000; positives = 114. Correct answer is 16/114 = 8/57, about 14.0 percent. The classmate's 16/20 = 80 percent is sensitivity P(+ given C), the wrong denominator. Corrected or confirmed check is the visible work.}
+\end{frame}
+
+\begin{frame}{The correct check}
+\centering
+\begin{tabular}{l|r|r|r}
+ & Tests $+$ & Tests $-$ & Total \\ \hline
+Has $C$ (2\%) & 16 & 4 & 20 \\
+Not $C$ (98\%) & 98 & 882 & 980 \\ \hline
+Total & 114 & 886 & 1{,}000
+\end{tabular}
+\vspace{3mm}
+\begin{itemize}
+\item $P(C\mid +)$: denominator is the $+$ column, 114. So $16/114=8/57\approx 14.0\%$.
+\item $16/20=80\%$ answers a different question: $P(+\mid C)$.
+\end{itemize}
+\note{Cells: 16 + 4 + 98 + 882 = 1,000. Negatives column total is 4 + 882 = 886. Make sure every pair says which column is the denominator out loud.}
+\end{frame}
+
+\begin{frame}{What Show \& Tell is}
+\begin{itemize}
+\item You make a claim public and defend it under questions.
+\item Not presentation theater: a hand calculation is enough.
+\item The evidence is the point. Polished slides earn nothing extra.
+\item You also give at least one specific, professional critique to a peer.
+\end{itemize}
+\note{Pull from the Show and Tell contract: claim, strongest evidence, strongest challenge, what survived or changed, evidence boundary, critique given. Reward inspectable evidence.}
+\end{frame}
+
+\begin{frame}{The critique norm}
+\begin{block}{Critique the claim, assumption, evidence, inference, or model.}
+Do not attack the reasoner.
+\end{block}
+\begin{itemize}
+\item Agreeing is not an exemption: probe whether the evidence deserves the confidence claimed.
+\item Revising a claim under challenge is not failure.
+\item Refusing to revise when the evidence demands it is not strength.
+\end{itemize}
+\note{Read the norm aloud. Model one good critique and one bad one (the bad one is about the person). Do not reward disagreement for its own sake or rhetorical dominance.}
+\end{frame}
+
+\begin{frame}{Questions that expose something}
+\begin{itemize}
+\item What is the denominator, and why that one?
+\item Which assumption, if false, breaks this number? (representative population, independence, randomness)
+\item What did the simulation or second calculation check, and what could it never check?
+\item Is the conclusion stronger than the table supports?
+\item Where did the AI help, and how did you check it independently?
+\end{itemize}
+\note{A starter list, not a script. Encourage students to say why the question matters: what uncertainty, risk, or missing evidence it is meant to expose.}
+\end{frame}
+
+\begin{frame}{Your defense: four beats}
+\begin{enumerate}
+\item \textbf{Claim} --- one sentence.
+\item \textbf{Table or simulation} --- show the counts or the code and the check.
+\item \textbf{Assumption} --- name the one that matters most.
+\item \textbf{Boundary} --- what your evidence does not justify.
+\end{enumerate}
+\vspace{2mm}
+\small Then take questions. Keep the artifact inspectable: a hand-drawn table is fine.
+\note{Rotating defenses run 0:18 to 0:48. Keep time by signal, not by clock-watching: when the signal sounds, the listener becomes the defender or the group rotates. Do not let a gambling example become an unstated real-world frequency claim.}
+\end{frame}
+
+\begin{frame}{Rotating defenses}
+\Large\centering
+\textbf{Defend $\rightarrow$ question $\rightarrow$ rotate.}\\[4mm]
+\normalsize
+Take notes on the strongest challenge you receive and the critique you give.
+\vspace{2mm}
+\begin{block}{Capture as you go}
+Strongest challenge received. What survived or changed. One critique you gave and why it was useful.
+\end{block}
+\note{Thirty minutes. Circulate, listen for denominators and independence assumptions, and note one or two for the whole-class debrief. These notes are working notes for revision.}
+\end{frame}
+
+\begin{frame}{Peer questions and professional critique}
+\begin{itemize}
+\item Ask the question you would want asked about your own claim.
+\item Name the thing you are challenging: claim, assumption, evidence, inference, or model.
+\item Say why it matters, then listen to the answer.
+\end{itemize}
+\vspace{2mm}
+\begin{alertblock}{Not the same as an attack}
+``Your 90\% is sensitivity, not $P(C\mid +)$'' targets the inference. ``You never get this stuff'' targets the person.
+\end{alertblock}
+\note{0:48 to 1:03. Fifteen minutes of whole-class or large-group questions. Bring up the strongest critiques you overheard. Keep it about reasoning.}
+\end{frame}
+
+\begin{frame}{Revise: make the conclusion no stronger than the evidence}
+\begin{columns}[T]
+\column{.48\textwidth}
+\textbf{Before}\\[1mm]
+``A positive result means you probably have the condition.''
+\column{.48\textwidth}
+\textbf{After}\\[1mm]
+``In the 10{,}000-person example with 1\% prevalence, about 15 of every 100 positives have the condition ($90/585$). This holds only if the stated rates apply to the population.''
+\end{columns}
+\vspace{3mm}
+\small The revision names the base rate, the number, and the boundary.
+\note{Numbers re-verified: 90/585 = 15.4 percent at 1 percent prevalence from Tuesday's table. Students now revise their own conclusion and boundary using what they heard.}
+\end{frame}
+
+\begin{frame}{Work time: revise your conclusion and boundary}
+\begin{itemize}
+\item Rewrite your one-sentence conclusion after the challenges you heard.
+\item State what survived, what you narrowed, and what remains unresolved.
+\item Note where AI helped and how you independently checked it.
+\end{itemize}
+\vspace{2mm}
+\begin{block}{Where this goes}
+These revisions feed your Decision Gate: Sources, Rules/Assumptions, Work, Check, One-Sentence Summary.
+\end{block}
+\note{1:03 to 1:16. Protect this time; do not let the debrief eat it. Walk around and ask each student which assumption they narrowed.}
+\end{frame}
+
+\begin{frame}{Show \& Tell and the Decision Gate are different things}
+\begin{itemize}
+\item \textbf{Show \& Tell} is today's in-class practice: defend, question, critique, revise. No separate Canvas assignment.
+\item \textbf{Decision Gate} is the one submission this week: an individual write-up with the five headings.
+\item Do not submit the same artifact twice, and do not write an extra essay.
+\end{itemize}
+\small The due date and time are on the Decision Gate in Canvas.
+\note{INSTRUCTOR CHECK: the Week 10 README and run-of-show still say draft or submit an individual Show and Tell report, but Decision 029 (2026-08-25) retired that report and docs/grading-model.md calls Show and Tell ungraded and in-class. This slide follows Decision 029. If you still want a short written report this week, change the first bullet and tell the class where to submit it.}
+\end{frame}
+
+\begin{frame}{Before you leave: your submission plan}
+\begin{enumerate}
+\item Which claim will your Decision Gate defend? (screening example, a stated game or drawing process, or an approved bounded claim)
+\item What is your Check, and what can it not validate?
+\item Which of today's critiques changed your Rules/Assumptions?
+\item When will you draft the one-sentence summary?
+\end{enumerate}
+\note{1:16 to 1:25. Collect a one-line submission plan from each student or have them hold it. The plan is retained, not graded.}
+\end{frame}
+
+\begin{frame}{Next week: relations}
+\begin{itemize}
+\item From probability over events to relations over pairs.
+\item Which pairs are related, and how do we classify the relation?
+\item Keep your Week 10 trace: it feeds the Decision Gate.
+\end{itemize}
+\note{Bridge to Week 11: relations, equivalence, partial orders, matrices and digraphs. Keep it to a preview.}
+\end{frame}
+
+\begin{frame}{Exit question}
+\Large\centering
+\textbf{What is one claim you narrowed today, and what did the evidence not justify?}
+\note{Collect answers verbally or on paper as the room clears.}
+\end{frame}
+
+\end{document}
