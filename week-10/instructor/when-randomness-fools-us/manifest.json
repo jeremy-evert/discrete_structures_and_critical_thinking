@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "title": "When Randomness Fools Us",
+  "series_type": "instructor-private-podcast",
+  "course": "COMSC-2043-1420",
+  "week": 10,
+  "prepared_date": "2026-10-20",
+  "note": "Estimated durations are not render proofs. Verify duration from completed Kokoro receipts.",
+  "source_repository": "jeremy-evert/discrete_structures_and_critical_thinking",
+  "source_branch": "audio/dsct-week10-randomness-20261020",
+  "sources": [
+    "Rolf Dobelli, The Art of Thinking Clearly, chapters 28 (base-rate neglect) and 29 (gambler's fallacy), thematic paraphrase only",
+    "Kenneth Rosen, Discrete Mathematics and Its Applications, 8th ed., chapter 7 (discrete probability), §§7.1–7.4",
+    "DSCT week-10/README.md and instructor/tuesday-run-of-show.md"
+  ],
+  "voice_map": {
+    "DANA": "af_sarah",
+    "MARCUS": "af_heart"
+  },
+  "episodes": [
+    {
+      "number": "01",
+      "title": "The Casino Has No Memory",
+      "source": "scripts/01_the_casino_has_no_memory.md",
+      "sha256": "d735f65ec9a68555241e7c1ec45b1f182670576a179dd1130134c08c28d57532",
+      "spoken_words": 1645,
+      "estimated_minutes": 10.7
+    },
+    {
+      "number": "02",
+      "title": "The Test That Tells the Truth but Fools You",
+      "source": "scripts/02_the_test_that_fools_you.md",
+      "sha256": "a4f3d6de82a133f80bcc5e4a74572fc4090f0fa05312fca0ee7cdf4aae5e36f1",
+      "spoken_words": 1585,
+      "estimated_minutes": 10.3
+    },
+    {
+      "number": "03",
+      "title": "Can We Trust the Numbers?",
+      "source": "scripts/03_can_we_trust_the_numbers.md",
+      "sha256": "61b9917d497741bd5eeb0bdc2e2ff27b14656ce0b40146dadee22d8e9d18425c",
+      "spoken_words": 1651,
+      "estimated_minutes": 10.7
+    }
+  ],
+  "publication_status": "NOT RENDERED, NOT PUBLISHED, NOT PHONE VERIFIED"
+}
