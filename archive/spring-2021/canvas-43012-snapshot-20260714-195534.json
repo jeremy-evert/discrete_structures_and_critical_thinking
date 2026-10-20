@@ -4115,7 +4115,7 @@
       "publish_at": null,
       "updated_at": "2021-01-07T15:30:31Z",
       "locked_for_user": false,
-      "body": "<p>&nbsp;</p>\n<p><img src=\"https://swosu.instructure.com/courses/43012/files/3066848/preview?verifier=eoVHUpMTR3kk6lEOjb8SXjrQjCMpOMRI62Njc5yk\" alt=\"rosen.jpeg\" data-api-endpoint=\"https://swosu.instructure.com/api/v1/courses/43012/files/3066848\" data-api-returntype=\"File\" loading=\"lazy\"></p>\n<p>I am very excited to work with you this semester. Here is a link to my welcome video for Spring 2021:</p>\n<p><a href=\"https://www.dropbox.com/s/3eobs4sde1gfmwa/2021-01-04-General-Welcome.mp4?dl=0\" target=\"_blank\">https://www.dropbox.com/s/3eobs4sde1gfmwa/2021-01-04-General-Welcome.mp4?dl=0</a></p>\n<p>One of our first getting started assignments is for you to make a video so all of us can get to know you.&nbsp;</p>\n<p>Please see the Syllabus for the course schedule and list of main assignments. Email and Discord work great if you have any questions.</p>\n<p>Thanks for being here!</p>\n<p>&nbsp;</p>\n<p>&nbsp;</p>\n<p>&nbsp;</p>"
+      "body": "<p>&nbsp;</p>\n<p><img src=\"https://swosu.instructure.com/courses/43012/files/3066848/preview?verifier=REDACTED\" alt=\"rosen.jpeg\" data-api-endpoint=\"https://swosu.instructure.com/api/v1/courses/43012/files/3066848\" data-api-returntype=\"File\" loading=\"lazy\"></p>\n<p>I am very excited to work with you this semester. Here is a link to my welcome video for Spring 2021:</p>\n<p><a href=\"https://www.dropbox.com/s/3eobs4sde1gfmwa/2021-01-04-General-Welcome.mp4?dl=0\" target=\"_blank\">https://www.dropbox.com/s/3eobs4sde1gfmwa/2021-01-04-General-Welcome.mp4?dl=0</a></p>\n<p>One of our first getting started assignments is for you to make a video so all of us can get to know you.&nbsp;</p>\n<p>Please see the Syllabus for the course schedule and list of main assignments. Email and Discord work great if you have any questions.</p>\n<p>Thanks for being here!</p>\n<p>&nbsp;</p>\n<p>&nbsp;</p>\n<p>&nbsp;</p>"
     },
     {
       "url": "getting-started-overview",
@@ -7750,7 +7750,7 @@
       "filename": "Jeremy+Evert+Discrete+Structures+Welcome+Video",
       "upload_status": "success",
       "content-type": "video/*",
-      "url": "https://swosu.instructure.com/files/3066705/download?download_frd=1&verifier=Ix3fGywDy76KFkrivR01MRjBNXzJGENrc9wVAoMS",
+      "url": "https://swosu.instructure.com/files/3066705/download?download_frd=1&verifier=REDACTED",
       "size": 9026001,
       "created_at": "2021-01-06T23:07:15Z",
       "updated_at": "2021-01-06T23:07:15Z",
@@ -7774,7 +7774,7 @@
       "filename": "Media+Comment",
       "upload_status": "success",
       "content-type": "video/*",
-      "url": "https://swosu.instructure.com/files/3099289/download?download_frd=1&verifier=rXOOpb9YqreFyl3CYWBXFTyJNN9qbVly5DJWhvh9",
+      "url": "https://swosu.instructure.com/files/3099289/download?download_frd=1&verifier=REDACTED",
       "size": 1218079,
       "created_at": "2021-01-15T23:05:00Z",
       "updated_at": "2021-01-15T23:05:00Z",
@@ -7798,7 +7798,7 @@
       "filename": "rosen.jpeg",
       "upload_status": "success",
       "content-type": "image/jpeg",
-      "url": "https://swosu.instructure.com/files/3066848/download?download_frd=1&verifier=eoVHUpMTR3kk6lEOjb8SXjrQjCMpOMRI62Njc5yk",
+      "url": "https://swosu.instructure.com/files/3066848/download?download_frd=1&verifier=REDACTED",
       "size": 25502,
       "created_at": "2021-01-07T01:25:55Z",
       "updated_at": "2021-01-07T01:25:55Z",
@@ -7821,13 +7821,13 @@
       "filename": "Jeremy+Evert+Discrete+Structures+Welcome+Video",
       "size": 9026001,
       "content_type": "video/*",
-      "url": "https://swosu.instructure.com/files/3066705/download?download_frd=1&verifier=Ix3fGywDy76KFkrivR01MRjBNXzJGENrc9wVAoMS"
+      "url": "https://swosu.instructure.com/files/3066705/download?download_frd=1&verifier=REDACTED"
     },
     {
       "filename": "Media+Comment",
       "size": 1218079,
       "content_type": "video/*",
-      "url": "https://swosu.instructure.com/files/3099289/download?download_frd=1&verifier=rXOOpb9YqreFyl3CYWBXFTyJNN9qbVly5DJWhvh9"
+      "url": "https://swosu.instructure.com/files/3099289/download?download_frd=1&verifier=REDACTED"
     }
   ]
 }

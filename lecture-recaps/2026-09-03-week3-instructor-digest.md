@@ -4,8 +4,8 @@
 
 - Course: Discrete Structures and Critical Thinking (COMSC-2043-1420), Fall 2026, Canvas course `74035`.
 - Source: fresh local Whisper/CTranslate2 (`medium.en`) transcription of the protected MP4, run on April's GPU.
-- Protected MP4: `2026-09-03_discrete-structures-meeting-recording.mp4` (original filename: `Fall 2026 Discrete Structures (COMSC-2043-1420)-20260903_123226-Meeting Recording.mp4`), 268.9 MB, ~70 minutes, protected under `/mnt/ironwolf-scratch/video_mechanics/protected_raw/zoom/2026-09-03/`.
-- Fresh transcript: `dsct_audio.vtt` / `.txt` alongside the protected MP4.
+- Recording: a Zoom class recording (about 70 minutes), kept in private protected storage and never committed to this repository.
+- Transcript: generated locally from the recording and kept private with it; not committed.
 - This digest intentionally omits student names, chat, incidental remarks, cold-call responses, and identifying classroom details. Several students are named in the raw transcript; none are named here.
 
 ## Teaching goals

@@ -4,7 +4,7 @@
 
 Jeremy teaches DSCT in-person shortly after this session; Week 1 needed to
 be live on real production SWOSU Canvas, not just validated on the internal
-Savnac sandbox (course 4, self-hosted at `192.168.122.172:3000` — not
+Savnac sandbox (course 4, self-hosted at `<savnac-private-ip>:3000` — not
 student-visible).
 
 ## What was built

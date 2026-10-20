@@ -1,5 +1,5 @@
 {
-  "source": "/mnt/nora/git/jeremy_task_tracking/questions",
+  "source": "<storage>/git/jeremy_task_tracking/questions",
   "existing_dsct_questions": [
     {"file": "004_dsct_grading_and_final_format.md", "status": "OPEN", "jeremy_answer": "blank"},
     {"file": "005_dsct_project_and_tooling.md", "status": "OPEN", "jeremy_answer": "blank"},

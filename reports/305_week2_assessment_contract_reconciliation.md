@@ -137,23 +137,23 @@ Real pass output (`python3 assessment/verify_week02_contract_paths.py`,
 run from the repo root at the commit this work lands on):
 
 ```
-PASS: assignment.submission_path 'local-ai-readiness.md' is a bare filename referenced by /mnt/brandy_nvme/jevert/git/local_ai_lab_setup/curriculum/shared/week2/12_readiness_assignment.md
-PASS: assignment.source_assignment.path -> /mnt/brandy_nvme/jevert/git/local_ai_lab_setup/curriculum/shared/week2/12_readiness_assignment.md
-PASS: assignment.course_extension.path -> /mnt/brandy_nvme/jevert/git/local_ai_lab_setup/curriculum/dsct/week2_extension.md
-PASS: assignment.recurring_method.source.path -> /mnt/brandy_nvme/jevert/git/discrete_structures_and_critical_thinking/week-01/student/reasoning-method.md
-PASS: approved-materials[dsct-reasoning-method].path -> /mnt/brandy_nvme/jevert/git/discrete_structures_and_critical_thinking/week-01/student/reasoning-method.md
-PASS: approved-materials[dsct-ai-verification].path -> /mnt/brandy_nvme/jevert/git/discrete_structures_and_critical_thinking/week-01/student/ai-verification-expectation.md
-PASS: approved-materials[dsct-week2-tuesday-guide].path -> /mnt/brandy_nvme/jevert/git/discrete_structures_and_critical_thinking/week-02/student/tuesday-activity.md
-PASS: approved-materials[dsct-week2-reflection].path -> /mnt/brandy_nvme/jevert/git/discrete_structures_and_critical_thinking/week-02/student/tuesday-activity.md
-PASS: approved-materials[dsct-week2-help-status].path -> /mnt/brandy_nvme/jevert/git/discrete_structures_and_critical_thinking/week-02/student/week-02-evidence-assignment.md
-PASS: approved-materials[shared-local-ai-architecture].path -> /mnt/brandy_nvme/jevert/git/local_ai_lab_setup/curriculum/shared/week2/05_local_ai_architecture.md
-PASS: approved-materials[shared-localhost-boundary].path -> /mnt/brandy_nvme/jevert/git/local_ai_lab_setup/curriculum/shared/week2/08_localhost_apis_and_local_vs_cloud.md
-PASS: approved-materials[shared-readiness-check].path -> /mnt/brandy_nvme/jevert/git/local_ai_lab_setup/curriculum/shared/week2/09_run_the_readiness_check.md
-PASS: approved-materials[shared-first-local-ai-interaction].path -> /mnt/brandy_nvme/jevert/git/local_ai_lab_setup/curriculum/shared/week2/10_first_local_ai_interaction.md
-PASS: approved-materials[shared-troubleshooting-evidence].path -> /mnt/brandy_nvme/jevert/git/local_ai_lab_setup/curriculum/shared/week2/11_troubleshoot_with_evidence.md
-PASS: approved-materials[shared-readiness-assignment].path -> /mnt/brandy_nvme/jevert/git/local_ai_lab_setup/curriculum/shared/week2/12_readiness_assignment.md
-PASS: approved-materials[dsct-week2-extension].path -> /mnt/brandy_nvme/jevert/git/local_ai_lab_setup/curriculum/dsct/week2_extension.md
-PASS: approved-materials[windows-week2-guide].path -> /mnt/brandy_nvme/jevert/git/windows_classroom/docs/week2_student_guide.md
+PASS: assignment.submission_path 'local-ai-readiness.md' is a bare filename referenced by <git>/local_ai_lab_setup/curriculum/shared/week2/12_readiness_assignment.md
+PASS: assignment.source_assignment.path -> <git>/local_ai_lab_setup/curriculum/shared/week2/12_readiness_assignment.md
+PASS: assignment.course_extension.path -> <git>/local_ai_lab_setup/curriculum/dsct/week2_extension.md
+PASS: assignment.recurring_method.source.path -> <git>/discrete_structures_and_critical_thinking/week-01/student/reasoning-method.md
+PASS: approved-materials[dsct-reasoning-method].path -> <git>/discrete_structures_and_critical_thinking/week-01/student/reasoning-method.md
+PASS: approved-materials[dsct-ai-verification].path -> <git>/discrete_structures_and_critical_thinking/week-01/student/ai-verification-expectation.md
+PASS: approved-materials[dsct-week2-tuesday-guide].path -> <git>/discrete_structures_and_critical_thinking/week-02/student/tuesday-activity.md
+PASS: approved-materials[dsct-week2-reflection].path -> <git>/discrete_structures_and_critical_thinking/week-02/student/tuesday-activity.md
+PASS: approved-materials[dsct-week2-help-status].path -> <git>/discrete_structures_and_critical_thinking/week-02/student/week-02-evidence-assignment.md
+PASS: approved-materials[shared-local-ai-architecture].path -> <git>/local_ai_lab_setup/curriculum/shared/week2/05_local_ai_architecture.md
+PASS: approved-materials[shared-localhost-boundary].path -> <git>/local_ai_lab_setup/curriculum/shared/week2/08_localhost_apis_and_local_vs_cloud.md
+PASS: approved-materials[shared-readiness-check].path -> <git>/local_ai_lab_setup/curriculum/shared/week2/09_run_the_readiness_check.md
+PASS: approved-materials[shared-first-local-ai-interaction].path -> <git>/local_ai_lab_setup/curriculum/shared/week2/10_first_local_ai_interaction.md
+PASS: approved-materials[shared-troubleshooting-evidence].path -> <git>/local_ai_lab_setup/curriculum/shared/week2/11_troubleshoot_with_evidence.md
+PASS: approved-materials[shared-readiness-assignment].path -> <git>/local_ai_lab_setup/curriculum/shared/week2/12_readiness_assignment.md
+PASS: approved-materials[dsct-week2-extension].path -> <git>/local_ai_lab_setup/curriculum/dsct/week2_extension.md
+PASS: approved-materials[windows-week2-guide].path -> <git>/windows_classroom/docs/week2_student_guide.md
 
 17 passed, 0 failed
 ALL PATHS RESOLVED.

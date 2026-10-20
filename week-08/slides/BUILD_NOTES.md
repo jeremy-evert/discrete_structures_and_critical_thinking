@@ -43,9 +43,9 @@ confirmed by the passing test.
   succeeded.
 - The first remote fetch was blocked by permissions on
   /etc/ssh/ssh_config.d/30-libvirt-ssh-proxy.conf. Fetching with
-  GIT_SSH_COMMAND='ssh -F /home/jevert/.ssh/config' succeeded.
+  GIT_SSH_COMMAND='ssh -F ~/.ssh/config' succeeded.
 - Successful source update command: REAL_GIT_BIN=/usr/bin/git
-  GIT_SSH_COMMAND='ssh -F /home/jevert/.ssh/config' git fetch origin
+  GIT_SSH_COMMAND='ssh -F ~/.ssh/config' git fetch origin
   refs/heads/anna/dsct-week8-tuesday-prep-2026-10-05:refs/remotes/origin/anna/dsct-week8-tuesday-prep-2026-10-05
   refs/heads/morgan-backup/week06-presentation-ready-2026-09-23:refs/remotes/origin/morgan-backup/week06-presentation-ready-2026-09-23
 

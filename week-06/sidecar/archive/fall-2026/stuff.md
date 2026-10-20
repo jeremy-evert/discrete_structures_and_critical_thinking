@@ -92,7 +92,7 @@ TIME GROWTH
 
 ============================================================================
 GRAPH WRITTEN TO:
-/home/evertj/git/discrete_structures_and_critical_thinking/week-06/websites/04b_bubble_sort_measured.html
+~/git/discrete_structures_and_critical_thinking/week-06/websites/04b_bubble_sort_measured.html
 
 STUDENT QUESTION:
 When n grows by 10x, why does the work trend toward roughly 100x?
@@ -114,7 +114,7 @@ TIME GROWTH
 
 ============================================================================
 GRAPH WRITTEN TO:
-/home/evertj/git/discrete_structures_and_critical_thinking/week-06/websites/04b_bubble_sort_measured.html
+~/git/discrete_structures_and_critical_thinking/week-06/websites/04b_bubble_sort_measured.html
 
 STUDENT QUESTION:
 When n grows by 10x, why does the work trend toward roughly 100x?

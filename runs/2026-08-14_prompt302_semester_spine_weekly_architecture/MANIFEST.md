@@ -2,7 +2,7 @@
 
 - Run date: 2026-08-14
 - Scope: DSCT semester spine, weekly architecture, topic/source contract, and reconciliation only.
-- Start directory: `/mnt/nora/git`
+- Start directory: `<storage>/git`
 - Source repository: `discrete_structures_and_critical_thinking`
 - Coordination pointer repository: `jeremy_task_tracking`
 - Baseline DSCT SHA: `565c13394e494c2d6b5782bea47b2d9daf8345ac`

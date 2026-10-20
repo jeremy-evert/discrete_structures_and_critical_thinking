@@ -1,7 +1,7 @@
 # Prompt 300B — Discrete Structures course source-of-truth audit
 
 Audit date: 2026-08-14
-Audited repository: `/mnt/nora/git/discrete_structures_and_critical_thinking`
+Audited repository: `<storage>/git/discrete_structures_and_critical_thinking`
 Audited branch/SHA: `main` / `1fa96ee7bc8d45af2cb0d185743759d8d027c088`
 300A handoff SHA: `1fa96ee7bc8d45af2cb0d185743759d8d027c088`
 
@@ -289,4 +289,4 @@ the evidence spine for later weeks.
 - historical summary: `runs/2026-08-14_prompt300B_course_source_audit/derived/historical_structure_summary.json`
 - source receipt/raw check: `runs/2026-08-14_prompt300B_course_source_audit/receipts/source_state.json` and `raw/20260814T_prompt300B_source_checks.raw.txt`
 - key current source: `course_metadata.yaml`, `planning/fall-2026-course-design.md`, `planning/fall-2026-spine.md`, `planning/zybooks-section-decisions.csv`, `monday_moments/README.md`
-- shared Week 1 source: `/mnt/nora/git/semester_kickoff_week/`
+- shared Week 1 source: `<storage>/git/semester_kickoff_week/`

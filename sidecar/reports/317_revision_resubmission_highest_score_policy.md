@@ -44,9 +44,9 @@ checked and found not to need edits.
   `revision`, `due date`, `highest score`, `highest recorded`
 - Upstream canonical policy (read-only, not edited, per hard stop on
   Marker/Course Foundry code):
-  - `/mnt/brandy_nvme/jevert/git/swosu_cs_curriculum/shared/philosophy/late_work_policy.md`
-  - `/mnt/brandy_nvme/jevert/git/course_foundry/course_foundry/late_work_policy.py`
-  - `/mnt/brandy_nvme/jevert/git/course_foundry/tests/test_continuous_late_work_policy.py`
+  - `<git>/swosu_cs_curriculum/shared/philosophy/late_work_policy.md`
+  - `<git>/course_foundry/course_foundry/late_work_policy.py`
+  - `<git>/course_foundry/tests/test_continuous_late_work_policy.py`
     (confirms `POLICY_SOURCE_PATH` / `POLICY_SOURCE_REVISION` wiring and the
     1-hour/12-hour/24-hour/21-day acceptance points cited in the prompt)
 
