@@ -28,3 +28,7 @@ Adapted from [the historical probability lesson](../lessons/08-probability.md)
 and Week 10 of the [topic map](../planning/fall-2026-topic-map.md). Bring
 forward Week 9 sample-space/counting habits. Calendar, cadence, and grading
 boundaries are the spine, weekly architecture, and grading model.
+
+## Instructor audio supplement (Oct 20)
+
+The three-part original **When Randomness Fools Us** instructor listening series (gambler's fallacy, base-rate neglect, simulation/expected value) is tracked in [the Week 10 podcast package](instructor/when-randomness-fools-us/README.md). Its [Flo production mission](instructor/when-randomness-fools-us/FLO_MISSION.md) and Kokoro rendering handoff are committed on this branch. **Instructor-private production only; no student release or MP3/phone completion is implied.**
