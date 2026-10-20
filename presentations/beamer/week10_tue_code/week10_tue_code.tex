@@ -1,0 +1,155 @@
+% week10_tue_code.tex -- DSCT Week 10 Tuesday companion: the code, one step at a time.
+% Companion to ../week10_tue_probability. Code lives in week-10/code/ (v1..v6);
+% every number here was produced by running those files (seed 10).
+\documentclass[aspectratio=169,10pt]{beamer}
+\usetheme{Madrid}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\small,breaklines=true,columns=fullflexible,frame=single}
+\title{Same Test, Six Small Steps}
+\subtitle{Week 10 Tuesday --- the code grows, the question stays the same}
+\author{COMSC 2043 \textbullet\ Discrete Structures and Critical Thinking}
+\date{October 20, 2026}
+\begin{document}
+
+\frame{\titlepage
+\note{Companion to the main Tuesday deck. Same screening example, now as code that grows one change at a time. Students run each file and use compare.py to see only the difference. Ask them to predict before every run.}}
+
+\begin{frame}{The ladder: each file is the last one plus one change}
+\begin{enumerate}
+\item \texttt{v1} four-cell table, typed by hand
+\item \texttt{v2} the cells become a function of three inputs
+\item \texttt{v3} add $P(+\mid C)$ and $P(C\mid +)$ side by side
+\item \texttt{v4} loop over prevalence --- \emph{predict first}
+\item \texttt{v5} simulate a million people, compare to the table
+\item \texttt{v6} the world has a subgroup the stated rates ignore
+\end{enumerate}
+\vspace{2mm}
+\texttt{python3 compare.py v2 v3} shows \textbf{only what changed}.
+\note{Everything is in week-10/code. check_my_setup.sh should print ready. Do not read whole files aloud; read the change.}
+\end{frame}
+
+\begin{frame}{Critical-thinking overlay: answer the question that was asked}
+\begin{block}{Base-rate neglect is not bad arithmetic}
+It is answering a \emph{different question} than the one asked.
+\end{block}
+\begin{itemize}
+\item ``90\% accurate'' answers: \emph{if you have it, does the test catch you?}
+\item The patient asked: \emph{I tested positive --- do I have it?}
+\item Three habits: \textbf{name the question}, \textbf{predict then check}, \textbf{say what the check cannot check}.
+\end{itemize}
+\note{Be charitable first. Whoever says 90 percent accurate is saying something true about sensitivity. The error is the swap, not the speaker. Keep this slide's three habits visible; each code version below exercises one.}
+\end{frame}
+
+\begin{frame}[fragile]{v1 --- the table, every number typed by hand}
+\begin{lstlisting}
+true_pos = 90      # 90% of the 100 who have it
+false_neg = 10
+false_pos = 495    # 5% of the 9,900 who don't
+true_neg = 9405
+\end{lstlisting}
+\begin{center}
+\begin{tabular}{l|r|r}
+ & test $+$ & test $-$ \\ \hline
+has it & 90 & 10 \\
+does not & 495 & 9405 \\
+\end{tabular}
+\end{center}
+\textbf{Thinking move: name the question.} Which group is the denominator?
+\note{Output total is 10000. Ask: if I want the share of positives who truly have it, which two cells are the denominator? 90 plus 495 equals 585.}
+\end{frame}
+
+\begin{frame}[fragile]{v1 $\to$ v2 --- assumptions become arguments}
+\begin{lstlisting}
+def screening_table(prevalence, sensitivity,
+                    specificity, n=10000):
+    have_it = n * prevalence
+    dont = n - have_it
+    return {
+        "true_pos":  have_it * sensitivity,
+        "false_neg": have_it * (1 - sensitivity),
+        "false_pos": dont * (1 - specificity),
+        "true_neg":  dont * specificity,
+    }
+\end{lstlisting}
+\textbf{Thinking move: make assumptions visible.} Each argument is a claim someone could challenge.
+\note{Same four numbers as v1: 90, 10, 495, 9405. The function also asserts the cells total 10000, which is the Check step from the activity sheet.}
+\end{frame}
+
+\begin{frame}[fragile]{v2 $\to$ v3 --- two functions, one table}
+\begin{lstlisting}
+def p_pos_given_c(t):    # denominator: 'has it' row
+    return t["true_pos"] / (t["true_pos"] + t["false_neg"])
+
+def p_c_given_pos(t):    # denominator: 'test +' column
+    return t["true_pos"] / (t["true_pos"] + t["false_pos"])
+\end{lstlisting}
+\begin{center}
+$P(+\mid C)=0.9000\qquad P(C\mid +)=0.1538$
+\end{center}
+\textbf{Thinking move: charity, then precision.} The ``90\%'' claim is true --- of the \emph{first} one.
+\note{Same four numbers, two denominators. 90 over 100 versus 90 over 585 (which is 2 over 13). Spend time here; this is the lesson.}
+\end{frame}
+
+\begin{frame}[fragile]{v4 --- change one input. Predict first.}
+\begin{lstlisting}
+for prevalence in (0.001, 0.01, 0.05, 0.20, 0.50):
+    t = screening_table(prevalence, 0.90, 0.95)
+    print(prevalence, p_c_given_pos(t))
+\end{lstlisting}
+\begin{center}
+\begin{tabular}{r|r}
+prevalence & $P(C\mid +)$ \\ \hline
+0.1\% & 0.018 \\
+1\% & 0.154 \\
+5\% & 0.486 \\
+20\% & 0.818 \\
+50\% & 0.947 \\
+\end{tabular}
+\end{center}
+\textbf{Thinking move: predict, then run.} The test never changed. Only who was screened.
+\note{Before showing the table, have everyone write a guess for 20 percent. A wrong guess is the most useful result in the room; ask who guessed near 0.9 and why.}
+\end{frame}
+
+\begin{frame}[fragile]{v5 --- a million simulated people}
+\begin{lstlisting}
+random.seed(10)
+has_it = random.random() < prevalence
+chance_positive = sensitivity if has_it \
+                  else (1 - specificity)
+\end{lstlisting}
+\begin{center}
+calculation 0.1538 \quad simulation 0.1521 \quad difference 0.0017
+\end{center}
+\textbf{Thinking move: what does agreement check?} The \emph{code} matches the table. Nothing more.
+\note{Same seed gives the same answer every run. The 0.0017 is sampling noise.}
+\end{frame}
+
+\begin{frame}[fragile]{v6 --- both agree, and both are wrong}
+\begin{lstlisting}
+in_subgroup = random.random() < 0.10
+specificity = 0.80 if in_subgroup else 0.95
+\end{lstlisting}
+\begin{center}
+stated rates: 0.1538 \quad real mix: 0.1231
+\end{center}
+\begin{itemize}
+\item More simulation runs shrink noise, not assumption error.
+\item \textbf{Thinking move: what would change my mind?} Evidence about the \emph{population}, not another run.
+\end{itemize}
+\note{The subgroup is a hypothetical: ten percent of people screened for whom the test is only 80 percent specific. It is an invented example to show an assumption failing, not a claim about any real test. Ask: what real-world reasons make a stated rate not apply to your group?}
+\end{frame}
+
+\begin{frame}{Where this goes in the Decision Gate}
+\begin{tabular}{ll}
+\textbf{Sources} & the three inputs in v2 \\
+\textbf{Rules / Assumptions} & ``applies to this population'' --- v6 shows it failing \\
+\textbf{Work} & v1, v2, v3 \\
+\textbf{Check} & totals (v2), changed prevalence (v4), simulation (v5) \\
+\textbf{One-Sentence Summary} & no stronger than v6 allows \\
+\end{tabular}
+\vspace{3mm}
+An AI answer is not evidence until you have rerun the numbers yourself.
+\note{This is the bridge to the Decision Gate. Students keep the trace from today.}
+\end{frame}
+
+\end{document}
