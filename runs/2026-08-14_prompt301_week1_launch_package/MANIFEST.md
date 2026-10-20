@@ -1,7 +1,7 @@
 # Prompt 301 run evidence manifest
 
 - **Run:** `2026-08-14_prompt301_week1_launch_package`
-- **Workspace:** `/mnt/nora/git`
+- **Workspace:** `<storage>/git`
 - **Owner:** `discrete_structures_and_critical_thinking`
 - **Scope:** DSCT Week 1 source package only
 - **Source SHAs at refresh:** DSCT `1ad378dd2f641edbcea6a200f06b4c242eb49869`; JTT `d8a15d4167a8b39340856e7a31ecceeec88c13bf`; shared kickoff `94d8591369c350996f6984b05d0a9d50cee764a8`

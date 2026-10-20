@@ -10,7 +10,7 @@ here is committed to a week or a shape yet.
 ## Sources
 
 - **CS1, 2026-09-11** (course 74029, Week 4's dedicated Git/GitHub lecture) —
-  `/mnt/ironwolf-scratch/video_mechanics/protected_raw/teams/2026-09-11_cs1_62f62fa2/out/transcript.txt`
+  `<protected-storage>/video_mechanics/protected_raw/teams/2026-09-11_cs1_62f62fa2/out/transcript.txt`
   on april (protected; not committed anywhere, quoted only, per the privacy
   boundary in `video_mechanics/README.md`/`AGENTS.md`). Already published to
   Canvas as lecture notes/digest — see

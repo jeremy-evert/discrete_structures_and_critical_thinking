@@ -3,7 +3,7 @@
 - Date: 2026-08-14
 - Purpose: synthesize completed 300A–300D reconnaissance and sequence Prompt 301+.
 - Owner: `discrete_structures_and_critical_thinking`
-- Starting directory: `/mnt/nora/git`
+- Starting directory: `<storage>/git`
 - Starting DSCT SHA: `fbceb2b1308be17142c8b9743c15e4e8f6ffb31c`
 - Starting JTT SHA: `d4404c7afbf9b7c007ebfc32af661153404473cd`
 - Refresh: `git pull --ff-only` reported `Already up to date.` in both required checkouts.

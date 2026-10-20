@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
-ROOT="/mnt/brandy_nvme/jevert/git/discrete_structures_and_critical_thinking"
+ROOT="<git>/discrete_structures_and_critical_thinking"
 PROMPT="sidecar/prompts/320_continue_dsct_production_shipping_hold_week1_redesign.md"
 LOCK="/tmp/dsct-cleocontrol-320.lock"
 

@@ -1,6 +1,6 @@
 {
   "run_date": "2026-08-14",
-  "start_directory": "/mnt/nora/git",
+  "start_directory": "<storage>/git",
   "repositories": {
     "discrete_structures_and_critical_thinking": {
       "branch": "main",

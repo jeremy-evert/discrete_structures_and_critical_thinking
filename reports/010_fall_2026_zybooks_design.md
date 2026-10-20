@@ -16,7 +16,7 @@ licensed ZyBooks page content.
   templates, and history synthesis for canonical course intent;
 - `course_metadata.yaml` for course/requisite facts and current zyBook ID;
 - durable manifest
-  `/mnt/brandy_nvme/jevert/durable/zybooks_captures/SWOSUCOMSC2043EvertFall2026/course_manifest.json`.
+  `<home>/durable/zybooks_captures/SWOSUCOMSC2043EvertFall2026/course_manifest.json`.
 
 The durable manifest is validated and contains 126 discovered sections. The
 decision CSV contains exactly 126 rows: 75 KEEP, 46 OPTIONAL, and 5 UNUSED.

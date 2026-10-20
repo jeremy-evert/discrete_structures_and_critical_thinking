@@ -1,4 +1,4 @@
-Prompt 300E read from /mnt/nora/git/jeremy_task_tracking/tasks/300E_discrete_structures_launch_readiness_synthesis.md.
+Prompt 300E read from <storage>/git/jeremy_task_tracking/tasks/300E_discrete_structures_launch_readiness_synthesis.md.
 
 Required completed reports read:
 - jeremy_task_tracking/reports/300A_maise_repo_bootstrap.md

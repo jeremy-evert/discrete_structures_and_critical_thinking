@@ -16,8 +16,8 @@ here. See "Decisions returned to Jeremy + ChatGPT" below.
 | Repo | Path inspected | Branch | Commit SHA |
 |---|---|---|---|
 | DSCT | `/tmp/dsct-prompt309` (isolated worktree of `discrete_structures_and_critical_thinking`) | `worker/prompt309-world-bible` from `origin/main` | `419b55bf1410670597ebe271138e6bd50577e0f2` |
-| CS1 | `/mnt/brandy_nvme/jevert/git/computer_science_1` (read-only, direct) | `main` | `f4fe3c38ebfc7d57bda625bcfa023390a67fe26c` |
-| CS2 | `/mnt/brandy_nvme/jevert/git/computer_science_2` (read-only, direct) | `main` | `8f7b498d9738dac9fe4ef9b99549692c17c7ba7a` |
+| CS1 | `<git>/computer_science_1` (read-only, direct) | `main` | `f4fe3c38ebfc7d57bda625bcfa023390a67fe26c` |
+| CS2 | `<git>/computer_science_2` (read-only, direct) | `main` | `8f7b498d9738dac9fe4ef9b99549692c17c7ba7a` |
 
 CS1 and CS2 repository names/paths were confirmed directly (both accessible,
 both contain course-shaped content — `assignments/`, `rubrics/`, `docs/`);
