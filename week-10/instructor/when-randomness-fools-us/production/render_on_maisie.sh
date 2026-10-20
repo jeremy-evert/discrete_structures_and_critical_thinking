@@ -1,0 +1,129 @@
+#!/usr/bin/env bash
+# DSCT Week 10: private instructor podcasts. Run on Maisie with existing Audio Foundry.
+# The three ORIGINAL narration scripts are versioned in the DSCT repository.
+# Rendered MP3s, private staging, and audio receipts stay outside Git.
+set -euo pipefail
+
+usage() {
+  cat >&2 <<'HELP'
+Usage: bash production/render_on_maisie.sh render [01|02|03|all]
+       bash production/render_on_maisie.sh publish [01|02|03|all]
+
+Required env: AUDIO_FOUNDRY_CHECKOUT, KOKORO_PYTHON
+Before publish: verify the real PRIVATE Audiobookshelf library mount, then set
+PRIVATE_AUDIOBOOKSHELF_MOUNT_VERIFIED=YES.
+Default is 'all'. Render/publish 01 first so the first episode becomes listenable.
+Never use this to publish to a student or public library.
+HELP
+  exit 2
+}
+mode="${1:-}"
+selection="${2:-all}"
+[[ "$mode" == render || "$mode" == publish ]] || usage
+case "$selection" in
+  01) files=(01_the_casino_has_no_memory) ;;
+  02) files=(02_the_test_that_fools_you) ;;
+  03) files=(03_can_we_trust_the_numbers) ;;
+  all) files=(01_the_casino_has_no_memory 02_the_test_that_fools_you 03_can_we_trust_the_numbers) ;;
+  *) usage ;;
+esac
+
+: "${AUDIO_FOUNDRY_CHECKOUT:?Set to existing Audio Foundry checkout on Maisie}"
+: "${KOKORO_PYTHON:?Set to existing Kokoro venv Python on Maisie}"
+[[ -x "$KOKORO_PYTHON" && -f "$AUDIO_FOUNDRY_CHECKOUT/tools/kokoro_dialogue.py" ]] || {
+  echo "Missing Kokoro interpreter or Audio Foundry dialogue renderer" >&2; exit 2;
+}
+for command_name in ffprobe sha256sum python3; do
+  command -v "$command_name" >/dev/null || { echo "Missing $command_name" >&2; exit 2; }
+done
+here="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P)"
+work_root="${AUDIO_FOUNDRY_RUNTIME:-/srv/audio-foundry}/work/dsct-week10-20261020"
+source_dir="$work_root/source"
+audio_dir="$work_root/rendered"
+receipt_dir="$work_root/receipts"
+mkdir -p -- "$source_dir" "$audio_dir" "$receipt_dir"
+
+for base in "${files[@]}"; do
+  original="$here/scripts/$base.md"
+  source="$source_dir/$base.md"
+  output="$audio_dir/$base.mp3"
+  receipt="$receipt_dir/$base.json"
+  [[ -f "$original" ]] || { echo "Missing original: $original" >&2; exit 2; }
+
+  # Verify every source against the committed manifest BEFORE rendering.
+  python3 - "$here/manifest.json" "$original" "$base.md" <<'PY'
+import hashlib, json, sys
+from pathlib import Path
+manifest = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+name = sys.argv[3]
+episode = next((e for e in manifest["episodes"] if Path(e["source"]).name == name), None)
+if not episode:
+    raise SystemExit(f"Manifest has no entry for {name}")
+actual = hashlib.sha256(Path(sys.argv[2]).read_bytes()).hexdigest()
+if actual != episode["sha256"]:
+    raise SystemExit(f"Source SHA-256 mismatch for {name}; refusing to render")
+PY
+
+  if [[ ! -e "$source" ]]; then cp -- "$original" "$source"; fi
+  [[ "$(sha256sum "$original" | cut -d' ' -f1)" == "$(sha256sum "$source" | cut -d' ' -f1)" ]] || {
+    echo "Conflicting staged source: $source" >&2; exit 2;
+  }
+
+  if [[ "$mode" == render && ! -e "$output" ]]; then
+    "$KOKORO_PYTHON" "$AUDIO_FOUNDRY_CHECKOUT/tools/kokoro_dialogue.py" render       "$source" "$output" --receipt "$receipt" --device cuda --pause-ms 300
+  fi
+
+  [[ -s "$output" && -s "$receipt" ]] || {
+    echo "Missing validated output or receipt: $base (do not silently overwrite)" >&2; exit 2;
+  }
+  # Recheck exact source/output identity even on resume and before publishing.
+  python3 - "$source" "$output" "$receipt" <<'PY'
+import hashlib, json, sys
+from pathlib import Path
+source, output, receipt_path = map(Path, sys.argv[1:])
+receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+def digest(path):
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        for block in iter(lambda: f.read(1048576), b""):
+            h.update(block)
+    return h.hexdigest()
+assert digest(source) == receipt["source"]["sha256"], "Render source receipt mismatch"
+assert digest(output) == receipt["output"]["sha256"], "MP3 receipt mismatch"
+assert receipt["output"]["duration_seconds"] > 60, "Unexpectedly short MP3"
+assert receipt["output"]["bytes"] == output.stat().st_size, "MP3 size mismatch"
+print("VERIFIED", output.name, round(receipt["output"]["duration_seconds"]), "seconds", digest(output))
+PY
+done
+
+if [[ "$mode" == render ]]; then
+  echo "RENDERED $selection: $audio_dir"
+  echo "Spot-listen to beginning and end, then verify Audiobookshelf mount before publish."
+  exit 0
+fi
+
+[[ "${PRIVATE_AUDIOBOOKSHELF_MOUNT_VERIFIED:-}" == YES ]] || {
+  echo "Refusing publish: verify live private Audiobookshelf mount then set PRIVATE_AUDIOBOOKSHELF_MOUNT_VERIFIED=YES" >&2; exit 2;
+}
+media_root="${AUDIO_FOUNDRY_RUNTIME:-/srv/audio-foundry}/audiobooks"
+[[ -d "$media_root" ]] || { echo "Missing private media root: $media_root" >&2; exit 2; }
+series_dir="$media_root/Learning Foundry/DSCT Week 10 - When Randomness Fools Us"
+mkdir -p -- "$series_dir"
+for base in "${files[@]}"; do
+  output="$audio_dir/$base.mp3"
+  dest="$series_dir/$base.mp3"
+  if [[ -e "$dest" ]]; then
+    [[ "$(sha256sum "$output" | cut -d' ' -f1)" == "$(sha256sum "$dest" | cut -d' ' -f1)" ]] || {
+      echo "Existing library artifact differs; refusing overwrite: $dest" >&2; exit 2;
+    }
+    echo "ALREADY PUBLISHED (identity verified): $dest"
+  else
+    cp --no-clobber -- "$output" "$dest"
+    [[ "$(sha256sum "$output" | cut -d' ' -f1)" == "$(sha256sum "$dest" | cut -d' ' -f1)" ]] || {
+      echo "Publish copy conflict: $dest" >&2; exit 2;
+    }
+    echo "PUBLISHED: $dest"
+  fi
+done
+echo "Library scan/refresh and Android play/seek/resume acceptance are SEPARATE checks."
+echo "Receipts: $receipt_dir"
