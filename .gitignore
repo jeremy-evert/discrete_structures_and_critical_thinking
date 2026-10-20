@@ -6,3 +6,6 @@ __pycache__/
 # Preserve durable receipts in sidecar/runs/ and curate any classroom fallback
 # fixture into week-16/ rather than committing timestamped validation trees.
 artifacts/week16_farkle_validation/
+
+# Student work and student-named material is never committed (see foreman_interface docs/STUDENT_DATA_RETENTION.md).
+student work/

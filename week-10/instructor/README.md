@@ -57,7 +57,7 @@ Ten rolls without a 6? The next roll is still $1/6$.
 
 ### Act 3: One evil coin
 
-The **Evil Coin** is weighted to land heads 90% of the time. After **H H H H H**, betting on tails is wrong twice over. The coin still has no memory, and heads streaks are exactly what this coin does.
+The **Evil Coin** has heads on **both** sides, so it lands heads every time. After **H H H H H**, betting on tails is wrong twice over. The coin still has no memory, and heads streaks are exactly what this coin does.
 
 ### Act 4: A bag of 100 coins, and one of them is evil
 
