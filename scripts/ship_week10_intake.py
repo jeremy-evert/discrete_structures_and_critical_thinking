@@ -34,6 +34,9 @@ W10 = ROOT / "week-10"
 MODULE_NAME = "DSCT Week 10 -- Probability, Uncertainty & Evidence"
 PAGE_SLUG = "week-10-the-gamblers-fallacy-told-with-coins"
 PAGE_TITLE = "Week 10 -- The Gambler's Fallacy, Told With Coins"
+RECAP = ROOT / "lecture-recaps" / "2026-10-20-week10-tuesday-recap.md"
+RECAP_SLUG = "week-10-tuesday-class-recap-october-20"
+RECAP_TITLE = "Week 10 -- Tuesday Class Recap (October 20)"
 FOLDER = "week-10"
 FILES = {  # published name -> (source, content type, module item title)
     "week10_gamblers_fallacy_story.zip": (W10 / "code" / "week10_gamblers_fallacy_story.zip", "application/zip",
@@ -79,6 +82,19 @@ def page_body(urls: dict[str, str]) -> str:
 """
 
 
+def recap_body() -> str:
+    import markdown
+    return markdown.markdown(RECAP.read_text(encoding="utf-8").split("\n", 1)[1], extensions=["sane_lists"])
+
+
+def upsert_page(client: CanvasClient, course: int, slug: str, title: str, body: str) -> None:
+    fields = {"wiki_page[title]": title, "wiki_page[body]": body, "wiki_page[published]": "true"}
+    if client.get(f"/api/v1/courses/{course}/pages/{slug}").status_code == 200:
+        update_page(client, course, slug, fields)
+    else:
+        create_page(client, course, {**fields, "wiki_page[url]": slug})
+
+
 def guard(client: CanvasClient, env: str, course_id: int, expect: str) -> dict:
     host = HOSTS[env]
     base = client.config.api_base_url
@@ -114,11 +130,8 @@ def main() -> int:
         file_ids[name] = up["id"]
         urls[name] = f"/courses/{a.course}/files/{up['id']}/download?wrap=1"
     body = page_body(urls)
-    exists = client.get(f"/api/v1/courses/{a.course}/pages/{PAGE_SLUG}").status_code == 200
-    if exists:
-        update_page(client, a.course, PAGE_SLUG, {"wiki_page[title]": PAGE_TITLE, "wiki_page[body]": body, "wiki_page[published]": "true"})
-    else:
-        create_page(client, a.course, {"wiki_page[title]": PAGE_TITLE, "wiki_page[url]": PAGE_SLUG, "wiki_page[body]": body, "wiki_page[published]": "true"})
+    upsert_page(client, a.course, PAGE_SLUG, PAGE_TITLE, body)
+    upsert_page(client, a.course, RECAP_SLUG, RECAP_TITLE, recap_body())
 
     mods = {m["name"]: m for m in list_modules(client, a.course)}
     mod = mods.get(MODULE_NAME)
@@ -128,6 +141,8 @@ def main() -> int:
     have = {(i["type"], i.get("page_url") or i.get("content_id")) for i in get_module_items(client, a.course, mod["id"])}
     if ("Page", PAGE_SLUG) not in have:
         create_module_item(client, a.course, mod["id"], {"module_item[title]": PAGE_TITLE, "module_item[type]": "Page", "module_item[page_url]": PAGE_SLUG})
+    if ("Page", RECAP_SLUG) not in have:
+        create_module_item(client, a.course, mod["id"], {"module_item[title]": RECAP_TITLE, "module_item[type]": "Page", "module_item[page_url]": RECAP_SLUG})
     for name, (_, _, title) in FILES.items():
         if ("File", file_ids[name]) not in have:
             create_module_item(client, a.course, mod["id"], {"module_item[title]": title, "module_item[type]": "File", "module_item[content_id]": str(file_ids[name])})
@@ -137,7 +152,8 @@ def main() -> int:
     items = get_module_items(client, a.course, mod["id"])
     files = {f["display_name"]: f for f in list_course_files(client, a.course)}
     ok = pg.get("published") and all(n in files for n in FILES) and all(any(i["title"] == t for i in items) for _, _, t in FILES.values()) \
-        and any(i["title"] == PAGE_TITLE for i in items) and all(urls[n].split("/")[-2] in body for n in urls)
+        and any(i["title"] == PAGE_TITLE for i in items) and any(i["title"] == RECAP_TITLE for i in items) \
+        and client.get(f"/api/v1/courses/{a.course}/pages/{RECAP_SLUG}").json().get("published") and all(urls[n].split("/")[-2] in body for n in urls)
     print(f"READBACK page published={pg.get('published')} body_len={len(pg.get('body',''))} files={[n for n in FILES if n in files]} module_items={len(items)} -> {'PASS' if ok else 'FAIL'}")
     print(f"page: /courses/{a.course}/pages/{PAGE_SLUG}   module: /courses/{a.course}/modules#module_{mod['id']}")
     return 0 if ok else 1
