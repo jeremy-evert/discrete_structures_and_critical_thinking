@@ -1,4 +1,4 @@
-﻿import random
+import random
 
 print("We will flip a fair coin 10 times.")
 print("Each flip, the computer picks a random number between 0 and 1.")

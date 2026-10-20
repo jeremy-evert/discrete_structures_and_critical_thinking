@@ -1,4 +1,4 @@
-﻿import random
+import random
 
 
 def flip_fair_coin():
@@ -18,7 +18,7 @@ def fraction_of_flips_that_are_heads(number_of_flips):
 
 
 print("How often does a fair coin land HEADS?\n")
-for number_of_flips in [1, 2, 4, 6, 8, 10, 100, 1_000, 10_000, 100_000, 1_000_000]:
+for number_of_flips in [10, 100, 1_000, 10_000, 100_000, 1_000_000]:
     fraction = fraction_of_flips_that_are_heads(number_of_flips)
     print(f"{number_of_flips:>9,} flips: HEADS {fraction:.3f} of the time")
 
