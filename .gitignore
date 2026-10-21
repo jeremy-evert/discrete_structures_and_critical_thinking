@@ -9,3 +9,6 @@ artifacts/week16_farkle_validation/
 
 # Student work and student-named material is never committed (see foreman_interface docs/STUDENT_DATA_RETENTION.md).
 student work/
+
+# ShoulderTap recordings are protected (student voices; >100MB) -- never publish
+/recordings/
