@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "title": "Relations, Order, and Structure",
+  "series_type": "instructor-private-podcast",
+  "course": "DSCT",
+  "week": 11,
+  "prepared_date": "2026-10-20",
+  "note": "Estimated duration is not a render proof. Verify duration from the completed Kokoro receipt.",
+  "source_repository": "jeremy-evert/discrete_structures_and_critical_thinking",
+  "source_branch": "audio/dsct-week11-relations-20261026",
+  "sources": [
+    "Week 11 README, Tuesday and Thursday instructor run-of-show, Tuesday activity, and Odyssey Checkpoint 2",
+    "DSCT Fall 2026 semester spine and historical Relations lesson",
+    "Week 10 instructor audio package, read-only style reference from audio/dsct-week10-randomness-20261020"
+  ],
+  "voice_map": {
+    "DANA": "af_sarah",
+    "MARIA": "af_heart"
+  },
+  "episodes": [
+    {
+      "number": "01",
+      "title": "Relations, Order, and Structure",
+      "source": "scripts/01_relations_order_and_structure.md",
+      "sha256": "13b0d733c2945becc0e686063f0c68a9e19e44f08b8dcdb884507b228ff0e8b8",
+      "spoken_words": 2235,
+      "estimated_minutes": 14.9
+    }
+  ],
+  "publication_status": "NOT RENDERED, NOT PUBLISHED, NOT PHONE VERIFIED"
+}
