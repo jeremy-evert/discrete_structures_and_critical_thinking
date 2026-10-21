@@ -15,14 +15,14 @@
   ],
   "voice_map": {
     "DANA": "af_sarah",
-    "MARIA": "af_heart"
+    "MARCUS": "af_heart"
   },
   "episodes": [
     {
       "number": "01",
       "title": "The Casino Has No Memory",
       "source": "scripts/01_the_casino_has_no_memory.md",
-      "sha256": "e944cfb2cbffb75892c613623076c7c902978daa628ce2d214143d80a7df7d72",
+      "sha256": "d735f65ec9a68555241e7c1ec45b1f182670576a179dd1130134c08c28d57532",
       "spoken_words": 1645,
       "estimated_minutes": 10.7
     },
@@ -30,7 +30,7 @@
       "number": "02",
       "title": "The Test That Tells the Truth but Fools You",
       "source": "scripts/02_the_test_that_fools_you.md",
-      "sha256": "c5ee2a06821505f8fb621ab71b36f34ae5fbd0b98a3a63c964f2dfa38a531b10",
+      "sha256": "a4f3d6de82a133f80bcc5e4a74572fc4090f0fa05312fca0ee7cdf4aae5e36f1",
       "spoken_words": 1585,
       "estimated_minutes": 10.3
     },
@@ -38,7 +38,7 @@
       "number": "03",
       "title": "Can We Trust the Numbers?",
       "source": "scripts/03_can_we_trust_the_numbers.md",
-      "sha256": "2f49e9923d8252aab1b3efd77fa20d973ddcd886c3c9c146bff7c679293c9e03",
+      "sha256": "61b9917d497741bd5eeb0bdc2e2ff27b14656ce0b40146dadee22d8e9d18425c",
       "spoken_words": 1651,
       "estimated_minutes": 10.7
     }
