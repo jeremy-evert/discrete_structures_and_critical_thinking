@@ -37,7 +37,8 @@ for command_name in ffprobe sha256sum python3; do
   command -v "$command_name" >/dev/null || { echo "Missing $command_name" >&2; exit 2; }
 done
 here="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P)"
-work_root="${AUDIO_FOUNDRY_RUNTIME:-/srv/audio-foundry}/work/dsct-week10-20261020"
+run_tag="${RUN_TAG:-}"   # e.g. RUN_TAG=-maria renders into a separate work folder so earlier verified output is never overwritten
+work_root="${AUDIO_FOUNDRY_RUNTIME:-/srv/audio-foundry}/work/dsct-week10-20261020${run_tag}"
 source_dir="$work_root/source"
 audio_dir="$work_root/rendered"
 receipt_dir="$work_root/receipts"
@@ -112,6 +113,11 @@ mkdir -p -- "$series_dir"
 for base in "${files[@]}"; do
   output="$audio_dir/$base.mp3"
   dest="$series_dir/$base.mp3"
+  if [[ -e "$dest" && "${REPLACE_PUBLISHED:-}" == YES && "$(sha256sum "$output" | cut -d' ' -f1)" != "$(sha256sum "$dest" | cut -d' ' -f1)" ]]; then
+    # Replace a superseded version: move it OUT of the library (not deleted) so Audiobookshelf has no duplicate.
+    sup="${AUDIO_FOUNDRY_RUNTIME:-/srv/audio-foundry}/work/dsct-week10-20261020/superseded-$(date +%Y%m%dT%H%M%S)"
+    mkdir -p -- "$sup"; mv -- "$dest" "$sup/"; echo "SUPERSEDED moved to $sup"
+  fi
   if [[ -e "$dest" ]]; then
     [[ "$(sha256sum "$output" | cut -d' ' -f1)" == "$(sha256sum "$dest" | cut -d' ' -f1)" ]] || {
       echo "Existing library artifact differs; refusing overwrite: $dest" >&2; exit 2;

@@ -31,7 +31,7 @@ These source files are intentionally readable and diffable Git text; **no ZIP do
 
 Brandy's authorized Flo should pull the specific DSCT branch and read [FLO_MISSION.md](FLO_MISSION.md). Maisie renders using the existing Audio Foundry repository at [`tools/kokoro_dialogue.py`](https://github.com/jeremy-evert/audio_foundry/blob/main/tools/kokoro_dialogue.py) and the existing Kokoro 0.9.4 installation.
 
-Renderer voice map: **DANA = af_sarah**, **MARCUS = af_heart**. The renderer is already responsible for normalization, MP3 encoding, decoded-audio validation, duration and source/output receipt creation. The small script here checks SHA-256 identities before render and on resume, and refuses publication collisions.
+Renderer voice map: **DANA = af_sarah**, **MARIA = af_heart**. The renderer is already responsible for normalization, MP3 encoding, decoded-audio validation, duration and source/output receipt creation. The small script here checks SHA-256 identities before render and on resume, and refuses publication collisions.
 
 On Maisie, after Flo has established the existing checkout and interpreter paths and checked for competing jobs:
 
