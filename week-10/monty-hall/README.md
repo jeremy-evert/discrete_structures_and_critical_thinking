@@ -88,3 +88,16 @@ python3 -m unittest tests.test_monty_hall_sim tests.test_monte_carlo_playground_
 
 Seeded results, formula checks, and browser verification status are in
 [`VERIFICATION.md`](VERIFICATION.md).
+
+## Files added or maintained in this package
+
+- `monty_hall.html` — interactive three-door activity.
+- `monty_hall_sim.py` — standard-library Monty Hall and variant simulator.
+- `monte_carlo_playground.html` — offline five-tab simulation playground (Buffon, darts, birthdays, coupons, secretary).
+- `monte_carlo_playground_sim.py` — matching deterministic Python models.
+- `monty_hall_math.tex` and `monty_hall_math.pdf` — editable 18-frame Madrid deck and compiled slides.
+- `VERIFICATION.md` — test commands, reproducible measurements, and verification limits.
+- `../../tests/test_monty_hall_sim.py` and `../../tests/test_monte_carlo_playground_sim.py` — standard-library tests.
+- `screenshots/phone.png` and `screenshots/projector.png` — earlier captures of the Monty Hall activity; playground browser captures are pending Anna's browser check.
+
+Run all project tests with `python3 -m unittest tests.test_monty_hall_sim tests.test_monte_carlo_playground_sim`.

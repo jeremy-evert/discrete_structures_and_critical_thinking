@@ -23,6 +23,12 @@ class PlaygroundTests(unittest.TestCase):
             result = simulate('coupon', 30_000, 99, n)
             self.assertLess(abs(result['measured'] - result['true']), result['true'] * .025)
 
+    def test_secretary_finite_n_and_limit(self):
+        result = simulate('secretary', 50_000, 20261022, 100)
+        self.assertEqual(result['skip'], 36)
+        self.assertLess(abs(result['measured'] - result['true']), .01)
+        self.assertLess(abs(result['true'] - 1 / 2.718281828459045), .02)
+
     def test_three_prisoners_conditional_rates(self):
         result = simulate_three_prisoners(300_000, 12)
         self.assertLess(abs(result['A_given_B_named'] - 1/3), .01)
