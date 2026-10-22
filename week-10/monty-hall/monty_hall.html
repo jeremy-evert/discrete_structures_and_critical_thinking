@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f5f1e8">
+<title>Three doors, one good question — Monty Hall</title>
+<style>
+:root{color-scheme:light;--ink:#172c2c;--muted:#526562;--paper:#f5f1e8;--card:#fffdf8;--green:#176b57;--green2:#d8eadf;--gold:#e9b94e;--red:#a74436;--line:#d9ded4;--shadow:0 14px 40px #15322d10;font-family:ui-rounded,"Avenir Next",Avenir,"Segoe UI",sans-serif}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-size:18px;line-height:1.55}button,input{font:inherit}button{cursor:pointer}.wrap{width:min(1140px,calc(100% - 40px));margin:auto}.masthead{padding:22px 0;border-bottom:1px solid var(--line);font-size:.86rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}.masthead strong{color:var(--green)}header.hero{padding:64px 0 52px;background:radial-gradient(ellipse at 85% 10%,#f5dfa0 0,transparent 34%),linear-gradient(135deg,#e3eee3,#f5f1e8 62%)}.eyebrow{color:var(--green);font-size:.82rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}h1,h2,h3,p{margin-top:0}h1{max-width:760px;margin:.4rem 0 1rem;font-family:Georgia,serif;font-size:clamp(2.7rem,7vw,5.3rem);line-height:.99;letter-spacing:-.045em}h1 em{font-weight:400;color:var(--green)}.hero p{max-width:670px;color:#405653;font-size:1.18rem}.jump{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.jump a,.pill{border:1px solid #a9b9ae;color:var(--ink);border-radius:999px;padding:9px 14px;text-decoration:none;font-size:.92rem;background:#ffffff8a}.jump a:hover{background:white;border-color:var(--green)}main{padding:30px 0 70px}.section{padding:54px 0;border-bottom:1px solid var(--line);scroll-margin-top:18px}.section-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,.55fr);gap:28px;align-items:end;margin-bottom:25px}.section h2{font:700 clamp(2rem,4vw,3rem)/1.05 Georgia,serif;letter-spacing:-.025em;margin:.25rem 0}.section-head p{margin:0;color:var(--muted);max-width:440px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:clamp(18px,3.2vw,30px);box-shadow:var(--shadow)}.game-layout{display:grid;grid-template-columns:1fr 300px;gap:22px}.doors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:10px 0 23px}.door{min-height:176px;border:2px solid #bac8be;border-radius:16px;background:linear-gradient(155deg,#e8f0e7,#c5d7cb);position:relative;color:var(--ink);font-weight:800;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;transition:transform .2s,border-color .2s,background .2s}.door:hover{transform:translateY(-3px);border-color:var(--green)}.door[aria-pressed=true]{border-color:var(--green);box-shadow:0 0 0 4px #176b5722}.door .number{font:700 3.4rem/1 Georgia,serif}.door .prize{font-size:2.2rem;min-height:40px}.door.open{background:#eee8d8;border-style:dashed}.door.car{background:#fae7aa;border-color:#d3a436}.door.goat{background:#e8e4da}.door:disabled{cursor:default;transform:none}.game-status{min-height:56px;color:var(--muted);margin:0 0 15px}.controls{display:flex;flex-wrap:wrap;gap:10px}.btn{border:0;border-radius:12px;padding:12px 18px;font-weight:750;background:var(--green);color:white;min-height:48px}.btn:hover{background:#0c5442}.btn.secondary{background:#e8eee7;color:var(--ink);border:1px solid var(--line)}.btn.secondary:hover{background:#dae6dc}.btn:disabled{opacity:.48;cursor:not-allowed}.scoreboard{display:grid;gap:12px}.score{padding:16px;border-radius:14px;background:#f2f4ed;border:1px solid var(--line)}.score b{display:block;font:700 1.9rem/1 Georgia,serif;color:var(--green);margin-top:4px}.score small{color:var(--muted)}.strategy{display:flex;justify-content:space-between;gap:12px}.play-tip{font-size:.92rem;color:var(--muted);margin:18px 0 0}.split{display:grid;grid-template-columns:1fr 2fr;gap:14px;margin:23px 0}.split-card{padding:20px;border-radius:16px;background:#f5f3ea;border:1px solid var(--line)}.split-card.lost{background:#fff1cc}.split-card.won{background:var(--green2)}.split-card strong{display:block;font:700 clamp(1.9rem,4vw,3rem)/1 Georgia,serif;margin:7px 0}.split-card span{color:var(--muted)}.simple-note{background:#eef2eb;border-left:4px solid var(--green);padding:14px 18px;border-radius:0 12px 12px 0}.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card)}table{border-collapse:collapse;width:100%;font-size:.96rem}th,td{text-align:left;padding:12px 15px;border-bottom:1px solid var(--line)}th{background:#eaf0e8;font-size:.82rem;text-transform:uppercase;letter-spacing:.06em}tr:last-child td{border-bottom:0}.win{color:var(--green);font-weight:800}.lose{color:#825b14;font-weight:700}.mc-controls{display:flex;align-items:end;flex-wrap:wrap;gap:12px;margin-bottom:18px}.field{display:grid;gap:5px;color:var(--muted);font-size:.88rem;font-weight:700}.field input{width:155px;min-height:45px;border:1px solid #aab9ad;border-radius:10px;padding:8px 11px;background:white;color:var(--ink);font-size:1rem}.field input[type=number]{width:160px}.rate-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.rate-card{padding:19px;background:#f4f5ee;border:1px solid var(--line);border-radius:16px}.rate-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px}.rate-top strong{font:700 2rem Georgia,serif}.track{height:13px;border-radius:99px;background:#dce1d8;overflow:hidden;margin:12px 0 8px}.fill{height:100%;width:0;background:var(--green);border-radius:inherit;transition:width .35s ease}.fill.stay{background:#bd8c2c}.rate-card small,.subtle{color:var(--muted)}.chart-wrap{margin-top:20px;padding:17px 16px 8px;border:1px solid var(--line);border-radius:16px;background:#fbfaf5}.chart-title{display:flex;justify-content:space-between;gap:12px;align-items:baseline}.chart-title b{font-size:1rem}.legend{font-size:.82rem;color:var(--muted)}.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;background:#bd8c2c;margin:0 5px 0 12px}.legend i:first-child{background:var(--green)}svg.chart{width:100%;height:auto;display:block;overflow:visible}.chart text{font:12px ui-rounded,"Segoe UI",sans-serif;fill:#64736b}.chart .grid{stroke:#dce1d8;stroke-width:1}.chart .line-stay{fill:none;stroke:#bd8c2c;stroke-width:3}.chart .line-switch{fill:none;stroke:var(--green);stroke-width:3}.chart .dot{stroke:white;stroke-width:2}.chart-caption{font-size:.86rem;color:var(--muted);margin:0 2px 6px}.idea-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center}.idea-number{font:700 clamp(3rem,7vw,5rem)/1 Georgia,serif;color:var(--green);letter-spacing:-.05em}.idea-number small{font:600 1rem sans-serif;letter-spacing:0;color:var(--muted)}.doors-field{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}.doors-field input{width:100%;accent-color:var(--green)}.doors-field output{font:700 1.7rem Georgia,serif;min-width:2ch;text-align:right}.toggle{display:flex;align-items:flex-start;gap:11px;margin:22px 0;line-height:1.4}.toggle input{accent-color:var(--green);width:22px;height:22px;margin:2px 0 0;flex:none}.variant-result{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.variant-result div{background:#f3f4ed;border:1px solid var(--line);border-radius:12px;padding:13px}.variant-result strong{display:block;font-size:1.35rem}.quiz{display:grid;gap:12px}.quiz details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 18px}.quiz summary{font-weight:750;cursor:pointer}.quiz p{margin:12px 0 0;color:var(--muted)}footer{padding:30px 0;color:var(--muted);font-size:.9rem}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:780px){.section-head,.game-layout,.idea-grid{grid-template-columns:1fr}.section-head{gap:10px}.scoreboard{grid-template-columns:repeat(3,1fr)}.score{padding:12px}.score b{font-size:1.5rem}.game-layout{gap:14px}.doors{gap:8px}.door{min-height:145px}.idea-grid .card{padding:22px}}
+@media(max-width:480px){body{font-size:17px}.wrap{width:calc(100% - 28px)}header.hero{padding:45px 0 36px}.section{padding:40px 0}.section-head{margin-bottom:18px}.doors{gap:6px}.door{min-height:123px;border-radius:12px}.door .number{font-size:2.7rem}.door .prize{font-size:1.8rem}.scoreboard{gap:7px}.score{padding:10px 8px}.score b{font-size:1.3rem}.score small{font-size:.74rem}.strategy{display:block}.split{grid-template-columns:1fr 2fr;gap:8px}.split-card{padding:14px}.rate-grid{grid-template-columns:1fr}.mc-controls{align-items:stretch}.mc-controls .btn{width:100%}.field,.field input,.field input[type=number]{width:100%}.variant-result{grid-template-columns:1fr}.table-wrap table{font-size:.86rem}.table-wrap th,.table-wrap td{padding:9px 8px}.chart-title{display:block}.legend{display:block;margin-top:6px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="masthead"><div class="wrap"><strong>Probability · Uncertainty · Evidence</strong> &nbsp; / &nbsp; A three-door experiment</div></div>
+<header class="hero"><div class="wrap"><div class="eyebrow">A small game with a surprising pattern</div><h1>Three doors.<br><em>One good question.</em></h1><p>You pick a door. The host knows where the prize is and opens a goat door. Should you stay with your first pick, or switch?</p><nav class="jump" aria-label="Page sections"><a href="#play">Play it</a><a href="#why">Why switch?</a><a href="#simulate">Monte Carlo</a><a href="#ideas">Push the idea</a><a href="#intuition">Check your intuition</a></nav></div></header>
+<main class="wrap">
+<section class="section" id="play"><div class="section-head"><div><div class="eyebrow">01 · Make a choice</div><h2>Play it</h2></div><p>The host never opens the prize. After the reveal, you can keep your door or switch to the one other door still closed.</p></div>
+<div class="game-layout"><div class="card"><div class="doors" id="playDoors" aria-label="Choose one of three doors"></div><p class="game-status" id="gameStatus" aria-live="polite">Pick a door to begin. You can replay as often as you like.</p><div class="controls"><button class="btn" id="stayButton" disabled>Stay with my door</button><button class="btn secondary" id="switchButton" disabled>Switch doors</button><button class="btn secondary" id="replayButton">New round</button></div><p class="play-tip">After each round, both “always” strategies are scored for that same hidden prize and first pick. Your own result is tracked separately.</p></div>
+<aside class="scoreboard" aria-label="Running scores"><div class="score"><small>Always stay</small><b id="playStay">0 / 0</b><small id="playStayRate">0% wins</small></div><div class="score"><small>Always switch</small><b id="playSwitch">0 / 0</b><small id="playSwitchRate">0% wins</small></div><div class="score"><small>Your choices</small><b id="playYou">0 / 0</b><small id="playYouRate">0% wins</small></div></aside></div></section>
+<section class="section" id="why"><div class="section-head"><div><div class="eyebrow">02 · Count the cases</div><h2>Why switching wins 2/3</h2></div><p>The reveal gives information because the host knows where the prize is and must show a goat.</p></div>
+<div class="card"><p><strong>Conditional probability</strong> means the chance of an event after we know that some other event has happened.</p><div class="split"><div class="split-card lost"><span>Your first pick has the car</span><strong>1/3</strong><span>Staying wins; switching loses.</span></div><div class="split-card won"><span>Your first pick has a goat</span><strong>2/3</strong><span>The host removes the other goat. Switching reaches the car.</span></div></div><p class="simple-note">The host’s reveal does not make your first pick better. It concentrates the original 2/3 chance on the one other door that remains closed.</p></div>
+<h3 style="margin:27px 0 12px">All nine first-pick / car-location cases</h3><p class="subtle">For a correct first pick, the host opens the lowest-numbered available goat. For an incorrect first pick, only one goat is available to open.</p><div class="table-wrap"><table><thead><tr><th>Your pick</th><th>Car behind</th><th>Host opens</th><th>Switch result</th><th>Stay result</th></tr></thead><tbody>
+<tr><td>1</td><td>1</td><td>2</td><td class="lose">Lose</td><td class="win">Win</td></tr><tr><td>1</td><td>2</td><td>3</td><td class="win">Win</td><td class="lose">Lose</td></tr><tr><td>1</td><td>3</td><td>2</td><td class="win">Win</td><td class="lose">Lose</td></tr>
+<tr><td>2</td><td>1</td><td>3</td><td class="win">Win</td><td class="lose">Lose</td></tr><tr><td>2</td><td>2</td><td>1</td><td class="lose">Lose</td><td class="win">Win</td></tr><tr><td>2</td><td>3</td><td>1</td><td class="win">Win</td><td class="lose">Lose</td></tr>
+<tr><td>3</td><td>1</td><td>2</td><td class="win">Win</td><td class="lose">Lose</td></tr><tr><td>3</td><td>2</td><td>1</td><td class="win">Win</td><td class="lose">Lose</td></tr><tr><td>3</td><td>3</td><td>1</td><td class="lose">Lose</td><td class="win">Win</td></tr>
+</tbody></table></div></section>
+<section class="section" id="simulate"><div class="section-head"><div><div class="eyebrow">03 · Check with a model</div><h2>Monte Carlo</h2></div><p>A simulation repeats the same rules with many generated games. Small runs jump around; larger runs usually settle near the long-run rates.</p></div>
+<div class="card"><div class="mc-controls"><label class="field" for="gameCount">Games to play<select id="gameCount" class="field" style="padding:9px;border:1px solid #aab9ad;border-radius:10px;background:white;color:var(--ink);min-height:45px"><option>1</option><option>10</option><option>100</option><option>1000</option><option selected>10000</option></select></label><label class="field" for="seedInput">Seed (repeatable)<input id="seedInput" type="number" value="20261022" step="1"></label><button class="btn" id="runButton">Run simulation</button></div>
+<div class="rate-grid"><div class="rate-card"><div class="rate-top"><strong>Stay</strong><strong id="stayRate">—</strong></div><div class="track" aria-label="Stay win rate"><div class="fill stay" id="stayFill"></div></div><small id="stayCount">Run a simulation to see results.</small></div><div class="rate-card"><div class="rate-top"><strong>Switch</strong><strong id="switchRate">—</strong></div><div class="track" aria-label="Switch win rate"><div class="fill" id="switchFill"></div></div><small id="switchCount">Compared on the same games.</small></div></div>
+<div class="chart-wrap"><div class="chart-title"><b>Win rate as games accumulate</b><span class="legend"><i></i>Switch <i></i>Stay</span></div><svg class="chart" id="rateChart" viewBox="0 0 720 260" role="img" aria-label="Line chart showing stay and switch win rates through a simulation"></svg><p class="chart-caption" id="chartCaption">The horizontal guides mark the predicted 1/3 and 2/3 rates.</p></div><p id="simulationSummary" class="simple-note" aria-live="polite" style="margin:17px 0 0">Choose a run size and seed, then compare the measured rates with the prediction.</p></div></section>
+<section class="section" id="ideas"><div class="section-head"><div><div class="eyebrow">04 · Change one rule</div><h2>Push the idea</h2></div><p>With more doors, the first pick is less likely to be right. A knowing host can leave all that accumulated probability on one other door.</p></div>
+<div class="idea-grid"><div class="card"><div class="eyebrow">Knowing host · closed form</div><div class="idea-number" id="doorFormula">2/3 <small>switch win chance</small></div><label class="field" for="doorSlider">Number of doors</label><div class="doors-field"><input id="doorSlider" type="range" min="3" max="100" value="3"><output id="doorOutput" for="doorSlider">3</output></div><p class="subtle" id="doorExplanation" style="margin:14px 0 0">Pick one door. The host opens the other goat doors and leaves one door beside yours closed.</p></div>
+<div class="card"><div class="eyebrow">Change the host’s knowledge</div><label class="toggle"><input id="randomHost" type="checkbox"><span><strong>Host opens a door at random</strong><br><span class="subtle">If the host reveals the car, mark that round spoiled and leave it out of both win rates.</span></span></label><div class="variant-result"><div><small>Expected stay</small><strong id="variantStay">1/3</strong></div><div><small>Expected switch</small><strong id="variantSwitch">2/3</strong></div><div><small>Expected spoiled</small><strong id="variantSpoiled">0%</strong></div></div><p class="subtle" id="hostExplanation" style="margin:15px 0 0">A knowing host never gives away the car. Switching wins whenever your first pick was wrong.</p></div></div></section>
+<section class="section" id="intuition"><div class="section-head"><div><div class="eyebrow">05 · Pause and predict</div><h2>Check your intuition</h2></div><p>Think through each one before opening its explanation. These are for practice, not a grade.</p></div><div class="quiz">
+<details><summary>1. If your first pick is a goat, where is the car after the host opens a goat?</summary><p>It is behind the one other closed door. A knowing host had to leave the car hidden, so switching wins in this case.</p></details>
+<details><summary>2. Does the host’s choice of goat tell us anything?</summary><p>Yes. The host knows where the car is and must avoid it. The reveal is information shaped by that rule, so the two remaining doors are not equally likely.</p></details>
+<details><summary>3. What changes when the host opens a door without knowing?</summary><p>Sometimes the host reveals the car. If we set those spoiled rounds aside, the first pick and the other retained door are each the car in half of the remaining rounds. The host’s knowledge changes which trials we get to observe.</p></details>
+</div></section>
+<footer><div class="wrap">Named for the host of <em>Let’s Make a Deal</em>, the puzzle became widely known after Marilyn vos Savant discussed it in a 1990 <em>Parade</em> column. This page runs locally and makes no network requests.</div></footer>
+</main>
+<script>
+(() => {
+  "use strict";
+  const MASK = 0xFFFFFFFF;
+  function mulberry32(seed) {
+    let a = seed >>> 0;
+    return function random() {
+      a = (a + 0x6D2B79F5) >>> 0;
+      let t = a;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function playGame(rng, doors, hostRandom) {
+    const r1 = rng(), r2 = rng(), r3 = rng();
+    const car = Math.floor(r1 * doors), pick = Math.floor(r2 * doors);
+    const others = Array.from({length: doors}, (_, i) => i).filter(i => i !== pick);
+    let other;
+    if (hostRandom) {
+      other = others[Math.floor(r3 * (doors - 1))];
+      if (car !== pick && car !== other) return {spoiled: true, car, pick, other};
+    } else if (car !== pick) other = car;
+    else other = others[Math.floor(r3 * (doors - 1))];
+    return {spoiled: false, car, pick, other};
+  }
+  function run(options) {
+    const games = Number(options.games), seed = Number(options.seed) >>> 0;
+    const doors = Number(options.doors ?? 3), hostRandom = Boolean(options.hostRandom);
+    if (!Number.isSafeInteger(games) || games < 1) throw new RangeError("games must be a positive integer");
+    if (!Number.isSafeInteger(doors) || doors < 3) throw new RangeError("doors must be an integer of at least 3");
+    const rng = mulberry32(seed);
+    let stayWins = 0, switchWins = 0, spoiled = 0;
+    for (let i = 0; i < games; i++) {
+      const g = playGame(rng, doors, hostRandom);
+      if (g.spoiled) { spoiled++; continue; }
+      if (g.car === g.pick) stayWins++;
+      if (g.car === g.other) switchWins++;
+    }
+    const counted = games - spoiled;
+    return {games, seed, doors, hostRandom, stayWins, switchWins, spoiled, counted,
+      stayRate: counted ? stayWins / counted : 0, switchRate: counted ? switchWins / counted : 0};
+  }
+  window.MontyHall = Object.freeze({run});
+  const $ = id => document.getElementById(id);
+  const doorsBox = $("playDoors"), status = $("gameStatus");
+  let round = {}, roundNumber = 0, stays = 0, switches = 0, playerWins = 0, playerGames = 0;
+  function beginRound() {
+    roundNumber++;
+    round = {car: Math.floor(Math.random() * 3), pick: null, opened: null, finished: false};
+    doorsBox.innerHTML = "";
+    for (let d = 0; d < 3; d++) {
+      const b = document.createElement("button");
+      b.className = "door"; b.type = "button"; b.setAttribute("aria-label", `Door ${d + 1}`); b.setAttribute("aria-pressed", "false");
+      b.innerHTML = `<span class="number">${d + 1}</span><span class="prize">?</span><span>Choose</span>`;
+      b.addEventListener("click", () => chooseDoor(d)); doorsBox.append(b);
+    }
+    status.textContent = `Round ${roundNumber}: choose one door.`;
+    $("stayButton").disabled = true; $("switchButton").disabled = true;
+  }
+  function chooseDoor(pick) {
+    if (round.pick !== null || round.finished) return;
+    round.pick = pick;
+    const goats = [0, 1, 2].filter(d => d !== pick && d !== round.car);
+    round.opened = goats[Math.floor(Math.random() * goats.length)];
+    [...doorsBox.children].forEach((b, d) => { b.setAttribute("aria-pressed", String(d === pick)); b.querySelector("span:last-child").textContent = d === pick ? "Your pick" : "Closed"; });
+    const opened = doorsBox.children[round.opened]; opened.classList.add("open", "goat"); opened.querySelector(".prize").textContent = "🐐"; opened.querySelector("span:last-child").textContent = "Goat revealed"; opened.disabled = true;
+    status.textContent = `The host opens door ${round.opened + 1}. Stay with door ${pick + 1}, or switch to the other closed door.`;
+    $("stayButton").disabled = false; $("switchButton").disabled = false;
+    stays += +(pick === round.car); switches += +([0, 1, 2].find(d => d !== pick && d !== round.opened) === round.car); updatePlayScores();
+  }
+  function chooseStrategy(switchIt) {
+    if (round.pick === null || round.finished) return;
+    round.finished = true; playerGames++;
+    const chosen = switchIt ? [0, 1, 2].find(d => d !== round.pick && d !== round.opened) : round.pick;
+    const won = chosen === round.car; playerWins += +won;
+    [...doorsBox.children].forEach((b, d) => {
+      b.disabled = true;
+      if (d === round.car) { b.classList.remove("open", "goat"); b.classList.add("car"); b.querySelector(".prize").textContent = "🚗"; b.querySelector("span:last-child").textContent = "The car"; }
+      else if (d !== round.opened) { b.classList.add("goat"); b.querySelector(".prize").textContent = "🐐"; b.querySelector("span:last-child").textContent = d === chosen ? "Your door" : "Goat"; }
+    });
+    status.textContent = `${switchIt ? "You switched" : "You stayed"} and ${won ? "won the car!" : "found a goat."} The car was behind door ${round.car + 1}.`;
+    $("stayButton").disabled = true; $("switchButton").disabled = true; updatePlayScores();
+  }
+  function updatePlayScores() {
+    const set = (prefix, wins, count) => { $(prefix).textContent = `${wins} / ${count}`; $(prefix + "Rate").textContent = `${count ? (100 * wins / count).toFixed(0) : 0}% wins`; };
+    set("playStay", stays, roundNumber - (round.pick === null ? 1 : 0));
+    set("playSwitch", switches, roundNumber - (round.pick === null ? 1 : 0));
+    set("playYou", playerWins, playerGames);
+  }
+  $("stayButton").addEventListener("click", () => chooseStrategy(false));
+  $("switchButton").addEventListener("click", () => chooseStrategy(true));
+  $("replayButton").addEventListener("click", beginRound);
+  beginRound();
+
+  const chart = $("rateChart");
+  function drawChart(points, targetStay, targetSwitch) {
+    const W = 720, H = 260, left = 48, right = 12, top = 18, bottom = 33, innerW = W-left-right, innerH = H-top-bottom;
+    const y = v => top + (1-v)*innerH;
+    const x = i => left + (points.length <= 1 ? innerW : i/(points.length-1)*innerW);
+    let svg = "";
+    [0, .25, 1/3, .5, 2/3, .75, 1].forEach(v => { svg += `<line class="grid" x1="${left}" y1="${y(v)}" x2="${W-right}" y2="${y(v)}"/><text x="${left-8}" y="${y(v)+4}" text-anchor="end">${Math.round(v*100)}%</text>`; });
+    const path = key => points.map((p,i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(p[key]).toFixed(1)}`).join(" ");
+    svg += `<path class="line-switch" d="${path("switchRate")}"/><path class="line-stay" d="${path("stayRate")}"/>`;
+    points.forEach((p,i) => { svg += `<circle class="dot" cx="${x(i)}" cy="${y(p.switchRate)}" r="3.6" fill="#176b57"/><circle class="dot" cx="${x(i)}" cy="${y(p.stayRate)}" r="3.6" fill="#bd8c2c"/>`; });
+    svg += `<text x="${left}" y="${H-5}">1 game</text><text x="${W-right}" y="${H-5}" text-anchor="end">${points[points.length-1].games.toLocaleString()} games</text>`;
+    chart.innerHTML = svg;
+  }
+  function updateSimulation() {
+    const games = Number($("gameCount").value), rawSeed = Number($("seedInput").value);
+    if (!Number.isSafeInteger(rawSeed)) { $("simulationSummary").textContent = "Enter a whole-number seed."; return; }
+    const result = run({games, seed: rawSeed, doors: 3, hostRandom: false});
+    const pct = n => `${(100*n).toFixed(2)}%`;
+    $("stayRate").textContent = pct(result.stayRate); $("switchRate").textContent = pct(result.switchRate);
+    $("stayFill").style.width = `${100*result.stayRate}%`; $("switchFill").style.width = `${100*result.switchRate}%`;
+    $("stayCount").textContent = `${result.stayWins.toLocaleString()} wins in ${result.counted.toLocaleString()} counted games`;
+    $("switchCount").textContent = `${result.switchWins.toLocaleString()} wins in ${result.counted.toLocaleString()} counted games`;
+    const rng = mulberry32(rawSeed >>> 0), points = [], samples = Math.min(games, 50), step = Math.max(1, Math.floor(games / samples));
+    let sw = 0, st = 0, spoiled = 0;
+    for (let i = 1; i <= games; i++) {
+      const g = playGame(rng, 3, false); if (!g.spoiled) { if (g.car === g.pick) st++; if (g.car === g.other) sw++; }
+      if (i % step === 0 || i === games) { const counted = i-spoiled; points.push({games:i,stayRate:counted?st/counted:0,switchRate:counted?sw/counted:0}); }
+    }
+    drawChart(points, 1/3, 2/3);
+    $("simulationSummary").textContent = `Seed ${result.seed} · ${result.games.toLocaleString()} games · ${result.spoiled} spoiled. The exact prediction is 1/3 for stay and 2/3 for switch; a small run can land far from those values.`;
+    $("chartCaption").textContent = `${games.toLocaleString()} seeded games; the running rates end at ${pct(result.stayRate)} (stay) and ${pct(result.switchRate)} (switch). Small samples fluctuate.`;
+  }
+  $("runButton").addEventListener("click", updateSimulation); updateSimulation();
+
+  function updateDoors() {
+    const n = Number($("doorSlider").value), random = $("randomHost").checked;
+    $("doorOutput").value = String(n);
+    if (random) { $("doorFormula").innerHTML = "1/2 <small>switch win chance</small>"; $("variantStay").textContent = "1/2"; $("variantSwitch").textContent = "1/2"; $("variantSpoiled").textContent = `${Math.round((1-2/n)*100)}%`; $("hostExplanation").textContent = `With ${n} doors, a random retained door leaves a valid game with probability 2/${n}. Among valid games, the car is equally likely to be behind your pick or the other closed door, so both conditional rates are 1/2.`; $("doorExplanation").textContent = "With a random host, the other retained door is chosen without knowing where the car is; some games reveal the car and are spoiled."; }
+    else { $("doorFormula").innerHTML = `${n-1}/${n} <small>switch win chance</small>`; $("variantStay").textContent = `1/${n}`; $("variantSwitch").textContent = `${n-1}/${n}`; $("variantSpoiled").textContent = "0%"; $("hostExplanation").textContent = "A knowing host never gives away the car. Switching wins whenever your first pick was wrong, which happens in (n−1)/n of games."; $("doorExplanation").textContent = `You start with 1/${n} chance of the car. The host opens ${n-2} goat doors and leaves the prize hidden; switching wins with probability ${(n-1)}/${n}.`; }
+  }
+  $("doorSlider").addEventListener("input", updateDoors); $("randomHost").addEventListener("change", updateDoors); updateDoors();
+})();
+</script>
+</body>
+</html>
