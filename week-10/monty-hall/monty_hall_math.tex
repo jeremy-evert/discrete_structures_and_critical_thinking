@@ -1,5 +1,9 @@
 \documentclass[aspectratio=169,10pt]{beamer}
 \usetheme{Madrid}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{positioning}
+\pgfplotsset{compat=1.18}
 \title{Monty Hall: Probability After a Reveal}
 \subtitle{Week 10 — a sample space, a host rule, and simulations}
 \author{COMSC 2043 • Discrete Structures and Critical Thinking}
@@ -7,35 +11,51 @@
 \begin{document}
 \frame{\titlepage}
 \begin{frame}{State the rules before calculating}
-\begin{itemize}\item Three doors; one car, two goats.\item You choose door 1.\item The host knows the car location, opens an unchosen goat door, and chooses uniformly if both doors are goats.\item You may stay with door 1 or switch to the remaining closed door.\end{itemize}\end{frame}
+\begin{itemize}\item Three doors; one car, two goats.\item You choose door 1.\item The host knows the car location, opens an unchosen goat door, and chooses uniformly if both doors are goats.\item You may stay with door 1 or switch to the remaining closed door.\end{itemize}
+
+\note{Point from the chosen door to the host action and remaining alternative. Keep the host's information and constraint explicit.}\par\end{frame}
 \begin{frame}{The nine equally likely cases}
 Each ordered pair (your pick, car location) has probability $1/9$.\medskip
 \centering\begin{tabular}{c|ccc} & Car 1 & Car 2 & Car 3\\\hline Pick 1 & H opens 2 or 3 & H opens 3 & H opens 2\\Pick 2 & H opens 3 & H opens 1 or 3 & H opens 1\\Pick 3 & H opens 2 & H opens 1 & H opens 1 or 2\end{tabular}
-\medskip\raggedright By symmetry, the three rows have identical stay/switch outcomes.\end{frame}
+\medskip\raggedright By symmetry, the three rows have identical stay/switch outcomes.\note{Walk through the displayed information in order. Ask students for a prediction before stating the conclusion.}\end{frame}
 \begin{frame}{The three symmetric cases}
-Assume your pick is door 1.\\[2mm]\begin{tabular}{c|c|c}Car location&Host opens&Switch outcome\\\hline1&2 or 3 (equally)&Lose\\2&3&Win\\3&2&Win\end{tabular}\\[3mm]Stay wins in one of the three cases; switching wins in two.\end{frame}
+Assume your pick is door 1.\\[2mm]\begin{tabular}{c|c|c}Car location&Host opens&Switch outcome\\\hline1&2 or 3 (equally)&Lose\\2&3&Win\\3&2&Win\end{tabular}\\[3mm]Stay wins in one of the three cases; switching wins in two.\note{Walk through the displayed information in order. Ask students for a prediction before stating the conclusion.}\end{frame}
 \begin{frame}{Conditional probability is a ratio inside an event}
-For events $A,B$ with $P(B)>0$, definition: $P(A\mid B)=P(A\cap B)/P(B)$.\\[3mm]After a host reveal, the relevant sample space is the set of cases compatible with that reveal and the host's rule.\\[2mm]The denominator changes when we condition.\end{frame}
+For events $A,B$ with $P(B)>0$, definition: $P(A\mid B)=P(A\cap B)/P(B)$.\\[3mm]After a host reveal, the relevant sample space is the set of cases compatible with that reveal and the host's rule.\\[2mm]The denominator changes when we condition.\note{Walk through the displayed information in order. Ask students for a prediction before stating the conclusion.}\end{frame}
 \begin{frame}{Bayes: host opens door 3}
-Let $C_i$ mean car behind door $i$; let $O_3$ mean host opens door 3.\\[2mm]$P(C_1)=P(C_2)=P(C_3)=1/3$.\\$P(O_3\mid C_1)=1/2$, $P(O_3\mid C_2)=1$, $P(O_3\mid C_3)=0$.\\[2mm]$P(O_3)=\sum_i P(O_3\mid C_i)P(C_i)=1/6+1/3=1/2$.\\[2mm]$P(C_1\mid O_3)=((1/2)(1/3))/(1/2)=1/3$; hence $P(C_2\mid O_3)=2/3$. Switch.\end{frame}
+Let $C_i$ mean car behind door $i$; let $O_3$ mean host opens door 3.\\[2mm]$P(C_1)=P(C_2)=P(C_3)=1/3$.\\$P(O_3\mid C_1)=1/2$, $P(O_3\mid C_2)=1$, $P(O_3\mid C_3)=0$.\\[2mm]$P(O_3)=\sum_i P(O_3\mid C_i)P(C_i)=1/6+1/3=1/2$.\\[2mm]$P(C_1\mid O_3)=((1/2)(1/3))/(1/2)=1/3$; hence $P(C_2\mid O_3)=2/3$. Switch.\note{Walk through the displayed information in order. Ask students for a prediction before stating the conclusion.}\end{frame}
+\begin{frame}{Bayes denominator: add the paths that show door 3}
+Let $O_3$ mean the host opens door 3. The probability paths are: $C_1$ contributes $(1/3)(1/2)=1/6$; $C_2$ contributes $(1/3)(1)=1/3$; $C_3$ contributes $(1/3)(0)=0$. Thus
+\[P(O_3)=1/6+1/3+0=1/2.\]
+\centering\begin{tikzpicture}[node distance=9mm,every node/.style={draw,rounded corners,inner sep=3pt,font=\scriptsize}]
+\node (s) {start};\node[right=20mm of s,yshift=8mm] (a) {$C_1$: $1/3\to1/2\to1/6$};\node[right=20mm of s] (b) {$C_2$: $1/3\to1\to1/3$};\node[right=20mm of s,yshift=-8mm] (c) {$C_3$: $1/3\to0\to0$};\draw[->](s)--(a);\draw[->](s)--(b);\draw[->](s)--(c);\end{tikzpicture}
+\note{Add only the joint probabilities of paths where the host opens door 3. These terms form Bayes' denominator.}
+\end{frame}
 \begin{frame}{$n$ doors: one closed alternative}
-You pick one of $n$ doors. The first pick is correct with probability $1/n$.\\A knowing host opens $n-2$ goats, leaving one alternative.\\Switch wins exactly when the first pick was wrong: $P(\text{switch wins})=(n-1)/n$.\\For $n=100$, this is $99/100$.\end{frame}
+You pick one of $n$ doors. The first pick is correct with probability $1/n$.\\A knowing host opens $n-2$ goats, leaving one alternative.\\Switch wins exactly when the first pick was wrong: $P(\text{switch wins})=(n-1)/n$.\\For $n=100$, this is $99/100$.\note{Walk through the displayed information in order. Ask students for a prediction before stating the conclusion.}\end{frame}
 \begin{frame}{Open $k$ goats; switch to one chosen survivor}
-There are $n-1$ goat-first-pick cases, each of probability $1/n$. The host opens $k$ goats, leaving $n-1-k$ alternatives.\\By symmetry, each specified survivor gets an equal share of the original wrong-pick probability: $P(\text{win on a specified door})=\frac{(n-1)/n}{n-1-k}=\frac{n-1}{n(n-1-k)}$.\\Example $n=5,k=2$: each of two alternatives wins with probability $4/10$.\end{frame}
+There are $n-1$ goat-first-pick cases, each of probability $1/n$. The host opens $k$ goats, leaving $n-1-k$ alternatives.\\By symmetry, each specified survivor gets an equal share of the original wrong-pick probability: $P(\text{win on a specified door})=\frac{(n-1)/n}{n-1-k}=\frac{n-1}{n(n-1-k)}$.\\Example $n=5,k=2$: each of two alternatives wins with probability $4/10$.\note{Walk through the displayed information in order. Ask students for a prediction before stating the conclusion.}\end{frame}
 \begin{frame}{Monty Fall: a random host}
-Host chooses uniformly among the $n-1$ doors other than your pick, without knowing the car. A reveal is valid only if it shows a goat.\\$P(\text{valid})=P(C=pick)+P(C\ne pick)P(host\ avoids\ car\mid C\ne pick)=1/n+((n-1)/n)((n-2)/(n-1))=(n-1)/n$.\\For three doors, $P(host\ reveals\ car)=1/3$. Given a goat reveal, the two closed doors are equally likely: stay and switch each have probability $1/2$.\end{frame}
+Host chooses uniformly among the $n-1$ doors other than your pick, without knowing the car. A reveal is valid only if it shows a goat.\\$P(\text{valid})=P(C=pick)+P(C\ne pick)P(\text{host avoids car}\mid C\ne pick)=1/n+((n-1)/n)((n-2)/(n-1))=(n-1)/n$.\\For three doors, $P(\text{host reveals car})=1/3$. Given a goat reveal, the two closed doors are equally likely: stay and switch each have probability $1/2$.\note{Walk through the displayed information in order. Ask students for a prediction before stating the conclusion.}\end{frame}
 \begin{frame}{Monty Crawl: a leftmost-door rule}
-Three doors are numbered left to right. You pick door 1; the host opens the leftmost door that is neither your pick nor the car.\\If car=1, host opens 2, so switch to 3 loses. If car=2, host opens 3, switch to 2 wins. If car=3, host opens 2, switch to 3 wins.\\Thus unconditional switch win probability is $2/3$. But after observing door 2 open, the car is behind 1 or 3 with equal probability; after door 3 opens, car=2 with certainty.\end{frame}
+Three doors are numbered left to right. You pick door 1; the host opens the leftmost door that is neither your pick nor the car.\\If car=1, host opens 2, so switch to 3 loses. If car=2, host opens 3, switch to 2 wins. If car=3, host opens 2, switch to 3 wins.\\Thus unconditional switch win probability is $2/3$. But after observing door 2 open, the car is behind 1 or 3 with equal probability; after door 3 opens, car=2 with certainty.\note{Walk through the displayed information in order. Ask students for a prediction before stating the conclusion.}\end{frame}
 \begin{frame}{Three Prisoners}
-A, B, C have equal chance $1/3$ of being pardoned; the guard knows and will name a different prisoner who will not be freed. A asks for a name.\\If A is pardoned (probability $1/3$), guard names B or C with equal chance. If B is pardoned, guard must name C; if C is pardoned, guard must name B.\\Hearing “B will not be freed” leaves A's chance $1/3$ and raises C's chance to $2/3$. Naming B does not change A's chance.\end{frame}
+A, B, C have equal chance $1/3$ of being pardoned; the guard knows and will name a different prisoner who will not be freed. A asks for a name.\\If A is pardoned (probability $1/3$), guard names B or C with equal chance. If B is pardoned, guard must name C; if C is pardoned, guard must name B.\\Hearing “B will not be freed” leaves A's chance $1/3$ and raises C's chance to $2/3$. Naming B does not change A's chance.\note{Walk through the displayed information in order. Ask students for a prediction before stating the conclusion.}\end{frame}
 \begin{frame}{Simulation checks a model's long-run rate}
-The simulator repeats the stated random experiment. For $N$ independent trials, the law of large numbers says the observed fraction tends toward the model probability as $N$ grows.\\[2mm]It does not prove the assumptions or promise a close result for a small $N$. Seeded measurement (10,000 games): stay $3412/10000=0.3412$; switch $6588/10000=0.6588$.\end{frame}
+The simulator repeats the stated random experiment. For $N$ independent trials, the law of large numbers says the observed fraction tends toward the model probability as $N$ grows.\\[2mm]It does not prove the assumptions or promise a close result for a small $N$. Seeded measurement (10,000 games): stay $3412/10000=0.3412$; switch $6588/10000=0.6588$.\\
+\centering\begin{tikzpicture}\begin{axis}[ybar,width=.7\linewidth,height=2.8cm,ymin=0,ymax=.75,symbolic x coords={stay measured,stay model,switch measured,switch model},xtick=data,xticklabel style={font=\tiny,rotate=15},nodes near coords]\addplot coordinates {(stay measured,.3412) (stay model,.3333) (switch measured,.6588) (switch model,.6667)};\end{axis}\end{tikzpicture}\note{Walk through the displayed information in order. Ask students for a prediction before stating the conclusion.}\end{frame}
 \begin{frame}{Playground: Buffon's hot dogs}
-A segment of length $\ell\le t$ crosses lines spaced $t$ with probability $p=(1/\pi)\int_0^\pi (\ell/t)\sin\theta\,d\theta=2\ell/(\pi t)$. Therefore $\widehat\pi=2\ell/(t\widehat p)$.\\The page samples angle and center distance, counts crossings, and displays $N$, measured and expected crossings, and estimated versus true $\pi$.\end{frame}
+A segment of length $\ell\le t$ crosses lines spaced $t$ with probability $p=(1/\pi)\int_0^\pi (\ell/t)\sin\theta\,d\theta=2\ell/(\pi t)$. Therefore $\widehat\pi=2\ell/(t\widehat p)$.\\The page samples angle and center distance, counts crossings, and displays $N$, measured and expected crossings, and estimated versus true $\pi$.\note{Walk through the displayed information in order. Ask students for a prediction before stating the conclusion.}\end{frame}
 \begin{frame}{Playground: darts and birthdays}
-Darts: a uniform point in the unit square lands in its quarter circle with probability area ratio $\pi/4$; estimate $\pi=4h/N$.\\Birthdays: no match for $n$ people has probability $\prod_{i=0}^{n-1}(365-i)/365$; match probability is one minus that product. At $n=23$, it is $0.5073$. The playground measures both against the exact model value.\end{frame}
+Darts: a uniform point in the unit square lands in its quarter circle with probability area ratio $\pi/4$; estimate $\pi=4h/N$.\\Birthdays: no match for $n$ people has probability $\prod_{i=0}^{n-1}(365-i)/365$; match probability is one minus that product. At $n=23$, it is $0.5073$. The playground measures both against the exact model value.\note{Walk through the displayed information in order. Ask students for a prediction before stating the conclusion.}\end{frame}
 \begin{frame}{Playground: collecting every coupon}
-With $k$ types already held, each draw finds a new type with probability $(n-k)/n$. The expected wait for that next type is $n/(n-k)$.\\Summing from $k=0$ to $n-1$ gives $E=n\sum_{j=1}^n1/j=nH_n$. The playground compares mean draws across seeded runs with this expectation for $n=10$ or $50$.\end{frame}
+With $k$ types already held, each draw finds a new type with probability $(n-k)/n$. The expected wait for that next type is $n/(n-k)$.\\Summing from $k=0$ to $n-1$ gives $E=n\sum_{j=1}^n1/j=nH_n$. The playground compares mean draws across seeded runs with this expectation for $n=10$ or $50$.\note{Walk through the displayed information in order. Ask students for a prediction before stating the conclusion.}\end{frame}
+\begin{frame}{Secretary rule: derive the finite-$n$ chance}
+Set $r=\lfloor n/e\rfloor$. Skip the first $r$ applicants and remember their best. If the overall best is at position $j>r$, the rule selects it exactly when the best of the first $j-1$ positions lies among the first $r$.\\That probability is $r/(j-1)$, while the overall best is at $j$ with probability $1/n$. Therefore
+\[P(\text{success})=\sum_{j=r+1}^{n}\frac{r}{n(j-1)}\longrightarrow 1/e.\]
+For $n=100$, $r=36$ and the finite sum is approximately $0.3710$ (the limit is $1/e\approx0.3679$).
+\note{Condition on the position j of the best applicant. Explain why the rule wins only when the best among the first j−1 is in the skipped group. The playground compares the finite sum with simulation.}
+\end{frame}
 \begin{frame}{What to remember}
-\begin{itemize}\item A probability answer depends on the sample space and the host's rule.\item A reveal can change conditional probabilities; it does not erase the original choice.\item Derive the model first, then use simulation to check its numerical behavior.\end{itemize}\end{frame}
+\begin{itemize}\item A probability answer depends on the sample space and the host's rule.\item A reveal can change conditional probabilities; it does not erase the original choice.\item Derive the model first, then use simulation to check its numerical behavior.\end{itemize}\note{Walk through the displayed information in order. Ask students for a prediction before stating the conclusion.}\end{frame}
 \end{document}

@@ -40,6 +40,24 @@ def simulate(name: str, n: int, seed: int, size: int = 23):
             total+=draws
         truth=size*sum(1/i for i in range(1,size+1))
         return {'measured':total/n,'true':truth,'estimate':total/n,'actual':truth}
+    if name == 'secretary':
+        skip = int(size / math.e)
+        successes = 0
+        for _ in range(n):
+            # Fisher-Yates, matching the browser's Mulberry32 draw order.
+            ranks = list(range(1, size + 1))
+            for i in range(size - 1, 0, -1):
+                j = int(rng.random() * (i + 1))
+                ranks[i], ranks[j] = ranks[j], ranks[i]
+            best = max(ranks[:skip], default=0)
+            for applicant in ranks[skip:]:
+                if applicant > best:
+                    successes += applicant == size
+                    break
+        exact = sum(skip / (size * (j - 1)) for j in range(skip + 1, size + 1))
+        return {'measured': successes/n, 'successes': successes, 'true': exact,
+                'limit': 1/math.e, 'estimate': successes/n, 'actual': exact,
+                'skip': skip, 'size': size}
     raise ValueError(name)
 
 def prisoners(n, seed):
@@ -53,7 +71,7 @@ def prisoners(n, seed):
     return {'A':a/n,'B':b/n,'C':c/n}
 
 def main():
-    p=argparse.ArgumentParser(); p.add_argument('simulation',choices=['buffon','darts','birthday','coupon']); p.add_argument('--runs',type=int,default=10000); p.add_argument('--seed',type=int,default=20261022); p.add_argument('--size',type=int,default=23); a=p.parse_args()
+    p=argparse.ArgumentParser(); p.add_argument('simulation',choices=['buffon','darts','birthday','coupon','secretary']); p.add_argument('--runs',type=int,default=10000); p.add_argument('--seed',type=int,default=20261022); p.add_argument('--size',type=int,default=23); a=p.parse_args()
     if a.runs<1 or a.size<1:p.error('runs and size must be positive')
     print(simulate(a.simulation,a.runs,a.seed,a.size))
 if __name__=='__main__':main()
