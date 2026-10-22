@@ -82,3 +82,14 @@ measured rates are about 1/2 each, as predicted.
   had 0 console errors and widths 390/390 and 1905/1920; the playground had 0
   errors after her canvas fix and widths 390/390 and 1905/1920. This run did not
   independently launch a browser.
+
+## Anna's browser verification (2026-10-21, headless Chromium outside the Codex sandbox, CDP)
+
+| Page | Viewport | scrollWidth / innerWidth | Console/exception errors (load + every button clicked) |
+| --- | ---: | ---: | --- |
+| monty_hall.html | 390 | 390 / 390 | 0 |
+| monty_hall.html | 1920 | 1905 / 1920 | 0 |
+| monte_carlo_playground.html | 390 | 390 / 390 | 0 |
+| monte_carlo_playground.html | 1920 | 1905 / 1920 | 0 |
+
+The first playground run found a real defect (canvas `arc` with negative radius when a tab was hidden); fixed in commit 02bcaf0 and re-checked clean. Screenshots: `screenshots/playground_phone.png`, `screenshots/playground_projector.png`. Deck: 44 PDF pages including overlay steps; Python 15 tests pass.
