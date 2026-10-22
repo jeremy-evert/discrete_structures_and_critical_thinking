@@ -49,6 +49,14 @@ class SimulationTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             simulate(1, 1, doors=2)
 
+    def test_crawl_variant_seeded_probability(self):
+        result = simulate(90_000, 1234, variant="crawl")
+        self.assertLess(abs(result.switch_rate - 2 / 3), 0.01)
+
+    def test_open_multiple_goat_doors(self):
+        result = simulate(100_000, 567, doors=5, open_doors=2)
+        self.assertLess(abs(result.switch_rate - 2 / 5), 0.01)
+
 
 if __name__ == "__main__":
     unittest.main()

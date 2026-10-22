@@ -37,3 +37,16 @@ stay wins, 6,588 switch wins, 0 spoiled**. The 100-door switch result is
 0.989890 against the closed form `99/100 = 0.99`. With the random 3-door host,
 the spoiled fraction is `40,040/120,000 = 0.333667`; among valid games the two
 measured rates are about 1/2 each, as predicted.
+
+## Package 2: math deck, variants, and playground (2026-10-21)
+
+### Implementation checks
+
+- Deck: `latexmk -pdf -interaction=nonstopmode week-10/monty-hall/monty_hall_math.tex` — **16 pages compiled**. `grep -E 'Overfull \\hbox|^!' monty_hall_math.log` returned no matches (zero overfull boxes and zero TeX error markers). Auxiliary files were removed; source and PDF are the deliverables.
+- Python: `python3 -m unittest tests.test_monty_hall_sim tests.test_monte_carlo_playground_sim` — **14 tests passed**.
+- Added `--variant crawl` for three doors. Seed 1234, 90,000 games: switching won 60,104 / 90,000 = **0.667822**, against 2/3. In the defined 5-door, open-2 mode, a randomly chosen one of the two remaining doors wins with probability `(5−1)/(5(5−1−2)) = 0.4`; seed 567, 100,000 games measured **0.403490**. Existing three-draw modes remain bit-identical; extra-door mode uses draw three to choose the opened goat subset and a fourth draw to choose the remaining target.
+- Three Prisoners seeded check: 300,000 trials, seed 12; conditioned on the guard naming B, A pardon rate **0.333** and C pardon rate **0.667**, as predicted. The guard chooses uniformly between B and C when A is pardoned.
+- Playground seeded Python measurements, 10,000 trials, seed 20261022 (coupon seed 99): Buffon crossings **6,380/10,000**, expected **6,366.20**, π estimate **3.13480** (π = 3.14159); darts hits **7,781/10,000**, expected **7,853.98**, π estimate **3.11240**; birthday n=23 shared groups **0.51530**, exact **0.50730**; coupon n=10 mean **29.205** vs `nHₙ = 29.290`; n=50 mean **224.164** vs `nHₙ = 224.960`. All five reported measurements used seed 20261022.
+- JavaScript and Python were executed with the same seed and 10,000 trials under Node.js. The measurements matched exactly: Buffon 6,380 hits / π̂ 3.134796; darts 7,781 hits / π̂ 3.112400; birthdays 5,153 groups / 0.515300; coupons n=10 mean 29.204700. Birthday and coupon exact values also match. Buffon uses `sin` and can differ at floating-point boundaries. This is a deterministic function check, not browser verification.
+- Browser requirement is **not verified**: `/snap/bin/chromium --headless --no-sandbox --disable-gpu --remote-debugging-port=9223 --remote-allow-origins='*' --user-data-dir=/tmp/chromium-mh-check about:blank` exited with code 46 before launch: `cannot create transient scope: DBus error ... refusing`. Therefore console errors, 390 px / 1920 px overflow, and playground screenshots were not captured in Chromium. No screenshot is claimed as browser evidence.
+- Omitted: Secretary problem (explicitly bonus); not included to keep the deck and playground focused. No other requested simulation was omitted.

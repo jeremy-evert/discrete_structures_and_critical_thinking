@@ -63,3 +63,28 @@ The puzzle is named for the host of *Let's Make a Deal*. Marilyn vos Savant's
 Browser, Python/JavaScript agreement, and measurement details are recorded in
 [`VERIFICATION.md`](VERIFICATION.md). Phone and projector captures are in
 [`screenshots/`](screenshots/).
+
+## Math deck and additional simulations
+
+The 16-slide derivation deck is [`monty_hall_math.pdf`](monty_hall_math.pdf),
+with editable LaTeX source in [`monty_hall_math.tex`](monty_hall_math.tex).
+
+[`monte_carlo_playground.html`](monte_carlo_playground.html) is a single-file,
+offline page with Buffon's hot dogs, darts for π, birthdays, and coupon
+collection. Choose a tab, seed, and run count. The related standard-library
+models are in [`monte_carlo_playground_sim.py`](monte_carlo_playground_sim.py).
+The browser exposes deterministic functions as `window.MonteCarlo.buffon`,
+`.darts`, `.birthday`, and `.coupon`.
+
+The original simulation also accepts `--variant crawl` for the three-door
+leftmost eligible reveal rule and `--open K` with `--doors N` for a knowing host
+who opens K goats. For example:
+
+```sh
+python3 week-10/monty-hall/monty_hall_sim.py --games 100000 --seed 17 --variant crawl
+python3 week-10/monty-hall/monty_hall_sim.py --games 100000 --seed 17 --doors 5 --open 2
+python3 -m unittest tests.test_monty_hall_sim tests.test_monte_carlo_playground_sim
+```
+
+Seeded results, formula checks, and browser verification status are in
+[`VERIFICATION.md`](VERIFICATION.md).
