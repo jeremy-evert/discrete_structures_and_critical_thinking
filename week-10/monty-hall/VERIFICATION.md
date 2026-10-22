@@ -59,3 +59,26 @@ measured rates are about 1/2 each, as predicted.
 - `python3 -m unittest tests.test_monty_hall_sim tests.test_monte_carlo_playground_sim` — **15 tests passed**.
 - Node v22.23.3 deterministic function check (10,000 runs, seed 20261022): Buffon **6,380** crossings; darts **7,781** hits; birthdays **5,153** groups at n=23; coupon collector mean **29.204700** draws at n=10; secretary **3,763** wins at n=100. Python agrees exactly on the shared mulberry32 stream, including secretary. Buffon retains the documented small possibility of a floating-point trigonometry boundary difference.
 - Browser checks remain assigned to Anna. This run did not verify Chromium console output, responsive widths, or new playground screenshots. Existing phone/projector captures are for `monty_hall.html` only.
+
+### Final polish (2026-10-21)
+
+- Reworked the Monty Fall, Monty Crawl, Three Prisoners, open-$k$, Buffon,
+  darts/birthdays, and coupon-collector derivations into concise claims followed
+  by staged equations. The Monty Fall frame includes the three car-location
+  branches and random-host outcomes; Three Prisoners has a conditional-path
+  table. The deck has **18 logical frames**. Overlay reveals produce **44 PDF
+  pages**.
+- Buffon's canvas now draws at most 120 smaller hot dogs, with deterministic
+  positions spread over the full width. Gold marks crossings. The displayed
+  measured and expected counts still use all $N$ simulated trials.
+- Recompiled with `latexmk -pdf -interaction=nonstopmode monty_hall_math.tex`:
+  44 pages, zero TeX error markers, and `grep -E 'Overfull \\hbox|^!'
+  monty_hall_math.log` returned no matches. Updated source and PDF are present.
+- `python3 -m unittest tests.test_monty_hall_sim
+  tests.test_monte_carlo_playground_sim` — **15 tests passed**. Node.js 22
+  function checks at 10,000 runs and seed 20261022 agreed with Python:
+  Buffon 6,380; darts 7,781; birthdays 5,153; coupon mean 29.204700; secretary
+  3,763. Browser measurements remain Anna's reported checks: `monty_hall.html`
+  had 0 console errors and widths 390/390 and 1905/1920; the playground had 0
+  errors after her canvas fix and widths 390/390 and 1905/1920. This run did not
+  independently launch a browser.

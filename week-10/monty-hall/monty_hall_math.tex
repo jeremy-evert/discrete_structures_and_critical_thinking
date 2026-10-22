@@ -34,22 +34,90 @@ Let $O_3$ mean the host opens door 3. The probability paths are: $C_1$ contribut
 \begin{frame}{$n$ doors: one closed alternative}
 You pick one of $n$ doors. The first pick is correct with probability $1/n$.\\A knowing host opens $n-2$ goats, leaving one alternative.\\Switch wins exactly when the first pick was wrong: $P(\text{switch wins})=(n-1)/n$.\\For $n=100$, this is $99/100$.\note{Walk through the displayed information in order. Ask students for a prediction before stating the conclusion.}\end{frame}
 \begin{frame}{Open $k$ goats; switch to one chosen survivor}
-There are $n-1$ goat-first-pick cases, each of probability $1/n$. The host opens $k$ goats, leaving $n-1-k$ alternatives.\\By symmetry, each specified survivor gets an equal share of the original wrong-pick probability: $P(\text{win on a specified door})=\frac{(n-1)/n}{n-1-k}=\frac{n-1}{n(n-1-k)}$.\\Example $n=5,k=2$: each of two alternatives wins with probability $4/10$.\note{Walk through the displayed information in order. Ask students for a prediction before stating the conclusion.}\end{frame}
+\textbf{Claim:} With a uniform choice among survivors, each gets an equal share.
+\begin{align*}
+P(\text{first pick wrong})&=(n-1)/n &&\text{there are $n-1$ wrong doors}\pause\\
+\text{alternatives left}&=n-1-k &&\text{the host opens $k$ goats}\pause\\
+P(\text{win on specified door})&=\frac{(n-1)/n}{n-1-k} &&\text{split wrong-pick chance evenly}\pause\\
+&=\frac{n-1}{n(n-1-k)} &&\text{simplify}\pause\\
+(n,k)=(5,2)&\Rightarrow P=4/10 &&\text{each of two doors gets $0.4$}
+\end{align*}
+\end{frame}
 \begin{frame}{Monty Fall: a random host}
-Host chooses uniformly among the $n-1$ doors other than your pick, without knowing the car. A reveal is valid only if it shows a goat.\\$P(\text{valid})=P(C=pick)+P(C\ne pick)P(\text{host avoids car}\mid C\ne pick)=1/n+((n-1)/n)((n-2)/(n-1))=(n-1)/n$.\\For three doors, $P(\text{host reveals car})=1/3$. Given a goat reveal, the two closed doors are equally likely: stay and switch each have probability $1/2$.\note{Walk through the displayed information in order. Ask students for a prediction before stating the conclusion.}\end{frame}
+\textbf{Claim:} Given a goat is shown, staying and switching are equally likely to win.
+\begin{align*}
+P(C=1)&=P(C=2)=P(C=3)=1/3 &&\text{car is equally likely}\pause\\
+P(G\mid C=1)&=1,\quad P(G\mid C=2)=P(G\mid C=3)=1/2 &&\text{random host avoids car}\pause\\
+P(G)&=1/3+(1/3)(1/2)+(1/3)(1/2)=2/3 &&\text{add goat-showing branches}\pause\\
+P(C=1\mid G)&=(1/3)/(2/3)=1/2 &&\text{stay wins only when car is picked}\pause\\
+P(C\ne1\mid G)&=((1/3)(1/2)+(1/3)(1/2))/(2/3)=1/2 &&\text{switch wins on other branches}
+\end{align*}
+\centering\begin{tikzpicture}[level distance=7mm,sibling distance=18mm,every node/.style={font=\scriptsize},edge from parent/.style={draw,-latex}]
+\node {start}
+ child {node {$C=1$} edge from parent node[left,font=\tiny] {$1/3$}
+   child {node {$H=2$, goat} edge from parent node[left,font=\tiny] {$1/2$}}
+   child {node {$H=3$, goat} edge from parent node[right,font=\tiny] {$1/2$}}}
+ child {node {$C=2$} edge from parent node[left,font=\tiny] {$1/3$}
+   child {node {$H=2$, car} edge from parent node[left,font=\tiny] {$1/2$}}
+   child {node {$H=3$, goat} edge from parent node[right,font=\tiny] {$1/2$}}}
+ child {node {$C=3$} edge from parent node[right,font=\tiny] {$1/3$}
+   child {node {$H=2$, goat} edge from parent node[left,font=\tiny] {$1/2$}}
+   child {node {$H=3$, car} edge from parent node[right,font=\tiny] {$1/2$}}};
+\end{tikzpicture}
+\end{frame}
 \begin{frame}{Monty Crawl: a leftmost-door rule}
-Three doors are numbered left to right. You pick door 1; the host opens the leftmost door that is neither your pick nor the car.\\If car=1, host opens 2, so switch to 3 loses. If car=2, host opens 3, switch to 2 wins. If car=3, host opens 2, switch to 3 wins.\\Thus unconditional switch win probability is $2/3$. But after observing door 2 open, the car is behind 1 or 3 with equal probability; after door 3 opens, car=2 with certainty.\note{Walk through the displayed information in order. Ask students for a prediction before stating the conclusion.}\end{frame}
+\textbf{Claim:} Switching wins with probability $2/3$ before the reveal.
+\begin{align*}
+P(C=1)&=P(C=2)=P(C=3)=1/3 &&\text{three equally likely locations}\pause\\
+C=1&\Rightarrow H=2,\;\text{switch loses} &&\text{first pick has the car}\pause\\
+C=2&\Rightarrow H=3,\;\text{switch wins} &&\text{host opens leftmost eligible door}\pause\\
+C=3&\Rightarrow H=2,\;\text{switch wins} &&\text{host opens the remaining goat}\pause\\
+P(\text{switch wins})&=0+1/3+1/3=2/3 &&\text{add winning cases}
+\end{align*}
+\end{frame}
 \begin{frame}{Three Prisoners}
-A, B, C have equal chance $1/3$ of being pardoned; the guard knows and will name a different prisoner who will not be freed. A asks for a name.\\If A is pardoned (probability $1/3$), guard names B or C with equal chance. If B is pardoned, guard must name C; if C is pardoned, guard must name B.\\Hearing “B will not be freed” leaves A's chance $1/3$ and raises C's chance to $2/3$. Naming B does not change A's chance.\note{Walk through the displayed information in order. Ask students for a prediction before stating the conclusion.}\end{frame}
+\textbf{Claim:} Hearing that B is not pardoned leaves A at $1/3$ and C at $2/3$.
+\centering\small
+\begin{tabular}{c|c|c|c}\text{pardoned}&P(\text{case})&P(\text{guard says B})&P(\text{joint})\\\hline A&1/3&1/2&1/6\\B&1/3&0&0\\C&1/3&1&1/3\end{tabular}
+\begin{align*}
+P(\text{guard says B})&=1/6+0+1/3=1/2 &&\text{add the B-name paths}\pause\\
+P(A\mid\text{guard says B})&=(1/6)/(1/2)=1/3 &&\text{A's chance is unchanged}\pause\\
+P(C\mid\text{guard says B})&=(1/3)/(1/2)=2/3 &&\text{the remaining chance is C}
+\end{align*}
+\end{frame}
 \begin{frame}{Simulation checks a model's long-run rate}
 The simulator repeats the stated random experiment. For $N$ independent trials, the law of large numbers says the observed fraction tends toward the model probability as $N$ grows.\\[2mm]It does not prove the assumptions or promise a close result for a small $N$. Seeded measurement (10,000 games): stay $3412/10000=0.3412$; switch $6588/10000=0.6588$.\\
 \centering\begin{tikzpicture}\begin{axis}[ybar,width=.7\linewidth,height=2.8cm,ymin=0,ymax=.75,symbolic x coords={stay measured,stay model,switch measured,switch model},xtick=data,xticklabel style={font=\tiny,rotate=15},nodes near coords]\addplot coordinates {(stay measured,.3412) (stay model,.3333) (switch measured,.6588) (switch model,.6667)};\end{axis}\end{tikzpicture}\note{Walk through the displayed information in order. Ask students for a prediction before stating the conclusion.}\end{frame}
 \begin{frame}{Playground: Buffon's hot dogs}
-A segment of length $\ell\le t$ crosses lines spaced $t$ with probability $p=(1/\pi)\int_0^\pi (\ell/t)\sin\theta\,d\theta=2\ell/(\pi t)$. Therefore $\widehat\pi=2\ell/(t\widehat p)$.\\The page samples angle and center distance, counts crossings, and displays $N$, measured and expected crossings, and estimated versus true $\pi$.\note{Walk through the displayed information in order. Ask students for a prediction before stating the conclusion.}\end{frame}
+\textbf{Claim:} The crossing rate estimates $\pi$ when segment length equals line spacing.
+\begin{align*}
+P(\text{cross}\mid\theta)&=(\ell/t)\sin\theta &&\text{center must be near a line}\pause\\
+p&=\frac1\pi\int_0^\pi(\ell/t)\sin\theta\,d\theta &&\text{average over orientations}\pause\\
+&=2\ell/(\pi t) &&\text{evaluate the integral}\pause\\
+\widehat p&=\text{crossings}/N &&\text{measure the fraction}\pause\\
+\widehat\pi&=2\ell/(t\widehat p) &&\text{solve for $\pi$}
+\end{align*}
+\end{frame}
 \begin{frame}{Playground: darts and birthdays}
-Darts: a uniform point in the unit square lands in its quarter circle with probability area ratio $\pi/4$; estimate $\pi=4h/N$.\\Birthdays: no match for $n$ people has probability $\prod_{i=0}^{n-1}(365-i)/365$; match probability is one minus that product. At $n=23$, it is $0.5073$. The playground measures both against the exact model value.\note{Walk through the displayed information in order. Ask students for a prediction before stating the conclusion.}\end{frame}
+\textbf{Claim:} Area and complementary counting give exact model probabilities.
+\begin{align*}
+P(\text{dart hits})&=\pi/4 &&\text{quarter-circle area over square area}\pause\\
+\widehat\pi&=4(\text{hits}/N) &&\text{rearrange the measured rate}\pause\\
+P(\text{no birthday match})&=\prod_{i=0}^{n-1}(365-i)/365 &&\text{multiply no-match chances}\pause\\
+P(\text{a match})&=1-\prod_{i=0}^{n-1}(365-i)/365 &&\text{take the complement}\pause\\
+P(\text{match at }n=23)&\approx0.5073 &&\text{more than one half}
+\end{align*}
+\end{frame}
 \begin{frame}{Playground: collecting every coupon}
-With $k$ types already held, each draw finds a new type with probability $(n-k)/n$. The expected wait for that next type is $n/(n-k)$.\\Summing from $k=0$ to $n-1$ gives $E=n\sum_{j=1}^n1/j=nH_n$. The playground compares mean draws across seeded runs with this expectation for $n=10$ or $50$.\note{Walk through the displayed information in order. Ask students for a prediction before stating the conclusion.}\end{frame}
+\textbf{Claim:} Collecting $n$ equally likely types takes $nH_n$ draws on average.
+\begin{align*}
+P(\text{new type}\mid k\text{ held})&=(n-k)/n &&\text{$n-k$ unseen types}\pause\\
+E(W_k)&=n/(n-k) &&\text{geometric wait is reciprocal}\pause\\
+E(T)&=\sum_{k=0}^{n-1}n/(n-k) &&\text{add stage waits}\pause\\
+&=n\sum_{j=1}^n1/j=nH_n &&\text{rewrite as harmonic sum}\pause\\
+E(T)_{n=10}&\approx29.29 &&\text{compare with simulated mean}
+\end{align*}
+\end{frame}
 \begin{frame}{Secretary rule: derive the finite-$n$ chance}
 Set $r=\lfloor n/e\rfloor$. Skip the first $r$ applicants and remember their best. If the overall best is at position $j>r$, the rule selects it exactly when the best of the first $j-1$ positions lies among the first $r$.\\That probability is $r/(j-1)$, while the overall best is at $j$ with probability $1/n$. Therefore
 \[P(\text{success})=\sum_{j=r+1}^{n}\frac{r}{n(j-1)}\longrightarrow 1/e.\]
