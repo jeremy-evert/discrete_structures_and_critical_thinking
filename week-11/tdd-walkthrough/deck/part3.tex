@@ -93,7 +93,7 @@
 \begin{frame}{Piece 1b: ``same bin'' is an equivalence}
 \princ{REFLEXIVE / SYMMETRIC / TRANSITIVE TESTS}
 \begin{itemize}
-\item same\_bin(a, b) := letter\_grade(a) = letter\_grade(b).
+\item same\_bin(a, b) means: letter\_grade(a) equals letter\_grade(b).
 \item \textbf{Reflexive}: every score is in its own bin. \textbf{Symmetric}: if a is with b then b is with a. \textbf{Transitive}: a with b, b with c, then a with c.
 \item Test with helper functions that return the \textbf{witness} if a property fails, else nothing.
 \item This test should be \textbf{green on first run}: it records a fact.
@@ -208,7 +208,7 @@ shuffled input & same data, any order & same output\\
 \item Test plan: the graph for a small sample module matches a written expected list; the order never puts a function before something it needs.
 \end{itemize}
 {\small Prompt \textbf{13}.}
-\note{Two minutes. The idea: the arrows we drew by hand can be computed. The dependency order is a partial order: reflexive in the sense a function depends on itself trivially, antisymmetric if there is no cycle, transitive because depends-on-through-others counts.}
+\note{Two minutes. The idea: the arrows we drew by hand can be computed. The dependency order is a partial order: if A needs B and B needs C then A needs C (transitive), and as long as no two functions need each other (no cycle) it is antisymmetric.}
 \end{frame}
 
 \begin{frame}{Piece 8: cycles are a design smell}

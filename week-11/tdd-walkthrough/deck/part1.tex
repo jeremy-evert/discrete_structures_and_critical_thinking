@@ -34,7 +34,7 @@ Question: \emph{who sits next to whom?}
 \begin{tabular}{@{}p{2.9cm}p{4.4cm}p{5.6cm}@{}}
 \textbf{Reflexive} & Is everyone linked to themselves? & Sits next to: \textbf{no} (Ana is not next to Ana)\\[4pt]
 \textbf{Symmetric} & Does every link go both ways? & Sits next to: \textbf{yes}\\[4pt]
-\textbf{Antisymmetric} & Can two \emph{different} people be linked both ways? (must be no) & Sits next to: \textbf{no}, Ana and Ben are\\[4pt]
+\textbf{Antisymmetric} & If two \emph{different} people are linked both ways, that breaks the rule. Does it happen? & Sits next to: \textbf{rule fails}, Ana and Ben are linked both ways\\[4pt]
 \textbf{Transitive} & Does Ana$\to$Ben and Ben$\to$Cy mean Ana$\to$Cy? & Sits next to: \textbf{no}, Ana is not next to Cy\\
 \end{tabular}
 \vspace{6pt}
@@ -89,7 +89,7 @@ Our seating relation is \textbf{neither}: it fails reflexive and transitive.
 \begin{columns}[T]
 \begin{column}{0.5\textwidth}
 \textbf{Equivalence: deduplicating.}\\
-Contacts ``Jon'', ``John'', ``Jonathan Smith''. Same person? Group them, keep one. Hashing and ``normalize then compare'' rely on this being a true equivalence.
+Contacts ``Jon'', ``John'', ``Jonathan Smith''. Same person? Group them, keep one. Software does this by rewriting each entry to one standard form (a ``hash'' or key) and comparing, which only works if ``same'' is a true equivalence.
 \end{column}
 \begin{column}{0.5\textwidth}
 \textbf{Partial order: ``needs first.''}\\
