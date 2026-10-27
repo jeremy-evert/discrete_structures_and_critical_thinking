@@ -1,0 +1,3 @@
+Make leaves_first detect cycles: track the current path and raise CycleError with a message like
+"dependency cycle: parse -> validate -> parse". Do not edit the tests. Run pytest: all green.
+Then print the message for LOOP. Stop.

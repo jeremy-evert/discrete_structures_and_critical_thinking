@@ -1,0 +1,102 @@
+\section{Part 1: The idea}
+\begin{frame}{Part 1: The general concept}
+\begin{center}\Large Start with a seating chart,\\ not with notation.\end{center}
+\vspace{6pt}
+Five students in a row: \textbf{Ana, Ben, Cy, Dee, Eli}.\\
+Question: \emph{who sits next to whom?}
+\note{Put five names on the board in a row before showing anything else. Ask: who sits next to Ben? (Ana and Cy.) Who sits next to Ana? (Ben only.) That is a relation. We have not used any math words yet. Expected: students answer instantly; the point is they already understand this.}
+\end{frame}
+
+\begin{frame}{A relation is a set of pairs}
+\princ{WITNESS / COUNTEREXAMPLE}
+\textbf{Sits next to} as a list of pairs (first person, second person):\\[3pt]
+{\small (Ana, Ben), (Ben, Ana), (Ben, Cy), (Cy, Ben), (Cy, Dee), (Dee, Cy), (Dee, Eli), (Eli, Dee)}\\[6pt]
+\begin{itemize}
+\item That list \emph{is} the relation: 8 ordered pairs. The word is just a label for ``a set of pairs.''
+\item Order matters: (Ana, Ben) and (Ben, Ana) are two different pairs.
+\item The same relation can be shown as a \textbf{matrix} or a \textbf{digraph} (arrows).
+\end{itemize}
+\vspace{2pt}
+\see{8 pairs, a 5$\times$5 grid of 0/1, and lines like \code{Ana -> Ben}. See the prompt on the next slide.}
+\note{Ask: how many pairs? Predict before the next slide runs it: 8, because 4 neighbor-pairs times 2 directions. Common mistake: counting 4. Say: the order matters, so Ana-Ben and Ben-Ana are separate entries. Pair with prompt 01 on the next slide.}
+\end{frame}
+
+\begin{frame}{See it: pairs, matrix, digraph}
+\princ{WITNESS / COUNTEREXAMPLE}
+\promptbox{01}{a}
+\see{8 pairs; a matrix with ones next to the diagonal and zeros on the diagonal; lines \code{Ana -> Ben}, \code{Ben -> Ana, Cy}, \dots, \code{Eli -> Dee}.}
+\recover{\code{cp reference/demos/seating.py demos/} then \code{python demos/seating.py}}
+\predict{How many ones will the matrix have? Which cells on the diagonal?}
+\note{Paste, run, read the output aloud. Predict answer: 8 ones, no ones on the diagonal (nobody sits next to themselves). Explain beat: the diagonal is all zeros because a person is not next to themselves; remember this, it comes back as reflexive. If Claude names the list something else, ask it to rename to ITEMS.}
+\end{frame}
+
+\begin{frame}{Four questions about any relation}
+\begin{tabular}{@{}p{2.9cm}p{4.4cm}p{5.6cm}@{}}
+\textbf{Reflexive} & Is everyone linked to themselves? & Sits next to: \textbf{no} (Ana is not next to Ana)\\[4pt]
+\textbf{Symmetric} & Does every link go both ways? & Sits next to: \textbf{yes}\\[4pt]
+\textbf{Antisymmetric} & If two \emph{different} people are linked both ways, that breaks the rule. Does it happen? & Sits next to: \textbf{rule fails}, Ana and Ben are linked both ways\\[4pt]
+\textbf{Transitive} & Does Ana$\to$Ben and Ben$\to$Cy mean Ana$\to$Cy? & Sits next to: \textbf{no}, Ana is not next to Cy\\
+\end{tabular}
+\vspace{6pt}
+\begin{itemize}
+\item To say \textbf{yes}: check every case. To say \textbf{no}: show \emph{one} case that breaks it.
+\end{itemize}
+\note{Concrete first, word second. Ask the four plain questions about the seating chart before naming them: Is anyone next to themselves? If Ana is next to Ben, is Ben next to Ana? Can two different people each count as at or before each other? If Ana is next to Ben and Ben next to Cy, is Ana next to Cy? Then attach the names. Symmetric and antisymmetric are not opposites: some relations are both, some neither. Do not dwell; Part 4 tests each one.}
+\end{frame}
+
+\begin{frame}{Four questions, four witnesses}
+\princ{WITNESS / COUNTEREXAMPLE}
+\promptbox{02}{a}
+\see{sits next to: reflexive FAILS (Ana), symmetric holds, antisymmetric FAILS (Ana, Ben), transitive FAILS (Ana, Ben, Ana). Divides on 1..12: reflexive holds, symmetric FAILS (1, 2), antisymmetric holds, transitive holds.}
+\recover{\code{cp reference/demos/properties.py demos/}}
+\predict{For ``divides'', which property do you expect to fail, and which pair breaks it?}
+\note{Predict answer: symmetric fails; 1 divides 2 but 2 does not divide 1. Point out the printed witness is exactly that pair: a no must come with a concrete example, a yes means no counterexample exists in the items we tried. If Claude's import of ITEMS fails, ask it to rename the student list in seating.py to ITEMS. Important honesty point: checking items is evidence for yes on a small set, not a proof for all numbers.}
+\end{frame}
+
+\begin{frame}{Two big kinds of relation}
+\princ{EQUIVALENCE VS PARTIAL ORDER}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\begin{block}{Equivalence relation}
+Reflexive + symmetric + transitive.\\
+\textbf{``Is the same as.''} It sorts things into groups.\\
+\emph{Same birthday month.}
+\end{block}
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{block}{Partial order}
+Reflexive + antisymmetric + transitive.\\
+\textbf{``Comes at or before.''} Some pairs are not comparable.\\
+\emph{Divides. Is a prerequisite of.}
+\end{block}
+\end{column}
+\end{columns}
+\vspace{6pt}
+Our seating relation is \textbf{neither}: it fails reflexive and transitive.
+\note{Ask: in a room, what groups could we sort people into so everyone is in exactly one group? Birthday month. That is an equivalence. Ask: can you think of two things where one has to come before the other? Course prerequisites. That is a partial order. Partial because two courses may have no prerequisite link; neither has to come first.}
+\end{frame}
+
+\begin{frame}{Sort relations into kinds}
+\princ{EQUIVALENCE VS PARTIAL ORDER}
+\promptbox{03}{a}
+\see{verdicts in order: equivalence, partial order, partial order, neither, neither. Row 5 ($<$) fails reflexive, so ``neither.''}
+\recover{\code{cp reference/demos/classify.py demos/}}
+\predict{Is ``less than'' ($<$) a partial order? Why or why not?}
+\note{Predict answer: no, because 3 < 3 is false, so it is not reflexive. The strict version fails and the at-most version succeeds; this trips up many people. Explain beat: one table, one sentence per row. Do not spend more than six minutes here.}
+\end{frame}
+
+\begin{frame}{Where this shows up in real software}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\textbf{Equivalence: deduplicating.}\\
+Contacts ``Jon'', ``John'', ``Jonathan Smith''. Same person? Group them, keep one. Software does this by rewriting each entry to one standard form (a ``hash'' or key) and comparing, which only works if ``same'' is a true equivalence.
+\end{column}
+\begin{column}{0.5\textwidth}
+\textbf{Partial order: ``needs first.''}\\
+Course prerequisites, build order, which function to test first. If two things need each other there is no valid order: a bug in the plan.
+\end{column}
+\end{columns}
+\vspace{8pt}
+If ``same person'' is not transitive, a duplicate-record tool gives \textbf{different answers depending on the order of the records}.
+\note{Real-world first: ask who has had two accounts with the same company, or two entries for one person in their phone. That is the problem we build a fix for. Then prerequisites: ask what happens if course A requires B and B requires A. Nobody can enroll. Those are the two relation kinds in everyday life.}
+\end{frame}

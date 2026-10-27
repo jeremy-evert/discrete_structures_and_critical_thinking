@@ -1,0 +1,40 @@
+\section{Part 2: Idea to proposal}
+\begin{frame}{Part 2: From an idea to a written proposal}
+\begin{center}\Large Before any code: write down\\ \emph{what we are building and how we will know it works.}\end{center}
+\vspace{6pt}
+\begin{enumerate}
+\item \textbf{Problem} in one sentence, in everyday words.
+\item \textbf{Who it is for.}
+\item \textbf{Behaviors} as plain sentences (``when X, then Y'').
+\item \textbf{Risks}: what could go wrong.
+\item \textbf{Done} means: the checks we will run.
+\end{enumerate}
+\note{This is the step beginners skip. The proposal is not a formal document; it is half a page. Each behavior sentence will become a test later, so write sentences you could check. Ask the room: what is the idea in one sentence? Elicit: remove duplicate student records.}
+\end{frame}
+
+\begin{frame}{A filled-in proposal: duplicate-record merger}
+\small
+\begin{description}
+\item[Problem] The same person appears several times in a list (Jon, John, Jonathan Smith). We want one merged record per person.
+\item[For] An office assistant who cleans a class list. Synthetic names only today.
+\item[Behaviors] (1) A score gets exactly one letter grade. (2) Close spellings of a first name can be the same person. (3) ``Same person'' is a true sameness: if A is B and B is C, then A is C. (4) A match gives the same answer from either side. (5) Sorting never leaves two different people tied. (6) Merging keeps every record exactly once, in any input order. (7) We know which piece to test first.
+\item[Risks] Merging two real people; missing a true duplicate; nicknames we do not know; chains joining strangers; our own functions needing each other.
+\item[Done] Every behavior has a test; every property has a test that shows a concrete failing example; the sample list merges to the expected four lines.
+\end{description}
+\note{Read it once, slowly, then ask: which behavior sentences could we check with a yes or no? All of them. Which one do you think will give us trouble? Expected: number 3, the transitivity one, or number 2. It is fine if nobody guesses; we find it with a test. Point at Risks: naming risks before building is the cheap part. Note behavior 1 is a warm-up for bins and boundaries; it is not about names.}
+\end{frame}
+
+\begin{frame}{The proposal becomes the test list}
+\begin{tabular}{@{}p{7.2cm}p{5.2cm}@{}}
+\textbf{Behavior sentence} & \textbf{Becomes}\\\midrule
+A score gets exactly one letter grade & bins + boundary tests\\
+Close first names can be the same person & a match function + tests\\
+Same person is a true sameness & transitivity property test\\
+A match is the same from either side & symmetry property test\\
+Sorting never ties two different people & antisymmetry property test\\
+Merge keeps every record once & end-to-end test\\
+Know which piece to test first & dependency order\\
+\end{tabular}
+\vspace{4pt}
+\note{This slide is the bridge from writing to testing. Each plain sentence on the left becomes a test on the right. If a sentence cannot become a test, it is too vague: rewrite it. Ask: which sentence here is too vague to test? Good discussion: Close first names needs a rule, which we pick in step 06.}
+\end{frame}

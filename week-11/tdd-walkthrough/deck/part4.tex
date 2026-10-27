@@ -1,0 +1,72 @@
+\section{Part 4: Build it live}
+\def\promptboxx#1#2#3{\promptbox{#1#2}{#3}}
+\newcommand{\stepslide}[9]{%
+\frame{\frametitle{#1}
+\princ{#2}
+#3\hfill\loopstrip\\[2pt]
+\promptboxx#4
+\predict{#5}
+\see{#6}
+\recover{#7}
+\mistake{#8}
+\note{#9}}}
+\begin{frame}{Part 4: Build it live}
+\begin{center}\Large Paste, predict, run, explain.\\[4pt] \normalsize One new idea per step. Every step ends with a pass or a fail the whole room can see.\end{center}
+\vspace{6pt}
+\begin{itemize}
+\item Each slide: the badge (step, red or green), the prompt, one prediction question, what you should see, the recovery.
+\item If Claude drifts: paste the prompt again, or use the recovery line and move on.
+\item Reference solution: tags \code{tdd-step-01} to \code{tdd-step-19} in the repo.
+\end{itemize}
+\note{Settle the room. Remind them: red is a good sign. Say you will not hurry the predict beat. If time gets tight, drop the alternative fix (prompt 09) and the cycle step (prompt 14); the core line is 04 to 08, 10 to 12. Ladder tags are the safety net, never a first choice; the point is watching code grow.}
+\end{frame}
+
+\stepslide{Step 1: bins and boundaries, red}{EQUIVALENCE PARTITIONING, BOUNDARIES}{\redbadge{01}}{04a}{All tests red. Which error message?}{all tests FAILED with \code{NotImplementedError}.}{\code{tools/recover.sh 01}}{Letting Claude implement \code{letter_grade} now. Say: not yet, red first.}{Predict answer: every test fails because the function only raises NotImplementedError. Explain beat: this is a red we asked for. The stub lets the tests run so the failure is about our function, not about a missing file. Show one failing line and the E line at the bottom. If Claude also writes the implementation, ask it to revert it and stop.}
+
+\stepslide{Step 2: bins and boundaries, green}{EQUIVALENCE PARTITIONING, BOUNDARIES}{\greenbadge{02}}{04b}{Will every test pass at once? What bins will it print?}{all passed; bins A 90--100, B 80--89, C 70--79, D 60--69, F 0--59.}{\code{tools/recover.sh 02}}{Editing the tests to make them pass. We change the code, not the test.}{Predict answer: yes if the implementation is the simplest correct one; the printed bins are the five we planned. Explain beat: 101 possible scores, a handful of tests, and we trust the whole range because same bin behaves the same. Ask: why did we test 59 and 60 and not 55 and 56? Boundary.}
+
+\stepslide{Step 3: the bins are an equivalence}{REFLEXIVE / SYMMETRIC / TRANSITIVE TESTS}{\greenbadge{03}\ {\scriptsize (green from the start)}}{05a}{Red or green? Does a test that never fails count?}{all green on the first run. Say aloud: ``This test passed at once. That is allowed here: it records a fact.''}{\code{tools/recover.sh 03}}{Thinking green-first is cheating. Here it only records a known fact and builds reusable checkers.}{Predict answer: green. Many students expect red. Explain that tests can record a fact that is already true; what matters is that the checker functions we just wrote (reflexive\_failure and friends) will fail loudly in later steps. Ask: how could we check these helpers can fail? In the next steps they will.}
+
+\stepslide{Step 4: the fuzzy name rule, red}{EQUIVALENCE PARTITIONING}{\redbadge{04}}{06a}{Red or green? What error will we see?}{tests FAILED with \code{NotImplementedError} (stub).}{\code{tools/recover.sh 04}}{Writing the tests after the code, or editing expected values to fit.}{Predict answer: red, NotImplementedError, as in step 1. Second time through the loop should feel faster. Ask a student to predict aloud without looking at notes. Explain beat: the tests describe what similar means: Jon and John yes, Jon and Maria no, Jon Smith and Jon Jones no.}
+
+\stepslide{Step 5: the fuzzy name rule, green}{EQUIVALENCE PARTITIONING}{\greenbadge{05}}{06b}{Will Jon match Jonathan?}{Jon$\sim$John \code{True}, John$\sim$Jonathan \code{True}, \textbf{Jon$\sim$Jonathan \code{False}}. Point at the last line.}{\code{tools/recover.sh 05}}{Not noticing the False. Stop and point at it; it is the setup for the next step.}{Predict answer: many will say True. It prints False: edit distance between Jon and Jonathan is 5 over a longer length of 8, closeness 0.375, under 0.5. Explain beat: every pair test is green, yet the whole relation has a hole. That tension is the lesson; do not resolve it yet.}
+
+\stepslide{Step 6: the transitivity test, red}{TRANSITIVE TEST, WITNESS / COUNTEREXAMPLE}{\redbadge{06}}{07a}{Will the transitive test pass? Which pair or triple breaks it?}{exactly one failure, the transitive test, saying \code{'Jon Smith' ~ 'John Smith' and 'John Smith' ~ 'Jonathan Smith' but 'Jon Smith' !~ 'Jonathan Smith'}. The other two pass.}{\code{tools/recover.sh 06}}{Fixing it right away. First read the witness aloud. A good red test tells you exactly what broke.}{This is the key red. Predict answer: the transitive test fails; reflexive and symmetric pass. Explain beat: a witness is the concrete triple that proves a no. Ask: if we sorted records in a different order, what would the merger do? Different groupings. Keep this failing test; it is our recorded witness.}
+
+\stepslide{Step 7: fix with a canonical key, green}{EQUIVALENCE PARTITIONING, WITNESS / COUNTEREXAMPLE}{\greenbadge{07}}{08a}{Will the old failing test pass now, and why?}{all green; keys \code{jonathan smith} (three times), \code{maya smith}, \code{maria garcia}.}{\code{tools/recover.sh 07}}{Deleting the old failing test. Keep it: it now passes.}{Predict answer: yes, because equal keys are an equivalence by construction. Explain beat: the same test that was red is green, with the same Jon, John, Jonathan. Tradeoff to say aloud: we only know the nicknames in our table. Ask: what happens with Jonny? Not in the table, so it stays separate.}
+
+\stepslide{Step 8: chains (union-find), red}{EQUIVALENCE PARTITIONING, WITNESS / COUNTEREXAMPLE}{\redbadge{08}}{09a}{Red or green? What would a stub return?}{tests fail (grouping not written yet).}{\code{tools/recover.sh 08}}{Mixing up the two fixes. This one needs no key; it links everything connected by a chain.}{Optional step; skip if time is short. Predict answer: red, same pattern. Explain beat: this is the second way to get an equivalence: link by chains, then group. Ask: which fix is stricter? The key. Which is looser? Chains.}
+
+\stepslide{Step 9: chains (union-find), green}{EQUIVALENCE PARTITIONING, WITNESS / COUNTEREXAMPLE}{\greenbadge{09}}{09b}{How many groups from the five Smith and Garcia names?}{three groups: the three Smiths together, \code{Maya Smith}, \code{Maria Garcia}.}{\code{tools/recover.sh 09}}{Forgetting the tradeoff: chains can join people who never matched directly.}{Predict answer: three groups. Explain beat: Jon and Jonathan end up together even though they never matched directly, because John links them. Ask: when is that wrong? A chain of drifting names, Jon, John, Joan, Jane. The tradeoff is real; the owner of the data decides.}
+
+\stepslide{Step 10: one-sided ``equals'', red}{REFLEXIVE AND SYMMETRIC TESTS, WITNESS}{\redbadge{10}}{10a}{Which pair will the symmetric test print?}{the symmetric test FAILS and prints a concrete pair of records (one with an email, one without).}{\code{tools/recover.sh 10}}{Testing only is\_duplicate(a, b). The test must also try (b, a).}{Predict answer: a record with an email against a record without one. The lazy rule treats a missing email as a wildcard from one side only. Explain beat: the witness is two records, shown in both directions, giving different answers. Ask: why is that a problem for a merge? The result depends on which record is first.}
+
+\stepslide{Step 11: symmetric equals, green}{REFLEXIVE AND SYMMETRIC TESTS, WITNESS}{\greenbadge{11}}{10b}{What will each direction print now?}{both directions print \code{False} (a missing email is no longer a wildcard).}{\code{tools/recover.sh 11}}{Making the rule looser to ``fix'' the failure. Look at the witness first.}{Predict answer: False both ways. Explain beat: swapping a and b cannot change the answer. Ask: what other relation in daily life is symmetric by design? Is the same age as, sits next to.}
+
+\stepslide{Step 12: sort ties, red}{ANTISYMMETRIC TEST, WITNESS / COUNTEREXAMPLE}{\redbadge{12}}{11a}{Which two names will the witness show?}{the antisymmetric test FAILS; the witness is \code{Jon Smith} and \code{John Smith} (same family name).}{\code{tools/recover.sh 12}}{Thinking a tie is harmless. Two different people comparing equal makes the sort depend on input order.}{Predict answer: two Smiths, because the comparator looks only at the family name. Explain beat: the comparator returns 0 for different people. Antisymmetric means if a is at or before b and b at or before a then they are the same. Here two different people are each at or before the other.}
+
+\stepslide{Step 13: unique sort key, green}{ANTISYMMETRIC TEST, WITNESS / COUNTEREXAMPLE}{\greenbadge{13}}{11b}{What order will the names come out in?}{all pass; sorted order Garcia first, then the Smiths by given name.}{\code{tools/recover.sh 13}}{Sorting by name only. The key must be unique: family, given, id.}{Predict answer: Garcia, then Jon, John, Jonathan Smith (by given name). Explain beat: adding id as a final tie-breaker makes the key unique, so no two different people tie. Ask: what would happen with two identical names? Id breaks the tie.}
+
+\stepslide{Step 14: merge end to end, red}{EQUIVALENCE PARTITIONING}{\redbadge{14}}{12a}{Red or green? What will fail?}{the end-to-end merge test fails (not written yet).}{\code{tools/recover.sh 14}}{Testing the whole thing only. The pieces were tested first, which is why a failure here points at the merge itself.}{Predict answer: red. Explain beat: all pieces are individually green; this test checks they work together. Ask: where would a failure here point us? The new code only, because the pieces under it were already tested.}
+
+\stepslide{Step 15: merge end to end, green}{EQUIVALENCE PARTITIONING}{\greenbadge{15}}{12b}{How many merged records will it print?}{four lines; Jon alone (no email), John and Jonathan merged as ids (2, 3).}{\code{tools/recover.sh 15}}{Expecting one line per person. Jon stays separate and John and Jonathan merge, so we get four lines.}{Predict answer: four merged records. Explain beat: Jon had no email so the symmetric rule keeps him separate. Ask: is that right? It follows the rule we chose; the proposal said risks include missing a duplicate. A tradeoff we can name.}
+
+\stepslide{Step 16: depends-on order, red}{PARTIAL-ORDER TEST ORDERING}{\redbadge{16}}{13a}{Red or green? What will the test compare?}{the dependency tests fail (graph tool not written yet).}{\code{tools/recover.sh 16}}{Writing the graph by hand. We let the tool read our own code.}{Predict answer: red, same pattern. Explain beat: this tool draws the same arrows we drew on the plan slide, from the real code. Ask the room whether the computed graph will match their picture.}
+
+\stepslide{Step 17: depends-on order, green}{PARTIAL-ORDER TEST ORDERING}{\greenbadge{17}}{13b}{Which function comes first in the order, and which last?}{graph lines as in the test; order starts with \code{_split}, \code{canonical_key}, \dots\ and ends with \code{merge_duplicates} (others interleaved).}{\code{tools/recover.sh 17}}{Expecting one right answer. Several orders are valid; only the rule matters.}{Predict answer: a leaf first, merge\_duplicates last. Explain beat: this is leaves-first. Compare with the dependency drawing in Part 3; they agree.}
+
+\stepslide{Step 18: cycle detection, red}{ANTISYMMETRIC TEST, WITNESS / COUNTEREXAMPLE}{\redbadge{18}}{14a}{What should a cycle report look like?}{the cycle test fails (not detected yet).}{\code{tools/recover.sh 18}}{Dismissing cycles as rare. They are a design smell: no leaf to test first.}{Predict answer: red. Explain beat: we ask the tool to refuse an order that cannot exist and to name the loop. Ask: why must it name the loop? A bare error is not actionable.}
+
+\stepslide{Step 19: cycle detection, green}{ANTISYMMETRIC TEST, WITNESS / COUNTEREXAMPLE}{\greenbadge{19}}{14b}{What message will the program print?}{\code{dependency cycle: parse -> validate -> parse}}{\code{tools/recover.sh 19}}{Treating the cycle as a test problem. It is a design problem; the fix is a different structure.}{Predict answer: the loop spelled out. Explain beat: the witness is the path. All tests are green: stop and look at the git log, 19 small steps. Ask: which step surprised you most?}
+
+\begin{frame}{You just saw the whole process}
+\begin{center}\Large Idea $\to$ proposal $\to$ pieces $\to$ plan $\to$ tests first $\to$ working code.\end{center}
+\vspace{6pt}
+\begin{itemize}
+\item Every concept earned its place by catching a real bug: transitive (Jon, John, Jonathan), symmetric (missing email), antisymmetric (tie), partial order (test order, cycles).
+\item \textbf{Thursday: you repeat this} in pairs on a \emph{different} problem, with your own proposal, plan, tests and witnesses. You may use Claude; you write the witnesses.
+\end{itemize}
+\vspace{2pt}
+{\small Student workbook: \code{week-11/tdd-walkthrough/student/}}
+\note{Close the loop. Ask: which relation property do you now think you could find a bug with? Take three answers. Then the bridge: on Thursday you do exactly this process yourselves on a different but parallel problem, in pairs. Say this reassuringly: the same five steps, the same loop, the same legend. The Thursday run-of-show and facilitator page are in the instructor folder.}
+\end{frame}

@@ -1,0 +1,140 @@
+\frame{\titlepage
+\note{Say: Today I am going to show you the whole process, start to finish, the way people really build software: an idea, a written proposal, a plan, and then working code with tests. I will use Claude to write the Python live, and I will not pretend it goes perfectly. You will see red tests. That is the point. On Thursday you repeat this same process yourselves on a different problem. Nothing today is a trick; every step has a plain question for you before I run it.}}
+
+\begin{frame}{Predict before we start}
+\princ{TRANSITIVE TEST, WITNESS / COUNTEREXAMPLE}
+\begin{center}\large
+``\textbf{Jon}'' and ``\textbf{John}'' look like the same person.\\[4pt]
+``\textbf{John}'' and ``\textbf{Jonathan}'' look like the same person.\\[10pt]
+So are ``\textbf{Jon}'' and ``\textbf{Jonathan}'' the same person?
+\end{center}
+\vspace{6pt}
+\begin{block}{Write your guess (30 seconds)}
+Yes, no, or not sure. We will find out with a test, and the answer breaks a rule you probably trust.
+\end{block}
+\note{Do this before anything else. Take a show of hands: yes, no, not sure. Most will say yes. Do not reveal. Say: by the end of Part 4 we will have a test that answers this with a concrete example, and we will see why the answer matters for a program that merges duplicate records. The answer, for your eyes: with our first matching rule Jon matches John and John matches Jonathan but Jon does NOT match Jonathan (step 5 prints False, step 6 catches it). That failure of the chain is what transitive means.}
+\end{frame}
+
+\begin{frame}{How to read this deck}
+\begin{tabular}{@{}p{4.6cm}p{6.8cm}@{}}
+\badge{orange!85!red}{PRINCIPLE} & A lesson idea this slide demonstrates. Same orange box, top right, every time.\\[5pt]
+\badge{red!70!black}{PROMPT FOR CLAUDE} & Exact text to paste into Claude. Red box. The file name is in the box corner.\\[5pt]
+\badge{green!45!black}{WHAT YOU SHOULD SEE} & The output to expect. If it does not match, use the \textbf{Recovery} line.\\[5pt]
+\resizebox{4.5cm}{!}{\loopstrip} & The same three beats at every step: \textbf{predict}, \textbf{run}, \textbf{explain}.\\
+\end{tabular}
+\vspace{6pt}
+
+Parts: \textbf{1} the idea \textbullet\ \textbf{2} idea to proposal \textbullet\ \textbf{3} proposal to pieces and plan \textbullet\ \textbf{4} build it live.
+\note{Walk the legend once, then stop talking about it. Every slide in Part 4 follows the same layout so the room learns the pattern in two steps and stops thinking about the slide. If you lose your place, find the orange box (what idea is this), the red box (what do I paste), the green line (what should I see).}
+\end{frame}
+
+\begin{frame}{Why would anyone write a test first?}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\textbf{A smoke alarm} does not fix fires. It tells you, fast and loudly, that something is wrong, \emph{before} the damage is big.\\[6pt]
+\textbf{A taste test} while cooking: you taste the sauce \emph{before} serving 30 people.
+\end{column}
+\begin{column}{0.48\textwidth}
+\textbf{A test is a question with a known answer}, written down so a computer can ask it every time.\\[6pt]
+\textbf{Test first} means: decide what ``right'' looks like \emph{before} writing the code. Then you know when you are done.
+\end{column}
+\end{columns}
+\vspace{8pt}
+\begin{block}{Ask the room (60 seconds)}
+When have you fixed something, and only afterwards found out it was still broken?
+\end{block}
+\note{Two minutes, no code. Smoke alarm: nobody thinks a smoke alarm is an insult to the house; it is cheap insurance. Taste test: you would never serve soup you have not tasted; a test is tasting the code. Then the key sentence: a test is a question with a known answer. Examples a student can relate to: checking your answer by plugging it back into the equation; proofreading. Expected answers to the question: submitted homework with a typo in the formula, code that worked on my laptop and not the teacher's, a recipe that burned. Do not define unit test yet; the glossary slide does that after they have the feeling.}
+\end{frame}
+
+\begin{frame}{The loop we repeat at every step}
+\begin{center}\Large\loopstrip\end{center}
+\begin{enumerate}
+\item \textbf{PREDICT} before you run: ``Will this be red or green? Which test will fail, and why?'' Say it out loud, pairs of two.
+\item \textbf{RUN} the command (\code{pytest}). Everyone looks at the same screen.
+\item \textbf{EXPLAIN} what happened in one sentence: ``It failed because \dots'' or ``It passed because \dots''
+\end{enumerate}
+\vspace{4pt}
+One new idea per step. If the screen surprises you, that is information, not failure.
+\note{This is the most important slide for this audience. Do the loop out loud for the first three steps even if it feels slow. Predict: give 30 seconds and take two guesses from the room before you press enter. Run: press enter, read the output aloud, line by line, once. Explain: ask one student for one sentence beginning with the word because. If the prediction was wrong, praise the wrong prediction: it showed us something. Common failure: skipping predict when pressed for time. Do not skip it; shorten the step instead.}
+\end{frame}
+
+\begin{frame}{Red tests are normal. Red tests are good.}
+\begin{center}\badge{red!70!black}{RED}\quad means\quad ``the test caught something'' \quad $\Rightarrow$ \quad \badge{green!45!black}{GREEN}\quad means\quad ``now it is true''\end{center}
+\vspace{6pt}
+\begin{itemize}
+\item In test-first work, \textbf{every step starts red on purpose}. A red screen means the test is working.
+\item A test that has \emph{never} been red might not be testing anything.
+\item Feeling lost when the screen is full of red? Everyone does. Read the \emph{last} line first.
+\end{itemize}
+\note{Name the feeling out loud: red can feel like I got it wrong. It does not. Red is the alarm working. Tell the story: a smoke alarm that has never gone off in a drill might be dead, and you would not know. Practical tip for reading pytest output: look at the bottom line first (X failed, Y passed), then find the line starting with E, which says why. Expected: students will still flinch at red on Thursday. Normalize it by saying it each time, calmly.}
+\end{frame}
+
+\begin{frame}{Glossary 1 of 4: testing words}
+\small
+\begin{tabular}{@{}p{3.2cm}p{9.4cm}@{}}
+\textbf{test} & a question with a known answer, written so a computer can check it.\\
+\textbf{unit test} & a test for one small piece of code, a single function.\\
+\textbf{pytest} & the tool that runs our tests and shows the results.\\
+\textbf{assert} & the line that says ``this must be true''; if not, the test fails.\\
+\textbf{red / green} & red: a test is failing. green: all tests pass.\\
+\textbf{test-driven development (TDD)} & write a failing test first, then just enough code to make it pass.\\
+\textbf{fixture} & fixed sample data a test uses, such as a list of names.\\
+\textbf{stub} & an empty placeholder function so a test can run and fail.\\
+\textbf{partition (bin)} & a group of inputs the code treats the same way.\\
+\textbf{boundary} & the edge between two bins, such as 59 and 60.\\
+\end{tabular}
+\note{Do not read this slide. Leave it up while students ask. First time each word appears, say the one-line meaning and point back here. Handout has the same list. If someone asks what is the difference between a test and a unit test: a unit test is just a small, focused test of one function; that is the only kind we write today.}
+\end{frame}
+
+\begin{frame}{Glossary 2 of 4: relation words}
+\small
+\begin{tabular}{@{}p{3.2cm}p{9.4cm}@{}}
+\textbf{relation} & a set of ordered pairs: which things are linked to which.\\
+\textbf{ordered pair} & $(a,b)$ where order matters: $(2,6)\neq(6,2)$.\\
+\textbf{reflexive} & every item is linked to itself.\\
+\textbf{symmetric} & every link works both ways.\\
+\textbf{antisymmetric} & if a is linked to b and b to a, then a and b are the same item.\\
+\textbf{transitive} & a chain $a\to b\to c$ always has the shortcut $a\to c$.\\
+\textbf{equivalence relation} & reflexive, symmetric and transitive: it sorts things into groups.\\
+\textbf{partial order} & reflexive, antisymmetric and transitive: ``comes before'' where some pairs have no order between them.\\
+\textbf{property test} & a test that checks one of these four rules over many items.\\
+\textbf{witness} & the concrete pair or triple that proves a ``no'': a counterexample.\\
+\textbf{canonical key} & one standard spelling every variant is rewritten to, then compared.\\
+\textbf{dependency / cycle} & a function that needs another; a loop of such needs.\\
+\end{tabular}
+\note{Same approach: leave it up, do not read it. The seating chart in Part 1 supplies the concrete examples for each of these before the formal word is used. If a student says that is a lot of words: yes, and we will use each one on a real example within ten minutes. Union-find and edit distance are defined where they appear in Part 4.}
+\end{frame}
+
+\begin{frame}{Glossary 3 of 4: words in the steps}
+\small
+\begin{tabular}{@{}p{3.2cm}p{9.4cm}@{}}
+\textbf{counterexample} & one concrete case that shows a rule is false; same idea as a witness.\\
+\textbf{matrix} & a grid of 0s and 1s: row linked to column, 1 means yes.\\
+\textbf{digraph} & dots joined by arrows; one arrow per ordered pair.\\
+\textbf{edit distance} & how many single-letter inserts, deletes or changes turn one word into another.\\
+\textbf{normalize} & rewrite many spellings into one standard form before comparing.\\
+\textbf{union-find} & a way to group items: each match merges two groups. Also called connected components.\\
+\textbf{leaf} & a function that needs no other function; test it first.\\
+\textbf{property} & a rule that must hold for every item, such as symmetric.\\
+\textbf{PRINCIPLE tag} & the orange box saying which lesson idea a slide shows.\\
+\end{tabular}
+\note{Same use as the other glossary slides: leave up, point at it when a word comes up. The words here appear mostly in Part 4.}
+\end{frame}
+
+\begin{frame}{Glossary 4 of 4: more words}
+\small
+\begin{tabular}{@{}p{3.2cm}p{9.4cm}@{}}
+\textbf{set} & a collection of distinct things, like the five students in the row.\\
+\textbf{function} & a named piece of code that takes inputs and gives back an answer.\\
+\textbf{record} & one row of data about one person: an id, a name, maybe an email.\\
+\textbf{A $\sim$ B} & we write this for ``A is similar to B''; $\not\sim$ means ``is not similar to''.\\
+\textbf{equivalence class} & one group of items that are all the same as each other, such as the records of one person.\\
+\textbf{comparator} & a function that says which of two items goes first; returns 0 for a tie.\\
+\textbf{end-to-end test} & a test that runs the whole pipeline, not one piece.\\
+\textbf{design smell} & a sign in the structure of the code that something is wrong, even if tests pass.\\
+\textbf{hash} & a short fingerprint computed from data; equal data gives equal fingerprints.\\
+\textbf{recovery} & the command that puts the project back to a known good step.\\
+\textbf{drift} & Claude doing something other than what we asked.\\
+\end{tabular}
+\note{Same use as the other glossary slides. The tilde was introduced here because it appears in the test messages: Jon Smith is similar to John Smith is written with a tilde.}
+\end{frame}

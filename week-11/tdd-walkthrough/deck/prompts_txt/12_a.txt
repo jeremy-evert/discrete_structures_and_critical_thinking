@@ -1,0 +1,7 @@
+Test first. Stub merger/pipeline.py with merge_duplicates(records) raising NotImplementedError.
+It returns Merged(ids, name, email) tuples (a namedtuple), one per group of duplicates, sorted
+by ids; ids is the sorted tuple of the members' ids; name and email come from the lowest-id member.
+Write tests/test_pipeline.py with RECORDS: (1) the result as (ids, name) pairs is
+[((1,),"Jon Smith"), ((2,3),"John Smith"), ((4,),"Maya Smith"), ((5,),"Maria Garcia")];
+(2) every input id appears in exactly one merged record; (3) merge_duplicates(RECORDS) equals
+merge_duplicates(list(reversed(RECORDS))). Run pytest, show it red, stop.
