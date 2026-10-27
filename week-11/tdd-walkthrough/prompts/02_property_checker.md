@@ -11,9 +11,9 @@ the first failing item, pair, or triple, trying items in the order given.
 Add report(title, items, pairs) printing a heading and one line per property:
 "holds" or "FAILS  witness: ...".
 At the bottom (under a main guard) call report for:
- (a) "sits next to": ITEMS and SITS_NEXT_TO imported from demos/seating.py;
+ (a) "sits next to": ITEMS and SITS_NEXT_TO imported from seating.py in the same folder (from seating import ...);
  (b) "divides" on the numbers 1..12 (a divides b).
-Run python demos/properties.py and show me the output.
+Run python3 demos/properties.py and show me the output.
 ```
 
 **What you should see:**
