@@ -1,0 +1,4 @@
+reflexive     FAILS  witness: Slow Orbit
+symmetric     FAILS  witness: Slow Orbit, Paper Moons
+antisymmetric holds
+transitive    FAILS  witness: Slow Orbit, Paper Moons, Glass Harbor

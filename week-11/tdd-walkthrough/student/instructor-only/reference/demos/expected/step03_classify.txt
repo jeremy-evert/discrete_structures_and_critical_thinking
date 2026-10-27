@@ -1,0 +1,6 @@
+relation                              refl  sym   anti  trans verdict
+shares an artist with                 yes   yes   NO    yes   equivalence
+is no longer than                     yes   NO    yes   yes   partial order
+title starts with the other's title   yes   NO    yes   yes   partial order
+is within 5 seconds of                yes   yes   NO    NO    neither
+plays right after                     NO    NO    yes   NO    neither
