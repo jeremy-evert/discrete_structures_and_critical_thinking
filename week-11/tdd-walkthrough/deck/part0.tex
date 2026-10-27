@@ -55,7 +55,7 @@ One new idea per step. If the screen surprises you, that is information, not fai
 \note{Name the feeling out loud: red can feel like I got it wrong. It does not. Red is the alarm working. Tell the story: a smoke alarm that has never gone off in a drill might be dead, and you would not know. Practical tip for reading pytest output: look at the bottom line first (X failed, Y passed), then find the line starting with E, which says why. Expected: students will still flinch at red on Thursday. Normalize it by saying it each time, calmly.}
 \end{frame}
 
-\begin{frame}{Glossary 1 of 3: testing words}
+\begin{frame}{Glossary 1 of 4: testing words}
 \small
 \begin{tabular}{@{}p{3.2cm}p{9.4cm}@{}}
 \textbf{test} & a question with a known answer, written so a computer can check it.\\
@@ -72,17 +72,17 @@ One new idea per step. If the screen surprises you, that is information, not fai
 \note{Do not read this slide. Leave it up while students ask. First time each word appears, say the one-line meaning and point back here. Handout has the same list. If someone asks what is the difference between a test and a unit test: a unit test is just a small, focused test of one function; that is the only kind we write today.}
 \end{frame}
 
-\begin{frame}{Glossary 2 of 3: relation words}
+\begin{frame}{Glossary 2 of 4: relation words}
 \small
 \begin{tabular}{@{}p{3.2cm}p{9.4cm}@{}}
 \textbf{relation} & a set of ordered pairs: which things are linked to which.\\
 \textbf{ordered pair} & $(a,b)$ where order matters: $(2,6)\neq(6,2)$.\\
 \textbf{reflexive} & every item is linked to itself.\\
 \textbf{symmetric} & every link works both ways.\\
-\textbf{antisymmetric} & a two-way link only ever joins an item to itself.\\
+\textbf{antisymmetric} & if a is linked to b and b to a, then a and b are the same item.\\
 \textbf{transitive} & a chain $a\to b\to c$ always has the shortcut $a\to c$.\\
 \textbf{equivalence relation} & reflexive, symmetric and transitive: it sorts things into groups.\\
-\textbf{partial order} & reflexive, antisymmetric and transitive: ``comes before'' with ties allowed.\\
+\textbf{partial order} & reflexive, antisymmetric and transitive: ``comes before'' where some pairs have no order between them.\\
 \textbf{property test} & a test that checks one of these four rules over many items.\\
 \textbf{witness} & the concrete pair or triple that proves a ``no'': a counterexample.\\
 \textbf{canonical key} & one standard spelling every variant is rewritten to, then compared.\\
@@ -91,7 +91,7 @@ One new idea per step. If the screen surprises you, that is information, not fai
 \note{Same approach: leave it up, do not read it. The seating chart in Part 1 supplies the concrete examples for each of these before the formal word is used. If a student says that is a lot of words: yes, and we will use each one on a real example within ten minutes. Union-find and edit distance are defined where they appear in Part 4.}
 \end{frame}
 
-\begin{frame}{Glossary 3 of 3: words in the steps}
+\begin{frame}{Glossary 3 of 4: words in the steps}
 \small
 \begin{tabular}{@{}p{3.2cm}p{9.4cm}@{}}
 \textbf{counterexample} & one concrete case that shows a rule is false; same idea as a witness.\\
@@ -105,4 +105,22 @@ One new idea per step. If the screen surprises you, that is information, not fai
 \textbf{PRINCIPLE tag} & the orange box saying which lesson idea a slide shows.\\
 \end{tabular}
 \note{Same use as the other glossary slides: leave up, point at it when a word comes up. The words here appear mostly in Part 4.}
+\end{frame}
+
+\begin{frame}{Glossary 4 of 4: more words}
+\small
+\begin{tabular}{@{}p{3.2cm}p{9.4cm}@{}}
+\textbf{set} & a collection of distinct things, like the five students in the row.\\
+\textbf{function} & a named piece of code that takes inputs and gives back an answer.\\
+\textbf{record} & one row of data about one person: an id, a name, maybe an email.\\
+\textbf{A $\sim$ B} & we write this for ``A is similar to B''; $\not\sim$ means ``is not similar to''.\\
+\textbf{equivalence class} & one group of items that are all the same as each other, such as the records of one person.\\
+\textbf{comparator} & a function that says which of two items goes first; returns 0 for a tie.\\
+\textbf{end-to-end test} & a test that runs the whole pipeline, not one piece.\\
+\textbf{design smell} & a sign in the structure of the code that something is wrong, even if tests pass.\\
+\textbf{hash} & a short fingerprint computed from data; equal data gives equal fingerprints.\\
+\textbf{recovery} & the command that puts the project back to a known good step.\\
+\textbf{drift} & Claude doing something other than what we asked.\\
+\end{tabular}
+\note{Same use as the other glossary slides. The tilde was introduced here because it appears in the test messages: Jon Smith is similar to John Smith is written with a tilde.}
 \end{frame}

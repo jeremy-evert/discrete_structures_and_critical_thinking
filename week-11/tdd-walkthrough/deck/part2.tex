@@ -19,7 +19,7 @@
 \item[For] An office assistant who cleans a class list. Synthetic names only today.
 \item[Behaviors] (1) A score gets exactly one letter grade. (2) Close spellings of a first name can be the same person. (3) ``Same person'' is a true sameness: if A is B and B is C, then A is C. (4) A match gives the same answer from either side. (5) Sorting never leaves two different people tied. (6) Merging keeps every record exactly once, in any input order. (7) We know which piece to test first.
 \item[Risks] Merging two real people; missing a true duplicate; nicknames we do not know; chains joining strangers; our own functions needing each other.
-\item[Done] Every behavior has a test; every property has a witness test; the sample list merges to the expected four lines.
+\item[Done] Every behavior has a test; every property has a test that shows a concrete failing example; the sample list merges to the expected four lines.
 \end{description}
 \note{Read it once, slowly, then ask: which behavior sentences could we check with a yes or no? All of them. Which one do you think will give us trouble? Expected: number 3, the transitivity one, or number 2. It is fine if nobody guesses; we find it with a test. Point at Risks: naming risks before building is the cheap part. Note behavior 1 is a warm-up for bins and boundaries; it is not about names.}
 \end{frame}

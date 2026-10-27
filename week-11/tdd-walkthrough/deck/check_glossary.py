@@ -7,7 +7,7 @@ gl = gl.replace("\\textbf{", "").replace("\\_", "_")
 watch = ["unit test", "pytest", "assert", "red", "green", "fixture", "stub", "partition", "bin", "boundary", "witness",
          "counterexample", "relation", "ordered pair", "reflexive", "symmetric", "antisymmetric", "transitive",
          "equivalence relation", "partial order", "property test", "canonical key", "union-find", "edit distance",
-         "digraph", "matrix", "normalize", "leaf", "dependency", "cycle", "test-driven development", "property"]
+         "digraph", "matrix", "normalize", "leaf", "dependency", "cycle", "test-driven development", "property", "equivalence class", "comparator", "end-to-end test", "design smell", "hash", "record", "function", "set"]
 body = ""
 for p in ["part1", "part2", "part3", "part4"]:
     body += (here / f"{p}.tex").read_text().lower()
