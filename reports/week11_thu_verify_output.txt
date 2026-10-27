@@ -1,0 +1,21 @@
+dice A>B wins 20 ties 0 of 36 = 5/9
+dice B>C wins 20 ties 0 of 36 = 5/9
+dice C>A wins 20 ties 0 of 36 = 5/9
+means [5.0, 5.0, 5.0]
+beats relation [('A', 'B'), ('B', 'C'), ('C', 'A')] props (refl,sym,anti,trans): (False, False, True, False)
+every die has a better reply: True
+valid take-orders with cycle Alg<DS<Sys<Alg: 0
+valid orders for chain Alg<DS<Sys: 1
+valid orders for diamond A<B,C<D: 2
+relations on 3 elements: {'total': 512, 'refl': 64, 'sym': 64, 'refl_sym': 8, 'sym_anti': 8, 'eq': 5, 'po': 19, 'neither_sym_anti': 240}
+formulas: 2^9 = 512  reflexive 2^6 = 64  symmetric 2^6 = 64  refl+sym 2^3 = 8
+worked R: [(1, 1), (1, 2), (2, 1), (2, 2), (2, 3), (3, 2), (3, 3), (4, 4)] props: (True, True, False, False)
+transitivity violations (chain -> missing pair): [(((1, 2), (2, 3)), (1, 3)), (((3, 2), (2, 1)), (3, 1))]
+added by transitive closure: [(1, 3), (3, 1)] -> props: (True, True, False, True)
+equivalence classes after repair: [[1, 2, 3], [4]]
+claim 'partial order' broken by: [(1, 2)]
+matrix of R:
+  [1, 1, 0, 0]
+  [1, 1, 1, 0]
+  [0, 1, 1, 0]
+  [0, 0, 0, 1]
