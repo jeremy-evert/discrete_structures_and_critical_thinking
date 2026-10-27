@@ -12,5 +12,5 @@ class Record:
 
 
 def is_duplicate(a, b):
-    """First draft: same person, and a's email matches b's (a missing email matches anything)."""
-    return same_person(a.name, b.name) and (a.email is None or a.email == b.email)
+    """Same person and same email. Written so swapping a and b cannot change the answer."""
+    return same_person(a.name, b.name) and a.email == b.email
