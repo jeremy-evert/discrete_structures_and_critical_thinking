@@ -325,7 +325,9 @@ First attempt: two listings **look alike** if they have the same artist (ignore 
 STEP 06a (red). Create playlist/songs.py with a stub looks_alike(a, b) that returns False.
 Create tests/test_looks_alike.py with tests for: same artist 4 seconds apart; exactly 5 apart;
 6 apart; capitals in the artist name differing; different artists with the same length.
-Build the Tracks inline with Track(id, title, artist, seconds). Do NOT write the real rule yet.
+Build the Tracks inline with Track(id, title, artist, seconds), number the five cases 1 to 5 in the order I listed them,
+and use these exact lengths for artist Zed: 100 vs 104, 100 vs 105, 100 vs 106, and "zed" 100 vs "ZED" 101 (the fifth case: two different artists, both 100).
+Do NOT write the real rule yet.
 ```
 
 **RUN / expect:** red, but only *some* tests fail (the ones that expect `True`). The ones that expect `False` already pass because the stub always says `False`. That is normal.
@@ -367,7 +369,7 @@ Now the key move. A **witness** is a concrete example that proves a claim. When 
 > Check by hand: gap 1→2 = ____ (≤ 5?) gap 2→3 = ____ (≤ 5?) gap 1→3 = ____ (> 5?)
 > Draw it: three dots labeled 1, 2, 3. Draw an arrow each way for every pair that looks alike. Which arrow is missing? ____
 
-Do not ask Claude for these numbers. Add your three Tracks to `tests/fixtures.py`, following the pattern of `PAPER_MOONS`, and add them to the front of `TRACKS`:
+Do not ask Claude for these numbers. Add your three Tracks to `tests/fixtures.py`, following the pattern of `PAPER_MOONS`, and **replace** the existing `TRACKS = [...]` line with the new one below (do not leave the old line). Avoid the lengths 204 and 351; the other tracks already use them:
 
 ```python
 SLOW_ORBIT_1 = Track(1, "Slow Orbit", "Lantern Hill", ____)
@@ -386,7 +388,7 @@ make the assert message print the ids and seconds of the three tracks it found.
 Do not fix anything. Stop.
 ```
 
-**RUN / expect:** one failure, the transitive test. The message names three ids and their seconds. Reflexive and symmetric pass.
+**RUN / expect:** one failure, the transitive test. The message names three ids and their seconds. Reflexive and symmetric pass. **Save this red output now** (copy or photograph it): the Evidence Sheet asks for it and it disappears after Step 08. The same transitive test is the one that turns green in Step 08.
 
 **EXPLAIN.** Did pytest find the same three listings you did? Write the sentence: "Listing __ looks alike listing __, and listing __ looks alike listing __, but ____________________." Then say in plain words why a single rule that only compares two things at a time cannot be trusted to sort into groups. ______________________
 
@@ -551,7 +553,7 @@ duplicates comes back unchanged; an empty playlist stays empty; the reversed inp
 twice gives the same answer as cleaning once. Do NOT write the real function.
 ```
 
-**RUN / expect:** red (the duplicate and shuffle tests fail; the "no duplicates", "empty" and "twice" tests already pass with the stub).
+**RUN / expect:** red (the duplicate and reversed-input tests fail; the "no duplicates", "empty" and "twice" tests already pass with the stub).
 **EXPLAIN.** Which tests passed with the stub, and what does that tell you about them? ______________________
 
 #### Step 12b (GREEN). Make it real
@@ -585,7 +587,7 @@ Create tests/test_depends.py with this graph written dependents first: {"clean_p
 Tests: every function comes after the ones it needs; every function appears exactly once. Do not write the real one.
 ```
 
-**RUN / expect:** red. **EXPLAIN.** (Paper answer to check later: the functions that use nothing else, `song_key`, `looks_alike`, `cluster_by_chain`, `compare`, `length_label`, come first; `same_song` next; `is_duplicate` and `clean_playlist` last.) Why does test order matter for finding bugs? ______________________
+**RUN / expect:** red (the "every function appears once" test already passes under the stub). **EXPLAIN.** (Paper answer to check later: any order is right as long as each function comes after everything it needs, for example `song_key` before `same_song` before `is_duplicate`, and `song_key` before `clean_playlist`.) Why does test order matter for finding bugs? ______________________
 
 #### Step 13b (GREEN). Make it real
 

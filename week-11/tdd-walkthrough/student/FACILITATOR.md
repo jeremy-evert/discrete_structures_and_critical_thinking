@@ -31,7 +31,7 @@ Individual authorship is preserved: **each student writes their own PREDICT boxe
 
 **If you are behind at 1:20:** drop Step 06b's explanation and do Step 01 as a joint demo on the projector. Do not skip Step 07 or Step 08.
 
-**Realism note (not measured with real students):** a model playing a struggling student, given the first workbook, estimated 100–120 minutes for the original seven-step core, which is why the class path is now only Steps 01, 06, 07, 08 (a model estimate, not a timing). If the first pair needs more than 12 minutes for Step 06, tell everyone to paste the Step 06 tests as written and move to Step 07.
+**Realism note (not measured with real students):** a model playing a struggling student, given the first workbook, estimated 100–120 minutes for the original seven-step core, which is why the class path is now only Steps 01, 06, 07, 08 (a model estimate, not a timing). A second model dry run of the fast path alone (Steps 01, 06, 07, 08) estimated about 50 minutes of work, 65–75 with reading, setup and write-up, which is more than the 30-minute build slot. So plan for **Step 08 to be finished together on the projector** if the room is slow, and for pairs to finish Part C at home. If the first pair needs more than 12 minutes for Step 06, tell everyone to paste the Step 06 tests as written and move to Step 07.
 
 ## 3. Check a pair in 60 seconds
 
