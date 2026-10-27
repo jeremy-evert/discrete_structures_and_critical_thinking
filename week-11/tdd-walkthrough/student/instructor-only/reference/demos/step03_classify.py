@@ -7,14 +7,14 @@ ARTIST = {"Slow Orbit": "Lantern Hill", "Slow Orbit Remix": "Lantern Hill", "Pap
           "Glass Harbor": "Moss & Marrow"}
 TITLES = ["Slow Orbit", "Slow Orbit Remix", "Paper Moons", "Glass Harbor"]
 LENGTHS = [180, 200, 240, 300]
-SECONDS = [200, 204, 208]
+LONGER = [180, 210, 240, 270]
 QUEUE = ["Slow Orbit", "Paper Moons", "Glass Harbor", "Night Bus"]
 
 RELATIONS = [
     ("shares an artist with", TITLES, lambda a, b: ARTIST[a] == ARTIST[b]),
     ("is no longer than", LENGTHS, lambda a, b: a <= b),
     ("title starts with the other's title", TITLES, lambda a, b: b.startswith(a)),
-    ("is within 5 seconds of", SECONDS, lambda a, b: abs(a - b) <= 5),
+    ("is exactly 30 seconds longer than", LONGER, lambda a, b: b - a == 30),
     ("plays right after", QUEUE, lambda a, b: QUEUE.index(b) == QUEUE.index(a) + 1),
 ]
 

@@ -2,7 +2,7 @@
 
 **Week 11 · Pair Reasoning · work in pairs · all data is made up**
 
-On Tuesday you watched one process from start to finish. Today **you and a partner run the same process yourselves**, on a different problem:
+If you saw Tuesday's demonstration, this is the same process; if you missed it, nothing here depends on it. Today **you and a partner run the process yourselves**, on a new problem (a *listing* is one entry in a playlist; one song can have several listings):
 
 > A playlist has the same song in it more than once. Some listings are spelled differently ("Slow Orbit", "Slow Orbit (Remastered)", "slow orbit"). Write a small program that finds the repeats and keeps one copy of each song.
 
@@ -39,12 +39,25 @@ Our rhythm for almost every step: **make it red, then make it green.** If a step
 
 Being wrong in PREDICT is fine and useful. Cross out your guess, do not erase it.
 
+### A3b. Four yes/no questions about any rule that pairs two things
+
+You will use these words in the steps, so here they are once. A **relation** is a yes/no question about two things ("are these the same song?"). Ask it four ways:
+
+- **Reflexive:** is every item related to itself?
+- **Symmetric:** if a is related to b, is b related to a?
+- **Antisymmetric:** if a is related to b *and* b is related to a, are a and b really the same item?
+- **Transitive:** if a is related to b and b is related to c, is a related to c?
+
+A relation that is reflexive, symmetric and transitive is an **equivalence relation**: it sorts things into groups where members "count as the same." For every "no", we want a **witness**: the exact items that break it (also called a **counterexample**). The helper in `tests/relations.py` hunts for them.
+
 ### A4. Set up (about 5 minutes; do it together)
 
 You need Python 3.9 or newer and `pytest`.
 
+(The facilitator gives you the `starter` folder.) A **terminal** is the text window where you type commands. Writing `a/b.py` means file `b.py` inside folder `a`.
+
 1. Copy the `starter` folder to a new folder, for example `playlist-lab`. Open a terminal in it.
-2. Install pytest if you need to: `python3 -m pip install pytest`
+2. Install pytest if you need to: `python3 -m pip install pytest` (`pip` is Python's installer for add-ons)
 3. Check it works: `python3 -m pytest -q`
    You should see `no tests ran` (or "collected 0 items"). That is correct: there are no tests yet.
 
@@ -94,7 +107,7 @@ When Claude gives you something, you will mark it in the log at the end: **AI pr
 
 ## Part B. The steps
 
-Step numbers match Tuesday's prompts one-for-one (00 to 14: same numbers, same jobs, different problem). A step with **a** and **b** is red, then green. Tuesday's demo ladder tags are listed in the facilitator page.
+Step numbers match Tuesday's prompts one-for-one (01 to 14: same numbers, same jobs, different problem). A step with **a** and **b** is red, then green. Tuesday's demo ladder tags are listed in the facilitator page.
 
 **Class fast path (what we aim for together): Steps 01, 06, 07, 08.** Step 01 shows a relation as pairs, matrix and arrows; Steps 06 to 08 are the heart: a rule that looks right, the counterexample *you* invent, and the repair. **At home or next class: Steps 02, 03, 04, 05, then 09 to 14,** the same moves again. Steps 06 to 08 need only the starter folder; they do not need Steps 02 to 05. Steps 09 to 14 need the files from Steps 06 to 08 (`playlist/songs.py` with `song_key`, and your Slow Orbit tracks in `tests/fixtures.py`).
 
@@ -182,7 +195,7 @@ An **equivalence relation** is reflexive + symmetric + transitive: it sorts thin
 | shares an artist with | Slow Orbit and Slow Orbit Remix (Lantern Hill), Paper Moons and Glass Harbor (Moss & Marrow) | | | | | |
 | is no longer than | the lengths 180, 200, 240, 300 | | | | | |
 | title starts with the other's title | Slow Orbit, Slow Orbit Remix, Paper Moons, Glass Harbor | | | | | |
-| is within 5 seconds of | the lengths 200, 204, 208 | | | | | |
+| is exactly 30 seconds longer than | the lengths 180, 210, 240, 270 | | | | | |
 | plays right after | the queue from Step 01 | | | | | |
 
 **ASK CLAUDE.**
@@ -218,7 +231,7 @@ A **bin** (also called a **partition** cell) is a group of inputs the function t
 | `"normal"` | 180 up to but not including 300 |
 | `"long"` | 300 up to but not including 600 |
 | `"epic"` | 600 up to and including 3600 |
-| (error) | below 0 or above 3600: raise `ValueError` |
+| (error) | below 0 or above 3600: raise `ValueError`. Test exactly two error values: -1 and 3601. |
 
 **PREDICT (before anything else).** Fill in the test values you will use. For each bin, one value from the middle and the two values right at each edge.
 
@@ -267,11 +280,11 @@ Smallest code that works. Do not touch the tests.
 **Check:** [ ] green [ ] I did not change any test
 **Stuck?** Still red? Look at the *first* failing test. Which of your edge values failed? That value tells you which `>` or `>=` is wrong. Ask Claude *why that one value* failed, not for new code.
 
-#### Step 05 (GREEN from the start). "Same label" cuts the lengths into groups
+#### Step 05 (a characterization test). "Same label" cuts the lengths into groups
 
 A **relation** is a yes/no question about two things. Here: "do these two lengths get the same label?" A relation that is **reflexive** (each thing is related to itself), **symmetric** (if a relates to b then b relates to a) and **transitive** (a to b and b to c means a to c) is an **equivalence relation**: it sorts everything into groups with no overlap. "Same label" should be one. We will check, not hope.
 
-This test is **green from the start** (it records something already true), which is called a **characterization test**.
+A test that records something we expect to be already true is called a **characterization test**.
 
 **PREDICT.** Will it be green or red? ________ Why? ______________________
 
@@ -556,7 +569,7 @@ Make tests/test_cleaner.py pass.
 
 ### BEAT 7. What depends on what? (Steps 13–14)
 
-**Everyday picture.** Socks before shoes. Shirt before jacket. Some things must come first; some do not care about each other. And a **cycle** is a trap: "the key is in the room, and I need the key to enter the room." A "needs" order has no cycles. Test the pieces nothing else needs *first*; the idea is "leaves first".
+**Everyday picture.** Socks before shoes. Shirt before jacket. Some things must come first; some do not care about each other. And a **cycle** is a trap: "the key is in the room, and I need the key to enter the room." A "needs" order has no cycles. Test *first* the pieces that need nothing else; the idea is "leaves first".
 
 **Do this on paper first.** Here are our functions and what each one *uses*: `clean_playlist` uses `song_key`; `is_duplicate` uses `same_song`; `same_song` uses `song_key`; `song_key`, `looks_alike`, `cluster_by_chain`, `compare` and `length_label` use no other function of ours. Draw an arrow from each function to what it needs. **Which functions would you test first?** ______________
 
