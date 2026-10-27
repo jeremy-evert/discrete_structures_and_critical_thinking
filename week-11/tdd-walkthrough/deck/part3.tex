@@ -1,0 +1,224 @@
+\section{Part 3: Proposal to pieces and plan}
+\begin{frame}{Part 3: Break it into pieces, then order them}
+\begin{center}\Large Small pieces, each with a test plan,\\ built from the bottom up.\end{center}
+\vspace{6pt}
+\begin{enumerate}
+\item Pull one piece per behavior sentence.
+\item Draw what each piece \textbf{depends on}.
+\item Test the pieces that depend on nothing \textbf{first} (the leaves).
+\item For each piece: its \textbf{bins}, its \textbf{boundaries}, its \textbf{properties}.
+\end{enumerate}
+\note{Transition: the proposal says what; now we plan how. Planning here means decomposition and order. Keep it short: two minutes.}
+\end{frame}
+
+\begin{frame}{Rules of the game}
+\princ{PARTIAL-ORDER TEST ORDERING}
+\promptbox{00}{a}
+\see{Claude replies ``ready'' (and may create \code{pytest.ini}).}
+\recover{none; if Claude drifts later, paste this block again.}
+\predict{Why do we tell Claude not to write the code yet?}
+\note{This is the first thing pasted. It makes Claude behave like a careful partner: one step at a time, test first, stop. Predict answer: so we see the test fail first (red) and know the test can fail. If Claude writes ahead later, paste this again; it is the recovery for drift.}
+\end{frame}
+
+\begin{frame}{The pieces}
+\small
+\begin{tabular}{@{}p{0.9cm}p{4.2cm}p{7.3cm}@{}}
+\textbf{\#} & \textbf{Piece} & \textbf{What it promises}\\\midrule
+1 & \code{letter_grade} & one letter per score; bins and boundaries\\
+2 & \code{similar_names} & first-draft ``looks alike'' match\\
+3 & \code{same_person} & a true equivalence (fix for the draft)\\
+4 & \code{is_duplicate} & symmetric from both sides\\
+5 & \code{compare} / \code{sort_key} & antisymmetric order\\
+6 & \code{merge_duplicates} & groups, merges, loses nothing\\
+7 & dependency order & which piece to test first\\
+8 & cycle check & refuses an order that cannot exist\\
+\end{tabular}
+\note{Walk the table top to bottom; one sentence each. Piece numbers match the slide titles in the next section and the prompt files. Point out piece 3 is a fix of piece 2: we will build the bad version on purpose and let a test catch it.}
+\end{frame}
+
+\begin{frame}{Depends on: the plan as arrows}
+\princ{PARTIAL-ORDER TEST ORDERING}
+\begin{center}
+\begin{tikzpicture}[font=\scriptsize,node distance=0.5cm and 0.45cm,every node/.style={draw,rounded corners=2pt,inner sep=3pt,fill=blue!8},>={Stealth[length=4pt]}]
+\node(mm){merge\_duplicates};
+\node[below left=0.7cm and 0.3cm of mm](gr){group\_records};
+\node[below right=0.7cm and 0.3cm of mm](mg){merge\_group};
+\node[below=0.7cm of gr](dk){duplicate\_key};
+\node[below=0.7cm of dk](ck){canonical\_key};
+\node[right=1.3cm of ck](sp){same\_person};
+\node[right=1.0cm of sp](id){is\_duplicate};
+\node[below=0.7cm of ck](sn){\_split};
+\node[right=2.9cm of mm](cm){compare};
+\node[below=0.7cm of cm](sk){sort\_key};
+\node[left=2.6cm of mm](lg){letter\_grade};
+\draw[->](mm)--(gr);\draw[->](mm)--(mg);\draw[->](gr)--(dk);\draw[->](dk)--(ck);\draw[->](ck)--(sn);
+\draw[->](sp)--(ck);\draw[->](id)--(sp);\draw[->](cm)--(sk);
+\end{tikzpicture}
+\end{center}
+{\small An arrow means ``needs.'' Nothing points back up, so a valid order exists: \textbf{test the bottom first}.}
+\note{Read the arrows aloud: merge\_duplicates needs group\_records and merge\_group; group\_records needs duplicate\_key; duplicate\_key needs canonical\_key; and so on. Letter\_grade and compare stand alone. Ask: which function would you test first? Any bottom one: \_split, sort\_key, letter\_grade. That is the partial-order idea: many valid orders, as long as every function is tested after the ones it needs. Prompt 13 later has Claude draw the real graph from our own code.}
+\end{frame}
+
+\begin{frame}{Test order: leaves first}
+\princ{PARTIAL-ORDER TEST ORDERING}
+\begin{enumerate}
+\item \code{letter_grade} \textbf{(nothing needed)}: warm-up for bins.
+\item \code{_split}, \code{edit_distance}, \code{similar_names}: the first match rule.
+\item \code{same_person}, \code{canonical_key}: the true equivalence.
+\item \code{is_duplicate}: needs same\_person.
+\item \code{sort_key}, \code{compare}: independent of names.
+\item \code{duplicate_key}, \code{group_records}, \code{merge_group}.
+\item \code{merge_duplicates}: needs everything above, so last.
+\end{enumerate}
+\vspace{4pt}
+{\small Several orders are valid. Any order where nothing is tested before what it needs works: that is what ``partial'' means.}
+\note{Emphasize: we are not claiming this is the only order. Ask for a different valid order from the room and check it against the arrows. The workshop rule: if you test a function before the ones it depends on, a red test might blame the wrong function.}
+\end{frame}
+
+\begin{frame}{Piece 1: \texttt{letter\_grade}}
+\princ{EQUIVALENCE PARTITIONING, BOUNDARIES}
+\begin{tabular}{@{}lll@{}}
+\textbf{Bin} & \textbf{Scores} & \textbf{Letter}\\\midrule
+1 & 90--100 & A\\ 2 & 80--89 & B\\ 3 & 70--79 & C\\ 4 & 60--69 & D\\ 5 & 0--59 & F\\ 6 & $<0$ or $>100$ & error
+\end{tabular}\hfill
+\begin{minipage}{0.55\textwidth}
+\textbf{Boundaries to test (both sides):}\\
+59/60, 69/70, 79/80, 89/90, plus 0, 100, $-1$, 101.\\[4pt]
+\textbf{Why bins?} 101 possible scores, about 14 tests. Same bin, same behavior.\\[4pt]
+{\small Built live in Part 4, prompt \textbf{04}.}
+\end{minipage}
+\note{Bins are groups of inputs the code treats the same. Pick one test per bin and both sides of each edge, because edges are where programmers make off-by-one mistakes. Ask: if we test 85 and 89, did we learn anything different? No, same bin; but 89 and 90 are different bins. Expected answer for why boundaries: the greater-than versus greater-or-equal mistake lives at the edge.}
+\end{frame}
+
+\begin{frame}{Piece 1b: ``same bin'' is an equivalence}
+\princ{REFLEXIVE / SYMMETRIC / TRANSITIVE TESTS}
+\begin{itemize}
+\item same\_bin(a, b) means: letter\_grade(a) equals letter\_grade(b).
+\item \textbf{Reflexive}: every score is in its own bin. \textbf{Symmetric}: if a is with b then b is with a. \textbf{Transitive}: a with b, b with c, then a with c.
+\item Test with helper functions that return the \textbf{witness} if a property fails, else nothing.
+\item This test should be \textbf{green on first run}: it records a fact.
+\end{itemize}
+{\small Built in Part 4, prompt \textbf{05}.}
+\note{Say aloud: This test passes at once. That is allowed here: it records a fact and builds our reusable checkers. Ask: when might a test that never failed be suspicious? When we cannot tell it is able to fail. Here, we know the same checker will catch a bug in the next pieces.}
+\end{frame}
+
+\begin{frame}{Piece 2: \texttt{similar\_names}}
+\princ{EQUIVALENCE PARTITIONING}
+\begin{tabular}{@{}lll@{}}
+\textbf{Pair} & \textbf{Expected} & \textbf{Why}\\\midrule
+Jon Smith, John Smith & similar & close given names\\
+John Smith, Jonathan Smith & similar & close given names\\
+Jon Smith, Maria Garcia & not similar & different people\\
+Jon Smith, Jon Jones & not similar & family names differ\\
+jon smith, JON SMITH & similar & case does not matter\\
+\end{tabular}
+\vspace{4pt}
+
+{\small Rule: same family name, and given-name closeness $\geq 0.5$, where closeness $= 1 - \text{edit distance}/\text{longer length}$. \textbf{Edit distance} = number of single-letter inserts, deletes or changes to turn one word into the other. Prompt \textbf{06}.}
+\note{This is a reasonable, natural first rule: if the names look alike, call them the same. It will turn out to be a trap. Do not tell the room yet. Ask: does it look right? Expected: yes. Edit distance example: Jon to John is 1 (insert h). Say: we deliberately write the obvious rule so a test can catch it.}
+\end{frame}
+
+\begin{frame}{Piece 3: \texttt{same\_person} must be transitive}
+\princ{TRANSITIVE TEST, WITNESS / COUNTEREXAMPLE}
+\begin{center}
+\begin{tikzpicture}[font=\small,>={Stealth[length=4pt]}]
+\node[draw,rounded corners](a){Jon};\node[draw,rounded corners,right=1.4cm of a](b){John};\node[draw,rounded corners,right=1.4cm of b](c){Jonathan};
+\draw[<->,thick,green!50!black](a)--node[above,font=\scriptsize]{similar}(b);\draw[<->,thick,green!50!black](b)--node[above,font=\scriptsize]{similar}(c);
+\draw[<->,thick,red!70!black,dashed](a) to[bend right=40] node[below,font=\scriptsize]{NOT similar}(c);
+\end{tikzpicture}
+\end{center}
+Chain Jon~John~Jonathan, but Jon and Jonathan are \textbf{not} linked. Transitivity \textbf{fails}, with a concrete witness.\\
+{\small Plan: a property test over the names list that prints the failing triple. Prompt \textbf{07}.}
+\note{This is the key moment. Ask the room to predict before the test runs: will the transitive test pass? Most will say yes. The failure message names the witness triple. Then ask: what would break in the product? Answer: three records for one person, or two, depending on the order we process them. Honest point: nothing was wrong with any single pair; the problem is the relation as a whole.}
+\end{frame}
+
+\begin{frame}{Fix 1: a canonical key}
+\princ{EQUIVALENCE PARTITIONING, WITNESS / COUNTEREXAMPLE}
+\begin{itemize}
+\item \textbf{Normalize}: rewrite every name to one standard form (nickname table: jon, john $\to$ jonathan).
+\item Compare the \textbf{keys}: equal keys $\Rightarrow$ same person.
+\item Equal keys are reflexive, symmetric, transitive \textbf{by construction}.
+\item \textbf{Tradeoff}: we only recognize nicknames in our table.
+\item The old failing test stays recorded as the witness we fixed.
+\end{itemize}
+{\small Prompt \textbf{08}.}
+\note{Why it works: two names are the same exactly when their keys are equal, and equality of keys inherits all three properties from equality itself. Ask: what does it cost? We must know the nicknames. Expected: real systems have a table that grows. Good place to mention that hash-based deduplication works for the same reason.}
+\end{frame}
+
+\begin{frame}{Fix 2: group by chains (the alternative)}
+\princ{EQUIVALENCE PARTITIONING, WITNESS / COUNTEREXAMPLE}
+\begin{itemize}
+\item No key? Link everything connected by \emph{any chain} of matches: \textbf{union-find}, also called connected components.
+\item Jon, John, Jonathan land in one group; the result is a true equivalence.
+\item \textbf{Tradeoff}: it can join two people who never matched directly, if a chain runs between them.
+\end{itemize}
+{\small Prompt \textbf{09}.}
+\note{Union-find in one sentence: start with every item alone; each time two items match, merge their groups. At the end, items in the same group are connected by some chain. Ask: when could that hurt? Chain of similar names that drifts: Jon, John, Joan, Jane. Neither fix is better in general: one is stricter, one is looser. The decision belongs to the person who owns the data.}
+\end{frame}
+
+\begin{frame}{Piece 4: \texttt{is\_duplicate} must be symmetric}
+\princ{REFLEXIVE AND SYMMETRIC TESTS}
+\begin{tabular}{@{}llll@{}}
+\textbf{Record A email} & \textbf{Record B email} & \textbf{Bin} & \textbf{Expected}\\\midrule
+same & same & both present, equal & duplicate\\
+x & y & both present, differ & not duplicate\\
+x & missing & one missing & \textbf{not} duplicate (both directions)\\
+missing & missing & both missing & duplicate\\
+\end{tabular}
+\vspace{4pt}
+
+{\small Draft rule: a missing email matches anything from \emph{one} side only: is\_duplicate(a,b) $\neq$ is\_duplicate(b,a). The symmetry test prints the pair. Prompt \textbf{10}.}
+\note{Concrete: record A has an email, record B does not. The lazy rule says A matches B but B does not match A. Ask: what happens if I sort the list differently? Sometimes we find the duplicate, sometimes not. Four bins for two fields, plus a reflexive test. Point at the symmetric test printing both records.}
+\end{frame}
+
+\begin{frame}{Piece 5: ordering must be antisymmetric}
+\princ{ANTISYMMETRIC TEST, WITNESS / COUNTEREXAMPLE}
+\begin{tabular}{@{}lll@{}}
+\textbf{Bin} & \textbf{Example} & \textbf{Expected}\\\midrule
+different family names & Garcia vs Smith & Garcia first\\
+same family, different given & Jon Smith vs John Smith & by given name\\
+same name, different id & two ``Jon Smith'' & by id (no ties)\\
+\end{tabular}
+\vspace{4pt}
+
+{\small A comparator returning 0 for \emph{different} people lets the result depend on input order: antisymmetry fails. Fix: add a unique tie-breaker (family, given, id). Prompt \textbf{11}.}
+\note{Plain version: if A is at or before B and B is at or before A, they had better be the same record. Ask: what goes wrong in a sorted list when two different people compare equal? Their order depends on how the list arrived. Expected: students may say it is a harmless tie; answer: it makes output unrepeatable, which makes tests flaky.}
+\end{frame}
+
+\begin{frame}{Piece 6: \texttt{merge\_duplicates}}
+\princ{EQUIVALENCE PARTITIONING}
+\begin{tabular}{@{}lll@{}}
+\textbf{Bin} & \textbf{Input} & \textbf{Expected}\\\midrule
+empty list (boundary) & [] & []\\
+no duplicates & distinct people & one merged record each\\
+one group & Jon, John, Jonathan (same email) & one record, ids merged\\
+mixed & some duplicates, some not & only true duplicates merge\\
+shuffled input & same data, any order & same output\\
+\end{tabular}
+\vspace{4pt}
+
+{\small The groups of records are the equivalence classes. Prompt \textbf{12}.}
+\note{This is the payoff: all earlier properties make this test boring, which is the goal. Ask: why does the shuffled-input test matter? It is the symptom of a missing property: it fails exactly when transitivity or symmetry is broken.}
+\end{frame}
+
+\begin{frame}{Piece 7: depends-on order}
+\princ{PARTIAL-ORDER TEST ORDERING}
+\begin{itemize}
+\item A tool reads our own source, finds which function calls which, and returns an order with \textbf{leaves first}.
+\item Test plan: the graph for a small sample module matches a written expected list; the order never puts a function before something it needs.
+\end{itemize}
+{\small Prompt \textbf{13}.}
+\note{Two minutes. The idea: the arrows we drew by hand can be computed. The dependency order is a partial order: if A needs B and B needs C then A needs C (transitive), and as long as no two functions need each other (no cycle) it is antisymmetric.}
+\end{frame}
+
+\begin{frame}{Piece 8: cycles are a design smell}
+\princ{ANTISYMMETRIC TEST, WITNESS / COUNTEREXAMPLE}
+\begin{center}
+\begin{tikzpicture}[font=\small,>={Stealth[length=4pt]}]
+\node[draw,rounded corners](p){parse};\node[draw,rounded corners,right=2cm of p](v){validate};
+\draw[->,thick,red!70!black](p) to[bend left=25](v);\draw[->,thick,red!70!black](v) to[bend left=25](p);
+\end{tikzpicture}
+\end{center}
+If \code{parse} needs \code{validate} and \code{validate} needs \code{parse}, there is \textbf{no leaf to test first}. The order is not antisymmetric. The code should say so: \code{dependency cycle: parse -> validate -> parse}. Prompt \textbf{14}.
+\note{Real life: course A requires B, and B requires A; or two modules each importing the other. Ask: where would you start testing? Nowhere. That is why this is a smell. The fix is a design change, not a better test.}
+\end{frame}

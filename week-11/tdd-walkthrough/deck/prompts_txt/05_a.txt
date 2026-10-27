@@ -1,0 +1,8 @@
+Add tests/relations.py with four helpers, each taking (rel, items) where rel(a, b) -> bool:
+reflexive_failure, symmetric_failure, antisymmetric_failure, transitive_failure.
+Each returns None if the property holds, else the first witness tuple, trying items in order
+with itertools.product: (a,) / (a, b) / (a, b) with a != b / (a, b, c).
+Then tests/test_grade_relation.py: same_bin(a, b) is letter_grade(a) == letter_grade(b).
+Over scores range(0, 101, 3) plus 59, 60, 69, 70, 79, 80, 89, 90, 100, assert it is
+reflexive, symmetric and transitive using the helpers; also assert scores 0..100 land in
+exactly five distinct letters. Run pytest and show me. These should pass immediately.

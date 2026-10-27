@@ -1,0 +1,4 @@
+Implement similar_names. In merger/names.py put: a helper _split(full_name) returning the
+lowercase (given, family) pair; edit_distance(a, b), the usual insert/delete/substitute count;
+THRESHOLD = 0.5; and similar_names. Do not edit the tests. Run pytest: all green. Then print
+similar_names for every pair among Jon Smith, John Smith, Jonathan Smith. Stop.

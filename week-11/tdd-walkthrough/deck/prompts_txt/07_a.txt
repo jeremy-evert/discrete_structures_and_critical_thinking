@@ -1,0 +1,7 @@
+Add tests/fixtures.py with SMITH_NAMES = ["Jon Smith", "John Smith", "Jonathan Smith",
+"Maya Smith", "Maria Garcia"]. In merger/names.py add: same_person = similar_names
+(our first-draft rule for "same person"). Write tests/test_transitivity.py: same_person must
+be reflexive, symmetric and transitive over SMITH_NAMES, using the helpers in
+tests/relations.py (import them with: from relations import ...). The transitive test must
+fail with an assert message (assert witness is None, f"...") "'A' ~ 'B' and 'B' ~ 'C' but 'A' !~ 'C'" filled in from the witness.
+Run pytest and show me the failure. Do not fix anything. Stop.

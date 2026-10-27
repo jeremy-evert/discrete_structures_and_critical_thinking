@@ -1,0 +1,3 @@
+Fix compare with a unique key: (family name lowercase, given name lowercase, id), so that
+compare returns 0 only for the very same record. Put it in a function sort_key(record).
+Do not edit the tests. Run pytest: all green. Then print RECORDS sorted. Stop.
