@@ -12,3 +12,5 @@ for f in sorted(src.glob("[0-9][0-9]_*.md")):
     (out / f"{nn}.name").write_text(f.name.replace("_", r"\_"))
     for label, body in re.findall(r"^```prompt-([ab])\n(.*?)^```", text, re.S | re.M):
         (out / f"{nn}_{label}.txt").write_text(body)
+        if body.count("\n") > 12:
+            (out / f"{nn}_{label}.small").write_text("")
