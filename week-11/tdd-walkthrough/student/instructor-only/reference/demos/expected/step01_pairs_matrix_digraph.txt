@@ -1,0 +1,16 @@
+Ordered pairs (a, b) = 'b plays right after a':
+  (Slow Orbit, Paper Moons)
+  (Paper Moons, Glass Harbor)
+  (Glass Harbor, Night Bus)
+
+Matrix (row = first, column = second, 1 = in the relation):
+                   1   2   3   4
+ 1 Slow Orbit      0   1   0   0
+ 2 Paper Moons     0   0   1   0
+ 3 Glass Harbor    0   0   0   1
+ 4 Night Bus       0   0   0   0
+
+Arrows (digraph):
+  Slow Orbit -> Paper Moons
+  Paper Moons -> Glass Harbor
+  Glass Harbor -> Night Bus
