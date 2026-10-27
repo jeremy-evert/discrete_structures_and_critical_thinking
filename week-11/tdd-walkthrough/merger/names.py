@@ -25,3 +25,7 @@ def similar_names(a, b):
         return False
     closeness = 1 - edit_distance(first_a, first_b) / max(len(first_a), len(first_b))
     return closeness >= THRESHOLD
+
+
+# First draft of the rule that decides "these two records are the same person".
+same_person = similar_names
