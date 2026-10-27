@@ -4,7 +4,7 @@
 - **role:** Sol / adversarial review (Sandy the Skeptic)
 - **review date:** 2026-10-27
 - **bounded_scope:** review the Tuesday TDD demo core for simplicity, clarity, excitement, and live reliability; inspect only the DSCT walkthrough inputs; write this receipt only. No Canvas, student data, merge, or changes to Anna/Flo branches.
-- **terminal_state:** `COMPLETE` for the noon review slice; final-package pass remains conditional on that package landing by 5:00 PM CDT.
+- **terminal_state:** `COMPLETE`; final-package pass completed at 12:15 PM CDT after the deck branch landed.
 
 ## Input refs
 
@@ -12,7 +12,7 @@
 - Review rule: `foreman_interface/spells/sol.md` (Sandy the Skeptic / Sol adversarial review).
 - Anna core: `origin/anna/dsct-tdd-relations-20261027` at `4d1b0c69bc02a227661693fd030bca31f6eb4db3c`.
 - Ladder: `tdd-step-01` through `tdd-step-19` are present; `tools/ladder_check.sh` checked every tag.
-- Deck: `origin/anna/dsct-tdd-deck-20261027` was absent at 11:50 and 12:00 CDT. The core branch has no `week-11/tdd-walkthrough/deck/` directory or deck PDF.
+- Deck: `origin/anna/dsct-tdd-deck-20261027` at `1c2affc4547313f0776ee4f96f764cc04f8f9bd2` (arrived after the 12:00 snapshot; fetched at 12:12 CDT). This is a separate deck branch; its prompts were compared against the prompt files from the core branch above.
 - Comparison materials: `week-11/tdd-walkthrough/STEPS.md`, `prompts/00`–`prompts/14`, `INSTRUCTOR_GUIDE.md`, `STUDENT_HANDOUT.md`, `CONCEPT_MAP.md`, and `REPORT.md` at the Anna core tip.
 
 ## Checks attempted
@@ -25,23 +25,26 @@
 6. `make check` — unavailable: `make: *** No rule to make target 'check'. Stop.`
 7. Blind live rehearsal: a sparse fresh clone exposed only `week-11/tdd-walkthrough/prompts/`; Codex executed the prompt blocks 00 through 14 in order, without access to the reference demos or completed implementation. Runtime was Python 3.9.25. Prompt 00 returned `ready`. Prompts 01–03 produced the requested examples/verdicts. For 04–14, observed phase results were: 04a 12 failed / 04b 12 passed; 05 13 passed; 06a 5 failed / 06b 18 passed; 07 one transitivity failure; 08 22 passed; 09a 3 failed / 09b 25 passed; 10a one symmetry failure / 10b 27 passed; 11a 2 failed / 11b 30 passed; 12a 3 failed / 12b 33 passed; 13a one test-collection error / 13b 36 passed; 14a one cycle failure / 14b 38 passed. Final suite: `38 passed in 0.14s`. Details of the consequential mismatch are in REPAIR-1 below.
 8. `find week-11/tdd-walkthrough -maxdepth 2 -type d -name deck -o -type f -name '*.pdf'` — no output. No deck source existed to build, render, or compare against the prompt files.
+9. Follow-up after the deck tip arrived: `./check_prompts.sh /mnt/brandy_nvme/jevert/git/worktrees/hanna-dsct-tdd-review-20261027/week-11/tdd-walkthrough/prompts` from the deck branch — passed: 23 prompt boxes, 38 index rows over 5 index frames, 57 content slides, and all 40 watched glossary terms present.
+10. `./check_glossary.py` — passed (40 watched terms).
+11. `./build.sh` first failed because the machine's default TeX font cache was read-only. With `TEXMFVAR=/tmp/hanna-dsct-texmfvar-20261027`, it passed: two PDFs emitted; `overfull/error lines: slides=0 notes=0`.
+12. `pdfinfo` — both slide and notes PDFs have 62 pages. `pdftoppm -png -r 36` rendered all pages of both PDFs (124 PNG pages total). Visually inspected representative title/opening, counterexample, plan, and dependency-order pages and the opening notes page. The rebuilt PDFs and generated artifacts were restored/left uncommitted; the deck review worktree is clean.
 
 ## Findings
 
-### BLOCK-1 — Required slides and notes deck were not available at the review cutoff
+### REPAIR-1 — Dependency-order slide overstates which function must appear last
 
-- **Locator/evidence:** no `origin/anna/dsct-tdd-deck-20261027` ref in the 11:50 or 12:00 ref checks; no `week-11/tdd-walkthrough/deck/` directory or PDF in the fresh core clone. `README.md` says the deck is in another session and was due at 12:00.
-- **Criterion violated:** the requested Tuesday demo uses slides alongside the live code, slide prompts must match `prompts/NN`, PDFs must compile/render, and Jeremy must be able to teach from the notes PDF. None of those deck checks can be made without the deck.
-- **Observed vs expected:** the core branch has the text walkthrough, prompts, and 19-tag ladder; the expected deck branch/build artifact is absent.
-- **Smallest next action:** publish the deck branch and built slides/notes PDFs; then compare every pasted prompt against its source prompt and render-check both PDFs. Until then the requested slide-supported class package is not reviewable.
+- **Locator/evidence:** deck slide 54/notes page 54 says the output “ends with `merge_duplicates`.” Core `prompts/13_dependency_order.md:27` says the order is not unique and explicitly says not to expect it to end with `merge_duplicates`. The blind rehearsal happened to end at `merge_duplicates`, confirming that this output is possible but not guaranteed.
+- **Criterion violated:** Jeremy should be able to trust the “what you should see” cue and explain valid model variation without inventing a rule.
+- **Smallest bounded repair:** change the slide and notes cue to say dependencies must precede callers; multiple valid orders exist, so do not require `merge_duplicates` to be last.
 
-### REPAIR-1 — Prompt 13A can turn the expected three red tests into a collection error
+### REPAIR-2 — Prompt 13A can turn the expected three red tests into a collection error
 
 - **Locator/evidence:** `week-11/tdd-walkthrough/STEPS.md:22` says Prompt 13 produces “3 red, then green.” In the blind rehearsal, the plausible test setup put `GRAPH = build_graph(names, records, pipeline)` at module scope (`tests/test_dependencies.py:8`) while the requested stub raises `NotImplementedError`. `pytest` therefore stopped during collection with one error instead of collecting and reporting the three expected failing tests. Prompt 13B then implemented the graph and the suite passed (`36 passed`).
 - **Criterion violated:** the red/green outcome should match the step expectation, and a plausible Claude deviation should not leave Jeremy unsure whether the step is working.
 - **Smallest bounded repair:** add a clear prompt instruction/test pattern that defers `build_graph(...)` until inside a test, or explicitly label the collection error as an expected red variant and teach the recovery action (`tools/recover.sh 16`). Then rerun the blind prompt 13A/B pair and update the step table to the observed supported outcome.
 
-### REPAIR-2 — The opening hook arrives after the requested first three minutes
+### REPAIR-3 — The opening hook arrives after the requested first three minutes
 
 - **Locator/evidence:** `INSTRUCTOR_GUIDE.md:39-46` allocates four minutes to the smoke-alarm opening; the timeline starts it at minute 4 (`INSTRUCTOR_GUIDE.md:52`).
 - **Criterion violated:** the review asks for a hook in the first three minutes. This opens with an analogy, but delays the concrete surprise that the brief identifies as the strongest hook.
@@ -55,32 +58,32 @@
 
 ## Dullest five steps, ranked, with sharper replacements
 
-The deck is missing, so these are step-level judgments; slide numbers and slide dullness cannot be ranked yet.
+These are step-level judgments with their related slides cited; the slides are present but detailed rather than animated.
 
-1. **Prompt 13 — Dependency order:** abstract AST + graph machinery makes the student watch code inspect code. Replace the opener with a five-card “who waits for whom?” ordering puzzle; reveal the code graph only after students find the first callable piece.
-2. **Prompt 05 — Same-bin checkers:** a large checker implementation passes immediately and offers little visible tension. Replace the opening with “Which score flips grade at 90?”; show 89/90, then name the equivalence property after the boundary prediction.
-3. **Prompt 11 — Antisymmetric sort:** comparator and `cmp_to_key` risk turning the story into Python API detail. Put Jon/John cards in both input orders and show the family-name-only sort preserve each order; ask whether the code actually chose between them.
-4. **Prompt 12 — Merge pipeline:** “put it together” is a broad label. Give students five sample record cards and ask which records survive and which IDs combine before showing the merge output.
-5. **Prompt 14 — Cycle smell:** cycle detection and closure vocabulary are less vivid than the no-first-step result. Have students physically order three dependency cards where each waits on the next; ask them to find the first card, then reveal the cycle error.
+1. **Prompt 13 — Dependency order (slides 35, 53–54):** abstract AST + graph machinery makes the student watch code inspect code. Replace the opener with a five-card “who waits for whom?” ordering puzzle; reveal the code graph only after students find the first callable piece.
+2. **Prompt 05 — Same-bin checkers (slides 27, 40):** a large checker implementation passes immediately and offers little visible tension. Replace the opening with “Which score flips grade at 90?”; show 89/90, then name the equivalence property after the boundary prediction.
+3. **Prompt 11 — Antisymmetric sort (slides 33, 49–50):** comparator and `cmp_to_key` risk turning the story into Python API detail. Put Jon/John cards in both input orders and show the family-name-only sort preserve each order; ask whether the code actually chose between them.
+4. **Prompt 12 — Merge pipeline (slides 34, 51–52):** “put it together” is a broad label. Give students five sample record cards and ask which records survive and which IDs combine before showing the merge output.
+5. **Prompt 14 — Cycle smell (slides 36, 55–56):** cycle detection and closure vocabulary are less vivid than the no-first-step result. Have students physically order three dependency cards where each waits on the next; ask them to find the first card, then reveal the cycle error.
 
 ## Simplicity and clarity read
 
 - Steps 01–03 provide a concrete progression from pairs to properties to classifications, but Step 01's stated outcome is only “8 pairs, symmetric matrix, arrows” (`STEPS.md:10`); it lacks an explicit pass/fail cue. Add a visible check label (“check passed: 8 directed pairs; matrix mirrors across diagonal”) so Jeremy can point to a result without inventing one.
 - The topic sequence is understandable in the guide, but several steps introduce terms rapidly: Step 01 has relation/pairs/matrix/digraph; Step 02 has four properties plus witnesses; Step 13 stacks AST, graph, DFS, dependency and closure. The glossary helps after the fact; present one term at a time with the concrete artifact first.
 - Excitement is strongest at Prompt 07's transitivity counterexample and Prompt 10's order-dependent duplicate result. Keep those as the payoff beats. The guide's 75-minute cut does keep the transitivity failure and a symmetry failure, but the deck alignment cannot be checked.
-- The blind rehearsal confirms prompts 01–14 can grow a working implementation without the reference. Aside from the Prompt 13A mismatch, all final phase outcomes matched their textual expectations; the independent report's earlier “21 of 23 phases” claim notes two fixes that were not rerun, so the fresh rehearsal is useful evidence but does not substitute for the missing slide comparison.
+- The blind rehearsal confirms prompts 01–14 can grow a working implementation without the reference. Aside from the Prompt 13A mismatch, all final phase outcomes matched their textual expectations. Prompt-box parity against the pushed core prompt files passed for all 23 boxes. The dependency slide's claimed final function remains a misleading cue even though this particular rehearsal ended with `merge_duplicates`.
 
 ## Verdict
 
-**Primary verdict: BLOCK** for teaching the requested slide-supported demo at 12:30 based on the 12:00 evidence. The core ladder and prompts work, but the required slide/notes package is absent, so slide-to-prompt fidelity, PDF rendering, and speaker-note readiness are unverified. Prompt 13A also has a credible expected-red mismatch to repair or explain. If Anna's built package lands before class, perform a focused follow-up on prompt parity, PDF render/notes, the opening, and the Prompt 13A recovery guidance before changing the verdict.
+**Primary verdict: REPAIR** for teaching at 12:30. The deck is now available, all 23 prompt boxes match the core prompt files, the glossary and index checks pass, both 62-page PDFs compile with zero overfull/error log lines, and all 124 pages render. Before using the dependency-order slides, change the claim that `merge_duplicates` must be last; that contradicts the source prompt. The recommended 75-minute cut treats this dependency-order segment as a read-only walk, so Jeremy can teach it safely by describing only the ordering rule and noting that valid orders can vary. The blind rehearsal also found a collection-error variant in Prompt 13A; keep that out of the live run or use the recovery tag if a red state surprises the class. The opening hook reaches slide 3, but the guide allocates four minutes to it, so tighten the timeline if “within three minutes” is required.
 
-**Plain-language summary for Jeremy:** The live coding sequence itself works: all 19 saved checkpoints show the intended red or green test results, and a fresh Python 3.9 run built the project to 38 passing tests. The important counterexample where Jon matches John and John matches Jonathan but Jon does not match Jonathan lands clearly. I would not call the slide-supported demo ready yet because Anna's slides and notes PDF were not in the repository at noon, and the dependency-order step produced a confusing collection error before recovering. If the deck lands, the quickest final check is to compare its prompts with the source prompts, render both PDFs, and give Prompt 13 a reliable red-state recovery cue.
+**Plain-language summary for Jeremy:** The slides and notes have now landed and the checks pass: all 23 Claude prompt boxes match the source prompts, both 62-page PDFs compile and render, and the walkthrough reaches 38 passing tests after the intended red/green sequence. The Jon/John/Jonathan surprise is clear. I recommend teaching the 75-minute cut with the dependency-order slide as a read-only diagram, but do not tell students that `merge_duplicates` must be last; several orders are valid. Prompt 13A can also show a collection error instead of three red tests, so keep that step read-only or recover to its known-good tag if the output drifts.
 
 ## Reproduction limits and next action
 
-- No deck/notes source or built PDF was available at the 12:00 cutoff, so slide numbers, slide text/prompt parity, PDF compilation/rendering, and the “notes PDF alone” teaching check remain unverified.
+- The deck review was against the separate deck tip `1c2affc` and source prompts at project tip `4d1b0c6`; the branches were not merged. The 62-page notes PDF provides one notes page per slide; no in-room usability test with Jeremy was possible.
 - The blind run exercised prompts 00–14 using Codex; it was not a live classroom run with Jeremy, and no Canvas or student-facing system was touched.
-- **Next action:** Anna/Flo publish the deck branch and PDFs; run the conditional deck pass by 5:00 PM CDT if it lands. Repair the Prompt 13A collection-error path and the minute-4 hook before treating this as clear for Thursday.
+- **Next action:** repair the “merge_duplicates last” cue in deck slide/notes 54 and revise Prompt 13A guidance/recovery. Before Thursday, align the opening timing with the first-three-minute hook target and complete the review after any final deck edits.
 
 ## Repository process receipt
 
@@ -88,5 +91,5 @@ The deck is missing, so these are step-level judgments; slide numbers and slide 
 - **Diff check:** `git diff --cached --check` passed before publication.
 - **Validation:** the tag ladder and fresh-clone pytest results are recorded above; no other tests were run.
 - **Make checks:** `make task-check` unavailable with the exact error above; `make check` unavailable with the exact error above.
-- **Publication:** receipt published to `hanna/dsct-tdd-review-20261027`; initial published commit `e657806de84a5a10db03e56094a5e6f105d81cda`.
+- **Publication:** receipt published to `hanna/dsct-tdd-review-20261027`; initial published commit `e657806de84a5a10db03e56094a5e6f105d81cda`; process addendum commit `db42b19d6196209a172f7a6078b2eea7afb04776`.
 - **Final worktree status after publication:** `git status --short --branch` reported only `## hanna/dsct-tdd-review-20261027` (clean).
