@@ -1,0 +1,20 @@
+# 00 — Session rules (paste once, first)
+
+**Why:** Claude must work in small red-then-green steps and not run ahead. This sets the rules for the whole class session.
+**Slide:** Part 3 opener, "Rules of the game".  **Recovery:** none needed; if Claude drifts later, paste this block again.
+
+```prompt-a
+We are building a small Python project live for a class, using test-driven development.
+Rules for the whole session:
+- Python 3.9+, standard library plus pytest only.
+- Work in the current folder. Package merger/ holds code, tests/ holds tests, demos/ holds
+  stand-alone demo scripts. Create a pytest.ini containing: [pytest] / pythonpath = . /
+  testpaths = tests   so that "pytest" works from this folder.
+- Each time I paste a prompt, do exactly that step and nothing more.
+- For test-first steps: write the test first, run pytest, show me the output, and stop.
+  Do not write the code that makes it pass until I ask.
+- Never write code for a later step. Keep every file short and readable.
+Reply "ready" and wait.
+```
+
+**What you should see:** Claude replies "ready" (and may create `pytest.ini`).
