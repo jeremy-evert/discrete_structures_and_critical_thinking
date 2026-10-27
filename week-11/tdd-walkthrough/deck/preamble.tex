@@ -7,12 +7,12 @@
 \usepackage{listings}
 \usepackage{booktabs}
 \usepackage{array}
-\lstset{basicstyle=\ttfamily\fontsize{8}{9.4}\selectfont,breaklines=true,breakindent=8pt,columns=fullflexible,keepspaces=true,showstringspaces=false,upquote=false,literate={~}{{\textasciitilde}}1}
+\lstset{basicstyle=\ttfamily\fontsize{7.4}{8.6}\selectfont,breaklines=true,breakindent=8pt,columns=fullflexible,keepspaces=true,showstringspaces=false,upquote=false,literate={~}{{\textasciitilde}}1}
 \newcommand{\code}[1]{\texttt{\detokenize{#1}}}
 % PRINCIPLE tag: consistent orange box in the title bar, top right
 \newcommand{\princ}[1]{\begin{tikzpicture}[remember picture,overlay]\node[anchor=north east,fill=orange!85!red,text=white,font=\bfseries\fontsize{7}{8}\selectfont,inner sep=3pt,text width=6.2cm,align=center,rounded corners=2pt] at ([xshift=-5pt,yshift=-5pt]current page.north east){\hyphenpenalty=10000\relax PRINCIPLE: #1};\end{tikzpicture}}
 % PROMPT FOR CLAUDE box: text comes from prompts_txt/ (copied from the real prompt files)
-\newcommand{\promptbox}[2]{\IfFileExists{prompts_txt/#1_#2.txt}{\begin{alertblock}{PROMPT FOR CLAUDE \hfill {\scriptsize prompts/\input{prompts_txt/#1.name}}}\lstinputlisting{prompts_txt/#1_#2.txt}\end{alertblock}}{\begin{alertblock}{PROMPT FOR CLAUDE (#1 #2)}PENDING: prompt file not copied yet.\end{alertblock}}}
+\newcommand{\promptbox}[2]{\IfFileExists{prompts_txt/#1_#2.txt}{\begin{alertblock}{PROMPT FOR CLAUDE \hfill {\scriptsize prompts/\input{prompts_txt/#1.name}}}\IfFileExists{prompts_txt/#1_#2.small}{\lstset{basicstyle=\ttfamily\fontsize{6.6}{7.6}\selectfont}}{}\lstinputlisting{prompts_txt/#1_#2.txt}\end{alertblock}}{\begin{alertblock}{PROMPT FOR CLAUDE (#1 #2)}PENDING: prompt file not copied yet.\end{alertblock}}}
 \newcommand{\see}[1]{{\small\textbf{\textcolor{green!40!black}{What you should see:}} #1\par}}
 \newcommand{\recover}[1]{{\scriptsize\textbf{Recovery:} #1\par}}
 \newcommand{\predict}[1]{{\small\textbf{\textcolor{blue!60!black}{1 PREDICT (30 s):}} #1\par}}
