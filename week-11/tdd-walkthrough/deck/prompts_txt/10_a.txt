@@ -1,0 +1,8 @@
+Test first. Add merger/records.py: a frozen dataclass Record(id: int, name: str,
+email: Optional[str] = None) and the first-draft is_duplicate(a, b) =
+same_person(a.name, b.name) and (a.email is None or a.email == b.email).
+Add to tests/fixtures.py: RECORDS = [Record(1,"Jon Smith"), Record(2,"John Smith","js@example.edu"),
+Record(3,"Jonathan Smith","js@example.edu"), Record(4,"Maya Smith","maya@example.edu"),
+Record(5,"Maria Garcia","mg@example.edu")]. Write tests/test_record_equals.py: is_duplicate must
+be reflexive and symmetric over RECORDS (use the helpers); the symmetric failure message names both
+records. Run pytest. Exactly the symmetric test should fail. Show me and stop.
