@@ -81,3 +81,12 @@ The deck is missing, so these are step-level judgments; slide numbers and slide 
 - No deck/notes source or built PDF was available at the 12:00 cutoff, so slide numbers, slide text/prompt parity, PDF compilation/rendering, and the “notes PDF alone” teaching check remain unverified.
 - The blind run exercised prompts 00–14 using Codex; it was not a live classroom run with Jeremy, and no Canvas or student-facing system was touched.
 - **Next action:** Anna/Flo publish the deck branch and PDFs; run the conditional deck pass by 5:00 PM CDT if it lands. Repair the Prompt 13A collection-error path and the minute-4 hook before treating this as clear for Thursday.
+
+## Repository process receipt
+
+- **AGENTS.md:** read the shared `/mnt/brandy_nvme/jevert/git/AGENTS.md` and DSCT `AGENTS.md`; neither was changed.
+- **Diff check:** `git diff --cached --check` passed before publication.
+- **Validation:** the tag ladder and fresh-clone pytest results are recorded above; no other tests were run.
+- **Make checks:** `make task-check` unavailable with the exact error above; `make check` unavailable with the exact error above.
+- **Publication:** receipt published to `hanna/dsct-tdd-review-20261027`; initial published commit `e657806de84a5a10db03e56094a5e6f105d81cda`.
+- **Final worktree status after publication:** `git status --short --branch` reported only `## hanna/dsct-tdd-review-20261027` (clean).
