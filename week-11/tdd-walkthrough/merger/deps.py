@@ -2,6 +2,10 @@ import ast
 import inspect
 
 
+class CycleError(Exception):
+    """Two or more functions need each other, so there is no first one to test."""
+
+
 def build_graph(*modules):
     """Map each top-level function to the set of our other top-level functions it calls."""
     trees = [ast.parse(inspect.getsource(m)) for m in modules]
