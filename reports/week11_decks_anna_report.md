@@ -1,7 +1,7 @@
 # Week 11 decks: Anna report (2026-10-27)
 
 **Terminal state: COMPLETE** (Tuesday review and Thursday deck both built; Canvas untouched; Flo approves upload).
-Branch: `anna/dsct-w11-thu-deck-20261027` (from `flo/dsct-w11-tue-deck`, merged with Flo's split-PDF commit a40a7e4). Tip SHA: see `git log -1` on the pushed branch (recorded in the hand-off message).
+Branch: `anna/dsct-w11-thu-deck-20261027` (from `flo/dsct-w11-tue-deck`, merged with Flo's split-PDF commit a40a7e4). Tip SHA: 6200246 (code commit; this line added in a follow-up commit).
 
 ## Files (each deck = slides PDF + separate large-type notes PDF, via `build.sh`)
 - `presentations/beamer/week11_tue_relations/` : `.tex`, `week11_tue_relations.pdf` (slides), `week11_tue_relations_notes.pdf`, `build.sh`
