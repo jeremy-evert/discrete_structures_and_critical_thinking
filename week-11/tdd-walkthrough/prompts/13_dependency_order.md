@@ -2,7 +2,7 @@
 
 **Why:** "depends on" is a partial order. Test the functions nothing else needs first. The tool reads our own code to draw the graph.
 **Slide:** Part 3, "Piece 7: depends-on order" (then the digraph slide). **Principle:** partial-order test ordering.
-**Recovery:** red = `tools/recover.sh 16`; green = `tools/recover.sh 17`.
+**Recovery:** red state = `tools/recover.sh 16` (tag `tdd-step-16`); green state = `tools/recover.sh 17` (tag `tdd-step-17`). If 13A shows a collection error instead of 3 failures, Claude built the graph at module scope: say "build the graph inside the test function" or run `tools/recover.sh 16`.
 
 ```prompt-a
 Test first. Stub merger/deps.py: build_graph(*modules) and leaves_first(graph), both raising
@@ -14,6 +14,9 @@ Write tests/test_dependencies.py for modules merger.names, merger.records, merge
 {"_split"}, graph["_split"] == set(); (2) leaves_first(graph) lists every function after
 everything it depends on, and its first item depends on nothing; (3) the transitive closure of
 "depends on" has no function depending on itself and is antisymmetric and transitive (helpers).
+IMPORTANT: call build_graph inside each test function body, never at module scope
+(import the modules at the top, but build the graph in the test), so a stub that raises
+NotImplementedError makes the tests FAIL instead of breaking test collection.
 Run pytest, show it red, stop.
 ```
 

@@ -14,7 +14,7 @@ The story: students merge duplicate student records. The obvious rule ("names th
 
 Unit testing, TDD, and abstraction are hard for these students. So:
 1. **Concrete before abstract.** Every idea starts with a thing they can see (seats, grade bins, two records), then the word.
-2. **Why before how.** Open with the 2-minute "why test first" story (section 3). Do not start with code.
+2. **Why before how.** Open at minute 1 with the Jon/John/Jonathan prediction, then the smoke-alarm "why test first" story after the reveal (section 3). Do not start with code.
 3. **Tiny steps.** One new idea per step. Each ends with a visible red or green.
 4. **Same loop every step: Predict → Run → Explain.** Ask for a guess (30 seconds, hands or sticky note), run, then have a student explain the result. The expected answer is in each prompt file ("Predict first").
 5. **Red is normal.** Say it out loud, repeatedly: "Red is not failure. Red means the test is awake."
@@ -36,20 +36,21 @@ Open three things: a terminal in `~/tdd-live`, Claude (Claude Code or chat with 
 
 **Practice run:** do Prompts 00–14 once at home before class. A dry-run record (an independent Claude doing the same) is in the report.
 
-## 3. Opening: why write a test before the code? (4 minutes, no code)
+## 3. Opening: minute 1 is a prediction, the smoke alarm comes after the reveal (5 minutes, no code)
 
-Say: "A smoke alarm. Before you cook, you press the test button. If it stays silent, you know the alarm is broken before there is a fire. A test written first is a button we press to prove our alarm can ring. If we write the code first and the test second, we cannot tell whether the test is able to fail."
+**Minute 1 (before any code, before any analogy):** write three names on the board: **Jon Smith, John Smith, Jonathan Smith.** Say: "A school has these three records. Our rule: two names are the same person if they look alike enough. Jon looks like John. John looks like Jonathan. Predict: are Jon and Jonathan the same person by that rule? Write yes or no." Take a show of hands.
+**Reveal (minute 2-3):** "Jon and Jonathan do NOT look alike enough, even though each matches John. The rule contradicts itself. That is the whole lesson: a rule can sound sensible and still break. Today we will build a program that catches this with a test, live."
+**Then the why (minute 3-5), smoke alarm:** "Before you cook, you press the smoke alarm's test button. If it stays silent you learn the alarm is broken before there is a fire. A test written first is that button. A test that has never been red might be a test that can never be red." Ask: "Would you trust an alarm you had never heard ring?" Expected: no.
 Second analogy (30 seconds): "Taste the sauce *before* adding salt so you know what changed."
-Ask: "When would you not trust a smoke alarm you had never heard ring?" Expected: if it never rang, I don't know if it works. Land it: **a test that has never been red might be a test that can never be red.**
-
-Three words to teach on the spot (full list in section 9): **test** = a small program that checks one claim and says pass or fail; **red/green** = fail/pass colours pytest prints; **TDD** = write the test, see red, write the code, see green.
+Words to teach on the spot (full list in section 9): **test** = a small program that checks one claim and says pass or fail; **red/green** = fail/pass colours; **TDD** = write the test, see red, write the code, see green.
 Name the feeling: "Red tests are normal and good. Every professional sees red many times a day."
+Come back to the board at Prompt 06/07: "Here is your prediction, now the computer shows it."
 
 ## 4. Timeline (full path; the 75-minute cut is in section 5)
 
 | Min | Prompt | Say / do | Ask the room | Expected answer | Properties / relation types shown |
 |---|---|---|---|---|---|
-| 4 | — | Section 3 | smoke alarm question | an untested alarm is untrustworthy | — |
+| 5 | — | Section 3: Jon/John/Jonathan prediction first, then smoke alarm | would Jon and Jonathan match? / would you trust an untested alarm? | no / no | (setup for transitive) |
 | 2 | 00 | Paste Prompt 00. "These are the rules for our robot helper." | — | Claude says "ready" | — |
 | 4 | 01 | Paste. Show pairs, matrix, arrows. "Same facts, three pictures." | How many pairs? Same flipped over the diagonal? | 8; yes | symmetric (visible in matrix) |
 | 6 | 02 | Paste. Read each property aloud with the seat example. | Is anyone next to themselves? | No → reflexive fails, witness Ana | all four; witnesses |
