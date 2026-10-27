@@ -24,8 +24,8 @@ dependencies first. Do not edit the tests. Run pytest: all green. Then print the
 leaves_first order, one function per line. Stop.
 ```
 
-**What you should see (green):** graph lines as in the test; order starts `_split`, `canonical_key`, … and ends `merge_duplicates` (other functions interleaved).
+**What you should see (green):** graph lines as in the test; order starts `_split`, `canonical_key`, `duplicate_key` and every function appears after the ones it calls (so `merge_duplicates` comes after `group_records` and `merge_group`). The order is not unique; do not expect it to end on `merge_duplicates`.
 
 **Predict first (30 seconds, ask the room before running):** Which function should be tested first, and which last?
-**Expected answer:** First a function that needs nothing (_split). Last merge_duplicates, which needs the others.
+**Expected answer:** First a function that needs nothing (_split). merge_duplicates only after the functions it calls.
 **Common mistake / drift:** Claude hardcodes the graph. Say: "read the real source with ast".

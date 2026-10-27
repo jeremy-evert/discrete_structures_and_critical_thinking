@@ -10,7 +10,7 @@ Add tests/fixtures.py with SMITH_NAMES = ["Jon Smith", "John Smith", "Jonathan S
 (our first-draft rule for "same person"). Write tests/test_transitivity.py: same_person must
 be reflexive, symmetric and transitive over SMITH_NAMES, using the helpers in
 tests/relations.py (import them with: from relations import ...). The transitive test must
-fail with a message "'A' ~ 'B' and 'B' ~ 'C' but 'A' !~ 'C'" filled in from the witness.
+fail with an assert message (assert witness is None, f"...") "'A' ~ 'B' and 'B' ~ 'C' but 'A' !~ 'C'" filled in from the witness.
 Run pytest and show me the failure. Do not fix anything. Stop.
 ```
 
