@@ -32,3 +32,15 @@ Keep this page open beside the workbook. Words are in the order you meet them. E
 | **leaves first** | Test the pieces that need nothing else first, then the pieces that rely on them. | Beat 7. |
 | **cycle** | A loop of "needs": A needs B and B needs A. There is no first thing to test. | The key is locked inside the room. Step 18. |
 | **AI proposed / verified** | A suggestion from Claude is only a *proposal* until you run it or check it by hand. That check makes it *verified*. | The honesty log, C2. |
+| **tuple** | A short fixed list written `(a, b, c)`. The witness finders return one. | Steps 02, 07. |
+| **raise / ValueError** | To stop with an error because the input is not allowed. A test can check that the error happens. | `length_label(-1)`. Step 04a. |
+| **witness finder** | A function in `tests/relations.py` that hunts for a counterexample and returns it (a tuple) or `None` if there is none. | Step 02. |
+| **graph (of "needs")** | A list saying, for each function, which functions it needs. | Beat 7. |
+| **union-find / connected components** | A standard way to merge items into groups whenever a chain of matches links them. You do not write it; Claude does, and you check the groups. | Step 09. |
+| **depth-first walk** | To order things, visit what an item needs first (and what *that* needs), then add the item. | Step 13b. |
+| **permutations** | All the different orders a list can be put in. 6 tracks have 720. Used to check a sort gives one answer. | Step 11a. |
+| **canonical key** | Another name for the key made by normalizing: one standard form per thing. | Step 08. |
+| **ordered pair** | Two things where order matters: (Ana, Ben) is not (Ben, Ana). | Beat 0. |
+| **TDD** (test-driven development) | Write the test first, watch it fail (red), write the code, watch it pass (green). | Whole workbook. |
+| **property test** | A test that checks a rule over many items, not one example. | Steps 05, 07, 10, 11. |
+| **design smell** | A sign in the structure (like a cycle) that the design should change. | Step 14. |
