@@ -4,7 +4,7 @@
 - **role:** Sol / adversarial review (Sandy the Skeptic)
 - **review date:** 2026-10-27
 - **bounded_scope:** review the Tuesday TDD demo core for simplicity, clarity, excitement, and live reliability; inspect only the DSCT walkthrough inputs; write this receipt only. No Canvas, student data, merge, or changes to Anna/Flo branches.
-- **terminal_state:** `COMPLETE`; final-package pass completed at 12:15 PM CDT after the deck branch landed.
+- **terminal_state:** `COMPLETE` for the 12:30 class verdict at 12:15 PM CDT. The deck report labels this a first-usable, partial package with another update due at 4:00 PM; the conditional Thursday final-package pass remains a follow-up after that update lands.
 
 ## Input refs
 
@@ -12,7 +12,7 @@
 - Review rule: `foreman_interface/spells/sol.md` (Sandy the Skeptic / Sol adversarial review).
 - Anna core: `origin/anna/dsct-tdd-relations-20261027` at `4d1b0c69bc02a227661693fd030bca31f6eb4db3c`.
 - Ladder: `tdd-step-01` through `tdd-step-19` are present; `tools/ladder_check.sh` checked every tag.
-- Deck: `origin/anna/dsct-tdd-deck-20261027` at `1c2affc4547313f0776ee4f96f764cc04f8f9bd2` (arrived after the 12:00 snapshot; fetched at 12:12 CDT). This is a separate deck branch; its prompts were compared against the prompt files from the core branch above.
+- Deck: `origin/anna/dsct-tdd-deck-20261027` at `1c2affc4547313f0776ee4f96f764cc04f8f9bd2` (arrived after the 12:00 snapshot; fetched at 12:12 CDT). `deck/REPORT.md` calls this the first-usable partial deck and says a final update is due at 4:00 PM. This is a separate deck branch; its prompts were compared against the prompt files from the core branch above.
 - Comparison materials: `week-11/tdd-walkthrough/STEPS.md`, `prompts/00`–`prompts/14`, `INSTRUCTOR_GUIDE.md`, `STUDENT_HANDOUT.md`, `CONCEPT_MAP.md`, and `REPORT.md` at the Anna core tip.
 
 ## Checks attempted
@@ -83,7 +83,7 @@ These are step-level judgments with their related slides cited; the slides are p
 
 - The deck review was against the separate deck tip `1c2affc` and source prompts at project tip `4d1b0c6`; the branches were not merged. The 62-page notes PDF provides one notes page per slide; no in-room usability test with Jeremy was possible.
 - The blind run exercised prompts 00–14 using Codex; it was not a live classroom run with Jeremy, and no Canvas or student-facing system was touched.
-- **Next action:** repair the “merge_duplicates last” cue in deck slide/notes 54 and revise Prompt 13A guidance/recovery. Before Thursday, align the opening timing with the first-three-minute hook target and complete the review after any final deck edits.
+- **Next action:** for today's class, say that any valid dependency order is acceptable; do not require `merge_duplicates` to appear last. After the final deck update is published, run the conditional Thursday pass on the guide, handout, concept map, and final deck; fix slide/notes 54 and revise Prompt 13A guidance/recovery before Thursday.
 
 ## Repository process receipt
 
