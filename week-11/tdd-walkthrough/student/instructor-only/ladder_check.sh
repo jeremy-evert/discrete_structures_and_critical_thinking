@@ -4,13 +4,14 @@
 # Usage: ladder_check.sh [repo-path-or-url]   (default: the repo this script lives in)
 set -uo pipefail
 src="${1:-$(git -C "$(dirname "$0")" rev-parse --show-toplevel)}"
-tmp="$(mktemp -d)"
+tmp="$(mktemp -d)" || { echo "FAIL: mktemp"; exit 2; }
 trap 'rm -rf "$tmp"' EXIT
-git clone -q "$src" "$tmp/clone"
+git clone -q "$src" "$tmp/clone" || { echo "FAIL: clone of $src"; exit 2; }
 git -C "$tmp/clone" fetch -q --tags "$src" 2>/dev/null || true
-bad=0
+bad=0; n=0
 for tag in $(git -C "$tmp/clone" tag -l 'student-ref-step-*' | sort); do
-  git -C "$tmp/clone" checkout -q --detach "$tag"
+  n=$((n+1))
+  git -C "$tmp/clone" checkout -q --detach "$tag" || { echo "FAIL: checkout $tag"; bad=1; continue; }
   msg="$(git -C "$tmp/clone" log -1 --format=%s "$tag")"
   want="${msg#*: }"; want="${want%% *}"            # RED or GREEN
   out="$(cd "$tmp/clone/week-11/tdd-walkthrough/student/instructor-only/reference" && python3 -I -m pytest -q -p no:cacheprovider 2>&1)"
@@ -21,4 +22,5 @@ for tag in $(git -C "$tmp/clone" tag -l 'student-ref-step-*' | sort); do
   else verdict=MISMATCH; bad=1; fi
   printf '%s | want %-5s | %s | %s\n' "$tag" "$want" "$summary" "$verdict"
 done
+[ "$n" -eq 19 ] || { echo "FAIL: expected 19 tags, found $n"; bad=1; }
 exit $bad
