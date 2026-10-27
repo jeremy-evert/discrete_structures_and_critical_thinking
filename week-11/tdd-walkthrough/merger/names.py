@@ -7,7 +7,7 @@ def _split(full_name):
 
 
 def edit_distance(a, b):
-    """Fewest single-letter inserts, deletes, or swaps to turn a into b."""
+    """Fewest single-letter inserts, deletes, or substitutions to turn a into b."""
     previous = list(range(len(b) + 1))
     for i, ch_a in enumerate(a, 1):
         current = [i]
@@ -27,5 +27,20 @@ def similar_names(a, b):
     return closeness >= THRESHOLD
 
 
-# First draft of the rule that decides "these two records are the same person".
-same_person = similar_names
+# Nicknames we know about, mapped to one agreed spelling. Extend this table, not the code.
+NICKNAMES = {
+    "jon": "jonathan",
+    "john": "jonathan",
+    "johnny": "jonathan",
+    "jonny": "jonathan",
+}
+
+
+def canonical_key(full_name):
+    """Normalize a name to a key. Two names are the same person exactly when their keys are equal."""
+    first, last = _split(full_name)
+    return NICKNAMES.get(first, first) + " " + last
+
+
+def same_person(a, b):
+    return canonical_key(a) == canonical_key(b)
