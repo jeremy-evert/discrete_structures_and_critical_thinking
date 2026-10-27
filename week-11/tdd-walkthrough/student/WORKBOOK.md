@@ -52,7 +52,17 @@ What is in the folder: `playlist/track.py` (what a **Track** is: an id, a title,
 
 **Do not edit `tests/relations.py` or `playlist/track.py`.** Everything else you may change.
 
-**Paper path.** No laptop, or Python will not install? Do every PREDICT and EXPLAIN box on paper, and do the "by hand" check at each step (a small table you fill in). You will still reach the main idea. The facilitator can give you a printed pytest screen to read.
+**Paper path.** No laptop, or Python will not install? Do every PREDICT and EXPLAIN box on paper, and do the by-hand checks the steps mention (count the gaps, draw the arrows, fill in the property table). Steps 04 onward need a computer to see red and green, so a paper-path pair does Steps 01 to 03 and Step 07 on paper, plus the summary. You will still reach the main idea. The facilitator can give you a printed pytest screen to read.
+
+**A few Python words you will see** (you do not need to write them):
+
+- A **function** is a named recipe: `length_label(90)` runs the recipe on 90 and gives back an answer.
+- A **stub** is a function that exists but does not do its real job yet, for example it just returns `None` ("nothing").
+- An **assert** is one line in a test saying "I claim this is true"; if it is false the test fails.
+- To **raise** an error such as `ValueError` means to stop and shout "this input is not allowed." A test can check that the shout happens.
+- A **tuple** is a short fixed list written `(a, b, c)`.
+- A **witness finder** (in `tests/relations.py`) is a function that hunts for a counterexample. It gives back the tuple it found, or `None` if it found none.
+- **Import lines** in tests look like `from relations import transitive_failure` and `from playlist.songs import looks_alike`; run pytest from the `playlist-lab` folder and they work as written.
 
 ### A5. Start your Claude chat with these rules
 
@@ -72,6 +82,10 @@ Rules for the whole session:
 
 The prompts in the steps below are what you paste *after* that. Fill in the `____` blanks with **your** answers first.
 
+**Reading pytest output.** Every run includes *all* the tests you have so far, so totals grow ("15 passed" at one step, "30 passed" later). That is normal. Look for the lines that say `FAILED` and the line starting with `E`, not for the total.
+
+**Open Claude in the folder:** if you use Claude Code, start it from a terminal inside `playlist-lab`. If you use a chat window, paste the file's text in and copy Claude's file text out into your folder.
+
 ### A6. Keep an honest log
 
 When Claude gives you something, you will mark it in the log at the end: **AI proposed** it, and then **we checked it** by running it or working it out on paper. Both columns matter.
@@ -82,7 +96,7 @@ When Claude gives you something, you will mark it in the log at the end: **AI pr
 
 Step numbers match Tuesday's prompts one-for-one (00 to 14: same numbers, same jobs, different problem). A step with **a** and **b** is red, then green. Tuesday's demo ladder tags are listed in the facilitator page.
 
-**Warm-up: Steps 01 to 03** (paper first; Claude only prints what you predicted). **Core (aim to finish together): Steps 04 to 08.** Steps 09 to 14 are the same moves again; do them if time allows or at home.
+**Class fast path (what we aim for together): Steps 01, 06, 07, 08.** Step 01 shows a relation as pairs, matrix and arrows; Steps 06 to 08 are the heart: a rule that looks right, the counterexample *you* invent, and the repair. **At home or next class: Steps 02, 03, 04, 05, then 09 to 14,** the same moves again. Steps 06 to 08 need only the starter folder; they do not need Steps 02 to 05. Steps 09 to 14 need the files from Steps 06 to 08 (`playlist/songs.py` with `song_key`, and your Slow Orbit tracks in `tests/fixtures.py`).
 
 ---
 
@@ -215,11 +229,13 @@ A **bin** (also called a **partition** cell) is a group of inputs the function t
 > errors: ____ and ____
 > Which value do you think a lazy programmer would get wrong, and why? ______________________
 
-**ASK CLAUDE.** (Use your numbers.)
+**Worked example for one bin (short = 0 up to but not including 180).** Middle: 90. Edges: the *last* value in the bin (179) and the *first* value of the next bin (180). Do the same for each bin.
+
+**ASK CLAUDE.** (Use your numbers; paste your filled-in table under the sentence about lengths.)
 
 ```
 STEP 04a (red). Create playlist/lengths.py with a stub length_label(seconds) that just returns None.
-Create tests/test_lengths.py with plain assert tests, one test function per label, using exactly these
+Create tests/test_lengths.py with plain assert tests, one assert per length value (pytest.mark.parametrize is fine) so that a failure names the exact value, using exactly these
 lengths: <paste your table of values>. Add one test that -1 and 3601 raise ValueError.
 Do NOT write the real function. Stop after the files exist.
 ```
@@ -362,7 +378,7 @@ Do not fix anything. Stop.
 **EXPLAIN.** Did pytest find the same three listings you did? Write the sentence: "Listing __ looks alike listing __, and listing __ looks alike listing __, but ____________________." Then say in plain words why a single rule that only compares two things at a time cannot be trusted to sort into groups. ______________________
 
 **Check:** [ ] I wrote my numbers *before* running [ ] red on transitivity only [ ] I can read my counterexample aloud
-**Stuck?** Cannot find numbers? Use the chair picture: 100, 104, 108 under a gap of 5. Now pick your own. All three tests pass? Then your numbers do not break chaining; check gap 1→3 is over 5.
+**Stuck?** Cannot find numbers? **Wait ten minutes first.** Then use the chairs: each neighbouring pair may be at most 5 apart; how far apart can the two ends of a row of three be? All three tests pass? Then your numbers do not break chaining; check gap 1→3 is over 5.
 
 #### Step 08 (GREEN). Make "same song" a real equivalence
 
@@ -379,7 +395,8 @@ STEP 08 (green). In playlist/songs.py add song_key(track): artist lowercase and 
 (...) removed, punctuation removed, extra spaces collapsed; returns a tuple. Change same_song to compare song_keys.
 Keep looks_alike as it is. In tests/test_transitivity.py also add (a) a test that looks_alike is STILL not
 transitive over TRACKS (so our counterexample stays on record) and (b) a test that the three Slow Orbit tracks
-have the same song_key and Paper Moons does not.
+have the same song_key, that song_key(SLOW_ORBIT_2) == ("lantern hill", "slow orbit") exactly, and that Paper Moons does not.
+Punctuation is removed from the title only; the artist is just lowercased and stripped.
 ```
 
 **RUN / expect:** green.
@@ -428,7 +445,9 @@ Make tests/test_grouping.py pass. Explain union-find in two sentences of everyda
 
 **RUN / expect:** green.
 
-**EXPLAIN.** (1) This clustering used `looks_alike`, the rule that failed to chain. Why does clustering by chains still give clean groups? ______________________ (2) *Tradeoff, think and write:* if Lantern Hill also had a *different* song of length 206 seconds, which cluster would it land in? Is that what we want? ______________________
+**EXPLAIN.**
+
+(1) This clustering used `looks_alike`, the rule that failed to chain. Why does clustering by chains still give clean groups? ______________________ *Hint: chaining means a match joins the group even if the ends are far apart.* (2) *Tradeoff, think and write (drift):* chains of small steps can keep growing a group, so songs 50 seconds apart could end up together. If Lantern Hill also had a *different* song of length 206 seconds, which cluster would it land in? Is that what we want? ______________________
 **Stuck?** Re-read the friend-of-a-friend picture.
 
 ---
@@ -480,7 +499,7 @@ question that we handle later. Make tests/test_duplicates.py pass.
 STEP 11a (red). Create playlist/ordering.py with compare(a, b) returning -1, 0 or 1 by comparing seconds only.
 Create tests/test_ordering.py: define at_or_before(a, b) = compare(a, b) <= 0; test antisymmetric_failure is None
 (message names the two different tracks), transitive_failure is None, and that sorting every shuffle of TRACKS
-(itertools.permutations, functools.cmp_to_key) gives exactly one answer. Do not fix it.
+(itertools.permutations, functools.cmp_to_key; for 6 tracks that is 720 orderings) gives exactly one answer. Do not fix it.
 ```
 
 **RUN / expect:** red on antisymmetric and on "one answer". Did the two ids match your prediction?
@@ -515,7 +534,7 @@ Rule: keep one track per song, the earliest added (smallest id), and return them
 ```
 STEP 12a (red). Create playlist/cleaner.py with a stub clean_playlist(tracks) that returns list(tracks).
 Create tests/test_cleaner.py: TRACKS gives the earliest listing of each song in id order; a playlist with no
-duplicates comes back unchanged; an empty playlist stays empty; shuffled input gives the same result; cleaning
+duplicates comes back unchanged; an empty playlist stays empty; the reversed input (reversed(TRACKS)) gives the same result; cleaning
 twice gives the same answer as cleaning once. Do NOT write the real function.
 ```
 
@@ -553,7 +572,7 @@ Create tests/test_depends.py with this graph written dependents first: {"clean_p
 Tests: every function comes after the ones it needs; every function appears exactly once. Do not write the real one.
 ```
 
-**RUN / expect:** red. **EXPLAIN.** Compare Claude's order with your paper answer. ______________________
+**RUN / expect:** red. **EXPLAIN.** (Paper answer to check later: the functions that use nothing else, `song_key`, `looks_alike`, `cluster_by_chain`, `compare`, `length_label`, come first; `same_song` next; `is_duplicate` and `clean_playlist` last.) Why does test order matter for finding bugs? ______________________
 
 #### Step 13b (GREEN). Make it real
 
@@ -564,7 +583,7 @@ STEP 13b (green). Write leaves_first as a depth-first walk: visit what a functio
 Mark each function as seen so it is added once. Make tests/test_depends.py pass.
 ```
 
-**RUN / expect:** green.
+**RUN / expect:** green. **EXPLAIN.** Compare Claude's order with your paper answer. ______________________
 
 #### Step 14a (RED). A cycle should be an error
 
