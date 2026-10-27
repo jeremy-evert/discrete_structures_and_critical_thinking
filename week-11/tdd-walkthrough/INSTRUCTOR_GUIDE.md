@@ -1,5 +1,7 @@
 # Instructor guide — building the duplicate-record merger live (relations in your tests)
 
+> **Start with [`README.md`](README.md)** in this folder (reading order, commands, status).
+
 Written for someone who does not find this natural. Follow it in order. Everything you type or paste is in a box. Numbers like **Prompt 07** are `prompts/07_*.md`; **Tag 06** is git tag `tdd-step-06`; slide references use the deck's frame titles (the deck is built by a separate session; the principle index at its end lists slide numbers).
 
 ## 0. What this session teaches, in plain words
