@@ -3,7 +3,7 @@
 Terminal state: **PARTIAL (first usable deck, 12:00 checkpoint)**. Final update due 4:00 PM CDT.
 
 ## What is finished
-- `tdd_walkthrough.pdf` (slides, 62 pages) and `tdd_walkthrough_notes.pdf` (large-type speaker notes, one per slide), built by `./build.sh` from `tdd_walkthrough.tex`.
+- `tdd_walkthrough.pdf` (slides, 63 pages) and `tdd_walkthrough_notes.pdf` (large-type speaker notes, one per slide), built by `./build.sh` from `tdd_walkthrough.tex`.
 - Order: front matter (legend, why we test, the predict-run-explain loop, "red is normal", 4 glossary slides) then Part 1 idea, Part 2 idea to proposal (filled-in proposal), Part 3 pieces and plan (tikz depends-on diagram, leaves-first order, one slide per piece with bins/boundaries), Part 4 build live (one slide per ladder step 1-19, red/green badge, prompt box, predict question, "what you should see", recovery, common mistake), closing, index (5 slides).
 - PRINCIPLE tag (orange, title bar) on every slide showing a lesson principle; PROMPT FOR CLAUDE box (red, monospace) on 23 slides, each naming its `prompts/NN_slug.md`.
 - Revision 4 items in this lane: why-we-test slide (smoke alarm / taste test), loop slide, "red is normal" slide, glossary (3 slides, plain-language one-liners), common-mistake line per step, Thursday bridge on the last content slide.

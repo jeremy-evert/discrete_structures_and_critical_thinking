@@ -1,6 +1,20 @@
 \frame{\titlepage
 \note{Say: Today I am going to show you the whole process, start to finish, the way people really build software: an idea, a written proposal, a plan, and then working code with tests. I will use Claude to write the Python live, and I will not pretend it goes perfectly. You will see red tests. That is the point. On Thursday you repeat this same process yourselves on a different problem. Nothing today is a trick; every step has a plain question for you before I run it.}}
 
+\begin{frame}{Predict before we start}
+\princ{TRANSITIVE TEST, WITNESS / COUNTEREXAMPLE}
+\begin{center}\large
+``\textbf{Jon}'' and ``\textbf{John}'' look like the same person.\\[4pt]
+``\textbf{John}'' and ``\textbf{Jonathan}'' look like the same person.\\[10pt]
+So are ``\textbf{Jon}'' and ``\textbf{Jonathan}'' the same person?
+\end{center}
+\vspace{6pt}
+\begin{block}{Write your guess (30 seconds)}
+Yes, no, or not sure. We will find out with a test, and the answer breaks a rule you probably trust.
+\end{block}
+\note{Do this before anything else. Take a show of hands: yes, no, not sure. Most will say yes. Do not reveal. Say: by the end of Part 4 we will have a test that answers this with a concrete example, and we will see why the answer matters for a program that merges duplicate records. The answer, for your eyes: with our first matching rule Jon matches John and John matches Jonathan but Jon does NOT match Jonathan (step 5 prints False, step 6 catches it). That failure of the chain is what transitive means.}
+\end{frame}
+
 \begin{frame}{How to read this deck}
 \begin{tabular}{@{}p{4.6cm}p{6.8cm}@{}}
 \badge{orange!85!red}{PRINCIPLE} & A lesson idea this slide demonstrates. Same orange box, top right, every time.\\[5pt]
