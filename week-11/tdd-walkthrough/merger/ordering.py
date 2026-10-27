@@ -1,3 +1,9 @@
+def sort_key(record):
+    """Family name, then given name, then id. The id makes the key unique, so no two records tie."""
+    parts = record.name.lower().split()
+    return (parts[-1], parts[0], record.id)
+
+
 def compare(a, b):
-    """First draft: order records by family name. Returns -1, 0 or 1."""
-    return (a.name.split()[-1] > b.name.split()[-1]) - (a.name.split()[-1] < b.name.split()[-1])
+    """Returns -1, 0 or 1. Returns 0 only when a and b are the very same record."""
+    return (sort_key(a) > sort_key(b)) - (sort_key(a) < sort_key(b))
