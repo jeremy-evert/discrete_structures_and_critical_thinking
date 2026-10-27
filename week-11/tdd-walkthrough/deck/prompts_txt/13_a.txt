@@ -7,4 +7,7 @@ Write tests/test_dependencies.py for modules merger.names, merger.records, merge
 {"_split"}, graph["_split"] == set(); (2) leaves_first(graph) lists every function after
 everything it depends on, and its first item depends on nothing; (3) the transitive closure of
 "depends on" has no function depending on itself and is antisymmetric and transitive (helpers).
+IMPORTANT: call build_graph inside each test function body, never at module scope
+(import the modules at the top, but build the graph in the test), so a stub that raises
+NotImplementedError makes the tests FAIL instead of breaking test collection.
 Run pytest, show it red, stop.
