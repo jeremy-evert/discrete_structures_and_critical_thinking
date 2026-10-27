@@ -75,6 +75,10 @@ These are step-level judgments with their related slides cited; the slides are p
 
 ## Verdict
 
+**Finding severity:** BLOCK: none. REPAIR: the dependency-order cue, Prompt 13A red-state behavior, and opening-hook timing (REPAIR-1 through REPAIR-3). POLISH: make Step 13 more concrete before introducing the AST (POLISH-1).
+
+**12:30 teaching verdict: REPAIR.** Teach the 75-minute cut with the dependency-order section as a read-only walk, explicitly say valid dependency orders can vary, and avoid requiring `merge_duplicates` to be last. Keep Prompt 13A read-only or be ready to recover if it produces a collection error.
+
 **Primary verdict: REPAIR** for teaching at 12:30. The deck is now available, all 23 prompt boxes match the core prompt files, the glossary and index checks pass, both 62-page PDFs compile with zero overfull/error log lines, and all 124 pages render. Before using the dependency-order slides, change the claim that `merge_duplicates` must be last; that contradicts the source prompt. The recommended 75-minute cut treats this dependency-order segment as a read-only walk, so Jeremy can teach it safely by describing only the ordering rule and noting that valid orders can vary. The blind rehearsal also found a collection-error variant in Prompt 13A; keep that out of the live run or use the recovery tag if a red state surprises the class. The opening hook reaches slide 3, but the guide allocates four minutes to it, so tighten the timeline if “within three minutes” is required.
 
 **Plain-language summary for Jeremy:** The slides and notes have now landed and the checks pass: all 23 Claude prompt boxes match the source prompts, both 62-page PDFs compile and render, and the walkthrough reaches 38 passing tests after the intended red/green sequence. The Jon/John/Jonathan surprise is clear. I recommend teaching the 75-minute cut with the dependency-order slide as a read-only diagram, but do not tell students that `merge_duplicates` must be last; several orders are valid. Prompt 13A can also show a collection error instead of three red tests, so keep that step read-only or recover to its known-good tag if the output drifts.
