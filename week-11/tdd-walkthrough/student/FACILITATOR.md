@@ -11,7 +11,7 @@ Nothing below is silent. The existing `week-11/instructor/thursday-run-of-show.m
 | # | Existing contract says | What this workbook does | What to do |
 |---|---|---|---|
 | 1 | "Do not require code or driver/navigator roles. A paper matrix is inspectable." | Code is the **default**, because you asked for the same process as Tuesday. A **paper path** exists for every step (predict, hand check, digraph), so code is never *required* to earn the evidence. No roles are assigned. | Say aloud: "Code is the plan; paper is allowed." If you want the written contract kept literal, tell students the paper path is equal. **Your call, not mine.** |
-| 2 | Table ends at 1:25 although the meeting is 75 minutes (12:30–1:45). | The table below fits **75** minutes. | The 1:12–1:25 "model limit" block shrinks to 3 minutes at the end. |
+| 2 | Table ends at 1:25 although the meeting is 75 minutes (12:30–1:45). | The table below fits **75** minutes. | The old 1:12–1:25 "model limit" block becomes a 5-minute block at the end (1:40–1:45), and the other blocks shrink to fit. |
 | 3 | Week 11 README: submit the individual Pair Reasoning report. But `assignments/pair-reasoning-report.md` says the category is **retired** (Decision 029, no points). | The pair's evidence is the Evidence Sheet (C3). The workbook's fields line up with the six report fields (section 5), so the report is easy to write if you still ask for it. | Decide whether the report is still collected. I did not touch either file. |
 | 4 | Checkpoint 2 is individual and "do not paste the Pair Reasoning report". | Workbook C1 (summary) and the red/green output are *inputs* to checkpoint items 3 and 4. Nothing is submitted in place of the checkpoint. | Remind students: the checkpoint is still their own writing. |
 
@@ -64,7 +64,7 @@ Principle for you: **never type for them.** Ask a question that makes the next m
 
 ## 5. What the pair submits, and how it maps
 
-**Pair submits one page:** the Evidence Sheet (workbook C3): last step finished, pasted red-at-Step-6 and green-at-Step-7 output (photo or text), their counterexample in words, one wrong prediction and why, one thing they would change.
+**Pair submits one page:** the Evidence Sheet (workbook C3): last step finished, pasted red-at-Step-07 and green-at-Step-08 output (photo or text), their counterexample in words, one wrong prediction and why, one thing they would change.
 **Each student keeps their own:** PREDICT boxes, the honesty log (C2), the One-Sentence Summary (C1).
 
 Mapping to the six fields of the existing Pair Reasoning report, so no new form is needed:
