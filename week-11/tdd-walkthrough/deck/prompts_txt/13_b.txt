@@ -1,0 +1,4 @@
+Implement build_graph with the ast module (parse the source with inspect.getsource; look at
+ast.Call nodes whose func is a Name) and leaves_first with a depth-first walk that visits
+dependencies first. Do not edit the tests. Run pytest: all green. Then print the graph and the
+leaves_first order, one function per line. Stop.

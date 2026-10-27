@@ -1,0 +1,7 @@
+Test first. Create a stub merger/names.py with similar_names(a, b) raising NotImplementedError,
+and tests/test_similarity.py. Names are "Given Family". Spec: two names are similar when the
+family names are equal (ignoring case) and the given names' closeness is at least 0.5, where
+closeness = 1 - edit_distance(given_a, given_b) / max(len of the two given names), lowercase.
+Tests: "Jon Smith" ~ "John Smith"; "John Smith" ~ "Jonathan Smith";
+"Jon Smith" is NOT similar to "Maria Garcia"; NOT similar to "Jon Jones"; case does not matter
+("jon smith" ~ "JON SMITH"). Run pytest, show it red, stop.

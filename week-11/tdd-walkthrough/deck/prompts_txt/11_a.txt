@@ -1,0 +1,7 @@
+Test first. Add merger/ordering.py with the first-draft compare(a, b) for Records: compare the
+family name only (last word of name, lowercase), returning -1, 0 or 1.
+Write tests/test_ordering.py using RECORDS and the helpers, with at_or_before(a, b) meaning
+compare(a, b) <= 0: (1) at_or_before is antisymmetric (message names the two records);
+(2) it is transitive; (3) sorting RECORDS with functools.cmp_to_key(compare) gives the SAME list
+for every permutation of RECORDS (itertools.permutations). Run pytest. Expect the antisymmetric
+and the shuffle tests to fail. Show me and stop.

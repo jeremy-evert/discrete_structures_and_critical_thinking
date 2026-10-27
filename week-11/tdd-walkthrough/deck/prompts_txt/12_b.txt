@@ -1,0 +1,5 @@
+Implement it in merger/pipeline.py with exactly these module-level functions:
+duplicate_key(record) = (canonical_key(record.name), record.email); group_records(records)
+groups by duplicate_key calling duplicate_key; merge_group(group); and merge_duplicates calling
+group_records and merge_group. Do not edit the tests. Run pytest: all green. Then print
+merge_duplicates(RECORDS), one line each. Stop.
