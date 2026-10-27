@@ -28,7 +28,7 @@ Keep this page open beside the workbook. Each has a picture from everyday life.
 | **equivalence relation** | A relation that is reflexive, symmetric and transitive. It sorts everything into groups that do not overlap: "counts as the same." | Same table number. "Same label." Step 05, 08. |
 | **partial order** | A relation that is reflexive, antisymmetric and transitive: "comes before or is equal to." Some pairs may not be comparable at all. | Socks before shoes; shirt before jacket. Step 11a, 13a. |
 | **witness** | A concrete example that shows a claim is true or false. | Three actual tracks with actual lengths. Step 07. |
-| **counterexample** | A witness that *breaks* a rule that was supposed to always hold. | 200 s, 204 s, 208 s with a gap of 5. Step 07. |
+| **counterexample** | A witness that *breaks* a rule that was supposed to always hold. | Three actual tracks, with lengths you chose, that break chaining. Step 07. |
 | **normalize** | Rewrite things into one standard form so equal-looking things become equal. | Lowercase, drop the "(Remastered)". Step 08. |
 | **key** | The standard form that normalizing produces. Two things are the same exactly when their keys are equal. | `("lantern hill", "slow orbit")`. Step 08. |
 | **characterization test** | A test written to record that something already works. It starts green. | A photo of the room before you rearrange it. Step 05. |
