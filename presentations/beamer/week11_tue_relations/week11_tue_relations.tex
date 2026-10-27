@@ -103,7 +103,8 @@ Matrix (row $a$, column $b$):
 \node (3) at (0,-2.2) {3}; \node (6) at (2.4,-2.2) {6};
 \draw[->] (1) -- (2); \draw[->] (1) -- (3); \draw[->] (2) -- (6); \draw[->] (3) -- (6);
 \draw[->,dashed] (1) -- (6);
-\foreach \n in {1,2,3,6} {\draw[->] (\n) to[loop above,looseness=6] (\n);}
+\draw[->] (1) to[loop left,looseness=6] (1); \draw[->] (3) to[loop left,looseness=6] (3);
+\draw[->] (2) to[loop right,looseness=6] (2); \draw[->] (6) to[loop right,looseness=6] (6);
 \end{tikzpicture}
 \end{column}
 \end{columns}
@@ -207,7 +208,7 @@ Write one claim, one witness:
 ``Divisibility on $\{1,2,3,6\}$ is \underline{\hspace{2cm}} but not \underline{\hspace{2cm}}, because the pair \underline{\hspace{2cm}} \underline{\hspace{2cm}}.''
 \end{block}
 \vspace{4pt}
-\textbf{Thursday:} Pair Reasoning. Bring a relation classifier, matrix, or digraph, and be ready to argue about it with a partner. The individual Pair Reasoning report is due after.
+\textbf{Thursday:} Pair Reasoning. Bring a relation classifier, matrix, or digraph, and be ready to argue about it with a partner. Follow the Week 11 README for what, if anything, you submit after pairing.
 \note{Model answer: ``reflexive but not symmetric, because the pair (2,6) has no (6,2).'' Collect traces. Thursday run of show is in week-11/instructor/thursday-run-of-show.md.}
 \end{frame}
 
