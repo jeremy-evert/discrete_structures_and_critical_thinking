@@ -32,5 +32,11 @@ class TestAtLeastOnceEdgeCases(unittest.TestCase):
         self.assertAlmostEqual(chance, 1, places=10)
 
 
+class TestAtLeastOnceRejectsBadInput(unittest.TestCase):
+    def test_probability_above_one_raises_value_error(self):
+        with self.assertRaises(ValueError):
+            chance_at_least_once(1.5, 3)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

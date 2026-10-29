@@ -23,8 +23,8 @@ Multiply them and the miracle becomes expected.
 | 1 | `test_ten_heads_in_a_row_is_one_in_1024` | `probability_of_streak` | 10 heads in a row is 1 in 1024 | GREEN | 78247af |
 | 2 | `test_de_mere_one_six_in_four_rolls_is_a_winning_bet` | `chance_at_least_once` | At least one six in 4 rolls is about 51.8% | GREEN | 78247af |
 | 3 | `test_de_mere_double_six_in_twenty_four_rolls_is_a_losing_bet` | `chance_at_least_once` | Double six in 24 rolls is under 50% | GREEN | |
-| 4 | edge cases: n=0, p=0, p=1 | `chance_at_least_once` | Zero tries or impossible events never happen; certain events always do | GREEN | |
-| 5 | probability 1.5 raises `ValueError` | `chance_at_least_once` | Probabilities must be between 0 and 1 | PLANNED | |
+| 4 | edge cases: n=0, p=0, p=1 | `chance_at_least_once` | Zero tries or impossible events never happen; certain events always do | GREEN | 7432d6f |
+| 5 | probability 1.5 raises `ValueError` | `chance_at_least_once` | Probabilities must be between 0 and 1 | RED | |
 | 6 | `expected_count(300_000_000, 1/300_000_000) == 1` | `expected_count` | Lottery: lambda = n * p | PLANNED | |
 | 7 | `poisson_probability(1, 0)` is about e**-1 | `poisson_probability` | With lambda = 1, about 36.8% chance of no winner | PLANNED | |
 | 8 | Poisson agrees with exact for p=1e-6, n=1,000,000 | both | Why the Poisson shortcut works | PLANNED | |
@@ -48,3 +48,4 @@ flowchart TD
     C --> F[days_until_expected_miracle]
     B --> G[simulate_at_least_once]
 ```
+
