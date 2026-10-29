@@ -13,6 +13,10 @@ class TestAtLeastOnce(unittest.TestCase):
         chance = chance_at_least_once(1 / 6, 4)
         self.assertAlmostEqual(chance, 0.5177, places=4)
 
+    def test_de_mere_double_six_in_twenty_four_rolls_is_a_losing_bet(self):
+        chance = chance_at_least_once(1 / 36, 24)
+        self.assertLess(chance, 0.5)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
