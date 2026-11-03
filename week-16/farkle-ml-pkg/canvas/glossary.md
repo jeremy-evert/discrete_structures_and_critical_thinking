@@ -78,7 +78,7 @@ Whether the comparison gives the choices a reasonable and stated opportunity to 
 
 ## Fallback fixture
 
-A validated substitute for live execution, generated from the same shared package/benchmark for classroom practice rather than from student data.
+A validated substitute for live execution, produced by the shared course Farkle package for classroom practice rather than from student data.
 
 ## Farkle
 

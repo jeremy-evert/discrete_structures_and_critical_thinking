@@ -15,15 +15,15 @@ Before looking at the table, write down:
 - the numeric threshold or other test you said you would use;
 - the claim you were prepared to make after the initial sample.
 
-If your Tuesday rule had no numeric threshold, or you forgot it, write one now, mark it **LATE**, and say that it was written after seeing the data. Do not silently present a late rule as if it had been predeclared.
+If your Tuesday rule was not written down or was not a checkable test (for example, no stated number or condition), write one now, mark it **LATE**, and say that it was written after seeing the data. Do not silently present a late rule as if it had been predeclared.
 
 Checkable answer: another reader should be able to tell exactly what would make you declare A, declare B, or refuse.
 
 ## 2. Inspect the same comparison
 
-The numbers you will read are practice numbers from a validated fallback fixture generated from the same shared package/benchmark; they are not live student results.
+The numbers you will read are practice numbers from a fallback fixture (a ready-made set of results used when live running is not available), produced by the shared course Farkle package; they are not live student results.
 
-- Strategy A is `learner:500`. A learner is a strategy that uses training experience to choose an action. Here the transparent table trains on 500 turns, groups situations by turn-score buckets and dice remaining, and chooses roll or bank from learned average outcomes; `500` means 500 training turns, not 500 games.
+- Strategy A is `learner:500`. A learner is a strategy that uses training experience to choose an action. Here the transparent table trains on 500 turns, sorts each situation into a group by how many turn points it has so far and how many dice it can still roll, and chooses roll or bank from learned average outcomes; `500` means 500 training turns, not 500 games.
 - Strategy B is `bank_at_425`. Banking means adding current turn points to the total and ending the turn; this strategy banks at 425 points or more and rolls again below 425.
 - The target score is 4000, with the classroom rules and opponent setup held fixed. A **start** records which player takes the first turn.
 - Each row has 10 games and balanced starts: 5 for A and 5 for B.

@@ -1,8 +1,8 @@
 # Report: DSCT Week 16 Farkle + ML package (Ivy, run ee5f3c97b9dd2ed8d362972dc69ec4ca)
 
-Terminal state: **COMPLETE pending Sol re-review** (first Sol pass at 096874e returned REPAIR; repairs applied; second Sol pass result recorded in "Sol" below). Not accepted; Anna audits. No Canvas contact, no merge, no student data, synthetic/fallback data only.
+Terminal state: **COMPLETE pending Sol re-review** (Sol passes 1 and 2 returned REPAIR; repairs applied; see "Sol" below). Not accepted; Anna audits. No Canvas contact, no merge, no student data, synthetic/fallback data only.
 
-Branch `ivy/dsct-w16-farkle-ml-20261103` (pushed), base `origin/main` ee18526. Tip: see the final line.
+Branch `ivy/dsct-w16-farkle-ml-20261103` (pushed), base `origin/main` ee18526. Tip: a committed file cannot contain its own SHA; the branch tip is `git rev-parse origin/ivy/dsct-w16-farkle-ml-20261103` and is reported to Anna in the hand-off message. Content reviewed by Sol pass 2: dc3f34e.
 
 ## Delivered (all under `week-16/farkle-ml-pkg/`)
 - `deck/`: 18-page slides + 18-page instructor notes (tectonic build, `build.sh`, `check_prompts.sh`, numbers generated from the fallback CSV), 4 prompts shown verbatim.
@@ -12,10 +12,17 @@ Branch `ivy/dsct-w16-farkle-ml-20261103` (pushed), base `origin/main` ee18526. T
 - `pytest` in `code/`: 5 passed; Sol also ran it from a clean clone and two mutations of `evidence_summary.py` made it fail.
 - `deck/build.sh` twice: 18/18 pages both times, overfull/error lines 0/0. `check_prompts.sh` exit 0 (4 prompts, index, numbers).
 - `canvas/validate_manifest.py`: VALIDATION OK (unique titles, sources exist, byte-copies, prompts.md = exact concatenation, ZIP = 4 prompt files only, glossary coverage across all student pages and prompts, forbidden-string scan clean).
-- Package-wide grep for fleet host names and absolute paths: clean.
+- Package-wide grep for fleet host names and absolute paths: re-run after the final edit, expected empty (validator builds the host fragments at runtime).
+
+## Sol
+- Pass 1 at 096874e: REPAIR (7 findings: alternate-metric data, missing REPORT, undefined terms, receipt route, strategy descriptions, host-name grep, prompts.md H1). Repaired in dc3f34e except the logged exceptions below.
+- Pass 2 at dc3f34e: REPAIR (handout said A led seed 17 when B led 7-3; Tuesday revealed bundle signs/range early; numeric-threshold rule conflicted with deck and Prompt 01; first-use gaps; REPORT tip and false clean-grep claim; one host name in this file; deck said PREDICT-RUN-EXPLAIN). All fixed in the following commit; pass 3 verdict is recorded in the hand-off message and `jobs/ivy` receipts, not in this file.
+- Receipts live outside the repo (Ivy scratchpad); key findings are summarised above.
 
 ## Judgment calls
-- **TeX engine**: `pdflatex` absent on maise; `tectonic` (already installed, uses its local cache) builds the beamer deck. Anna's deploy host may differ; PDFs are committed.
+- **Decision rule threshold**: deck slide and Prompt 01 give a rule without a numeric threshold, so student pages say a rule may include a threshold but must be a checkable test.
+- **Predict, Check, Explain**: the contract says predict-run-explain, but students run nothing this week, so all pages and the deck use Predict, Check, Explain.
+- **TeX engine**: `pdflatex` is not installed on the authoring host; `tectonic` (already installed, uses its local cache) builds the beamer deck. Anna's deploy host may differ; PDFs are committed.
 - **AI failure mode**: `planning/fall-2026-topic-map.md` has no Week 16 row. Used "a confident reader/AI reports a simulation/ML win while hiding the denominator or ordering criterion, or treats one sample as proof" (see `deck/JUDGMENT_CALLS.md`). Jeremy/Anna should confirm or replace.
 - **Decision Gate**: there is no `week-16/student/decision-gate.md`; the existing receipt calls itself "Week 16 Decision Gate" but is its own 5% category. The receipt was not edited; student pages refer to it by assignment name, not repo path.
 - **Alternate metric**: no extra numbers are published, so that step is reasoning in words. Real per-metric data would need Jeremy's decision.
