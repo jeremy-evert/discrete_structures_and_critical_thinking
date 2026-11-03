@@ -1,0 +1,75 @@
+\section{The one-way street}
+\begin{frame}{Union to library}
+\princ{ASYMMETRY}
+\begin{columns}[T]
+\begin{column}{0.55\textwidth}
+\begin{itemize}
+\item Student union to the library: a few feet. Walk across.
+\item Library back to the union: a quarter mile of driving, because the street is one way.
+\end{itemize}
+\vspace{6pt}
+\textbf{Same two places. Two different distances.}
+\end{column}
+\begin{column}{0.42\textwidth}
+\begin{tikzpicture}[every node/.style={draw,rounded corners,fill=blue!10,minimum width=1.8cm,minimum height=0.9cm}]
+\node (u) at (0,0) {union};
+\node (l) at (3.2,0) {library};
+\draw[-{Stealth},thick,green!40!black] (u) to[bend left=25] node[midway,above,draw=none,fill=none] {\small a few feet} (l);
+\draw[-{Stealth},thick,red!70!black] (l) to[bend left=25] node[midway,below,draw=none,fill=none] {\small a quarter mile} (u);
+\end{tikzpicture}
+\end{column}
+\end{columns}
+\vspace{6pt}
+\predict{Is the distance from A to B always the distance from B to A?}
+\note{Tell the story as you have told it for years, in your own words. Ask the room first: how far is it from the union to the library? Then: how far from the library back to the union? Let someone say it is the same, then break it with the one-way street. Expected answers: a few feet one way; the long way around the other. Land it: the distance depends on the direction. We usually pretend it does not.}
+\end{frame}
+
+\begin{frame}{Give it a name: a directed, weighted graph}
+\princ{MODEL VS PROCEDURE}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\item Each place is a \textbf{vertex} (a dot).
+\item Each one-way trip is a \textbf{directed edge} (an arrow), with its own \textbf{weight} (the distance).
+\item Union$\to$library and library$\to$union are \emph{two different edges} with two different weights.
+\end{itemize}
+This is called an \textbf{asymmetric distance}.
+\end{column}
+\begin{column}{0.45\textwidth}
+\begin{block}{The model says}
+The edge has a direction and its own weight.
+\end{block}
+\begin{block}{If we got the model wrong}
+A single number for ``union--library'' is wrong in one direction, whatever we compute with it.
+\end{block}
+\end{column}
+\end{columns}
+\note{Name what they just said. Dots are vertices, arrows are directed edges, the number on an arrow is its weight. Say plainly: this is a modeling choice, not a fact of nature. Question: if I only wrote one number on a line between union and library, what would I be assuming? Expected: that the trip is the same both ways. Tie to Tuesday: that unstated assumption is the drift we checked for in the A to D activity.}
+\end{frame}
+
+\begin{frame}{A six-sided die gives six cities}
+\princ{ASYMMETRY}
+\textbf{Six cities, numbered 1 to 6.} Row = where you start, column = where you go. The shaded diagonal is blank: no trip from a city to itself.\\[4pt]
+\begin{center}\tbl{plain}\end{center}
+\see{\code{1 -> 2} costs \NDistOneTwo{} but \code{2 -> 1} costs \NDistTwoOne{}. Every pair differs on purpose.}
+\note{This table is fixed and hand-checkable; it lives in data/distances.csv and every number in this deck comes from it. Students may roll their own: roll a die twice for each cell, or use a number from one to twelve. Their answers will differ from ours, and that is fine because the method is the same. Ask: find me a pair where the two directions are equal. Expected: there is none, I made it so. Read one row: from city 1, going to 2 costs \NDistOneTwo, to 3 costs \NDistOneThree.}
+\end{frame}
+
+\begin{frame}{Reading the table}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\tbl{plain}
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{itemize}
+\item Find the row for where you are.
+\item Slide right to the column for where you want to go.
+\item That cell is one leg of a trip.
+\end{itemize}
+\vspace{6pt}
+\predict{What does it cost to go from 4 to 2? From 2 to 4?}
+\see{4 to 2 costs \NDistFourTwo; 2 to 4 costs \NDistTwoFour.}
+\end{column}
+\end{columns}
+\note{Make them do it, not you. Row first, then column. Ask for 4 to 2 and for 2 to 4; the two answers are \NDistFourTwo{} and \NDistTwoFour, which also shows asymmetry on a pair that is close but not equal. Common mistake: reading column then row, which silently reverses every leg. That is a model error with a correct-looking procedure.}
+\end{frame}

@@ -1,0 +1,50 @@
+\section{Guess and check}
+\begin{frame}{Idea 2: guess and check with the die}
+\princ{CHECK THE WORK}
+\textbf{Start at city 1. Roll the die for the next city.}
+\begin{itemize}
+\item If the city is already in the tour, \textbf{reject} the roll and roll again.
+\item When all six cities are in, add the way home, total the six legs, and write it down.
+\item Keep the \textbf{best so far}. Repeat.
+\end{itemize}
+\predict{Is a rejected roll free?}
+\note{Roll a real die if you have one. The rejection rule matters: a rejected roll costs time but does not change the tour. Ask whether rejections are free. Expected: not free in time; the die has no memory, so late in the tour most rolls are rejected. Next slide puts a number on it.}
+\end{frame}
+
+\begin{frame}{What rejecting repeats costs}
+\princ{COUNTING / PATTERN}
+\begin{itemize}
+\item Slot 2: five of six faces work. Slot 3: four of six. \dots\ Slot 6: only one face works.
+\item With $k$ cities still open out of 6, you need $6/k$ rolls on average.
+\item Over five slots: $6/5+6/4+6/3+6/2+6/1$.
+\end{itemize}
+\see{about \textbf{\NERolls} rolls to fill one tour, not 5.}
+\note{The last city is the painful one: you wait for one particular face out of six, six rolls on average. Add the five fractions on the board: one point two, one point five, two, three, six. Total \NERolls. Common mistake: saying five rolls per tour. The code section does the same thing: it rolls among all six and rejects repeats.}
+\end{frame}
+
+\begin{frame}{A short worked trace}
+\princ{CHECK THE WORK}
+{\footnotesize
+\begin{tabular}{@{}clllcc@{}}
+\textbf{\#} & \textbf{rolls for slots 2--6} & \textbf{tour} & \textbf{total} & \textbf{best so far}\\\midrule
+1 & \NGRollsOne & \NGTourOne & \NGTotalOne & \NGBestOne\\
+2 & \NGRollsTwo & \NGTourTwo & \NGTotalTwo & \NGBestTwo\\
+3 & \NGRollsThree & \NGTourThree & \NGTotalThree & \NGBestThree\\
+4 & \NGRollsFour & \NGTourFour & \NGTotalFour & \NGBestFour\\
+5 & \NGRollsFive & \NGTourFive & \NGTotalFive & \NGBestFive\\
+\end{tabular}}
+\see{best after 1 guess: \NGBestOne. After 3: \NGBestThree. After 5: \NGBestFive. It only ever goes down or stays.}
+\note{Walk row one: rolls two, three, five, four, then a four that is rejected because 4 is already in, then six. Tour 1-2-3-5-4-6. Total it with the table. Best so far starts equal to the first total. Key line: the best so far can never rise; it only drops when we luck into something better. This trace uses a fixed random seed so it is reproducible; yours will differ. Ask: after five guesses, are we sure of the best? Expected: no.}
+\end{frame}
+
+\begin{frame}{Guessing can find the best, but cannot tell you it did}
+\princ{CHECK THE WORK}
+\begin{itemize}
+\item Our best tour is \NBestTotal. After five guesses our best is \NGBestFive, not \NBestTotal, and nothing tells us a better tour exists.
+\item Guess 1000 times and the best so far reaches \NGOneZeroZeroZeroBest.
+\item That is more guesses than there are tours. With 6 cities, the count of tours is only \NBruteCount.
+\end{itemize}
+\vspace{4pt}
+\see{best after 1000 guesses = \NGOneZeroZeroZeroBest, matching the full search later.}
+\note{Guess and check is honest but blind. It never knows it is finished. The thousand-guess number comes from the same code; it equals the true best only because six cities have so few tours. Foreshadow: with fifteen cities guessing a thousand times would be a tiny sample. Question: how could we be sure of the best? Expected: look at every tour. How many are there? That is the next section.}
+\end{frame}

@@ -1,0 +1,52 @@
+\section{Close}
+\begin{frame}{Model versus procedure: each step, again}
+\princ{MODEL VS PROCEDURE}
+{\small
+\begin{tabular}{@{}p{3.1cm}p{4.6cm}p{4.9cm}@{}}
+\textbf{Step} & \textbf{What it assumed} & \textbf{What would change}\\\midrule
+the table & the street is one way: each direction has its own weight & two-way: one number per pair, tours and reverses tie\\[2pt]
+the tour & visit every city once and come home & drop ``come home'': an open path, a different problem\\[2pt]
+greedy & the cheapest next step belongs to the cheapest tour & nothing in the table promises that\\[2pt]
+guess and check & random tours sample the space well & sample is tiny when the count explodes\\[2pt]
+brute force & the count is small enough to try all & fine at 6 cities, hopeless at 15
+\end{tabular}}
+\note{Go row by row and ask the room for the second column before showing it. The sentence to land: every procedure we ran was correct for its own model. The question is whether the model matches the street. If the street were two-way, the table would be symmetric, all distances equal both ways, and a tour and its reverse would have the same total; the count would be halved. Ask: which of these assumptions is easiest to forget? Expected: direction.}
+\end{frame}
+
+\begin{frame}{If the street were two-way}
+\princ{MODEL VS PROCEDURE}
+\begin{itemize}
+\item One number per pair of cities, not two. The table would mirror across its diagonal.
+\item A tour and its reverse would have the same total, so the tour count halves.
+\item Our greedy and brute-force code would still run, and still produce an answer. It would be the answer for the wrong street.
+\end{itemize}
+\vspace{4pt}
+\begin{block}{The course's own question}
+Are we solving the graph correctly, or modeling reality incorrectly?
+\end{block}
+\note{Read the block aloud; it is Week 12's own question. A program that runs without error says nothing about whether the model is right. That is the point of the AI failure we inspect: a correct answer to the wrong graph. Ask: if Claude gives you a shortest path, what is the first thing you check? Expected: what an edge means and whether it has a direction.}
+\end{frame}
+
+\begin{frame}{Where this came from}
+\begin{center}\large Jeremy first worked this as the shortest path problem in Python in 2020 to 2021: brute force, greedy, then ant colony ideas and MPI on a cluster.\end{center}
+\note{Optional slide. Say it in one breath and move on; it is only a word of provenance. The brute force and greedy you saw are the first two steps of that path; ant colony and cluster computing are what you do when the count explodes.}
+\end{frame}
+
+\begin{frame}{Gate preview}
+\princ{CHECK THE WORK}
+{\lstset{basicstyle=\ttfamily\fontsize{5.6}{6.6}\selectfont,literate={—}{{\textemdash}}1 {~}{{\textasciitilde}}1}\lstinputlisting{gate_text.txt}}
+\note{Read the heading and the five numbered steps. Tell them: your Gate is a graph model of your own bounded question; the five parts are the same five moves we made today: sources, assumptions, work, check, summary. This is the individual Decision Gate, not the Show and Tell report. Verbatim from week-12/student/decision-gate.md.}
+\end{frame}
+
+\begin{frame}{Exit trace}
+\princ{CHECK THE WORK}
+\begin{block}{Before you leave (from the Week 12 Tuesday activity)}
+State one bounded conclusion and its edge assumption; keep this trace for the Decision Gate.
+\end{block}
+\vspace{6pt}
+\begin{itemize}
+\item Bounded: true for this table and this objective, not for every street.
+\item Edge assumption: what does one arrow mean, and does it have a direction?
+\end{itemize}
+\note{Collect one sentence from each student. Good example: for this table, greedy gives thirty-nine and brute force gives thirty-four, assuming one-way edges with the weights in the table. Reward narrowing a claim after critique, as the run-of-show says. Note: the Thursday run-of-show lists the exit trace under Tuesday's collect-a-bounded-conclusion move, so the wording here is taken from the Tuesday activity.}
+\end{frame}

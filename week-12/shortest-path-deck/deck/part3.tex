@@ -1,0 +1,49 @@
+\section{Greedy}
+\begin{frame}{Idea 1: greedy, always go to the nearest city}
+\princ{GREEDY IS NOT OPTIMAL}
+\textbf{Rule:} from where you are, look at the cities you have not visited and go to the one with the smallest distance. Ties: lowest city number.\\[6pt]
+\textbf{Start at city 1.}
+\begin{itemize}
+\item From 1: options 2 (\NDistOneTwo), 3 (\NDistOneThree), 4, 5 (\NDistOneFive), 6. Nearest is 3 at \NLegGreedyOne.
+\end{itemize}
+\predict{From 3, which unvisited city is nearest?}
+\note{Work it with the table on the board. From 1 the row reads 11, 4, 12, 5, 6, so 3 wins at \NLegGreedyOne; 5 is close behind at \NDistOneFive. Remember that: it matters in two slides. Ask them to find the nearest from 3 among 2, 4, 5, 6. Expected: 5, at \NLegGreedyTwo.}
+\end{frame}
+
+\begin{frame}{Greedy, worked on the table from city 1}
+\princ{GREEDY IS NOT OPTIMAL}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\tbl{greedy}
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{tabular}{@{}ll@{}}
+1$\to$3 & \NLegGreedyOne\\ 3$\to$5 & \NLegGreedyTwo\\ 5$\to$2 & \NLegGreedyThree\\ 2$\to$6 & \NLegGreedyFour\\ 6$\to$4 & \NLegGreedyFive\ (only 4 is left)\\ 4$\to$1 & \NLegGreedySix\ (the way home)
+\end{tabular}
+\end{column}
+\end{columns}
+\see{tour \textbf{\NGreedyTour}, total \textbf{\NGreedyTotal}. Better than \NTotalNat.}
+\note{Follow the highlighted cells. At each stop say the choices and pick the smallest. At 6 only city 4 is left, so there is no choice; the cheap-looking path has run out of cities. Total: four plus seven plus three plus four plus eleven plus ten is \NGreedyTotal. Ask: is thirty-nine the best possible? Expected: it beat fifty-five, but we have no reason yet to believe it is the best.}
+\end{frame}
+
+\begin{frame}{Where greedy is fooled}
+\princ{GREEDY IS NOT OPTIMAL}
+\begin{columns}[T]
+\begin{column}{0.52\textwidth}
+\begin{block}{Greedy}
+\NGreedyTour, total \NGreedyTotal
+\end{block}
+\begin{block}{A better tour (found by trying all of them)}
+\NBestTour, total \NBestTotal
+\end{block}
+\end{column}
+\begin{column}{0.44\textwidth}
+\begin{itemize}
+\item Greedy's first step took 1$\to$3 (\NDistOneThree) instead of 1$\to$5 (\NDistOneFive): it saved 1.
+\item But with 3 already visited, the cheap leg 6$\to$3 (\NLegBestFour) could never be used. Greedy ended with 6$\to$4 at \NLegGreedyFive.
+\end{itemize}
+\end{column}
+\end{columns}
+\see{greedy loses by \NGreedyGap: \NGreedyTotal\ versus \NBestTotal. The ``best'' tour is found later in the deck by code.}
+\note{This is the heart of greedy-is-not-optimal. A cheap move now closes off a cheap leg later. Show the numbers: greedy saved one at the first step and was then forced into an eleven-long leg, 6 to 4, at the end. Procedure was followed perfectly; what failed is the assumption that the locally cheapest step leads to a globally cheapest tour. Ask: what did greedy assume? Expected: that the best next step is part of the best whole tour. We will check the best tour by code; for now accept it.}
+\end{frame}

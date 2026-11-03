@@ -1,0 +1,30 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+\usetheme{Madrid}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{graphicx}
+\lstset{basicstyle=\ttfamily\fontsize{7.4}{8.6}\selectfont,breaklines=true,breakindent=8pt,columns=fullflexible,keepspaces=true,showstringspaces=false,upquote=false,literate={~}{{\textasciitilde}}1}
+\input{numbers}
+\newcommand{\code}[1]{\texttt{\detokenize{#1}}}
+\newcommand{\princ}[1]{\begin{tikzpicture}[remember picture,overlay]\node[anchor=north east,fill=orange!85!red,text=white,font=\bfseries\fontsize{7}{8}\selectfont,inner sep=3pt,text width=6.2cm,align=center,rounded corners=2pt] at ([xshift=-5pt,yshift=-5pt]current page.north east){\hyphenpenalty=10000\relax PRINCIPLE: #1};\end{tikzpicture}}
+\newcommand{\promptbox}[2]{\IfFileExists{prompts_txt/#1_#2.txt}{\begin{alertblock}{PROMPT FOR CLAUDE \hfill {\scriptsize prompts/\input{prompts_txt/#1.name}}}\IfFileExists{prompts_txt/#1_#2.small}{\lstset{basicstyle=\ttfamily\fontsize{6.6}{7.6}\selectfont}}{}\lstinputlisting{prompts_txt/#1_#2.txt}\end{alertblock}}{\begin{alertblock}{PROMPT FOR CLAUDE (#1 #2)}PENDING: prompt file not copied yet.\end{alertblock}}}
+\newcommand{\see}[1]{{\small\textbf{\textcolor{green!40!black}{What you should see:}} #1\par}}
+\newcommand{\predict}[1]{{\small\textbf{\textcolor{blue!60!black}{PREDICT (30 s):}} #1\par}}
+\newcommand{\mistake}[1]{{\scriptsize\textbf{\textcolor{red!60!black}{Common mistake:}} #1\par}}
+\newcommand{\tbl}[1]{{\small\renewcommand{\arraystretch}{1.15}\input{table_#1}}}
+% tour picture: \tourpic{pairs} where pairs looks like 1/2,2/3,...
+\newcommand{\tourpic}[1]{\edef\tmp{#1}\expandafter\tourpicx\expandafter{\tmp}}
+\newcommand{\tourpicx}[1]{\begin{tikzpicture}[scale=0.85,every node/.style={circle,draw,fill=blue!10,minimum size=15pt,inner sep=0pt,font=\small}]
+\foreach \i in {1,...,6} \node (c\i) at ({90-60*(\i-1)}:1.45) {\i};
+\foreach \a/\b in {#1} \draw[-{Stealth[length=5pt]},thick,red!70!black] (c\a) to[bend left=12] (c\b);
+\end{tikzpicture}}
+\title{The Shortest-Path Problem}
+\subtitle{A correct procedure on the wrong model is still wrong}
+\author[COMSC 2043 DSCT]{COMSC 2043 \textbullet\ Discrete Structures and Critical Thinking}
+\date{Week 12, Thursday, November 5, 2026}

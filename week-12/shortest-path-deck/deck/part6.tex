@@ -1,0 +1,74 @@
+\section{Then we started writing code}
+\begin{frame}{Then we started writing code}
+\princ{MODEL VS PROCEDURE}
+We now know the model (a directed, weighted table) and the objective (the shortest closed tour). Only now do we code it.
+\begin{enumerate}
+\item read the table
+\item \code{tour_length(tour)}
+\item check 1-2-3-4-5-6-1 against our hand total
+\item greedy
+\item guess and check with \code{random}
+\item brute force with \code{itertools.permutations}, and check the count
+\end{enumerate}
+\note{Say the order out loud: model first, then procedure. Each step has a prompt for Claude, and each prompt asks Claude to show its work so you can compare with the hand work on the earlier slides. Predict-run-explain: have them guess the output before running. All the reference code is in code/tour.py and the tests are in \texttt{code/test\_tour.py}. If Claude's version differs in style, that is fine; compare the numbers.}
+\end{frame}
+
+\begin{frame}{Step 1: read the table}
+\princ{MODEL VS PROCEDURE}
+\promptbox{01}{a}
+\see{\NDistOneTwo\ for 1 to 2, and \NDistTwoOne\ for 2 to 1: the two directions differ.}
+\predict{Will the two printed numbers be equal?}
+\note{Paste, run, read the output aloud. The point is the data structure: a dictionary keyed by the pair (from, to), so (1, 2) and (2, 1) are separate entries. That is the model written in code. If Claude uses a list of lists, ask it to switch to a dictionary keyed by pairs. Recovery: the reference is code/tour.py.}
+\end{frame}
+
+\begin{frame}{Step 2: the length of a tour}
+\princ{CHECK THE WORK}
+\promptbox{02}{a}
+\see{\code{legs} gives six triples; \code{tour_length} adds their distances.}
+\predict{What goes wrong if the code forgets the leg from the last city back to the first?}
+\note{Predict answer: the total comes out short by one leg (the way home). Show that by hand. Explain beat: closed tour means the return leg counts. Common mistake: range over five legs not six.}
+\end{frame}
+
+\begin{frame}{Step 3: check 1-2-3-4-5-6-1, then write tests}
+\princ{CHECK THE WORK}
+\promptbox{03}{a}
+\see{legs \NLegNatOne, \NLegNatTwo, \NLegNatThree, \NLegNatFour, \NLegNatFive, \NLegNatSix; total \textbf{\NTotalNat}, the same as our hand total.}
+\note{Compare with the hand total from the tour slide. If they differ, the code or the hand work is wrong; find which. Do not let Claude adjust the expected number until they agree. This is checking a procedure against a hand check, which is Tuesday's move.}
+\end{frame}
+
+\begin{frame}{Step 3b: tests that guard the model}
+\princ{ASYMMETRY}
+\promptbox{03}{b}
+\see{\code{2 passed}. Test 1 fails if someone ``fixes'' the table to be symmetric.}
+\note{This test is the model written as a check. If somebody makes the table symmetric, the test fails and tells you the model has changed. Ask: which test protects the model and which protects the procedure? Expected: the first protects the model; the second protects the total.}
+\end{frame}
+
+\begin{frame}{Step 4: greedy}
+\princ{GREEDY IS NOT OPTIMAL}
+\promptbox{04}{a}
+\see{tour \NGreedyTour, total \textbf{\NGreedyTotal}, matching the hand work.}
+\predict{Which city does greedy choose from city 6?}
+\note{Predict answer: city 4, the only one left, with a leg of \NLegGreedyFive. Have them compare each printed step with the highlighted table on the greedy slide. Tie rule matters when two options are equal; our table has no ties from city 1, but the code must still say what to do.}
+\end{frame}
+
+\begin{frame}{Step 5: guess and check with random}
+\princ{CHECK THE WORK}
+\promptbox{05}{a}
+\see{with seed 3114: best after 1 guess \NGBestOne, after 3 \NGBestThree, after 5 \NGBestFive; same as the trace slide.}
+\note{Using the seed is what makes the run repeat: same seed, same rolls. Students who change the seed get different tours, and that is the point of guessing. Ask: why does the best so far never go up? Expected: it keeps the minimum of everything seen.}
+\end{frame}
+
+\begin{frame}{Step 6: brute force over permutations}
+\princ{COUNTING / PATTERN}
+\promptbox{06}{a}
+\see{best tour \NBestTour, total \textbf{\NBestTotal}, \NBruteCount\ tours tried.}
+\predict{Will brute force beat greedy, tie it, or lose to it?}
+\note{Predict answer: it can never lose, since greedy's tour is one of the tours brute force tries. Here it wins by \NGreedyGap. The count \NBruteCount\ is the formula from the counting slides.}
+\end{frame}
+
+\begin{frame}{Step 6b: assert the count matches the formula}
+\princ{COUNTING / PATTERN}
+\promptbox{06}{b}
+\see{\code{pytest} passes: counts \NCountTwo, \NCountThree, \NCountFour, \NCountFive, \NCountSix\ for 2 to 6 cities, and brute force is no worse than greedy.}
+\note{This closes the loop between the picture, the formula and the code. The formula predicted the count; the code counted it; the assert makes them agree forever. Reference result in this repo: all eight pytest tests pass (see REPORT.md for the exact line).}
+\end{frame}

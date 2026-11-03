@@ -1,0 +1,58 @@
+\begin{frame}
+\titlepage
+\note{Thursday, 75 minutes. This is the one story Jeremy has told for years: a one-way street, a six-sided die, and a tour of six cities. Everything today is that story. The sentence to land by the end: a correct procedure on the wrong model is still wrong. Say it now once, then let the story earn it.}
+\end{frame}
+
+\begin{frame}{How to read these slides}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{block}{Orange tag, top right}
+\textbf{PRINCIPLE:} the idea of the course that this slide shows.
+\end{block}
+\begin{itemize}
+\item MODEL VS PROCEDURE
+\item ASYMMETRY
+\item COUNTING / PATTERN
+\item GREEDY IS NOT OPTIMAL
+\item CHECK THE WORK
+\end{itemize}
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{alertblock}{Red box: PROMPT FOR CLAUDE}
+Paste-ready text for Claude, only on the slides that need code.
+\end{alertblock}
+\see{the real numbers, computed by the committed code.}
+\predict{say your guess out loud first.}
+\end{column}
+\end{columns}
+\note{Walk the legend in thirty seconds. Orange tag means this slide demonstrates one of five course ideas; the index at the end lists them all. Red box means code and a paste-ready prompt. Green line means: here is what the screen shows; those numbers are computed by committed code, not by hand. Question for the room: which of the five do you already think the one-way street will show? Expected: asymmetry, maybe model vs procedure.}
+\end{frame}
+
+\begin{frame}{Today's path}
+\begin{enumerate}
+\item A one-way street (the hook)
+\item A six-sided die gives six cities, and a table of distances
+\item A tour: 1-2-3-4-5-6-1, and what we are optimizing
+\item Greedy: always go to the nearest city, and where it is fooled
+\item Guess and check with the die
+\item How many different tours? A pattern, and a plot
+\item Then we started writing code
+\item Close: model versus procedure, and the Gate
+\end{enumerate}
+\note{Read the eight steps. Tell them: you will not write code until step seven, because the model comes first. That is Tuesday's point and today's. Question: why do you think the code comes last? Expected: because we need to know what we are computing before we compute it.}
+\end{frame}
+
+\begin{frame}{Words we will use}
+\begin{tabular}{@{}p{3.1cm}p{9.8cm}@{}}
+\textbf{graph} & Places (dots) and links between them (arrows or lines).\\[2pt]
+\textbf{directed edge} & A link with a direction: it goes from one place to another.\\[2pt]
+\textbf{weight} & A number on a link, here a distance.\\[2pt]
+\textbf{tour} & A trip that visits every city once and comes back to the start.\\[2pt]
+\textbf{greedy} & Always take the cheapest-looking next step.\\[2pt]
+\textbf{brute force} & Try every possibility and keep the best.\\[2pt]
+\textbf{factorial} ($k!$) & $k\times(k-1)\times\dots\times1$. For example $4!=4\cdot3\cdot2\cdot1=24$.\\[2pt]
+\textbf{permutation} & One ordering of a list of things.\\[2pt]
+\textbf{test (assert)} & A line of code that stops with an error if a claim is false.\\
+\end{tabular}
+\note{Do not read the table. Say: if a word on a later slide is not clear, it is here. Point out factorial: 4 factorial is 4 times 3 times 2 times 1. We will use it at slide on counting. Ask: which of these words have you used already? Expected: graph, test; the rest are new today.}
+\end{frame}
