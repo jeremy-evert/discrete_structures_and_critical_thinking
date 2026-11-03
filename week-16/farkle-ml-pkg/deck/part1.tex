@@ -1,0 +1,74 @@
+\section{Fix the comparison}
+\begin{frame}{What is fixed before any game is counted?}
+\princ{RULES / ASSUMPTIONS}
+\begin{columns}[T]
+\begin{column}{0.56\textwidth}
+\begin{itemize}
+\item Target score: \textbf{\NTargetScore}.
+\item Strategy A: \texttt{\NStrategyA}.
+\item Strategy B: \texttt{\NStrategyB}.
+\item Same classroom rules and same opponent setup.
+\item Each seed sample has \textbf{\NInitialStartsA} starts for A and \textbf{\NInitialStartsB} starts for B.
+\end{itemize}
+\end{column}
+\begin{column}{0.40\textwidth}
+\begin{block}{Fair comparison}
++ one strategy label\par
++ the other strategy label\par
++ a named seed\par
++ a stated number of games\par
++ the same rules
+\end{block}
+\end{column}
+\end{columns}
+\see{If a rule or starting balance changes, we are no longer reading the same comparison.}
+\note{Say: the machine does the game mechanics; we make the comparison inspectable. Question: why balance starting position? Expected: the first player can have an advantage, so equal starts reduce that confound.}
+\end{frame}
+
+\begin{frame}{Why define ``better'' first?}
+\princ{ORDERING NEEDS A CRITERION}
+\begin{columns}[T]
+\begin{column}{0.50\textwidth}
+\begin{block}{Non-code analogy}
+Before a race, agree whether the winner is the first to the finish line, the fastest average lap, or the least fuel used.
+\end{block}
+\end{column}
+\begin{column}{0.46\textwidth}
+\begin{itemize}
+\item ``Better'' is an ordering: it tells us how to rank two choices.
+\item A higher number is not automatically the right number.
+\item Choosing the metric after seeing the result lets the result choose the rule.
+\end{itemize}
+\end{column}
+\end{columns}
+\predict{If A wins more games but takes longer to prepare, which one is better?}
+\note{Use the race analogy before naming any Farkle metric. Question: can one number answer every version of ``better''? Expected: no; the objective has to be stated.}
+\end{frame}
+
+\begin{frame}[shrink=18]{Our decision rule comes before the evidence}
+\princ{DECISION RULE}
+\begin{block}{Worked rule for this deck}
+Call A better than B only if A has more wins than B in \textbf{every tested seed row}, with the starts balanced. If any row reverses or ties, refuse to declare a winner under this rule.
+\end{block}
+\begin{itemize}
+\item Primary metric: observed wins in a fixed number of games.
+\item Scope: these strategy definitions, these classroom rules, and these tested seeds.
+\item This rule does not claim to find a universal best strategy.
+\end{itemize}
+\promptbox{01}{a}
+\note{Read the rule before revealing the first row. Question: what event would make us refuse? Expected: a tie or a row in which B has at least as many wins as A.}
+\end{frame}
+
+\begin{frame}{Predict before the first sample}
+\princ{PREDICT -- RUN -- EXPLAIN}
+\begin{block}{Prediction}
+Before seeing the initial row, predict which strategy will have more observed wins under our rule, and give one reason.
+\end{block}
+\vspace{8pt}
+\begin{tabular}{@{}p{4.0cm}p{8.8cm}@{}}
+My prediction: & \rule{8cm}{0.4pt}\\[8pt]
+Reason: & \rule{8cm}{0.4pt}
+\end{tabular}
+\predict{Say the prediction aloud. It may be wrong; invisible predictions cannot be checked.}
+\note{Pause for individual predictions before showing seed 17. Question: what would make the prediction checkable? Expected: name a strategy, the expected ordering, and a reason tied to the fixed setup.}
+\end{frame}
