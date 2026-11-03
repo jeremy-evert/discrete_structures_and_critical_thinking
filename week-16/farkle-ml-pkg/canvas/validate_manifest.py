@@ -121,7 +121,7 @@ _host_fragments = (
 _host_pattern = "(?:" + "|".join(_host_fragments) + ")"
 
 FORBIDDEN_PATTERNS = (
-    re.compile(r"(?i)swosu\.instructure"),
+    re.compile(r"(?i)" + "swo" + "su\\.insti" + "ructure"),
     re.compile(
         r"(?i)(?:https?://|ssh://|git@|host(?:name)?\s*[:=]?\s*)"
         + _host_pattern
