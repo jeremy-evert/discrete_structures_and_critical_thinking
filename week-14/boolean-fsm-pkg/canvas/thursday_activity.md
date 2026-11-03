@@ -1,8 +1,17 @@
 # Week 14 Thursday: Model Defense, Show & Tell, and Checkpoint 3
 
-Thursday is a short public defense. Classmates will see the work, so use a
-fictional or otherwise non-sensitive example and critique the claim or model,
-never the person.
+**Show & Tell** is a short class presentation: show an example and explain the
+checkable **evidence** for it. Evidence means results, such as rows or a trace,
+that support or challenge a **claim**, the statement being checked. A
+**boundary** is the line between what a model represents and what it leaves
+out. A **model limit**
+is a relevant fact the model leaves out, so it cannot establish that fact. In
+a state machine, an **input** is an event supplied to the machine, such as
+`valid`; in `Locked --valid--> Open`, the arrow means “from Locked, on
+`valid`, go to Open,” and plain `A -> B` means “A leads to B.” Thursday is a
+short public defense. Classmates will see the work, so use a fictional or
+otherwise non-sensitive example and critique the claim or model, never the
+person.
 
 ## Choose one path
 
@@ -13,13 +22,12 @@ never the person.
   state, two traces, and one model limit. A state machine is a bounded model
   whose transition rules say how an input changes the current state.
 
-A **model limit** is a relevant fact the model does not represent, so the model
-cannot establish it. Keep the claim small enough that another student can
+Keep the claim small enough that another student can
 inspect each row or trace.
 
 ## In-class defense
 
-1. State the claim and show the rows or traces that support it.
+1. State the claim you want the check to support and show its rows or traces.
 2. Name the strongest limitation before the audience discovers it.
 3. Answer one challenge by testing a row, input, state, or assumption. Revise
    or narrow the claim if the challenge earns that change.
