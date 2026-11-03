@@ -70,7 +70,7 @@ breadth-first: Start, eligible?, needs aid?, explain rule, aid route, standard r
 ```
 
 An eligible person who needs aid traces `Start -> eligible? -> needs aid? -> aid
-route`. The intake note adds `aid route -> language-access review`; therefore the
+route`. The intake note adds `language-access review -> aid route` (review before the route is usable); therefore the
 displayed tree does not justify “everyone routed to aid can use the aid route
 immediately.” Students may add a review node or state the limitation, but must
 connect the choice to the note.

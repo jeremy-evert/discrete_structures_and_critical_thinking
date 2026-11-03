@@ -68,7 +68,7 @@ DECISION_EDGE_LABELS = {
 }
 
 # This relation came from the intake note but is not represented by the tree.
-INTAKE_RELATIONS = frozenset({("aid route", "language-access review")})
+INTAKE_RELATIONS = frozenset({("language-access review", "aid route")})  # review comes before the route is usable
 
 
 def tree_edges(children=TREE_CHILDREN):
