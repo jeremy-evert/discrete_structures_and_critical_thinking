@@ -26,8 +26,16 @@ REQUIRED_PAGES = {
     "canvas/concept_map.md",
     "canvas/glossary.md",
     "canvas/prompts.md",
+    "canvas/thursday_activity.md",
+    "canvas/recap_outline.md",
 }
-COPY_NAMES = ("handout.md", "concept_map.md", "glossary.md")
+COPY_NAMES = (
+    "handout.md",
+    "concept_map.md",
+    "glossary.md",
+    "thursday_activity.md",
+    "recap_outline.md",
+)
 
 # These are the technical terms deliberately used in the handout. The check
 # makes the glossary contract explicit instead of pretending a prose parser

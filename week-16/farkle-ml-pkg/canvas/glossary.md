@@ -44,6 +44,10 @@ A test declared before repeated evidence that says when to declare A, declare B,
 
 The bottom number in a division. For a win rate here, it is the number of games counted.
 
+## Deterministic
+
+Repeatable when the same inputs, including the seed, are used again.
+
 ## Evidence
 
 Information that can be inspected and used to support or limit a claim.
@@ -183,6 +187,10 @@ How few rules or components a strategy requires relative to another choice.
 ## Target score
 
 The score needed to end the game.
+
+## Threshold
+
+The minimum difference or other amount that a decision rule requires before it declares a result.
 
 ## Sample
 

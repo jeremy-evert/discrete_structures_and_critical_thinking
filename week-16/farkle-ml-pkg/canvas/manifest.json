@@ -27,6 +27,16 @@
       "title": "Week 16 Tuesday: Farkle Evidence Prompts",
       "source": "canvas/prompts.md",
       "after": "Week 16 Tuesday: Farkle Evidence Glossary"
+    },
+    {
+      "title": "Week 16 Thursday: Defend, Revise, or Refuse",
+      "source": "canvas/thursday_activity.md",
+      "after": "Week 16 Tuesday: Farkle Evidence Prompts"
+    },
+    {
+      "title": "Week 16 Thursday: Recap Outline",
+      "source": "canvas/recap_outline.md",
+      "after": "Week 16 Thursday: Defend, Revise, or Refuse"
     }
   ],
   "files": [
