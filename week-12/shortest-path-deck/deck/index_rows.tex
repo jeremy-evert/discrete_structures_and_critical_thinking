@@ -5,7 +5,7 @@
 5 & Union to library & ASYMMETRY & \\
 6 & Give it a name: a directed, weighted graph & MODEL VS PROCEDURE & \\
 7 & A six-sided die gives six cities & ASYMMETRY & \\
-9 & A tour: visit every city once, then come home & MODEL VS PROCEDURE & \\
+9 & A tour, then home & MODEL VS PROCEDURE & \\
 10 & Total the six legs, step by step & CHECK THE WORK & \\
 11 & What are we optimizing? & MODEL VS PROCEDURE & \\
 12 & Idea 1: greedy, always go to the nearest city & GREEDY IS NOT OPTIMAL & \\
@@ -21,10 +21,10 @@
 15 & Idea 2: guess and check with the die & CHECK THE WORK & \\
 16 & What rejecting repeats costs & COUNTING / PATTERN & \\
 17 & A short worked trace & CHECK THE WORK & \\
-18 & Guessing can find the best, but cannot tell you it did & CHECK THE WORK & \\
+18 & Guessing cannot know it is done & CHECK THE WORK & \\
 19 & Count the tours: 2 cities, then 3 & COUNTING / PATTERN & \\
 20 & 4 cities & COUNTING / PATTERN & \\
-21 & The reasoning: choices shrink by one each step & COUNTING / PATTERN & \\
+21 & Choices shrink by one each step & COUNTING / PATTERN & \\
 22 & The pattern & COUNTING / PATTERN & \\
 23 & Which counting convention? Say it once & COUNTING / PATTERN & \\
 \end{tabular}
@@ -40,8 +40,8 @@
 27 & Then we started writing code & MODEL VS PROCEDURE & \\
 28 & Step 1: read the table & MODEL VS PROCEDURE & 01a\\
 29 & Step 2: the length of a tour & CHECK THE WORK & 02a\\
-30 & Step 3: check 1-2-3-4-5-6-1, then write tests & CHECK THE WORK & 03a\\
-31 & Step 3b: tests that guard the model & ASYMMETRY & 03b\\
+30 & Step 3: check our hand total & CHECK THE WORK & 03a\\
+31 & Step 3b: tests guard the model & ASYMMETRY & 03b\\
 32 & Step 4: greedy & GREEDY IS NOT OPTIMAL & 04a\\
 \end{tabular}
 \note{Use this to find a slide fast: slide number, which lesson idea it shows, and which prompt file it pairs with (prompts/NN, a = first block, b = second block).}
@@ -52,7 +52,7 @@
 \textbf{Slide} & \textbf{Title} & \textbf{Principle} & \textbf{Prompt}\\\midrule
 33 & Step 5: guess and check with random & CHECK THE WORK & 05a\\
 34 & Step 6: brute force over permutations & COUNTING / PATTERN & 06a\\
-35 & Step 6b: assert the count matches the formula & COUNTING / PATTERN & 06b\\
+35 & Step 6b: assert the count & COUNTING / PATTERN & 06b\\
 36 & Model versus procedure: each step, again & MODEL VS PROCEDURE & \\
 37 & If the street were two-way & MODEL VS PROCEDURE & \\
 39 & Gate preview & CHECK THE WORK & \\

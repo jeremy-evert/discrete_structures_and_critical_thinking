@@ -22,6 +22,7 @@
 \end{tabular}
 \end{column}
 \end{columns}
+\vspace{8pt}
 \see{tour \textbf{\NGreedyTour}, total \textbf{\NGreedyTotal}. Better than \NTotalNat.}
 \note{Follow the highlighted cells. At each stop say the choices and pick the smallest. At 6 only city 4 is left, so there is no choice; the cheap-looking path has run out of cities. Total: four plus seven plus three plus four plus eleven plus ten is \NGreedyTotal. Ask: is thirty-nine the best possible? Expected: it beat fifty-five, but we have no reason yet to believe it is the best.}
 \end{frame}
@@ -44,6 +45,7 @@
 \end{itemize}
 \end{column}
 \end{columns}
+\vspace{10pt}
 \see{greedy loses by \NGreedyGap: \NGreedyTotal\ versus \NBestTotal. The ``best'' tour is found later in the deck by code.}
 \note{This is the heart of greedy-is-not-optimal. A cheap move now closes off a cheap leg later. Show the numbers: greedy saved one at the first step and was then forced into an eleven-long leg, 6 to 4, at the end. Procedure was followed perfectly; what failed is the assumption that the locally cheapest step leads to a globally cheapest tour. Ask: what did greedy assume? Expected: that the best next step is part of the best whole tour. We will check the best tour by code; for now accept it.}
 \end{frame}
