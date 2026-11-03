@@ -1,0 +1,20 @@
+{
+  "week": 12,
+  "module_id": 218911,
+  "module_name_contains": "Week 12",
+  "note": "Page sources may contain {{FILE:name}} and {{FILE_URL:name}} tokens for the publisher to replace with the uploaded file's name and URL.",
+  "pages": [
+    {"title": "Week 12 Tuesday: Graphs and Network Reasoning (tour slides)", "source": "canvas/tuesday_landing.md", "after": "overview"},
+    {"title": "Week 12 Tuesday: Handout, a tour, a table, and a model", "source": "canvas/handout.md", "after": "Week 12 Tuesday: Graphs and Network Reasoning (tour slides)"},
+    {"title": "Week 12 Tuesday: Concept map", "source": "canvas/concept_map.md", "after": "Week 12 Tuesday: Handout, a tour, a table, and a model"},
+    {"title": "Week 12 Tuesday: Glossary", "source": "canvas/glossary.md", "after": "Week 12 Tuesday: Concept map"},
+    {"title": "Week 12 Tuesday: The Claude prompts", "source": "canvas/prompts_page.md", "after": "Week 12 Tuesday: Glossary"},
+    {"title": "Week 12 Thursday: Show & Tell, defend a network model", "source": "canvas/thursday_page.md", "after": "Week 12 Tuesday: The Claude prompts"}
+  ],
+  "files": [
+    {"name": "shortest_path_slides.pdf", "source": "deck/shortest_path.pdf", "page_link_from": "Week 12 Tuesday: Graphs and Network Reasoning (tour slides)"}
+  ],
+  "zips": [
+    {"name": "shortest_path_prompts.zip", "from_dir": "prompts"}
+  ]
+}

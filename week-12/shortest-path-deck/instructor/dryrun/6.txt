@@ -1,0 +1,13 @@
+I added `guess_tour` and `guess_and_check` to `tour.py` (plus `import random`). I ran `guess_and_check` with k=5 and seed=3114. The two existing tests still pass.
+
+```
+#1 rolls [2, 3, 5, 4, 4, 6] tour [1, 2, 3, 5, 4, 6] total 60 best so far 60
+#2 rolls [3, 4, 3, 2, 4, 5, 2, 2, 6] tour [1, 3, 4, 2, 5, 6] total 49 best so far 49
+#3 rolls [5, 2, 5, 6, 5, 4, 3] tour [1, 5, 2, 6, 4, 3] total 44 best so far 44
+#4 rolls [6, 6, 5, 2, 4, 3] tour [1, 6, 5, 2, 4, 3] total 53 best so far 44
+#5 rolls [2, 4, 2, 5, 3, 1, 3, 2, 2, 6] tour [1, 2, 4, 5, 3, 6] total 55 best so far 44
+```
+
+- **Rolls:** Each list holds only the random picks, not the fixed start city. Every roll that repeats a city already in the tour is rejected. In tour #5 the roll of `1` is rejected because the start city is already in the tour.
+- **Draws:** `rng.choice` draws from the sorted list `[1, 2, 3, 4, 5, 6]`, so the same seed gives the same output each time.
+- **Best total:** The best random tour is 44, from tour #3. The greedy tour from earlier had 39, so it beat all five guesses.

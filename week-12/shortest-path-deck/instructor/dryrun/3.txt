@@ -1,0 +1,15 @@
+Here are the six legs and the total for `[1, 2, 3, 4, 5, 6]`:
+
+```
+(1, 2, 11)
+(2, 3, 12)
+(3, 4, 10)
+(4, 5, 6)
+(5, 6, 6)
+(6, 1, 10)
+total 55
+```
+
+You didn't paste your hand-worked legs and total, so I haven't compared anything. If you send them, I'll tell you which leg differs and why, and I won't change your numbers.
+
+When you check by hand, remember that the table isn't symmetric. Each leg uses the row for the "from" city and the column for the "to" city. The usual mix-up is reading the reverse direction. For example, 2→1 is 9, but 1→2 is 11. The closing leg 6→1 is 10, from row 6, column 1.
