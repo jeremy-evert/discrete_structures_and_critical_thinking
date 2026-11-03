@@ -1,0 +1,106 @@
+\begin{frame}{Four assignments, four rows}
+\princ{EXHAUST SMALL CASES}
+\renewcommand{\arraystretch}{1.35}
+\begin{center}
+\begin{tabular}{c c | c | c | c}
+$P$ & $Q$ & $P\ \text{OR}\ Q$ & $P\ \text{OR}\ \text{NOT }Q$ & $F$ \\\midrule
+False & False & False & True & False\\
+False & True & True & False & False\\
+True & False & True & True & True\\
+True & True & True & True & True
+\end{tabular}
+\end{center}
+\predict{For which row could $B=P\ \text{OR}\ Q$ disagree with $F$?}
+\see{the row $P=False, Q=True$ makes $B=True$ while $F=False$.}
+\note{Fill the row values with the class if possible. The point is not speed; it is covering the entire finite space.}
+\end{frame}
+
+\begin{frame}{One counterexample is enough}
+\princ{COUNTEREXAMPLE}
+\begin{center}
+\begin{tabular}{c c | c | c | c}
+$P$ & $Q$ & $F$ & $B$ & match?\\\midrule
+False & False & False & False & yes\\
+\row{False}{True}{False}{True}
+True & False & True & True & yes\\
+True & True & True & True & yes
+\end{tabular}
+\end{center}
+\begin{alertblock}{Conclusion}
+The proposed simplification is not equivalent to $F$ because one assignment differs.
+\end{alertblock}
+\see{the exact mismatch is $P=False, Q=True$; no larger example is needed.}
+\end{frame}
+
+\begin{frame}[fragile]{Prompt 01: make the claim checkable}
+\princ{DEFINE BEFORE COMPUTING}
+\promptbox{01}{a}
+\predict{What must be defined before an evaluator can be trusted?}
+\see{terms, operators, assignment order, and the meaning of equivalence are visible.}
+\note{Have students identify a missing definition before running anything.}
+\end{frame}
+
+\begin{frame}[fragile]{Prompt 02: make every row visible}
+\princ{EXHAUST SMALL CASES}
+\promptbox{02}{a}
+\predict{Which row should reveal the false simplification?}
+\see{four rows and exactly one mismatch: $P=False, Q=True$.}
+\end{frame}
+
+\begin{frame}{A correct simplification from the activity}
+\princ{COMPARE CLAIMS}
+The Tuesday source activity supplies:
+\[
+E=(P\ \text{AND}\ Q)\ \text{OR}\ (P\ \text{AND}\ \text{NOT }Q)
+\]
+and proposes $S=P$.
+\begin{itemize}
+\item Complete the same four rows.
+\item $E$ and $S$ agree on every row.
+\item A correct simplification is earned by the table, not by familiarity.
+\end{itemize}
+\see{the source example and the deliberately false example use the same checking method.}
+\end{frame}
+
+\begin{frame}{From expression to circuit}
+\princ{REPRESENTATION}
+\begin{columns}[T]
+\begin{column}{0.58\textwidth}
+\begin{tikzpicture}[node distance=7mm, every node/.style={font=\small}, gate/.style={draw,rounded corners,fill=blue!10,minimum width=1.35cm,minimum height=0.65cm}, wire/.style={-{Stealth[length=4pt]},thick}]
+\node (p) {$P$};
+\node (q) [below=of p] {$Q$};
+\node (or1) [gate,right=of p] {OR};
+\node (notq) [gate,right=of q] {NOT $Q$};
+\node (or2) [gate,right=of notq] {OR};
+\node (and) [gate,right=of or1] {AND};
+\node (out) [right=of and] {$F$};
+\draw[wire] (p) -- (or1.west);
+\draw[wire] (q) -- (notq.west);
+\draw[wire] (p) |- (or2.west);
+\draw[wire] (notq.east) -- (or2.west);
+\draw[wire] (or1.east) -- (and.west);
+\draw[wire] (or2.east) |- (and.west);
+\draw[wire] (and.east) -- (out);
+\end{tikzpicture}
+\end{column}
+\begin{column}{0.38\textwidth}
+A circuit is a representation: each gate computes one operation and each wire carries a value.\par\medskip
+\textbf{Check:} a circuit that omits a wire may implement a different expression.
+\end{column}
+\end{columns}
+\predict{If one wire is missing, should we trust the same truth table?}
+\see{the picture must be translated back into an expression before checking it.}
+\end{frame}
+
+\begin{frame}{Equivalence is a universal statement}
+\princ{MATCH THE SCOPE}
+\begin{block}{Equivalent}
+Two expressions are equivalent when they return the same value for every assignment in the declared scope.
+\end{block}
+\begin{itemize}
+\item “Every” is why the four-row table matters.
+\item One mismatch changes an equivalence claim to “not equivalent.”
+\item A matching sample is evidence for those rows, not a universal proof.
+\end{itemize}
+\see{scope = variables $P,Q$ and operators AND, OR, NOT in these examples.}
+\end{frame}

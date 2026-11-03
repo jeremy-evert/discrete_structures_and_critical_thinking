@@ -1,0 +1,55 @@
+\begin{frame}{Satisfiable is not always true}
+\princ{SEPARATE CLAIMS}
+\begin{tabular}{@{}p{3.2cm}p{8.8cm}@{}}
+\textbf{satisfiable} & At least one assignment makes an expression true.\\[4pt]
+\textbf{witness} & A displayed assignment that proves satisfiability.\\[4pt]
+\textbf{tautology} & An expression true for every assignment.\\[4pt]
+\textbf{unsatisfiable} & No assignment makes an expression true.
+\end{tabular}
+\begin{block}{Example}
+$P$ is satisfiable: $P=True$ is a witness. But $P$ is not a tautology: $P=False$ is a counterexample.
+\end{block}
+\predict{Does one satisfying assignment establish “true for every assignment”?}
+\see{No. A witness proves “at least one,” while a tautology needs every row.}
+\end{frame}
+
+\begin{frame}{Three small classifications}
+\princ{CHECK THE WORDING}
+\begin{tabular}{@{}l l l@{}}
+\textbf{Expression} & \textbf{Result} & \textbf{Evidence}\\\midrule
+$P$ & satisfiable, not a tautology & witness $P=True$; counterexample $P=False$\\[4pt]
+$P\ \text{OR}\ \text{NOT }P$ & tautology & both assignments are true\\[4pt]
+$P\ \text{AND}\ \text{NOT }P$ & unsatisfiable & no assignment makes both sides true
+\end{tabular}
+\medskip
+\mistake{“I found one true row” cannot be followed by “therefore it is always true.”}
+\see{the claim word determines the required evidence.}
+\end{frame}
+
+\begin{frame}[fragile]{Prompt 03a: return counterexamples}
+\princ{TEST THE UNIVERSAL CLAIM}
+\promptbox{03}{a}
+\predict{Which pair should have an empty counterexample list?}
+\see{$E$ versus $S$ is equivalent; $F$ versus $B$ returns one exact mapping.}
+\end{frame}
+
+\begin{frame}[fragile]{Prompt 03b: witness versus tautology}
+\princ{DO NOT OVERCLAIM}
+\promptbox{03}{b}
+\predict{What is the difference between finding one witness and checking every row?}
+\see{the output labels satisfiability, tautology, and unsatisfiability separately.}
+\end{frame}
+
+\begin{frame}{Truth tables and circuits agree when the representation agrees}
+\princ{CHECK THE REPRESENTATION}
+\begin{itemize}
+\item The expression is the rule.
+\item The circuit is a picture of that rule.
+\item The table is the exhaustive behavior of that rule over its assignments.
+\end{itemize}
+\begin{block}{Visible check}
+Pick one row, evaluate the expression, follow the same inputs through the gates, and compare the outputs.
+\end{block}
+\predict{What could make a circuit and expression disagree even if both programs run?}
+\see{an omitted wire, wrong gate, or unstated input can change the model.}
+\end{frame}

@@ -1,0 +1,87 @@
+\begin{frame}{Now change the question: how does it move?}
+\princ{FROM VALUES TO STATES}
+A \textbf{finite-state machine} is a bounded model with named states and input-triggered transitions.
+\begin{tabular}{@{}p{3.0cm}p{9.5cm}@{}}
+\textbf{input} & An event supplied to the machine.\\[2pt]
+\textbf{start state} & The state where a trace begins.\\[2pt]
+\textbf{transition} & The declared next-state rule for a state and input.\\[2pt]
+\textbf{trace} & The ordered states visited as inputs are processed.\\[2pt]
+\textbf{model limit} & A relevant fact the model does not represent or establish.
+\end{tabular}
+\predict{What must be named before another person can reproduce a trace?}
+\see{states, input alphabet, start state, transitions, and input sequence.}
+\end{frame}
+
+\begin{frame}{Synthetic badge model}
+\princ{MAKE TRANSITIONS EXPLICIT}
+\begin{columns}[T]
+\begin{column}{0.55\textwidth}
+\begin{tikzpicture}[node distance=24mm, every node/.style={font=\small}, state/.style={draw,rounded corners,fill=blue!10,minimum width=2cm,minimum height=1cm}, wire/.style={-{Stealth[length=5pt]},thick}]
+\node[state] (locked) {Locked};
+\node[state,right=of locked] (open) {Open};
+\draw[wire] (locked) to[bend left=18] node[above] {valid} (open);
+\draw[wire] (open) to[bend left=18] node[below] {timeout} (locked);
+\end{tikzpicture}
+\end{column}
+\begin{column}{0.4\textwidth}
+\textbf{Declared inputs:} valid, timeout.\\[4pt]
+\textbf{Start:} Locked.\\[4pt]
+\textbf{Classroom rule:} other inputs leave the state unchanged.
+\end{column}
+\end{columns}
+\predict{Starting at Locked, what states follow valid, timeout, valid?}
+\see{Locked $\to$ Open $\to$ Locked $\to$ Open.}
+\mistake{An input is not a state; it is the event used to choose a transition.}
+\end{frame}
+
+\begin{frame}{Trace it one input at a time}
+\princ{CHECK THE TRACE}
+\begin{center}
+\begin{tabular}{c|c|c}
+\textbf{step} & \textbf{input} & \textbf{state after input}\\\midrule
+start & --- & Locked\\
+1 & valid & Open\\
+2 & timeout & Locked\\
+3 & valid & Open
+\end{tabular}
+\end{center}
+\begin{block}{Trace}
+\code{Locked -> Open -> Locked -> Open}
+\end{block}
+\see{the trace includes the start state so another person can reproduce it.}
+\end{frame}
+
+\begin{frame}[fragile]{Prompt 04: run the complete model}
+\princ{REPRODUCIBLE TRACE}
+\promptbox{04}{a}
+\predict{What should the final state be after the three inputs?}
+\see{the exact four-state sequence is Locked, Open, Locked, Open.}
+\end{frame}
+
+\begin{frame}{A model can be incomplete}
+\princ{FIND WHAT WAS FORGOTTEN}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\textbf{Declared states:} Locked, Open\\
+\textbf{Inputs:} valid, timeout\\[6pt]
+\begin{tabular}{@{}l l@{}}
+\textbf{Present} & Locked + valid $\to$ Open\\
+\textbf{Missing} & Open + timeout $\to$ Locked
+\end{tabular}
+\end{column}
+\begin{column}{0.47\textwidth}
+\begin{alertblock}{Do not fill it silently}
+An implicit self-loop is not the same as a declared transition. List the state/input pairs and compare them with the table.
+\end{alertblock}
+\end{column}
+\end{columns}
+\predict{Which pair must a validator report?}
+\see{exactly $(Open, timeout)$ is absent from the intentionally incomplete model.}
+\end{frame}
+
+\begin{frame}[fragile]{Prompt 05: name the missing transition}
+\princ{VALIDATE THE MODEL}
+\promptbox{05}{a}
+\predict{What should appear in the missing-transition list?}
+\see{exactly $(Open, timeout)$, with no automatic self-loop.}
+\end{frame}

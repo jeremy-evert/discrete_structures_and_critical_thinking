@@ -1,0 +1,22 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+\usetheme{Madrid}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{xcolor}
+\lstset{basicstyle=\ttfamily\fontsize{6.7}{7.8}\selectfont,breaklines=true,breakindent=8pt,columns=fullflexible,keepspaces=true,showstringspaces=false,upquote=false,literate={~}{{\textasciitilde}}1}
+\newcommand{\code}[1]{\texttt{\detokenize{#1}}}
+\newcommand{\princ}[1]{\begin{tikzpicture}[remember picture,overlay]\node[anchor=north east,fill=orange!85!red,text=white,font=\bfseries\fontsize{7}{8}\selectfont,inner sep=3pt,text width=5.9cm,align=center,rounded corners=2pt] at ([xshift=-5pt,yshift=-5pt]current page.north east){\hyphenpenalty=10000\relax PRINCIPLE: #1};\end{tikzpicture}}
+\newcommand{\promptbox}[2]{\IfFileExists{prompts_txt/#1_#2.txt}{\begin{alertblock}{PROMPT FOR CLAUDE \hfill {\scriptsize prompts/\input{prompts_txt/#1.name}}}\IfFileExists{prompts_txt/#1_#2.small}{\lstset{basicstyle=\ttfamily\fontsize{5.9}{6.8}\selectfont}}{}\lstinputlisting{prompts_txt/#1_#2.txt}\end{alertblock}}{\begin{alertblock}{PROMPT FOR CLAUDE (#1 #2)}PENDING: prompt file not copied yet.\end{alertblock}}}
+\newcommand{\see}[1]{{\small\textbf{\textcolor{green!40!black}{What you should see:}} #1\par}}
+\newcommand{\predict}[1]{{\small\textbf{\textcolor{blue!60!black}{PREDICT (30 s):}} #1\par}}
+\newcommand{\mistake}[1]{{\scriptsize\textbf{\textcolor{red!60!black}{Common mistake:}} #1\par}}
+\newcommand{\row}[4]{#1 & #2 & #3 & #4\\}
+\title{Boolean Algebra, Circuits, SAT, and State Models}
+\subtitle{Exhaust small cases; name what the model leaves out}
+\author[COMSC 2043 DSCT]{COMSC 2043 \textbullet\ Discrete Structures and Critical Thinking}
+\date{Week 14, Tuesday, November 17, 2026}
