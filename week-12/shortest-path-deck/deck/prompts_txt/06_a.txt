@@ -1,0 +1,3 @@
+In tour.py add brute_force(dist, start=1) using itertools.permutations on the other cities, so the
+start city is fixed. For each order build the tour, compute tour_length, and keep the best.
+Return (best_tour, best_total, count_of_tours_tried). Run it and show me all three values.

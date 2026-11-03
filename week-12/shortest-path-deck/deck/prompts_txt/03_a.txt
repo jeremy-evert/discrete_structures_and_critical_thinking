@@ -1,0 +1,3 @@
+In tour_demo, run legs([1, 2, 3, 4, 5, 6], dist) and tour_length on the same tour.
+Print the six legs and the total. I will compare them with the legs and total I added up by hand.
+If they differ, do not change my numbers: tell me which leg differs and why.
