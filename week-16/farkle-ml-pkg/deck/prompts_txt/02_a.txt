@@ -10,7 +10,7 @@ Work:
 - State what appears better in this one sample under your predeclared rule.
 - Name one specific reason this result could mislead you.
 
-Check:
+Check Your Answer:
 - Rebuild each rate from its numerator and denominator.
 - Separate "observed in this sample" from "generally better."
 

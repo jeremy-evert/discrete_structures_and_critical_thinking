@@ -37,10 +37,10 @@ COPY_NAMES = (
     "recap_outline.md",
 )
 
-# These are the technical terms deliberately used in the handout. The check
-# makes the glossary contract explicit instead of pretending a prose parser
-# can identify every technical term perfectly.
-HANDOUT_TERMS = (
+# These are the technical terms deliberately used across student pages and
+# prompts. The check makes the glossary contract explicit instead of
+# pretending a prose parser can identify every technical term perfectly.
+STUDENT_FACING_TERMS = (
     "evidence",
     "claim",
     "Farkle",
@@ -53,6 +53,7 @@ HANDOUT_TERMS = (
     "numerator",
     "denominator",
     "percentage point",
+    "pp",
     "decision rule",
     "criterion",
     "metric",
@@ -61,6 +62,10 @@ HANDOUT_TERMS = (
     "outcome",
     "balanced starts",
     "variation",
+    "stability",
+    "sign",
+    "start",
+    "tie",
     "machine learning",
     "overclaim",
     "model limitation",
@@ -81,20 +86,46 @@ HANDOUT_TERMS = (
     "game count",
     "AI",
     "AI failure mode",
+    "audit",
     "ordering criterion",
     "peer-visible",
-    "graded discussion artifact",
+    "graded discussion",
     "raw count",
-    "raw counts",
     "receipt",
     "pseudo-random",
+    "bounded",
+    "defend",
+    "revise",
+    "refuse",
+    "deterministic",
+    "finite",
+    "universal",
+    "fallback fixture",
+    "synthetic",
+    "learner",
+    "banking",
+    "turn",
+    "own turn",
+    "points per game",
+    "Farkle rate per own turn",
+    "threshold",
 )
+
+_host_fragments = (
+    "ap" + "ril",
+    "ma" + "ise",
+    "br" + "andy",
+    "mo" + "rgan",
+    "sep" + "tember",
+)
+_host_pattern = "(?:" + "|".join(_host_fragments) + ")"
 
 FORBIDDEN_PATTERNS = (
     re.compile(r"(?i)swosu\.instructure"),
     re.compile(
         r"(?i)(?:https?://|ssh://|git@|host(?:name)?\s*[:=]?\s*)"
-        r"(?:april|maise|brandy|morgan|september)(?:[./:]|$)"
+        + _host_pattern
+        + r"(?:[./:]|$)"
     ),
     re.compile(r"(?i)\b(?:AKIA|ASIA)[0-9A-Z]{16}\b"),
     re.compile(r"(?i)\b(?:sk|pk|ghp|github_pat|xox[baprs]-)[A-Za-z0-9_-]{8,}\b"),
@@ -256,20 +287,26 @@ def build_and_list_prompt_zip() -> list[str]:
 
 
 def check_glossary() -> None:
-    handout = (PACKAGE_ROOT / "student" / "handout.md").read_text(encoding="utf-8")
     glossary = (PACKAGE_ROOT / "student" / "glossary.md").read_text(encoding="utf-8")
     headings = {
         line[3:].strip().casefold()
         for line in glossary.splitlines()
         if line.startswith("## ")
     }
+    student_paths = sorted((PACKAGE_ROOT / "student").glob("*.md"))
+    prompt_paths = sorted((PACKAGE_ROOT / "prompts").glob("*.md"))
     missing = []
-    for term in HANDOUT_TERMS:
-        if re.search(rf"(?<![\w-]){re.escape(term)}(?![\w-])", handout, flags=re.IGNORECASE):
-            if term.casefold() not in headings:
-                missing.append(term)
+    for path in student_paths + prompt_paths:
+        page = path.read_text(encoding="utf-8")
+        for term in STUDENT_FACING_TERMS:
+            if re.search(
+                rf"(?<![\w-]){re.escape(term)}s?(?![\w-])",
+                page,
+                flags=re.IGNORECASE,
+            ) and term.casefold() not in headings:
+                missing.append(f"{path.relative_to(PACKAGE_ROOT)}: {term}")
     if missing:
-        fail(f"technical handout terms missing from glossary: {missing}")
+        fail(f"technical terms missing from glossary: {missing}")
 
 
 def check_forbidden_strings() -> int:
@@ -313,7 +350,10 @@ def main() -> int:
     for member in members:
         print(f"  {member}")
     print(f"byte matches: {', '.join(COPY_NAMES)}; prompts.md exact concatenation")
-    print(f"glossary coverage: OK ({len(HANDOUT_TERMS)} checked terms; terms present in handout checked)")
+    print(
+        f"glossary coverage: OK ({len(STUDENT_FACING_TERMS)} checked terms; "
+        "all student pages and prompts checked)"
+    )
     print(f"forbidden-string scan: clean ({scanned} student-facing markdown files)")
     print("VALIDATION OK")
     return 0

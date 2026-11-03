@@ -1,6 +1,6 @@
 # Week 16 Tuesday: Farkle Evidence Concept Map
 
-The map is a reading path: start with the fixed comparison, then move from a claim to evidence, checks, and a bounded conclusion.
+The map is a reading path: start with the fixed comparison, then move from a claim to evidence, checks, and a bounded conclusion. **Bounded** means limited to the stated conditions. Use the [Week 16 glossary](glossary.md) when a term is unfamiliar. A **sign** tells whether a number is plus or minus; in our table the A-minus-B signs are -, +, +.
 
 ## Indented map
 
@@ -11,7 +11,7 @@ The map is a reading path: start with the fixed comparison, then move from a cla
   - Ten games per seed
   - Balanced starts: five for A and five for B
   - Named seeds: 17, 6262, and 2026
-  - Model assumptions: what stays fixed and what the model can see
+  - Model assumptions: what stays fixed and what information a strategy uses
 - Claim
   - A precise statement to test
   - “Better” needs a criterion or decision rule
@@ -25,7 +25,7 @@ The map is a reading path: start with the fixed comparison, then move from a cla
   - Seed makes a sample repeatable, not universal
 - Check
   - Rebuild each rate from numerator and denominator
-  - Compare the sign of A-minus-B in every row
+  - Compare the sign of A-minus-B in every row; the sign means plus or minus
   - Find minimum, maximum, and range
   - Ask whether an alternate metric changes the decision
   - Audit a confident reader or AI for hidden denominator, missing ordering criterion, one-sample proof, and model limits
@@ -40,11 +40,11 @@ The map is a reading path: start with the fixed comparison, then move from a cla
   - Work
   - Check Your Answer
   - One-Sentence Summary
-  - Peer-visible graded discussion artifact
+  - Peer-visible graded discussion
 
 ## Same map as a table
 
-| Start here | Ask | Visible check | Safe next move |
+| Start here | Ask | Visible check | Next step |
 |---|---|---|---|
 | Fixed comparison | What is held constant? | Target, labels, games, starts, and seeds are written | Record assumptions |
 | Claim and criterion | What does “better” mean? | Another reader can apply the rule | Write a prediction |

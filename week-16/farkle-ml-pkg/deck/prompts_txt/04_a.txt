@@ -6,11 +6,11 @@ Rules / Assumptions:
 - Treat a finite simulation as evidence about this model, not proof about every possible Farkle game.
 
 Work:
-- Mark the hidden denominator, missing ordering criterion, unsupported leap from one sample to a universal claim, and ignored model limitation.
+- Quote the words and label each problem: hidden denominator, missing ordering criterion, unsupported leap from one sample to a universal claim, and ignored model limitation.
 - Rewrite the statement so it says only what the evidence earns.
 - Name one additional check that would be useful without turning this into a programming project.
 
-Check:
+Check Your Answer:
 - Does the repaired sentence include scope, rules, denominator or raw counts, and a limitation?
 - Does it avoid calling a strategy "best" without a decision rule?
 

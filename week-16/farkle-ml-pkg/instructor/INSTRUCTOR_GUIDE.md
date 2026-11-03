@@ -48,7 +48,7 @@ The code test is deliberately standard-library-only for the reader itself; `pyte
 
 ### Tectonic build note
 
-The deck source is already built in this package. If a deck source changes, run `deck/build.sh` in an environment with the package's configured Tectonic binary at `/home/jevert/.local/bin/tectonic`; the script also regenerates numeric macros, prompt text, and the slide index, then checks PDF logs for overfull/error lines. It writes `deck/farkle_ml_slides.pdf` and the instructor-only `deck/farkle_ml_notes.pdf`. Do not rebuild merely for this slice: no deck source changed, and no PDF build is claimed here.
+The deck source is already built in this package. If a deck source changes, run `deck/build.sh` in an environment with the package's configured Tectonic binary; the script also regenerates numeric macros, prompt text, and the slide index, then checks PDF logs for overfull/error lines. It writes `deck/farkle_ml_slides.pdf` and the instructor-only `deck/farkle_ml_notes.pdf`. Do not rebuild merely for this slice: no deck source changed, and no PDF build is claimed here.
 
 ## Evidence handling
 
