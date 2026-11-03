@@ -1,5 +1,10 @@
 # Week 14 Tuesday: Boolean Algebra, Circuits, SAT, and State Models
 
+An **assignment** is one choice of True or False for each variable.
+**Equivalent** means two expressions give the same result for every allowed
+assignment. A **state model** is a simplified description of a system using
+named conditions and rules for how inputs change them.
+
 **Big question:** Is this transformation equivalent under every assignment,
 and what can this state model not establish?
 

@@ -75,6 +75,7 @@ and proposes $S=P$.
 \node (and) [gate,right=of or1] {AND};
 \node (out) [right=of and] {$F$};
 \draw[wire] (p) -- (or1.west);
+\draw[wire] (q) |- (or1.south);
 \draw[wire] (q) -- (notq.west);
 \draw[wire] (p) |- (or2.west);
 \draw[wire] (notq.east) -- (or2.west);
