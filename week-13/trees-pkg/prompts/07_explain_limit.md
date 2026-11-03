@@ -1,0 +1,13 @@
+# Prompt 07: explain the model's limit
+
+Finish with a bounded conclusion supported by the synthetic checks.
+
+```prompt-a
+Predict the evidence you will print before running the complete suite. Run the full
+pytest suite and print the project preorder, postorder, and breadth-first traces, the
+decision-tree traces, and the dropped dependency set. Then write one bounded
+conclusion: the tree is a useful containment view with a fixed traversal order, but
+it does not preserve the requirements -> tests dependency. Explain which result is a
+direct check and which statement is a limitation of the model. Use synthetic data
+only, and do not edit tests while explaining the result.
+```
