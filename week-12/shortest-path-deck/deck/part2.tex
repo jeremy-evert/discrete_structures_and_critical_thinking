@@ -1,0 +1,42 @@
+\section{The tour}
+\begin{frame}{A tour: visit every city once, then come home}
+\princ{MODEL VS PROCEDURE}
+\begin{columns}[T]
+\begin{column}{0.55\textwidth}
+Try the simplest order: \textbf{1, 2, 3, 4, 5, 6, and back to 1}.
+\begin{itemize}
+\item Six cities means six legs, because the trip ends where it started.
+\item Each leg is one cell of the table: read it \emph{from} the row \emph{to} the column.
+\end{itemize}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{center}\tourpic{\NPairsNat}\end{center}
+\end{column}
+\end{columns}
+\predict{How many legs does the tour have? (Careful: not five.)}
+\note{Draw six dots on the board and walk 1 to 2 to 3 and so on, ending with the arrow back to 1. Ask for the number of legs. Expected: six; the common answer is five because we visited six cities, but the trip back home is a leg too. The picture is the model, the table is the data.}
+\end{frame}
+
+\begin{frame}{Total the six legs, step by step}
+\princ{CHECK THE WORK}
+\begin{center}\tbl{nat}\end{center}
+\begin{tabular}{@{}lll@{}}
+1$\to$2: \NLegNatOne & 2$\to$3: \NLegNatTwo & 3$\to$4: \NLegNatThree\\
+4$\to$5: \NLegNatFour & 5$\to$6: \NLegNatFive & 6$\to$1: \NLegNatSix
+\end{tabular}\\[3pt]
+\see{\NLegNatOne\,+\,\NLegNatTwo\,+\,\NLegNatThree\,+\,\NLegNatFour\,+\,\NLegNatFive\,+\,\NLegNatSix\ = \textbf{\NTotalNat}}
+\note{Do the addition on the board one leg at a time, with the highlighted cells showing where each number came from. Hand work: eleven plus twelve is twenty-three, plus ten is thirty-three, plus six is thirty-nine, plus six is forty-five, plus ten is fifty-five. Ask: what is the return leg, and did you remember it? Expected: 6 to 1, which is ten. The reverse tour 1-6-5-4-3-2-1 uses six different cells; its total is \NTotalRev, so it is a different tour, not the same one backwards.}
+\end{frame}
+
+\begin{frame}{What are we optimizing?}
+\princ{MODEL VS PROCEDURE}
+\begin{block}{The objective}
+Find the \textbf{closed tour} that visits \textbf{every city exactly once} and has the \textbf{smallest total length}.
+\end{block}
+\begin{itemize}
+\item Our first tour, 1-2-3-4-5-6-1, has total \textbf{\NTotalNat}. Can we do better?
+\item ``Shortest'' means nothing until we say \emph{what} is measured (total length), \emph{over what} (closed tours), and \emph{in which direction} (the table).
+\end{itemize}
+\see{one tour, total \NTotalNat. That is a number to beat, not an answer.}
+\note{This is Tuesday's line: shortest needs an objective and weights. Say all three out loud: what is measured, over which choices, in which direction. Ask: is fifty-five the shortest tour? Expected: we do not know, we have only tried one. Setup for the next three sections: three ways to look for a better tour.}
+\end{frame}
