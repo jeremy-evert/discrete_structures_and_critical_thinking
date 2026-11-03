@@ -1,7 +1,7 @@
 # Luna receipt — slices 4 and 5
 
 Date: 2026-11-03  
-Worktree: `/mnt/nora/git/worktrees/dsct-w16-farkle-ml`  
+Worktree: `<worktree>`
 Branch: `ivy/dsct-w16-farkle-ml-20261103`  
 Base HEAD preserved: `3a633af12742bf238a2f3af365d3916c97a19de0`
 
@@ -62,7 +62,7 @@ The first test attempt exposed only a binary-floating-point exact-equality asser
 Command:
 
 ```text
-tmpdir=$(mktemp -d /tmp/farkle-ml-code-test.XXXXXX); cp -a /mnt/nora/git/worktrees/dsct-w16-farkle-ml/week-16/farkle-ml-pkg/code "$tmpdir/code"; cd "$tmpdir/code"; echo "fresh copy: $tmpdir/code"; pytest
+tmpdir=$(mktemp -d /tmp/farkle-ml-code-test.XXXXXX); cp -a week-16/farkle-ml-pkg/code "$tmpdir/code"; cd "$tmpdir/code"; echo "fresh copy: $tmpdir/code"; pytest
 ```
 
 Output:

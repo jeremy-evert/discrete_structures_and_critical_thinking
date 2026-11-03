@@ -14,12 +14,12 @@ Work:
 - Write the rule you will use before you inspect the repeated seed bundle.
 - Make one prediction and give one reason for it.
 
-Check:
+Check Your Answer:
 - Could another reader apply your rule without guessing what "better" means?
 - Does your rule name the metric, denominator, and scope?
 
 One-Sentence Summary:
-- Finish: "Under these rules, I will call ___ better only if ___; otherwise I will ___."
+- Finish: "Under these rules, I will call ___ better only if ___; otherwise I will refuse."
 
 Do not write a Farkle engine, simulation, or machine-learning algorithm. Make the reasoning trail visible instead.
 ```
@@ -38,7 +38,7 @@ Work:
 - State what appears better in this one sample under your predeclared rule.
 - Name one specific reason this result could mislead you.
 
-Check:
+Check Your Answer:
 - Rebuild each rate from its numerator and denominator.
 - Separate "observed in this sample" from "generally better."
 
@@ -51,7 +51,7 @@ Do not write code or design a Farkle engine. Audit the evidence and its interpre
 
 ```prompt-a
 Sources:
-- Use the three deterministic seed rows shown in the Thursday-preview table.
+- Use the three deterministic seed rows shown in the three-row table on the Week 16 Thursday page.
 
 Rules / Assumptions:
 - Confirm that the strategies, target, game count, classroom rules, and start balance stay fixed.
@@ -59,10 +59,10 @@ Rules / Assumptions:
 
 Work:
 - Record each row's raw wins, denominators, win rates, and A-minus-B difference.
-- Check whether the ordering has the same sign in every row.
-- Find the smallest difference, largest difference, and range.
+- Check whether the same strategy is ahead in every row (are all A-minus-B numbers the same sign: all plus or all minus?).
+- Find the most negative and most positive A-minus-B values, and the range.
 
-Check:
+Check Your Answer:
 - Does the bundle satisfy your predeclared rule?
 - What can the bundle support, and what would still be an overclaim?
 
@@ -82,11 +82,11 @@ Rules / Assumptions:
 - Treat a finite simulation as evidence about this model, not proof about every possible Farkle game.
 
 Work:
-- Mark the hidden denominator, missing ordering criterion, unsupported leap from one sample to a universal claim, and ignored model limitation.
+- Quote the words and label each problem: hidden denominator, missing ordering criterion, unsupported leap from one sample to a universal claim, and ignored model limitation.
 - Rewrite the statement so it says only what the evidence earns.
 - Name one additional check that would be useful without turning this into a programming project.
 
-Check:
+Check Your Answer:
 - Does the repaired sentence include scope, rules, denominator or raw counts, and a limitation?
 - Does it avoid calling a strategy "best" without a decision rule?
 

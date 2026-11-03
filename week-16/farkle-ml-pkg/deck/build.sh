@@ -4,7 +4,7 @@ set -euo pipefail
 cd "$(dirname "$0")"
 
 n=farkle_ml
-tectonic_bin="/home/jevert/.local/bin/tectonic"
+tectonic_bin="${TECTONIC_BIN:-$(python3 -c 'from pathlib import Path; print(Path.home() / ".local/bin/tectonic")')}"
 
 python3 scripts/make_numbers.py >/dev/null
 python3 extract_prompts.py >/dev/null

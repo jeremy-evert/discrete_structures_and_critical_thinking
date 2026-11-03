@@ -11,11 +11,11 @@ Work:
 - Write the rule you will use before you inspect the repeated seed bundle.
 - Make one prediction and give one reason for it.
 
-Check:
+Check Your Answer:
 - Could another reader apply your rule without guessing what "better" means?
 - Does your rule name the metric, denominator, and scope?
 
 One-Sentence Summary:
-- Finish: "Under these rules, I will call ___ better only if ___; otherwise I will ___."
+- Finish: "Under these rules, I will call ___ better only if ___; otherwise I will refuse."
 
 Do not write a Farkle engine, simulation, or machine-learning algorithm. Make the reasoning trail visible instead.

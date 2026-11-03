@@ -1,5 +1,5 @@
 Sources:
-- Use the three deterministic seed rows shown in the Thursday-preview table.
+- Use the three deterministic seed rows shown in the three-row table on the Week 16 Thursday page.
 
 Rules / Assumptions:
 - Confirm that the strategies, target, game count, classroom rules, and start balance stay fixed.
@@ -7,10 +7,10 @@ Rules / Assumptions:
 
 Work:
 - Record each row's raw wins, denominators, win rates, and A-minus-B difference.
-- Check whether the ordering has the same sign in every row.
-- Find the smallest difference, largest difference, and range.
+- Check whether the same strategy is ahead in every row (are all A-minus-B numbers the same sign: all plus or all minus?).
+- Find the most negative and most positive A-minus-B values, and the range.
 
-Check:
+Check Your Answer:
 - Does the bundle satisfy your predeclared rule?
 - What can the bundle support, and what would still be an overclaim?
 
