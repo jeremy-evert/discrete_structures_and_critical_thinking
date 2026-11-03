@@ -1,0 +1,9 @@
+I added `brute_force(dist, start=1)` to `tour.py` (plus `import itertools`). It tries every order of the other five cities with city 1 fixed as the start. The two existing tests still pass.
+
+- **best_tour:** `[1, 5, 2, 6, 3, 4]`
+- **best_total:** 34
+- **count_of_tours_tried:** 120, which is 5! orderings
+
+The legs of the best tour are 1→5 (5), 5→2 (3), 2→6 (4), 6→3 (2), 3→4 (10) and the closing leg 4→1 (10). They add up to 34.
+
+This is the true optimum for a tour starting at city 1. The greedy tour scored 39 and the best of the five random guesses scored 44, so both were beaten. If two orders tied for 34, the code keeps the first one it found, because it only replaces the best on a strictly smaller total.

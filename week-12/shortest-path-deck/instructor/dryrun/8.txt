@@ -1,0 +1,10 @@
+I added both tests to `test_tour.py`, and all 8 tests pass:
+
+```
+8 passed in 0.01s
+```
+
+- **`test_brute_force_count_is_factorial`:** one parametrized test, which pytest runs as 5 cases for n = 2 to 6. For each n, it keeps only the table entries where both cities are ≤ n. It then checks that the count `brute_force` returns equals `math.factorial(n - 1)`.
+- **`test_brute_force_not_worse_than_greedy`:** checks that brute force's best total (34) is less than or equal to the greedy tour's total (39).
+
+The count of 8 is the 2 earlier tests, the 5 parametrized cases, and the greedy comparison.

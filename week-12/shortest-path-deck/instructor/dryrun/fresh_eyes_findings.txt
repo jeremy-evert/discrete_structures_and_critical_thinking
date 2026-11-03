@@ -1,0 +1,79 @@
+1. "Show & Tell" / "Decision Gate": Both are used as if I know what they are before they're defined. The Thursday page says Show & Tell is "not a separate graded submission" and that "the old Show & Tell report was retired", but I never saw the old report. The Decision Gate is called "the individual Decision Gate" and I'm sent to "the Decision Gate page", which isn't in this packet. I don't know what it is or when it's due.
+
+2. "`assignments/show-and-tell-artifact.md`, kept as the reference for the four prompts below": There are five numbered items on the page, not four. I don't know which four prompts it means or where this file is.
+
+3. "Sources → Rules / Assumptions → Work → Check → One-Sentence Summary (conclusion plus its limit)": The handout lists these as the course method but never shows an example. "Sources (facts you were given)" is vague. I can't tell what "its limit" means or what a good summary looks like.
+
+4. "Predict → Run → Explain": I don't know what "Run" means for the paper parts of the week. It sounds like running code, but I haven't been told what to run or where.
+
+5. "Six cities, numbered 1 to 6. A table gives the travel cost…": The table is never in the packet. Prompt 01 says "I will paste it", but I don't know where I get it.
+
+6. "(n−1)!" and "15 → 87,178,291,200": The handout uses the factorial before the glossary defines it. The glossary says "4! = 24" but never says why a tour has (n−1)! orders. The handout says "start fixed" without explaining why fixing the start is allowed. Also, "3 cities → 2" is confusing: with 3 cities, the "start fixed" count is 2! = 2, but I can't see why we ignore the other starting points.
+
+7. "At a million tours a second, 15 cities takes about 24 hours.": I can't check this. 87 billion divided by a million is about 87,000 seconds, which is about 24 hours, but the page doesn't show that step. I also don't see why the concept map says "too slow past about 12 cities" when the handout's own example is 15.
+
+8. "Guess and check… Never knows when it is done; the best-so-far only drops, never rises": I don't see why it can't know it's done. "Best-so-far only drops" assumes lower is better, which isn't said. "Guess and check" is also a bad name for me, since I thought it meant trial and error in general.
+
+9. "Greedy… can be fooled": I don't know what "fooled" means formally. The handout gives no example, only a self-check item asking me to "show a case where greedy is not best".
+
+10. "Is every leg really an edge?": The procedure question uses "leg" and "edge" as if they were different things. The glossary says a leg is "one edge used in a trip", but I don't know why both words are needed.
+
+11. "A subway map is not the city": This is an analogy to "model", but "model" in my other classes means math or statistical models. The glossary says it's "the choices about what to keep," which isn't how I've seen it used.
+
+12. "Graph: … Not a chart with axes." and "Edge: one connection between two places": The glossary never says that a graph is a formal object, such as a pair (V, E). I don't know whether I'm expected to write that notation.
+
+13. "Directed… 1→2 does not mean 2→1 exists" vs. "Asymmetric": A directed graph and an asymmetric weighting are listed separately. In this problem every pair has an edge both ways but with different costs. I don't see why "directed" applies if both directions exist.
+
+14. "The diagonal cells are blank": I don't know what the diagonal is, or why those cells exist. I'm guessing it's the city-to-itself entries.
+
+15. "Tie… we break ties by taking the lower city number.": The glossary says this, but the handout's definition of Greedy never mentions it. I don't know whether this rule is part of greedy or just a convention.
+
+16. "Seed… so your output can match your neighbor's": I don't know what a random number generator is or why a seed makes it repeat. "The same seed gives the same 'random' rolls" is unexplained. The handout also says to "roll a die", but a six-sided die can't pick among the 5 remaining cities.
+
+17. "Permutation": Defined as "one ordering of a list", then used as "itertools.permutations" with no explanation of what itertools is or how I'd read the result.
+
+18. "Test (pytest)": I don't know what a test is for in a math course or how pytest is run. I also don't know what "a pass or fail" check looks like.
+
+19. "Counterexample… (a case where greedy is not best)": The example only works if I already know what greedy does. It's also unclear whether one counterexample is enough to say greedy is "wrong".
+
+20. "CSV: a plain text table, values separated by commas": I don't know how to open or read one by hand.
+
+21. "Prompt 01… `data/distances.csv`", "`tour.py`", "`if __name__ == "__main__":`": I have only one intro programming class, and I haven't seen `__name__ == "__main__"`. I don't know what a folder like `tour_demo` means in my setup, or where I type any of this.
+
+22. "Paste the block below into Claude" / "Each block is exactly what is on the slide": I don't know what Claude is in this context, why we're giving it these prompts, or why I'd use it instead of writing the code myself. The slides aren't in the packet either. "`prompt-a` is the first box on the slide" refers to a layout I can't see.
+
+23. "returns a dictionary `{(from_city, to_city): distance}`": I don't know what a dictionary with a pair as its key means. "using whole numbers" is also unclear (int vs. float?).
+
+24. "`tour_length(tour, dist)`", "`legs(tour, dist)`": `dist` is never defined. I'm guessing it's the dictionary from Prompt 01, but the prompt doesn't say.
+
+25. "Keep both functions short": I don't know what counts as short or why that's an instruction.
+
+26. "`rng.choice()`", "`random.Random(seed)`": I haven't seen `rng` or `random.Random`. "rng" isn't expanded anywhere.
+
+27. "if it is already in the tour, reject it and pick again… the list of every roll (rejected ones too)": I can't tell what a "roll" is here, since it's a random city pick, not a die.
+
+28. "Run it with k=5 and seed=3114": I don't know what `k` is. I'm guessing it's the number of tours. The meaning of 3114 isn't explained.
+
+29. "`brute_force(dist, start=1)` using `itertools.permutations`… `(best_tour, best_total, count_of_tours_tried)`": The prompt returns a tuple of three things, which I haven't seen. Why does brute force need to return a count?
+
+30. "`math.factorial(n - 1)`", "use only the first n cities of the table": I don't know how to take the first n cities of the table, so I can't see how the test for n = 2 to 6 works. It's also unclear whether "n = 2" gives a legal tour, since two cities means going there and back.
+
+31. "brute_force's best total is less than or equal to the total of greedy_tour": I can't tell why this must be true. The reasoning isn't stated.
+
+32. "Show me the one-line summary": I don't know what pytest's one-line summary looks like.
+
+33. "If they differ, do not change my numbers: tell me which leg differs and why": I don't know what to do if my hand total and the program's total differ. Who is wrong, and how do I find out?
+
+34. "Claim: 'the best tour is 1-5-2-6-3-4-1 with length 34 under these rules'": The example doesn't match the table, which I can't see. I can't tell whether 34 is plausible.
+
+35. "Defend the model and the procedure separately… Say what your evidence does not show.": I don't know how to tell what my evidence does and doesn't show.
+
+36. "Critique the claim, not the person", "Claim I challenged: the assumption, evidence, inference or model": I don't know the difference between an assumption, evidence, an inference and a model in this context.
+
+37. "A correct traversal on a bad graph is still useful evidence.": "Traversal" appears only here and in "your path or traversal". It isn't defined, and it contradicts the handout, which says a correct procedure on the wrong model gives a confident wrong answer.
+
+38. "Objective: … whether things connect": This is a new kind of question (connectivity) that doesn't appear anywhere else in the week.
+
+39. "A perfect procedure on the wrong model… AI tools do this": I don't see the connection to the rest of the week. It's a claim about AI that isn't backed up by anything on the pages.
+
+40. "Show & Tell… 0:48-1:03 Peer questions and critique" vs. "0:18-0:48 Rotating defenses": I don't know what "rotating defenses" means (do I move around the room?), or whether I need a partner.

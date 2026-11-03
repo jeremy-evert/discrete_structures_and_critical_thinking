@@ -1,0 +1,18 @@
+I added `legs` and `tour_length` to `tour.py`, above the `__main__` block. `read_table` is unchanged.
+
+```python
+def legs(tour, dist):
+    return [(a, b, dist[(a, b)]) for a, b in zip(tour, tour[1:] + tour[:1])]
+
+def tour_length(tour, dist):
+    return sum(d for _, _, d in legs(tour, dist))
+```
+
+I tested it on `[1, 2, 3, 4, 5, 6]`:
+
+```
+(1, 2, 11), (2, 3, 12), (3, 4, 10), (4, 5, 6), (5, 6, 6), (6, 1, 10)
+total = 55
+```
+
+The last leg is 6→1 (10), so the return to the start is counted. `tour_length` is built on `legs`, so the two always agree.

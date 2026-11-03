@@ -1,0 +1,10 @@
+I created `tour_demo/` with `data/distances.csv` and `tour.py`, and ran the script from inside the folder. Its output:
+
+```
+1 -> 2: 11
+2 -> 1: 9
+```
+
+The two directions differ (11 vs 9), so the table is asymmetric. That matches your CSV, where row 1, column 2 is 11 and row 2, column 1 is 9.
+
+`read_table(path)` returns `{(from_city, to_city): distance}`. City labels and distances are stored as integers, and blank cells (the diagonal) are skipped. The `__main__` block reads `data/distances.csv` using a relative path, so run it from inside `tour_demo`.
