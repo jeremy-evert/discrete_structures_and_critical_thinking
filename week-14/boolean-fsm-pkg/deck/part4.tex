@@ -1,0 +1,65 @@
+\begin{frame}{What the badge model cannot establish}
+\princ{MODEL LIMIT}
+The two-state model can establish only claims about its declared states,
+inputs, transitions, start state, and trace.
+\begin{itemize}
+\item It does not establish whether a person was authorized.
+\item It does not establish whether a physical reader worked.
+\item It does not represent denied, expired, or tampered conditions.
+\end{itemize}
+\begin{block}{Strong conclusion}
+The trace is correct for the declared model. It is not a proof that a real access system is safe.
+\end{block}
+\see{a limitation is a precise omitted condition, not a vague disclaimer.}
+\end{frame}
+
+\begin{frame}{The three AI failure modes}
+\princ{FAILURE MODES}
+\begin{tabular}{@{}p{4.3cm}p{4.4cm}p{3.6cm}@{}}
+\textbf{Failure} & \textbf{Check} & \textbf{Visible evidence}\\\midrule
+False simplification & all truth-table rows & one counterexample row\\[4pt]
+Witness called universal proof & separate SAT/tautology tests & witness plus remaining counterexample\\[4pt]
+Omitted state or transition & declared Cartesian product & named missing pair
+\end{tabular}
+\medskip
+\predict{Which check would you demand first when an answer sounds too certain?}
+\see{choose the check that matches the claim: rows, witnesses, or transitions.}
+\end{frame}
+
+\begin{frame}{Tuesday individual activity}
+\princ{MAKE YOUR OWN EVIDENCE}
+\begin{enumerate}
+\item Complete the supplied $E$ versus $S$ truth table.
+\item Give one satisfying assignment and explain why it is not a universal proof.
+\item Trace valid, timeout, valid from Locked.
+\item Name one condition the two-state model cannot establish.
+\item Write one sentence separating what the evidence proves from what it leaves open.
+\end{enumerate}
+\see{work individually first; if AI is used, record the exact row or transition you checked.}
+\end{frame}
+
+\begin{frame}{Preview: defend a bounded model}
+\princ{EVIDENCE BEFORE CONFIDENCE}
+On Thursday, choose one path:
+\begin{itemize}
+\item Boolean/circuit: expression, circuit or simplification, and complete table; or
+\item state machine: states, inputs, transitions, start state, two traces, and a limit.
+\end{itemize}
+\begin{block}{Defense norm}
+State the claim, show the row or trace, name the strongest limitation, answer a challenge, and critique the evidence rather than the person.
+\end{block}
+\see{a narrowed claim is a successful result when the challenge earns it.}
+\end{frame}
+
+\begin{frame}{Exit sentence}
+\princ{LIMIT THE CLAIM}
+\begin{block}{Complete this sentence}
+For this declared model, the evidence establishes \underline{\hspace{4cm}}; it does not establish \underline{\hspace{4cm}} because \underline{\hspace{3cm}}.
+\end{block}
+\begin{itemize}
+\item A truth table establishes behavior for the assignments it exhausts.
+\item A trace establishes the path for the inputs and transitions it names.
+\item A model limit protects the claim from becoming larger than its evidence.
+\end{itemize}
+\note{Point students toward the canonical Checkpoint 3 source for Thursday; this deck does not reproduce that source.}
+\end{frame}

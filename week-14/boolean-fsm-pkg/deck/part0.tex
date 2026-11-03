@@ -1,0 +1,73 @@
+\begin{frame}
+\titlepage
+\note{Tuesday is 75 minutes. Keep the rhythm: predict, run or fill the evidence, explain what survived, and name the boundary.}
+\end{frame}
+
+\begin{frame}{The question for today}
+\princ{MODEL SCOPE}
+\begin{block}{Week 14 question}
+Is this transformation equivalent under every assignment, and what can this state model not establish?
+\end{block}
+\begin{itemize}
+\item A Boolean expression says what is true for one assignment.
+\item A finite-state machine says how a bounded model changes as inputs arrive.
+\item Both are useful only when their assumptions are visible.
+\end{itemize}
+\predict{What evidence would make “these expressions are equivalent” a justified claim?}
+\see{every relevant assignment is checked, not just a favorable example.}
+\note{Connect the two halves: exhaustive rows for Boolean claims, explicit traces and transitions for state claims.}
+\end{frame}
+
+\begin{frame}{Our checking rhythm}
+\princ{PREDICT--RUN--EXPLAIN}
+\begin{enumerate}
+\item Predict the row, witness, trace, or missing case.
+\item Run a small, visible check or fill it by hand.
+\item Explain exactly what the evidence establishes.
+\item State one boundary: what was not represented or checked?
+\end{enumerate}
+\begin{block}{A useful rule}
+A fluent answer is a proposal. A complete check is evidence.
+\end{block}
+\see{each section ends with a row, counterexample, trace, or gap.}
+\end{frame}
+
+\begin{frame}{Words we will use}
+\begin{tabular}{@{}p{3.0cm}p{9.8cm}@{}}
+\textbf{Boolean variable} & A symbol that receives either true or false.\\[2pt]
+\textbf{assignment} & The chosen true/false value for every variable.\\[2pt]
+\textbf{operator} & A rule such as AND, OR, or NOT that combines or changes values.\\[2pt]
+\textbf{expression} & A written combination of variables and operators.\\[2pt]
+\textbf{truth table} & A table with one row for every assignment.\\[2pt]
+\textbf{equivalent} & Producing the same result for every assignment in scope.\\[2pt]
+\textbf{counterexample} & One in-scope case that disproves a universal claim.\\[2pt]
+\textbf{circuit} & A picture of gates connected to represent an expression.\\[2pt]
+\textbf{gate} & A circuit component that performs one Boolean operation.\\[2pt]
+\textbf{state} & A named condition in a changing system.\\[2pt]
+\textbf{transition} & A rule that changes one state to another for an input.\\[2pt]
+\end{tabular}
+\note{Do not read every line aloud. Point out that the terms are defined before we rely on them.}
+\end{frame}
+
+\begin{frame}{The tempting simplification}
+\princ{CHECK THE CLAIM}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\begin{block}{Supplied expression}
+\[
+F=(P\ \text{OR}\ Q)\ \text{AND}\ (P\ \text{OR}\ \text{NOT }Q)
+\]
+\end{block}
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{alertblock}{Confident proposed simplification}
+\[
+B=P\ \text{OR}\ Q
+\]
+\end{alertblock}
+\end{column}
+\end{columns}
+\predict{If an AI says $F$ and $B$ are equivalent, what is the smallest check that could break the claim?}
+\see{a complete four-row truth table can find a single counterexample.}
+\mistake{“They match on the first row” is not the same as “they match on every row.”}
+\end{frame}
