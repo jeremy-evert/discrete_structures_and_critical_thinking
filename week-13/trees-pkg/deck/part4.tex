@@ -1,0 +1,83 @@
+\section{A decision tree with a limit}
+\begin{frame}{Decision trees: choices on edges}
+\princ{DECISION RULE}
+\begin{center}
+\begin{tikzpicture}[>=Stealth,every node/.style={draw,rounded corners,fill=blue!8,minimum width=1.55cm,minimum height=0.5cm,font=\small},edge/.style={->,thick}]
+\node (s) at (0,2.0) {Start};
+\node (e) at (0,0.8) {eligible?};
+\node (n) at (-2.2,-0.5) {needs aid?};
+\node (x) at (2.2,-0.5) {explain rule};
+\node (a) at (-3.1,-1.8) {aid route};
+\node (r) at (-1.0,-1.8) {standard route};
+\draw[edge] (s)--(e);
+\draw[edge] (e)--(n) node[midway,left,font=\scriptsize,draw=none,fill=white] {yes};
+\draw[edge] (e)--(x) node[midway,right,font=\scriptsize,draw=none,fill=white] {no};
+\draw[edge] (n)--(a) node[midway,left,font=\scriptsize,draw=none,fill=white] {yes};
+\draw[edge] (n)--(r) node[midway,right,font=\scriptsize,draw=none,fill=white] {no};
+\end{tikzpicture}
+\end{center}
+\see{yes and no are edge labels; they are not extra vertices.}
+\note{Introduce the supplied Tuesday scenario as another concrete tree. Point out every yes/no label on an arrow. The labels describe which branch was taken; the nodes are Start, questions, and outcomes. This is the cleaned decision tree required for the package.}
+\end{frame}
+
+\begin{frame}{Trace one route: eligible and needs aid}
+\princ{DECISION RULE}
+\begin{block}{Input}
+eligible = yes; needs aid = yes
+\end{block}
+\begin{center}\small\texttt{Start -> eligible? -> needs aid? -> aid route}\end{center}
+\begin{itemize}
+\item Follow the yes edge from eligible? to needs aid?.
+\item Follow the yes edge from needs aid? to aid route.
+\end{itemize}
+\see{the route is a trace through nodes; yes is the label on each selected edge.}
+\note{Read the route slowly and ask students to point to the selected arrows. The trace does not include ``yes'' as a node. Make the distinction concrete: the route records visited nodes, while the arrow labels explain each choice.}
+\end{frame}
+
+\begin{frame}{The three decision-tree traces}
+\princ{TRAVERSAL}
+\small
+\begin{tabular}{@{}p{3.1cm}p{10.0cm}@{}}
+\textbf{preorder} & \texttt{\TraceDecisionPre}\\[5pt]
+\textbf{postorder} & \texttt{\TraceDecisionPost}\\[5pt]
+\textbf{breadth-first} & \texttt{\TraceDecisionBFS}\\
+\end{tabular}
+\vspace{8pt}
+\mistake{If yes/no appears in a node list, the model has changed: labels became vertices.}
+\note{Compare the decision-tree traces with the project-tree traces. The code uses the same traversal functions, but the child order is different: needs aid? comes before explain rule. Ask students to look for yes/no in the lists; they should not find it.}
+\end{frame}
+
+\begin{frame}{The language-access omission}
+\princ{HIERARCHY LIMIT}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\begin{block}{What the tree says}
+Eligible + needs aid leads to aid route.
+\end{block}
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{alertblock}{What the intake note also says}
+\texttt{aid route -> language-access review}
+\end{alertblock}
+\end{column}
+\end{columns}
+\vspace{10pt}
+\begin{center}\small The tree does not show that relationship.\end{center}
+\see{``aid route'' is not proof that language access has been reviewed.}
+\note{State the limitation without inventing a new policy. The displayed tree ends at aid route, while the intake note adds a separate relation to language-access review. The tree can be useful and still incomplete. Ask what a stronger conclusion would wrongly assume.}
+\end{frame}
+
+\begin{frame}{Bound the claim}
+\princ{CHECK THE WORK}
+\begin{block}{Supported claim}
+For this displayed tree, this child order, and this input, the trace reaches aid route.
+\end{block}
+\begin{alertblock}{Unsupported stronger claim}
+Everyone routed to aid can use the aid route immediately.
+\end{alertblock}
+\begin{itemize}
+\item The missing relation may need another node: language-access review.
+\item Or it must remain an explicit limitation of the model.
+\end{itemize}
+\note{Have students compare the bounded and unbounded claims. The first is directly checked by a trace. The second needs information not represented in the tree. Do not rewrite the Decision Gate or turn the omission into a real-person example; keep it synthetic and model-focused.}
+\end{frame}

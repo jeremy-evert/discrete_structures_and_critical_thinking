@@ -1,0 +1,11 @@
+deck/*.aux
+deck/*.fls
+deck/*.log
+deck/*.nav
+deck/*.out
+deck/*.snm
+deck/*.toc
+deck/*.xdv
+deck/*.synctex.gz
+deck/trees_notes.tex
+deck/prompts_txt/*.small

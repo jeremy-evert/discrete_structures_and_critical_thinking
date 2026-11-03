@@ -1,0 +1,27 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+\usetheme{Madrid}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{colortbl}
+\setbeameroption{hide notes}
+\tracinglostchars=0
+\lstdefinestyle{deckverbatim}{basicstyle=\ttfamily\fontsize{7.5}{9}\selectfont,breaklines=true,breakindent=8pt,columns=fullflexible,keepspaces=true,showstringspaces=false,upquote=false,literate=*{~}{{\textasciitilde}}1 {→}{{->}}1 {—}{{---}}1 {“}{{``}}1 {”}{{''}}1 {’}{{'}}1 {‘}{{`}}1 {–}{{--}}1 {…}{{...}}1}
+\lstset{style=deckverbatim}
+\newcommand{\code}[1]{\texttt{\detokenize{#1}}}
+\newcommand{\princ}[1]{\par\noindent\hfill\colorbox{orange!85!red}{\makebox[6.2cm][c]{\textcolor{white}{\bfseries\scriptsize PRINCIPLE: #1}}}\par\smallskip}
+\newcommand{\promptbox}[2]{\IfFileExists{verbatim_txt/#1_#2.txt}{\begin{alertblock}{PROMPT FOR CLAUDE \hfill {\scriptsize prompts/\input{prompts_txt/#1.name}}}\lstinputlisting[style=deckverbatim,literate={—}{{-{}-}}1 {“}{{``}}1 {”}{{''}}1 {’}{{'}}1]{verbatim_txt/#1_#2.txt}\end{alertblock}}{\begin{alertblock}{PROMPT FOR CLAUDE (#1 #2)}PENDING: prompt file not copied yet.\end{alertblock}}}
+\newcommand{\see}[1]{\par\medskip\noindent{\small\textbf{\textcolor{green!40!black}{What you should see:}} #1\par}}
+\newcommand{\predict}[1]{\par\medskip\noindent{\small\textbf{\textcolor{blue!60!black}{PREDICT (30 s):}} #1\par}}
+\newcommand{\mistake}[1]{\par\medskip\noindent{\small\textbf{\textcolor{red!60!black}{Common mistake:}} #1\par}}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}{\leavevmode\hbox{\begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,leftskip=1em,rightskip=1em]{author in head/foot}\usebeamerfont{author in head/foot}\insertshortauthor\hfill\insertshorttitle\hfill\insertshortdate\end{beamercolorbox}}}
+\title{Trees, Search, and Decision Structures}
+\subtitle{A clean hierarchy can still hide a required relationship}
+\author[COMSC 2043 DSCT]{COMSC 2043 \textbullet\ Discrete Structures and Critical Thinking}
+\date{Week 13, Tuesday, November 10, 2026}

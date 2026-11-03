@@ -1,0 +1,6 @@
+Predict that the regression test should name one missing edge. Add a pytest test that
+asserts the audit returns exactly {(requirements, tests)}. Also add a clearly labeled
+strict expected-failure test for the intentionally false claim that a hierarchy
+preserves every graph dependency; use pytest.mark.xfail(strict=True, reason=...).
+Run pytest and explain why the expected failure is evidence about the claim, not a
+broken test suite. Do not replace the expected-failure marker with a passing test.

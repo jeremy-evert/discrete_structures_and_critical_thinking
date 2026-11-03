@@ -1,0 +1,79 @@
+\section{Audit and bridge}
+\begin{frame}{Audit table: what survived?}
+\princ{CHECK THE WORK}
+\small
+\begin{tabular}{@{}p{4.2cm}p{4.2cm}p{4.2cm}@{}}
+\textbf{Source relationship} & \textbf{Tree display} & \textbf{Result}\\\midrule
+\texttt{project -> plan} & project contains plan & preserved in display\\
+\texttt{project -> build} & project contains build & preserved in display\\
+\texttt{plan -> requirements} & plan contains requirements & preserved in display\\
+\texttt{plan -> design} & plan contains design & preserved in display\\
+\texttt{build -> tests} & build contains tests & preserved in display\\
+\texttt{build -> docs} & build contains docs & preserved in display\\
+\texttt{requirements -> tests} & different branches & \textcolor{red!70!black}{dropped}\\
+\end{tabular}
+\vspace{8pt}
+\see{the exact audit output is \texttt{\{requirements -> tests\}}.}
+\note{Use this as the final visual audit. The first six happen to line up with the chosen hierarchy, but the seventh does not. Say ``happen to'' because the meanings differ; a matching shape does not prove identical semantics.}
+\end{frame}
+
+\begin{frame}{One bounded conclusion}
+\princ{HIERARCHY LIMIT}
+\begin{block}{Conclusion}
+The fixed tree is a useful containment view with reproducible traversal orders, but it does not preserve the \texttt{requirements -> tests} dependency.
+\end{block}
+\begin{itemize}
+\item Direct checks: exact node sets, exact traces, and exact dropped-edge set.
+\item Limitation: the tree cannot answer a relationship question it does not represent.
+\end{itemize}
+\note{Read the conclusion once and ask students to underline its limit. The first half is supported by the tests; the second half is the model boundary exposed by the audit. This is the one-sentence style to carry into the Decision Gate.}
+\end{frame}
+
+\begin{frame}{Decision Gate preview: part 1}
+\princ{CHECK THE WORK}
+\begingroup
+\lstinputlisting[style=deckverbatim,literate={—}{{-{}-}}1 {“}{{``}}1 {”}{{''}}1 {’}{{'}}1,firstline=1,lastline=15]{verbatim_txt/gate_text.txt}
+\endgroup
+\note{Spend about three minutes previewing the first half of the five headings: Sources, Rules/Assumptions, and the start of Work. Tell students their artifact needs a bounded claim and one omitted relation. The text is included byte-for-byte from the repo Decision Gate.}
+\end{frame}
+
+\begin{frame}{Decision Gate preview: part 2}
+\princ{CHECK THE WORK}
+\begingroup
+\lstinputlisting[style=deckverbatim,literate={—}{{-{}-}}1 {“}{{``}}1 {”}{{''}}1 {’}{{'}}1,firstline=16,lastline=30]{verbatim_txt/gate_text.txt}
+\endgroup
+\note{Finish the preview with Work, Check Your Answer, and One-Sentence Summary. The exact submission location and due time are deliberately not inferred from this source package.}
+\end{frame}
+
+\begin{frame}{Thursday bridge: audit search claims}
+\princ{DECISION RULE}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\begin{block}{Tuesday leaves us with}
+A tree trace and a named missing edge.
+\end{block}
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{block}{Thursday asks us to}
+Pair-reason about a search claim, compare it with the original relationships, and report the limit.
+\end{block}
+\end{column}
+\end{columns}
+\vspace{10pt}
+\see{the Thursday report maps back to the same Sources, Rules, Work, Check, Summary method.}
+\note{Bridge without turning Thursday into divided labor. Each student should reason about the claim, then compare interpretations with a partner. The output is a bounded Pair Reasoning report, not a duplicate of the Decision Gate. Carry forward the named missing edge and the habit of checking relationships, not only nodes.}
+\end{frame}
+
+\begin{frame}{Close: model before procedure}
+\princ{MODEL VS PROCEDURE}
+\begin{block}{Say it in one sentence}
+A tree can make a structure easy to see while hiding a relationship it was not built to represent.
+\end{block}
+\begin{itemize}
+\item Define the edge.
+\item Freeze the order.
+\item Predict, run, explain.
+\item Audit the claim against the original relationships.
+\end{itemize}
+\note{Close in one minute. Ask students to say what an edge means before they choose a traversal, and what relationship the tree leaves out before they make a strong claim. The answer for this lesson is requirements to tests; the language-access relation is the corresponding decision-tree limitation.}
+\end{frame}

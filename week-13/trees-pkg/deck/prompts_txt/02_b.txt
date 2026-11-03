@@ -1,0 +1,5 @@
+Predict the checks a valid tree should pass. Add pytest tests that check the root is
+project, every non-root vertex has one parent, all seven vertices appear exactly once,
+and the tree is acyclic. Check the fixed child order project=(plan, build),
+plan=(requirements, design), and build=(tests, docs). Run pytest and explain each
+check using only the synthetic tree.

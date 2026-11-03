@@ -1,0 +1,26 @@
+{
+  "week": 13,
+  "module_id": 218912,
+  "module_name_contains": "Week 13",
+  "pages": [
+    {"title": "Week 13 Tuesday: Trees, Search & Decision Structures", "source": "canvas/tuesday_landing.md", "after": "overview"},
+    {"title": "Week 13 Tuesday: Activity — Model, Trace & Audit", "source": "student/tuesday_activity.md"},
+    {"title": "Week 13 Tuesday: Handout", "source": "student/handout.md"},
+    {"title": "Week 13 Tuesday: Concept Map", "source": "student/concept_map.md"},
+    {"title": "Week 13 Tuesday: Glossary", "source": "student/glossary.md"},
+    {"title": "Week 13 Tuesday: Claude Prompts", "source": "canvas/prompts.md"},
+    {"title": "Week 13 Thursday: Pair Reasoning — Search Claims Need an Audit", "source": "student/thursday_activity.md"},
+    {"title": "Week 13 Thursday: Decision Gate — A Tree That Earns Its Conclusion", "source": "student/decision-gate.md"},
+    {"title": "Week 13 Thursday: Recap Outline", "source": "student/recap_outline.md"}
+  ],
+  "files": [
+    {
+      "name": "trees_slides.pdf",
+      "source": "deck/trees_slides.pdf",
+      "page_link_from": "Week 13 Tuesday: Trees, Search & Decision Structures"
+    }
+  ],
+  "zips": [
+    {"name": "trees_prompts.zip", "from_dir": "prompts"}
+  ]
+}

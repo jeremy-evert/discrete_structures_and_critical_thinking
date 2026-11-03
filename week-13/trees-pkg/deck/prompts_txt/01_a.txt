@@ -1,0 +1,8 @@
+Predict which seven vertices and seven directed edges you expect before you run anything.
+Use the synthetic project graph with vertices project, plan, build, requirements, design,
+tests, and docs. In this lesson, a directed edge A -> B means “A must be completed
+before B.” Write a small Python module that stores exactly these edges:
+project -> plan, project -> build, plan -> requirements, plan -> design,
+build -> tests, build -> docs, and requirements -> tests. Print the vertices and the
+sorted edge list. Run the module. Explain how your output matches the prediction.
+Do not use real project, student, employee, or host data.

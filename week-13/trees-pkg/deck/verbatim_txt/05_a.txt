@@ -1,0 +1,5 @@
+Predict whether the directory-style tree contains every dependency from the
+synthetic graph. Compare the exact graph edge set with the tree parent-child edge set.
+Run the audit and print the dropped set. It must be {requirements -> tests}. Explain
+the AI failure mode: a clean hierarchy can erase a relevant relation, because a
+dependency edge can cross from one branch to another even when the tree looks tidy.

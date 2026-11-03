@@ -1,0 +1,5 @@
+Predict the visit order for preorder (parent before children), postorder (children
+before parent), and breadth-first (level by level) on the synthetic project tree.
+Implement those three traversals without changing the child order. Run them from
+project and print the three traces. Explain why inorder is not used: inorder belongs
+to binary-tree conventions, while this is a general rooted tree.

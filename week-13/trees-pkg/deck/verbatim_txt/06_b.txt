@@ -1,0 +1,5 @@
+Predict that all seven known nodes will be found and the missing node will not. Add
+pytest assertions for those cases. Then assert that the tree cannot support the
+stronger claim ``all dependencies are preserved,'' because the exact audit reports
+requirements -> tests as absent. Run pytest and explain the difference between a
+successful node search and a complete relationship audit.

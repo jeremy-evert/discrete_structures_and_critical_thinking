@@ -1,0 +1,5 @@
+Predict the route and the missing relationship before testing. Add pytest tests for
+the eligible-plus-aid trace [Start, eligible?, needs aid?, aid route], for the exact
+preorder/postorder/breadth-first traces of the decision tree, and for the fact that
+yes and no are edge labels rather than nodes. Run pytest. Explain why ``aid route'' is
+not enough to prove that every needed language-access review has happened.
