@@ -1,0 +1,45 @@
+{
+  "week": 16,
+  "module_id": 218914,
+  "module_name_contains": "Week 16",
+  "pages": [
+    {
+      "title": "Week 16 Tuesday: Farkle Evidence Lab — Slides and Path",
+      "source": "canvas/tuesday_landing.md",
+      "after": "overview"
+    },
+    {
+      "title": "Week 16 Tuesday: Farkle Evidence Handout",
+      "source": "canvas/handout.md",
+      "after": "Week 16 Tuesday: Farkle Evidence Lab — Slides and Path"
+    },
+    {
+      "title": "Week 16 Tuesday: Farkle Evidence Concept Map",
+      "source": "canvas/concept_map.md",
+      "after": "Week 16 Tuesday: Farkle Evidence Handout"
+    },
+    {
+      "title": "Week 16 Tuesday: Farkle Evidence Glossary",
+      "source": "canvas/glossary.md",
+      "after": "Week 16 Tuesday: Farkle Evidence Concept Map"
+    },
+    {
+      "title": "Week 16 Tuesday: Farkle Evidence Prompts",
+      "source": "canvas/prompts.md",
+      "after": "Week 16 Tuesday: Farkle Evidence Glossary"
+    }
+  ],
+  "files": [
+    {
+      "name": "farkle_ml_slides.pdf",
+      "source": "deck/farkle_ml_slides.pdf",
+      "page_link_from": "Week 16 Tuesday: Farkle Evidence Lab — Slides and Path"
+    }
+  ],
+  "zips": [
+    {
+      "name": "farkle_ml_prompts.zip",
+      "from_dir": "prompts"
+    }
+  ]
+}
