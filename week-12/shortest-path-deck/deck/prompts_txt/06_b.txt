@@ -1,0 +1,5 @@
+Add two pytest tests to test_tour.py:
+1. for n = 2 to 6 (use only the first n cities of the table), the count brute_force returns equals
+   math.factorial(n - 1);
+2. brute_force's best total is less than or equal to the total of greedy_tour.
+Run pytest and show me the one-line summary.

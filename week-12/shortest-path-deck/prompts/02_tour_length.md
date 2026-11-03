@@ -1,0 +1,10 @@
+# Prompt 02: total length of a closed tour
+
+Paste the block below into Claude. `prompt-a` is the first box on the slide.
+
+```prompt-a
+In tour.py add tour_length(tour, dist). tour is a list of city numbers like [1, 2, 3, 4, 5, 6].
+It must add up every leg, INCLUDING the leg from the last city back to the first.
+Add a second function legs(tour, dist) that returns each leg as (from_city, to_city, distance)
+so I can compare it with my hand work. Keep both functions short. Do not change read_table.
+```

@@ -33,6 +33,9 @@ def build():
     for i, (a, b, d) in enumerate(legs(best, D), 1):
         n[f"LegBest{i}"] = d
     n["BruteCount"] = cnt
+    n["DistOneTwo"], n["DistTwoOne"] = D[(1, 2)], D[(2, 1)]
+    n["DistFourTwo"], n["DistTwoFour"] = D[(4, 2)], D[(2, 4)]
+    n["DistOneThree"], n["DistOneFive"] = D[(1, 3)], D[(1, 5)]
     n["PairsNat"] = pairs(nat)
     n["PairsRev"] = pairs(rev)
     n["PairsGreedy"] = pairs(g)
@@ -52,6 +55,10 @@ def build():
     n["ERolls"] = f"{expected_rolls(6):.1f}"
     big = guess_and_check(D, 1000, seed=GUESS_SEED)
     n["G1000Best"] = big[-1][2]
+    import itertools
+    for k, name in ((2, "Two"), (3, "Three"), (4, "Four")):
+        ts = ["1-" + "-".join(map(str, q)) + "-1" for q in itertools.permutations(range(2, k + 1))]
+        n[f"Tours{name}"] = r" \quad ".join(ts)
     # counting
     for k in range(2, 7):
         n[f"Count{k}"] = tour_count(k)
@@ -59,6 +66,7 @@ def build():
         n[f"Half{k}"] = tour_count(k) // 2 if k > 2 else 1
     n["Count15"] = f"{tour_count(15):,}".replace(",", r"\,")
     n["Count15raw"] = tour_count(15)
+    n["CountOneFiveBillions"] = round(tour_count(15) / 1e9)
     n["Count10"] = f"{tour_count(10):,}".replace(",", r"\,")
     n["HoursAtMillion"] = f"{tour_count(15) / 1e6 / 3600:.1f}"
     return n

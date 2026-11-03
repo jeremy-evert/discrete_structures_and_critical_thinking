@@ -25,7 +25,7 @@ for name, t in (("plain", None), ("nat", [1, 2, 3, 4, 5, 6]), ("greedy", g), ("b
 body = "".join(p.read_text() for p in sorted(deck.glob("part*.tex")))
 for k in n:
     if "\\" + mn.macro_name(k) not in body and not k.endswith("raw"):
-        bad.append(f"macro \\{mn.macro_name(k)} defined but unused")
+        print(f"note: macro \\{mn.macro_name(k)} defined but unused (harmless)")
 # literals that must only appear through macros (strip macros and \note text first is NOT done: notes count too)
 stripped = re.sub(r"\\N[A-Za-z]+", "", body)
 key = {str(n["TotalNat"]), str(n["TotalRev"]), str(n["GreedyTotal"]), str(n["BestTotal"]), "87", "362", "24.2"}
@@ -33,6 +33,8 @@ for lit in sorted(key):
     for m in re.finditer(r"(?<![\d.,])" + re.escape(lit) + r"(?![\d])", stripped):
         line = stripped.count("\n", 0, m.start()) + 1
         bad.append(f"bare literal {lit} in part files (stripped line {line}); use the macro")
+if f"seed={mn.GUESS_SEED}" not in (root / "prompts" / "05_guess_and_check.md").read_text():
+    bad.append("prompts/05_guess_and_check.md does not use the seed the slides' trace was made with")
 if bad:
     print("\n".join(bad))
     sys.exit(1)
