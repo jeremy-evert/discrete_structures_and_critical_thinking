@@ -1,7 +1,9 @@
 Predict the route for a synthetic person who is eligible and needs aid. Model this
-decision tree: Start -> eligible?; from eligible?, yes -> needs aid? and no -> explain
-rule; from needs aid?, yes -> aid route and no -> standard route. Store yes and no as
-edge labels, not as vertices. Add the original intake relation aid route ->
-language-access review as a separate note, because it is not in the displayed tree.
-Run a trace for eligible=yes and needs_aid=yes. Explain which step the tree shows and
-which language-access relationship it does not show. Use no real intake data.
+decision tree: Start has child eligible?; from eligible?, yes leads to needs aid?
+and no leads to explain rule; from needs aid?, yes leads to aid route and no leads
+to standard route. Store yes and no as edge labels, not as vertices. Add a note
+linking aid route and language-access review, because that relation is not in the
+displayed tree. State plainly that the language-access review must happen before
+the aid route is usable. Run a trace for eligible=yes and needs aid=yes. Explain
+which step the tree shows and which language-access condition it does not show.
+Use no real intake data.

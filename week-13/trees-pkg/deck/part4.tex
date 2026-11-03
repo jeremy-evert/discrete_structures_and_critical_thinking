@@ -16,7 +16,7 @@
 \draw[edge] (n)--(r) node[midway,right,font=\scriptsize,draw=none,fill=white] {no};
 \end{tikzpicture}
 \end{center}
-\see{yes and no are edge labels; they are not extra vertices.}
+\see{yes leads to one next vertex and no leads to the other; both are edge labels, not extra vertices.}
 \note{Introduce the supplied Tuesday scenario as another concrete tree. Point out every yes/no label on an arrow. The labels describe which branch was taken; the nodes are Start, questions, and outcomes. This is the cleaned decision tree required for the package.}
 \end{frame}
 
@@ -25,12 +25,12 @@
 \begin{block}{Input}
 eligible = yes; needs aid = yes
 \end{block}
-\begin{center}\small\texttt{Start -> eligible? -> needs aid? -> aid route}\end{center}
+\begin{center}\small\texttt{Start; eligible?; needs aid?; aid route}\end{center}
 \begin{itemize}
-\item Follow the yes edge from eligible? to needs aid?.
-\item Follow the yes edge from needs aid? to aid route.
+\item Yes leads from eligible? to needs aid?.
+\item Yes leads from needs aid? to aid route.
 \end{itemize}
-\see{the route is a trace through nodes; yes is the label on each selected edge.}
+\see{the route is a trace through nodes; yes labels each selected edge.}
 \note{Read the route slowly and ask students to point to the selected arrows. The trace does not include ``yes'' as a node. Make the distinction concrete: the route records visited nodes, while the arrow labels explain each choice.}
 \end{frame}
 
@@ -57,14 +57,14 @@ Eligible + needs aid leads to aid route.
 \end{column}
 \begin{column}{0.48\textwidth}
 \begin{alertblock}{What the intake note also says}
-\texttt{aid route -> language-access review}
+The language-access review must happen before the aid route is usable.
 \end{alertblock}
 \end{column}
 \end{columns}
 \vspace{10pt}
 \begin{center}\small The tree does not show that relationship.\end{center}
 \see{``aid route'' is not proof that language access has been reviewed.}
-\note{State the limitation without inventing a new policy. The displayed tree ends at aid route, while the intake note adds a separate relation to language-access review. The tree can be useful and still incomplete. Ask what a stronger conclusion would wrongly assume.}
+\note{State the limitation without inventing a new policy. The displayed tree ends at aid route, while the intake note says the language-access review must happen before that route is usable. The tree can be useful and still incomplete. Ask what a stronger conclusion would wrongly assume.}
 \end{frame}
 
 \begin{frame}{Bound the claim}

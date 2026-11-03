@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Verify prompt bytes, generated traces, the index, and the unchanged Decision Gate.
+# Verify canonical prompts, rendered prompt listings, generated traces, the index,
+# glossary coverage, and the unchanged Decision Gate.
 set -euo pipefail
 cd "$(dirname "$0")"
 src="${1:-../prompts}"
@@ -40,6 +41,19 @@ while read -r nn ab; do
     fail=1
   fi
 done < <(printf '%s\n' "$actual")
+
+tmp=$(mktemp -d)
+trap 'rm -rf "$tmp"' EXIT
+python3 extract_prompts.py "$src" "$tmp/prompts_txt" || fail=1
+python3 render_verbatim.py "$tmp/prompts_txt" "$tmp/verbatim_txt" "$PWD/gate_text.txt" || fail=1
+if ! diff -ru -- "$tmp/prompts_txt" prompts_txt; then
+  echo "prompts_txt is not the deterministic extraction of prompts/"
+  fail=1
+fi
+if ! diff -ru -- "$tmp/verbatim_txt" verbatim_txt; then
+  echo "verbatim_txt is not the deterministic rendered transform of prompts/"
+  fail=1
+fi
 python3 gen_index.py --check || fail=1
 python3 make_traces.py --check || fail=1
 python3 check_glossary.py || fail=1

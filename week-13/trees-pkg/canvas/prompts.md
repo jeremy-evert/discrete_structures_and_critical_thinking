@@ -61,11 +61,16 @@ to binary-tree conventions, while this is a general rooted tree.
 ```
 
 ```prompt-b
-Predict the exact lists before running tests. Add pytest assertions for preorder
-[project, plan, requirements, design, build, tests, docs], postorder
-[requirements, design, plan, tests, docs, build, project], and breadth-first
-[project, plan, build, requirements, design, tests, docs]. Run pytest and explain
-why a depth-first implementation cannot produce the breadth-first trace.
+Before running tests, paste YOUR predictions into these three lines:
+preorder: [your predicted list]
+postorder: [your predicted list]
+breadth-first: [your predicted list]
+Add pytest assertions for the exact verified traces. Use the reference module's
+fixed child-order constants (such as TREE_CHILDREN) and any trace constants it
+provides where possible; if a verified list must be recorded, take it from the
+reference run, not from these prediction lines. Keep the pasted predictions as
+notes for comparison, not as the test oracle. Run pytest and explain why a
+depth-first implementation cannot produce the breadth-first trace.
 ```
 
 
@@ -77,20 +82,24 @@ Model a synthetic eligibility route and keep yes/no as edge labels, not nodes.
 
 ```prompt-a
 Predict the route for a synthetic person who is eligible and needs aid. Model this
-decision tree: Start -> eligible?; from eligible?, yes -> needs aid? and no -> explain
-rule; from needs aid?, yes -> aid route and no -> standard route. Store yes and no as
-edge labels, not as vertices. Add the original intake relation aid route ->
-language-access review as a separate note, because it is not in the displayed tree.
-Run a trace for eligible=yes and needs_aid=yes. Explain which step the tree shows and
-which language-access relationship it does not show. Use no real intake data.
+decision tree: Start has child eligible?; from eligible?, yes leads to needs aid?
+and no leads to explain rule; from needs aid?, yes leads to aid route and no leads
+to standard route. Store yes and no as edge labels, not as vertices. Add a note
+linking aid route and language-access review, because that relation is not in the
+displayed tree. State plainly that the language-access review must happen before
+the aid route is usable. Run a trace for eligible=yes and needs aid=yes. Explain
+which step the tree shows and which language-access condition it does not show.
+Use no real intake data.
 ```
 
 ```prompt-b
 Predict the route and the missing relationship before testing. Add pytest tests for
-the eligible-plus-aid trace [Start, eligible?, needs aid?, aid route], for the exact
-preorder/postorder/breadth-first traces of the decision tree, and for the fact that
-yes and no are edge labels rather than nodes. Run pytest. Explain why “aid route” is
-not enough to prove that every needed language-access review has happened.
+the eligible-plus-aid trace, the exact preorder and breadth-first traces of the
+decision tree, and the fact that yes and no are edge labels rather than nodes.
+Postorder is optional for this decision-tree check. Use the reference module's
+decision-tree constants where possible, and do not put yes or no into the node
+lists. Run pytest. Explain why “aid route” is not enough to prove that the review
+has happened before the route is usable.
 ```
 
 
@@ -102,19 +111,24 @@ Compare relations directly; a clean hierarchy can erase a relevant relation.
 
 ```prompt-a
 Predict whether the directory-style tree contains every dependency from the
-synthetic graph. Compare the exact graph edge set with the tree parent-child edge set.
-Run the audit and print the dropped set. It must be {requirements -> tests}. Explain
-the AI failure mode: a clean hierarchy can erase a relevant relation, because a
-dependency edge can cross from one branch to another even when the tree looks tidy.
+synthetic graph. Before running, paste your predicted dropped edge set here:
+dropped: [your predicted set]. Compare the exact graph edge set with the tree
+parent-child edge set. Run the audit and print the actual dropped set. Compare it
+with the prediction and explain any difference. Explain the AI failure mode: a
+clean hierarchy can erase a relevant relation, because a dependency edge can
+cross from one branch to another even when the tree looks tidy. Do not use a real
+project or any personal data.
 ```
 
 ```prompt-b
-Predict that the regression test should name one missing edge. Add a pytest test that
-asserts the audit returns exactly {(requirements, tests)}. Also add a clearly labeled
-strict expected-failure test for the intentionally false claim that a hierarchy
-preserves every graph dependency; use pytest.mark.xfail(strict=True, reason=...).
-Run pytest and explain why the expected failure is evidence about the claim, not a
-broken test suite. Do not replace the expected-failure marker with a passing test.
+Predict whether the regression test will name a missing edge. Add a pytest test
+that asserts the audit result from the reference module's GRAPH_EDGES and
+TREE_EDGES constants, rather than using your prediction as the oracle. Also add a
+clearly labeled strict expected-failure test for the intentionally false claim
+that a hierarchy preserves every graph dependency; use
+pytest.mark.xfail(strict=True, reason=...). Run pytest and explain why the
+expected failure is evidence about the claim, not a broken test suite. Do not
+replace the expected-failure marker with a passing test.
 ```
 
 
@@ -150,9 +164,10 @@ Finish with a bounded conclusion supported by the synthetic checks.
 ```prompt-a
 Predict the evidence you will print before running the complete suite. Run the full
 pytest suite and print the project preorder, postorder, and breadth-first traces, the
-decision-tree traces, and the dropped dependency set. Then write one bounded
-conclusion: the tree is a useful containment view with a fixed traversal order, but
-it does not preserve the requirements -> tests dependency. Explain which result is a
-direct check and which statement is a limitation of the model. Use synthetic data
-only, and do not edit tests while explaining the result.
+decision-tree traces, and the dropped dependency set. Then write YOUR OWN
+one-sentence conclusion and check it against the evidence: say what the tree
+supports and what limitation follows from any dropped relationship. Do not copy a
+conclusion from this prompt. Explain which result is a direct check and which
+statement is a limitation of the model. Use synthetic data only, and do not edit
+tests while explaining the result.
 ```
