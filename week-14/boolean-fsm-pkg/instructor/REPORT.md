@@ -200,3 +200,53 @@ Anthropic/Ivy supplied the approved plan and prior package slices. OpenAI/Codex
 reusable result is the guide/run-of-show/report pattern: preserve the
 predict–run–explain cadence, list exact evidence, record recovery and limits,
 and leave independent acceptance to the coordinator/Sol review.
+
+## Repair — Sol review bfde761
+
+Bounded repair on branch `ivy/dsct-w14-boolean-fsm-20261103`; package scope
+only. Rechecked `git merge-base --is-ancestor ee18526 HEAD` → exit 0. No files
+were staged or committed.
+
+### Changes
+
+- Updated Prompt 05 to declare `(Locked, timeout) -> Locked` and
+  `(Open, valid) -> Open` alongside `(Locked, valid) -> Open`. The only missing
+  pair is now `(Open, timeout)`, matching `code/examples.py` and its tests.
+  Regenerated `deck/prompts_txt/05_a.txt` and
+  `canvas/tuesday_prompts.md` from the prompt source.
+- Added the Q input wire to the first OR gate in the Part 1 circuit.
+- Defined “assignment,” “equivalent,” and “state model” in plain language at
+  first use on the Tuesday landing page.
+- Rebuilt the tracked slides and notes PDFs through the existing deck build.
+
+### Repair validation — actual results
+
+Commands and outcomes:
+
+```text
+cd week-14/boolean-fsm-pkg/deck && python3 extract_prompts.py ../prompts
+                                           && python3 ../canvas/build_prompts_page.py
+rewrote prompt 05 slide text; wrote Canvas prompt page from 5 prompt files
+
+cd week-14/boolean-fsm-pkg/code && python3 -m pytest -q
+11 passed in 0.01s (exit 0)
+
+cd week-14/boolean-fsm-pkg/deck && ./check_prompts.sh ../prompts
+index consistent: 27 rows; prompt boxes checked: 6 (exit 0)
+
+cd week-14/boolean-fsm-pkg/deck && ./build.sh   # run twice
+both runs: slides=32 pages, notes=9 pages;
+overfull/error lines: slides=0 notes=0 (both exit 0)
+
+cd week-14/boolean-fsm-pkg/canvas && python3 check_manifest.py
+prompt page byte match: 5 files;
+ZIP test passed: boolean_fsm_prompts.zip (6 files);
+manifest check passed (exit 0)
+```
+
+The manifest checker generated and validated the ZIP in a temporary directory;
+there is no persistent ZIP artifact in this package. Both deck builds still
+emit existing TeX missing-character and underfull-box warnings, while the
+build check reports zero overfull/error lines. The three stream-fd permission
+messages printed by the managed shell preceded the test output; all listed
+commands exited 0.
