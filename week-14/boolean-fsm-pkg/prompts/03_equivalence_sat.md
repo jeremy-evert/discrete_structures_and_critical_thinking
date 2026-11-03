@@ -1,6 +1,6 @@
-# Prompt 03 — Equivalence, satisfiability, and universal claims
+# Prompt 03 - Equivalence, satisfiability, and universal claims
 
-Why: “one witness exists” and “every assignment works” are different claims.
+Why: "one witness exists" and "every assignment works" are different claims.
 
 Slide reference: Week 14 Tuesday, the equivalence and SAT checks.
 
@@ -14,14 +14,14 @@ pair returns exactly `{'P': False, 'Q': True}`.
 Predict first: which result should be empty, and which result should contain a
 mapping?
 
-Likely AI drift: it may compare only one chosen assignment or return a vague
+Likely AI mistake: it may compare only one chosen assignment or return a vague
 sentence instead of the counterexample.
 
-Recovery: keep the reference evaluator’s fixed four-row order and print the
+Recovery: keep the reference evaluator's fixed four-row order and print the
 mapping before any summary sentence.
 
 ```prompt-b
-Using the same evaluator, write three separate checks. First, return one satisfying witness for P, meaning one assignment that makes P true. Second, decide whether P is a tautology, meaning true for every assignment, and if it is not, print one counterexample. Third, classify P OR NOT P and P AND NOT P as tautology or unsatisfiable. Explain in one sentence why a satisfying witness for P does not prove that P is always true. Do not use the words “equivalent” or “always” without showing the assignments that justify them.
+Using the same evaluator, write three separate checks. First, return one satisfying witness for P, meaning one assignment that makes P true. Second, decide whether P is a tautology, meaning true for every assignment, and if it is not, print one counterexample. Third, classify P OR NOT P and P AND NOT P as tautology or unsatisfiable. Explain in one sentence why a satisfying witness for P does not prove that P is always true. Do not use the words "equivalent" or "always" without showing the assignments that justify them.
 ```
 
 Expected observable result: a witness for `P` is printed; `P` is not a
@@ -30,7 +30,7 @@ witness.
 
 Predict first: can one true row establish a tautology?
 
-Likely AI drift: it may confuse satisfiable with universally true, or report
+Likely AI mistake: it may confuse satisfiable with universally true, or report
 the first witness as a proof of every row.
 
 Recovery: ask for the complete assignment table and label witness,

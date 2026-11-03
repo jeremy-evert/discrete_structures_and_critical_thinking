@@ -1,4 +1,4 @@
-# Prompt 04 — Trace a finite-state machine
+# Prompt 04 - Trace a finite-state machine
 
 Why: a state machine earns a claim by making states, inputs, and transitions
 explicit.
@@ -15,7 +15,7 @@ Open`, and an unknown input fails visibly.
 Predict first: after `valid, timeout, valid`, what state should the machine
 end in?
 
-Likely AI drift: it may treat an input as a state, add an unstated state, or
+Likely AI mistake: it may treat an input as a state, add an unstated state, or
 silently ignore an unknown input.
 
 Recovery: compare the declared transition table with the trace one input at a

@@ -12,7 +12,8 @@
 - Branch: `ivy/dsct-w14-boolean-fsm-20261103`
 - Package: `week-14/boolean-fsm-pkg/`
 - Base assertion: `git merge-base --is-ancestor ee18526 HEAD` → `ancestor_check=pass`
-- Tip at Luna handoff: `9b5ef6c9ae13d2a6257f4a051295c3a42981895b`
+- Tip note: this report is included in the commit containing it; see `git log`
+  for that commit. No stale tip SHA is recorded here.
 - Bounded scope: `instructor/INSTRUCTOR_GUIDE.md`, `instructor/RUN_OF_SHOW.md`,
   `instructor/FRESH_EYES_REVIEW.md`, and this report.
 - Forbidden scope respected: no Canvas access, no merge, no push, no student
@@ -250,3 +251,64 @@ emit existing TeX missing-character and underfull-box warnings, while the
 build check reports zero overfull/error lines. The three stream-fd permission
 messages printed by the managed shell preceded the test output; all listed
 commands exited 0.
+
+## Repair 3 — Sol re-review 755e868
+
+Bounded repair in `week-14/boolean-fsm-pkg/`. No files were staged, committed,
+or pushed. All edited and generated files remain inside the package.
+
+### Changes
+
+- Reworked the slide 11 circuit with explicit input-port and AND-port routes.
+  P, Q, and NOT Q terminate at distinct OR inputs; both OR outputs reach
+  separate AND inputs. Rendered and inspected page 11 after the final build;
+  no wire crosses a gate body or an unrelated input wire.
+- Replaced Prompt 03b curly quotation marks with straight ASCII quotes and
+  normalized punctuation in all five prompt sources to ASCII. Regenerated all
+  six `deck/prompts_txt` blocks, the concatenated Canvas prompt page, and
+  `canvas/boolean_fsm_prompts.zip`.
+- Compared all six prompt blocks against `pdftotext -layout` output. Each
+  matched its source, including the quotes in Prompt 03b. The five prompt
+  sources contain no non-ASCII characters.
+- Added the requested first-use definitions to the Tuesday landing. Updated the
+  handout's term to “satisfying witness” and expanded the recap definitions in
+  response to the second fresh-reader pass.
+- Corrected the fresh-eyes scope record: first pass was six pages; second pass
+  was the recap outline and Tuesday prompts. Recorded second-pass flags with
+  dispositions and the Claude CLI model alias; the exact snapshot was not
+  recorded.
+- Replaced the stale report tip hash with a note to find its containing commit
+  in `git log`.
+
+### Validation — actual commands and results
+
+```text
+cd week-14/boolean-fsm-pkg/code && python3 -m pytest -q
+11 passed in 0.01s (exit 0)
+
+cd week-14/boolean-fsm-pkg/deck && ./check_prompts.sh ../prompts
+index consistent: 27 rows; prompt boxes checked: 6 (exit 0)
+
+cd week-14/boolean-fsm-pkg/deck && ./build.sh   # run twice
+both runs: slides=32 pages, notes=9 pages;
+overfull/error lines: slides=0, notes=0 (both exit 0)
+
+cd week-14/boolean-fsm-pkg/deck
+pdftotext -layout boolean_fsm_slides.pdf /tmp/boolean-fsm-slide-text.txt
+all six prompt blocks match source text; all five prompt files are ASCII
+
+cd week-14/boolean-fsm-pkg/canvas && python3 check_manifest.py
+prompt page byte match: 5 files;
+ZIP test passed: boolean_fsm_prompts.zip (6 files);
+manifest check passed (exit 0)
+
+cd week-14/boolean-fsm-pkg/deck
+pdftoppm -f 11 -l 11 -png -r 150 boolean_fsm_slides.pdf /tmp/boolean-fsm-page11-final-inspection
+rendered page 11 inspected after final circuit layout
+```
+
+The deck build still logs pre-existing missing-character warnings from other
+slide text; the prompt sources contain no non-ASCII characters, and the
+requested overfull/error line counts are zero. The shell printed managed
+stream-FD permission messages before some command output; all listed commands
+exited successfully. The ZIP is retained under `canvas/` for this repair.

@@ -52,8 +52,9 @@ same meaning; it still needs this check.
 
 An expression is **satisfiable** when at least one allowed assignment makes it true.
 It is **unsatisfiable** when no allowed assignment makes it true.
-That particular successful assignment is a **witness**. A **tautology** is an
-expression that is true for every allowed assignment. These are different
+That particular successful assignment is a **satisfying witness** (or just a
+**witness**). A **tautology** is an expression that is true for every allowed
+assignment. These are different
 questions:
 
 - `P` is satisfiable; `P=True` means the variable `P` has value `True`, and

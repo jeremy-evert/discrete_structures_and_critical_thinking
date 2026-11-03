@@ -1,25 +1,29 @@
-# Prompt 01 — Make the claim checkable
+# Prompt 01 - Make the claim checkable
 
 Why: a confident answer is not evidence until its terms and test are visible.
+An expression is a rule that returns True or False; a Boolean variable is a
+named place for one of those values. An assignment gives each variable a
+value, and equivalent expressions return the same result for every allowed
+assignment.
 
 Slide reference: Week 14 Tuesday, the small-step rules.
 
 ```prompt-a
-Act as a careful checking partner for a two-variable Boolean example. Before writing code, state what an expression, a Boolean variable, an assignment, and equivalence mean in plain language. Use only the operators AND, OR, and NOT. Keep the example synthetic and self-contained. Then propose the smallest Python standard-library evaluator you would need for a truth table. Do not claim two expressions are equivalent until every assignment has been checked. Show one predicted row before showing the rest.
+Act as a careful checking partner for a two-variable Boolean example. Before writing code, state what an expression, a Boolean variable, an assignment, and equivalence mean in plain language. Use only the operators AND, OR, and NOT. Keep the made-up example self-contained. Then propose the smallest Python standard-library evaluator you would need for a truth table. Do not claim two expressions are equivalent until every assignment has been checked. Show one predicted row before showing the rest.
 ```
 
 Expected observable result: the response defines its terms, names the four
 assignments for `P` and `Q`, and separates a prediction from an exhaustive
 check.
 
-Predict first: what must be checked before “equivalent” is justified?
+Predict first: what must be checked before "equivalent" is justified?
 
-Likely AI drift: it may use an undefined operator, skip an assignment, or
+Likely AI mistake: it may use an undefined operator, skip an assignment, or
 announce equivalence from one matching row.
 
 Recovery: return to the committed deck example and write all four rows by hand
 before comparing any generated output.
-# Prompt 02 — Exhaust the truth table
+# Prompt 02 - Exhaust the truth table
 
 Why: a single counterexample defeats a claim that two expressions agree on
 every assignment.
@@ -35,14 +39,14 @@ Expected observable result: four rows are printed, and the only mismatch is
 
 Predict first: which row will expose the proposed simplification, if any?
 
-Likely AI drift: the program may print only true rows, use the wrong operator
+Likely AI mistake: the program may print only true rows, use the wrong operator
 precedence, or quietly replace the proposed expression.
 
 Recovery: compare the printed four rows with the visible table on the slide;
 the row `False, True` must remain visible.
-# Prompt 03 — Equivalence, satisfiability, and universal claims
+# Prompt 03 - Equivalence, satisfiability, and universal claims
 
-Why: “one witness exists” and “every assignment works” are different claims.
+Why: "one witness exists" and "every assignment works" are different claims.
 
 Slide reference: Week 14 Tuesday, the equivalence and SAT checks.
 
@@ -56,14 +60,14 @@ pair returns exactly `{'P': False, 'Q': True}`.
 Predict first: which result should be empty, and which result should contain a
 mapping?
 
-Likely AI drift: it may compare only one chosen assignment or return a vague
+Likely AI mistake: it may compare only one chosen assignment or return a vague
 sentence instead of the counterexample.
 
-Recovery: keep the reference evaluator’s fixed four-row order and print the
+Recovery: keep the reference evaluator's fixed four-row order and print the
 mapping before any summary sentence.
 
 ```prompt-b
-Using the same evaluator, write three separate checks. First, return one satisfying witness for P, meaning one assignment that makes P true. Second, decide whether P is a tautology, meaning true for every assignment, and if it is not, print one counterexample. Third, classify P OR NOT P and P AND NOT P as tautology or unsatisfiable. Explain in one sentence why a satisfying witness for P does not prove that P is always true. Do not use the words “equivalent” or “always” without showing the assignments that justify them.
+Using the same evaluator, write three separate checks. First, return one satisfying witness for P, meaning one assignment that makes P true. Second, decide whether P is a tautology, meaning true for every assignment, and if it is not, print one counterexample. Third, classify P OR NOT P and P AND NOT P as tautology or unsatisfiable. Explain in one sentence why a satisfying witness for P does not prove that P is always true. Do not use the words "equivalent" or "always" without showing the assignments that justify them.
 ```
 
 Expected observable result: a witness for `P` is printed; `P` is not a
@@ -72,12 +76,12 @@ witness.
 
 Predict first: can one true row establish a tautology?
 
-Likely AI drift: it may confuse satisfiable with universally true, or report
+Likely AI mistake: it may confuse satisfiable with universally true, or report
 the first witness as a proof of every row.
 
 Recovery: ask for the complete assignment table and label witness,
 counterexample, and tautology as separate checks.
-# Prompt 04 — Trace a finite-state machine
+# Prompt 04 - Trace a finite-state machine
 
 Why: a state machine earns a claim by making states, inputs, and transitions
 explicit.
@@ -94,19 +98,19 @@ Open`, and an unknown input fails visibly.
 Predict first: after `valid, timeout, valid`, what state should the machine
 end in?
 
-Likely AI drift: it may treat an input as a state, add an unstated state, or
+Likely AI mistake: it may treat an input as a state, add an unstated state, or
 silently ignore an unknown input.
 
 Recovery: compare the declared transition table with the trace one input at a
 time; use the reference model as the source of truth.
-# Prompt 05 — Find the missing transition
+# Prompt 05 - Find the missing transition
 
 Why: a model validator can expose what the state machine forgot to represent.
 
 Slide reference: Week 14 Tuesday, the model-limit check.
 
 ```prompt-a
-Write a validator for a finite-state machine whose declared states are Locked and Open and whose input alphabet is valid and timeout. The intentionally incomplete transition table contains (Locked, valid) -> Open, (Locked, timeout) -> Locked, and (Open, valid) -> Open. List every missing (state, input) pair in deterministic order. The validator must identify exactly (Open, timeout) as the missing transition needed by the badge trace. Do not assume an implicit self-loop counts as a declared transition. Explain in one sentence what this validator can establish and what it cannot establish about a real access system.
+Write a validator for a finite-state machine whose declared states are Locked and Open and whose input alphabet is valid and timeout. The intentionally incomplete transition table contains (Locked, valid) -> Open, (Locked, timeout) -> Locked, and (Open, valid) -> Open. List every missing (state, input) pair in deterministic order. The validator must identify exactly (Open, timeout) as the missing transition needed by the badge trace. Do not treat an undeclared move that stays in the same state as a declared transition. Explain in one sentence what this validator can establish and what it cannot establish about a real access system.
 ```
 
 Expected observable result: the missing-transition list names exactly
@@ -114,7 +118,7 @@ Expected observable result: the missing-transition list names exactly
 
 Predict first: which state/input pair is absent from the incomplete model?
 
-Likely AI drift: it may fill the gap automatically, report only a count, or
+Likely AI mistake: it may fill the gap automatically, report only a count, or
 claim the model proves real authorization.
 
 Recovery: enumerate the Cartesian product of declared states and inputs, then
