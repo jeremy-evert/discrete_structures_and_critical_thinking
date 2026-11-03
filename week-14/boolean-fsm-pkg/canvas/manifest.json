@@ -1,0 +1,61 @@
+{
+  "week": 14,
+  "module_id": 218913,
+  "module_name_contains": "Week 14",
+  "note": "Page sources may contain {{FILE:name}} and {{FILE_URL:name}} tokens for the publisher to replace with uploaded file names and URLs.",
+  "pages": [
+    {
+      "title": "Week 14 Tuesday: Boolean Algebra, Circuits, SAT, and State Models",
+      "source": "canvas/tuesday_landing.md",
+      "after": "overview"
+    },
+    {
+      "title": "Week 14 Tuesday: Boolean and FSM Handout",
+      "source": "student/handout.md",
+      "after": "Week 14 Tuesday: Boolean Algebra, Circuits, SAT, and State Models"
+    },
+    {
+      "title": "Week 14 Tuesday: Concept Map",
+      "source": "student/concept_map.md",
+      "after": "Week 14 Tuesday: Boolean and FSM Handout"
+    },
+    {
+      "title": "Week 14 Tuesday: Glossary",
+      "source": "student/glossary.md",
+      "after": "Week 14 Tuesday: Concept Map"
+    },
+    {
+      "title": "Week 14 Tuesday: Claude Prompts for Boolean and FSM Checks",
+      "source": "canvas/tuesday_prompts.md",
+      "after": "Week 14 Tuesday: Glossary"
+    },
+    {
+      "title": "Week 14 Thursday: Model Defense, Show & Tell, and Checkpoint 3",
+      "source": "canvas/thursday_activity.md",
+      "after": "Week 14 Tuesday: Claude Prompts for Boolean and FSM Checks"
+    },
+    {
+      "title": "Week 14 Thursday: Recap Outline",
+      "source": "student/recap_outline.md",
+      "after": "Week 14 Thursday: Model Defense, Show & Tell, and Checkpoint 3"
+    }
+  ],
+  "files": [
+    {
+      "name": "boolean_fsm_slides.pdf",
+      "source": "deck/boolean_fsm_slides.pdf",
+      "page_link_from": "Week 14 Tuesday: Boolean Algebra, Circuits, SAT, and State Models"
+    },
+    {
+      "name": "odyssey_checkpoint_3.md",
+      "source": "../student/odyssey-checkpoint-3.md",
+      "page_link_from": "Week 14 Thursday: Model Defense, Show & Tell, and Checkpoint 3"
+    }
+  ],
+  "zips": [
+    {
+      "name": "boolean_fsm_prompts.zip",
+      "from_dir": "prompts"
+    }
+  ]
+}
