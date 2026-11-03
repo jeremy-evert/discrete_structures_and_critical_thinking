@@ -1,19 +1,27 @@
 #!/usr/bin/env python3
-"""Small guard for the student glossary when the neighboring slice exists."""
+"""Fail if the package glossary is missing a required plain-language term."""
 from pathlib import Path
-import sys
+import re
 
-target = Path(__file__).resolve().parents[2] / "student" / "glossary.md"
+target = Path(__file__).resolve().parents[1] / "student" / "glossary.md"
 if not target.exists():
-    print("glossary check deferred: week-13/student/glossary.md is not present")
-    raise SystemExit(0)
-text = target.read_text(encoding="utf-8").lower()
+    print(f"glossary missing: {target}")
+    raise SystemExit(1)
+
 terms = (
     "graph", "vertex", "directed edge", "dependency", "tree", "containment",
     "traversal", "preorder", "postorder", "breadth-first", "decision tree",
-    "edge label", "assert",
+    "edge label", "assert", "connected", "cycle", "descendant", "recursion",
+    "recursively", "depth-first", "binary tree", "inorder", "trace", "audit",
+    "conversion", "model", "claim", "test", "pytest", "set", "branch", "split",
+    "route", "search", "language-access review", "discriminating evidence",
+    "bounded conclusion", "network", "edge case", "counterexample",
 )
-missing = [term for term in terms if term not in text]
+entries = {
+    match.group(1).strip().lower()
+    for match in re.finditer(r"^\|\s*\*\*(.+?)\*\*\s*\|", target.read_text(encoding="utf-8"), re.M)
+}
+missing = [term for term in terms if term not in entries]
 if missing:
     print("glossary missing terms:", ", ".join(missing))
     raise SystemExit(1)

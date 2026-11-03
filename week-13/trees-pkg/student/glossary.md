@@ -7,6 +7,7 @@ handout. The arrow meaning must always be stated before a trace or claim.
 |---|---|
 | **vertex** | A named thing in a graph. In this week, `project` and `tests` are vertices. Week 12 also called this a node. |
 | **edge** | A relationship between two vertices. A directed edge has a direction, such as `build -> tests`. |
+| **directed edge** | An edge with a direction; here `A -> B` means complete A before B. |
 | **path** | A sequence of connected vertices. `project -> plan -> design` is a path in the synthetic graph. |
 | **rooted tree** | A tree with one chosen starting vertex, called its root, and no cycles. |
 | **root** | The starting vertex of a rooted tree. It has no parent; `project` is the root of the folder-style example. |
@@ -25,8 +26,34 @@ handout. The arrow meaning must always be stated before a trace or claim.
 | **containment** | A “is shown under” relationship, like a file inside a folder. It is different from dependency even when the same names are used. |
 | **dependency vs containment** | Dependency describes order of work; containment describes placement in a hierarchy. Never silently substitute one meaning for the other. |
 | **graph** | A model made from vertices and edges. It may have cross-links or cycles. |
+| **network** | Another word for a graph here: named things joined by relationships. |
 | **tree** | A connected graph organized from one root with no cycles; in this package, child order is fixed left to right. |
+| **connected** | Joined so that the displayed vertices can be reached through paths in the structure. |
+| **cycle** | A route that returns to a vertex already visited. The displayed trees have no cycles. |
+| **descendant** | Any vertex below another vertex, including children and lower levels. |
 | **traversal** | A repeatable rule for visiting vertices and recording their order. |
+| **recursion** | Solving a problem by applying the same rule to a smaller part of it. |
+| **recursively** | Repeating a rule for each smaller child or subproblem. |
+| **depth-first** | A visit order that finishes one branch before moving to its sibling. |
+| **binary tree** | A tree in which each vertex has at most two children. |
+| **inorder** | Visiting left child, parent, right child; we do not use this binary-tree convention here. |
+| **trace** | The recorded list of vertices visited by a traversal or route. |
+| **audit** | A deliberate check of a model against its source relationships. |
+| **conversion** | Changing one representation, such as a graph, into another, such as a tree. |
+| **model** | A simplified representation used to ask a checkable question. |
+| **claim** | A sentence about what a model establishes. |
+| **test** | An executable check that fails when an expected condition is false. |
+| **pytest** | The Python tool used in this package to run tests. |
+| **assert** | A test statement that makes an expected condition explicit. |
+| **set** | A collection with no order or repeated items. |
+| **branch** | One path from a split point through its descendants. |
+| **split** | A decision question with possible answers that lead to different branches. |
+| **route** | The path selected by answers in a decision tree. |
+| **search** | Checking whether a named vertex or relationship can be found in a model. |
+| **language-access review** | A check that the route is usable for the language-access needs in the supplied note. |
+| **discriminating evidence** | A check whose result distinguishes between competing claims. |
+| **bounded conclusion** | A conclusion limited to what the checked evidence supports. |
+| **edge case** | A boundary or unusual input worth checking, such as a missing-node search. |
 | **internal vertex** | A vertex with at least one child in the displayed tree. In the decision tree, `eligible?` is internal. |
 | **edge label** | Text attached to an edge to say why that branch is taken. In the decision tree, `yes` and `no` are labels, not vertices. |
 | **counterexample** | One concrete case that shows a broad claim is false or too strong. |

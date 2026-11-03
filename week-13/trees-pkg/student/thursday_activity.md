@@ -52,6 +52,8 @@ Use the Thursday work to assemble your individual Week 13 **Decision Gate**:
 - Check Your Answer, including one edge case and one omitted relation; and
 - One-Sentence Summary.
 
+Others in the course will see your work, and reading your classmates' work is part of the assignment. Use synthetic examples only and omit private information.
+
 Also complete the individual **Pair Reasoning report** requested for this
 activity. The report records reasoning under challenge; it is not a second copy
 of the technical tree. Cover, compactly: your starting position, the strongest

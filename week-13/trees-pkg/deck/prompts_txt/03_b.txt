@@ -1,5 +1,10 @@
-Predict the exact lists before running tests. Add pytest assertions for preorder
-[project, plan, requirements, design, build, tests, docs], postorder
-[requirements, design, plan, tests, docs, build, project], and breadth-first
-[project, plan, build, requirements, design, tests, docs]. Run pytest and explain
-why a depth-first implementation cannot produce the breadth-first trace.
+Before running tests, paste YOUR predictions into these three lines:
+preorder: [your predicted list]
+postorder: [your predicted list]
+breadth-first: [your predicted list]
+Add pytest assertions for the exact verified traces. Use the reference module's
+fixed child-order constants (such as TREE_CHILDREN) and any trace constants it
+provides where possible; if a verified list must be recorded, take it from the
+reference run, not from these prediction lines. Keep the pasted predictions as
+notes for comparison, not as the test oracle. Run pytest and explain why a
+depth-first implementation cannot produce the breadth-first trace.
