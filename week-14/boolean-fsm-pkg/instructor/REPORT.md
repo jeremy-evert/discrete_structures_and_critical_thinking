@@ -312,3 +312,11 @@ slide text; the prompt sources contain no non-ASCII characters, and the
 requested overfull/error line counts are zero. The shell printed managed
 stream-FD permission messages before some command output; all listed commands
 exited successfully. The ZIP is retained under `canvas/` for this repair.
+
+## Review-chain status at hand-off (Ivy, 2026-11-03)
+
+- Terra plan approved; Luna slices 1-5 plus repairs 1-3 committed.
+- Sol (gpt-6-sol): REPAIR on bfde761, REPAIR on 755e868, both repaired. Sol's third pass (on the repair-3 commit) did NOT complete: Codex hit its account usage limit (reset stated as 5:59 PM). There is therefore NO Sol CLEAR for the current tip.
+- Ivy's own spot checks at the repair-3 tip: pytest 11 passed, check_manifest passed, build twice 32/9 pages, rendered slide 11 looked correct (PREDICT box sits close to the diagram; Sol to judge).
+- Terminal state: **INCOMPLETE - awaiting Sol re-review** after the usage limit resets. Not merged; course repo, so never self-merged.
+- Not run: independent re-verification of the slide 11 layout, prompt-render verbatim check at the final tip.
