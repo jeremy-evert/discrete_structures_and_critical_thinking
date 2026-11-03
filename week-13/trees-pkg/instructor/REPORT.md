@@ -1,6 +1,6 @@
 # REPORT: DSCT Week 13 trees package (Ivy, run 9b4db445ab336241748038edc137d747)
 
-Branch `ivy/dsct-w13-trees-20261103`, base `origin/main` ee18526 (asserted). Tip SHA: the commit that adds this file; read `git log -1 --format=%h` on the branch (a report cannot name its own commit). Terminal state: **COMPLETE** pending Sol re-pass receipt (see Review chain). No Canvas, no merge, no student data, synthetic data only.
+Branch `ivy/dsct-w13-trees-20261103`, base `origin/main` ee18526 (asserted). Reviewed content tip: `24161b1` (package content identical afterward; later commits add only this report and receipts; the final branch tip is reported to Anna in the hand-up). Terminal state: **COMPLETE**. No Canvas, no merge, no student data, synthetic data only.
 
 ## What shipped (under week-13/trees-pkg/)
 code/ (trees.py + 8 pytest passes, 1 labeled strict xfail), prompts/ 01-07 (13 blocks), deck/ (48-page slides + 48-page instructor notes, tectonic --only-cached pipeline, check_prompts.sh, check_layout.py, check_glossary.py, make_traces.py), student/ (handout, concept_map, glossary, tuesday_activity, thursday_activity, recap_outline, decision-gate byte-copy), instructor/ (INSTRUCTOR_GUIDE, FRESH_EYES_LOG, this REPORT), canvas/ (manifest.json, validate_manifest.py, tuesday_landing.md, prompts.md).
@@ -30,7 +30,7 @@ code/ (trees.py + 8 pytest passes, 1 labeled strict xfail), prompts/ 01-07 (13 b
 - Visual QA of slides was done by Ivy from rendered contact sheets at 55 dpi.
 
 ## Review chain
-Terra plan (Codex) -> Luna slices A, B, C, B2 (deck repair), R (Sol + fresh-eyes repair) -> Sol pass 1 at 51733f9: REPAIR (4 findings, all fixed) -> Sol pass 2 on the repaired tip: see jobs receipt in scratch (verdict recorded in Ivy's hand-up). Astra not triggered: findings were bounded defects, not a process failure.
+Terra plan (Codex) -> Luna slices A, B, C, B2 (deck repair), R (Sol + fresh-eyes repair) -> Sol pass 1 at 51733f9: REPAIR (4 findings, all fixed) -> Sol pass 2 at 24161b1: verdict REPAIR, sole finding was this report's missing tip SHA/terminal state (documentation-only; every package attack survived). Fixed here; no third Sol pass because the fix touches no package content, and Ivy re-ran all package checks after it. Receipts: instructor/receipts/ (instructor-only, not in manifest). Astra not triggered: findings were bounded defects, not a process failure.
 
 ## Spend note
 Anthropic: Ivy (Sonnet) orchestration and visual QA, one Haiku fresh-eyes subagent. OpenAI: Codex Terra x1, Luna x5, Sol x2: UNMETERED. Reusable: deck pipeline (check_prompts/check_layout/check_glossary/make_traces/render_verbatim) and canvas/validate_manifest.py generalize to W14-W17 by renaming paths; Luna prompt scaffolding (hdr + slice) is reusable.
