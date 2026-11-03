@@ -1,0 +1,24 @@
+# Prompt 03 — Bundle stability check
+
+```prompt-a
+Sources:
+- Use the three deterministic seed rows shown in the Thursday-preview table.
+
+Rules / Assumptions:
+- Confirm that the strategies, target, game count, classroom rules, and start balance stay fixed.
+- Reuse the decision rule you wrote before seeing the bundle.
+
+Work:
+- Record each row's raw wins, denominators, win rates, and A-minus-B difference.
+- Check whether the ordering has the same sign in every row.
+- Find the smallest difference, largest difference, and range.
+
+Check:
+- Does the bundle satisfy your predeclared rule?
+- What can the bundle support, and what would still be an overclaim?
+
+One-Sentence Summary:
+- Defend, revise, or refuse the winner claim in one evidence-bounded sentence.
+
+Do not write a simulator or machine-learning algorithm. Compare and interpret the supplied evidence.
+```

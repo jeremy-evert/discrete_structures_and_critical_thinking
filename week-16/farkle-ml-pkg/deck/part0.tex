@@ -1,0 +1,47 @@
+\begin{frame}
+\titlepage
+\note{Say: today is about what a Farkle result lets us claim, not about crowning a champion. Question: when a polished number sounds persuasive, what do you want to inspect? Expected: the rules, the counts, the denominator, and the scope of the claim.}
+\end{frame}
+
+\begin{frame}{The question behind the number}
+\princ{EVIDENCE BEFORE INTERPRETATION}
+\begin{block}{Today's question}
+When a Farkle strategy appears better, what are we actually justified in believing?
+\end{block}
+\begin{itemize}
+\item A simulation result is evidence produced by a fixed model and a finite sample.
+\item A machine-learning result is not a magic permission slip to say ``best.''
+\item Our job is to make the claim no larger than the evidence.
+\end{itemize}
+\see{A result can be useful and still be too small or too narrow to support a broad claim.}
+\note{Say: the word ``appears'' is doing useful work. Question: does a clean result automatically answer a broad question? Expected: no; first inspect what was held fixed and counted.}
+\end{frame}
+
+\begin{frame}{Tuesday's path: predict, inspect, limit}
+\begin{enumerate}
+\item Fix the rules and comparison.
+\item Define \textbf{better} and the decision rule before the numbers.
+\item Predict what the first sample will show.
+\item Inspect raw wins, starts, games, and denominators.
+\item Name one way a first result could mislead.
+\item Write one limited conclusion and an exit trace.
+\end{enumerate}
+\vspace{4pt}
+\begin{block}{Course method}
+Sources \(\rightarrow\) Rules / Assumptions \(\rightarrow\) Work \(\rightarrow\) Check \(\rightarrow\) One-Sentence Summary
+\end{block}
+\note{Walk the six moves. Say: each move ends in something we can point to or check. Question: which move must happen before we see a result? Expected: define better and predict.}
+\end{frame}
+
+\begin{frame}{Words we need before we read results}
+\begin{tabular}{@{}p{3.0cm}p{10.0cm}@{}}
+\textbf{Farkle} & A dice game in which a player banks turn points or risks them by rolling again; a Farkle loses the unbanked turn points.\\[2pt]
+\textbf{strategy} & A fixed rule for choosing ROLL or BANK from the state the strategy can see.\\[2pt]
+\textbf{simulation} & Repeatedly running a model to observe outcomes under stated rules.\\[2pt]
+\textbf{sample} & The particular games observed in one run.\\[2pt]
+\textbf{seed} & A label that makes one pseudo-random sequence repeatable.\\[2pt]
+\textbf{win rate} & Wins divided by the games counted for that strategy. The games are its denominator.\\[2pt]
+\textbf{decision rule} & A predeclared test that says what evidence is enough for a decision.
+\end{tabular}
+\note{Do not read every definition. Point to the terms students will use in the receipt. Question: which word tells us what the rate is divided by? Expected: denominator; here, games counted for the strategy.}
+\end{frame}

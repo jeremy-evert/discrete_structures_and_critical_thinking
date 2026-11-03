@@ -1,0 +1,60 @@
+\section{Inspect one sample}
+\begin{frame}{Initial sample: keep the raw counts visible}
+\princ{RAW COUNTS + DENOMINATORS}
+\begin{center}
+\tbl{initial}
+\end{center}
+\vspace{4pt}
+\begin{block}{What the row says}
+The sample contains \textbf{\NInitialGames} games, with balanced starts. The win rate is wins divided by games, not a floating impression.
+\end{block}
+\see{Every percentage on this slide can be rebuilt from the visible wins and games.}
+\note{Reveal the table after predictions. Ask: what is A's numerator and denominator? Expected: \NInitialWinsA wins out of \NInitialGames games. Then ask for B; expected: \NInitialWinsB out of \NInitialGames.}
+\end{frame}
+
+\begin{frame}[shrink=18]{Read the first result narrowly}
+\princ{LIMIT THE CLAIM}
+\begin{columns}[T]
+\begin{column}{0.50\textwidth}
+\begin{block}{Supported by this row}
+Under the fixed rules and seed \NInitialSeed, B had more observed wins than A in this sample.
+\end{block}
+\end{column}
+\begin{column}{0.46\textwidth}
+\begin{block}{Not supported by this row}
+That B is generally better, best against every opponent, or proven by one sample.
+\end{block}
+\end{column}
+\end{columns}
+\vspace{6pt}
+\promptbox{02}{a}
+\note{Say the two blocks as a contrast. Question: which word makes the first statement safe? Expected: ``this sample'' and the fixed assumptions.}
+\end{frame}
+
+\begin{frame}{One reason the first result might mislead}
+\princ{CHECK THE MODEL}
+\begin{itemize}
+\item A sample is one finite slice of random game outcomes.
+\item The seed makes the slice repeatable; repeatable is not the same as universal.
+\item Balanced starts address one fairness concern, not every source of variation.
+\item A learned strategy can only use the state and training experience the model gives it.
+\end{itemize}
+\begin{block}{Useful sentence}
+This result is evidence about this bounded experiment, not a proof about all possible games.
+\end{block}
+\note{Choose one reason for the class to write, then name the others as possible checks. Question: what problem does equal starting position solve, and what problem does it leave? Expected: it helps with starter imbalance; it does not remove sampling variation or model limits.}
+\end{frame}
+
+\begin{frame}{Tuesday's limited conclusion}
+\princ{SCOPE THE CONCLUSION}
+\begin{block}{Exit-trace shape}
+In this sample, under these fixed rules, \rule{2.2cm}{0.4pt}, but I am not yet willing to claim \rule{2.2cm}{0.4pt} because \rule{2.2cm}{0.4pt}.
+\end{block}
+\begin{itemize}
+\item Name what was observed.
+\item Name the condition that makes it true.
+\item Name the missing check or limit.
+\end{itemize}
+\see{A strong answer can refuse to declare a winner while still making a precise observation.}
+\note{Collect one sentence. Question: what must appear after ``because''? Expected: a reason such as one finite sample, seed-to-seed variation, or a model limitation.}
+\end{frame}
