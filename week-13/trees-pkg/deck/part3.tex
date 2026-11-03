@@ -1,0 +1,79 @@
+\section{Three tree traversals}
+\begin{frame}{Traversal is a visit-order rule}
+\princ{TRAVERSAL}
+\begin{tabular}{@{}p{3.1cm}p{9.8cm}@{}}
+\textbf{preorder} & Visit a parent before its children.\\[4pt]
+\textbf{postorder} & Visit all children before their parent.\\[4pt]
+\textbf{breadth-first} & Visit one whole level before the next level.\\[4pt]
+\textbf{left-to-right} & At a node, use the child order we froze on the tree slide.\\
+\end{tabular}
+\vspace{10pt}
+\predict{Which traversal reaches build before requirements?}
+\note{Define each traversal with a concrete sentence. The child order is part of the input, not a cosmetic choice. Ask the prediction: breadth-first reaches build before requirements because both are children of project.}
+\end{frame}
+
+\begin{frame}{Preorder: parent first}
+\princ{TRAVERSAL}
+\begin{block}{Rule}
+Visit the node, then recursively visit its children from left to right.
+\end{block}
+\begin{center}\small\texttt{\TraceProjectPre}\end{center}
+\see{project appears before plan and build; requirements appears before design's sibling is visited.}
+\mistake{Do not sort names alphabetically; use the frozen child order.}
+\note{Trace with a finger: project, enter plan, enter requirements, then design, then return and enter build. Say that the printed sequence is generated from code/trees.py, so the slide cannot quietly drift from the tested answer.}
+\end{frame}
+
+\begin{frame}{Postorder: children first}
+\princ{TRAVERSAL}
+\begin{block}{Rule}
+Finish all children before recording their parent.
+\end{block}
+\begin{center}\small\texttt{\TraceProjectPost}\end{center}
+\predict{Which vertex must be last?}
+\see{project is last because every branch is completed before the root is recorded.}
+\note{Walk the plan branch first: requirements, design, plan. Then build: tests, docs, build. Only then project. Ask which vertex must be last; the root. Explain that postorder often matches ``finish parts before the whole,'' but it still follows containment edges, not every dependency.}
+\end{frame}
+
+\begin{frame}{Breadth-first: level by level}
+\princ{TRAVERSAL}
+\begin{block}{Rule}
+Use a queue: visit the current level, then add the next level at the back.
+\end{block}
+\begin{center}\small\texttt{\TraceProjectBFS}\end{center}
+\see{project, plan, build, then requirements, design, tests, docs.}
+\note{Describe the queue in plain language: put project in, remove it, add plan and build, then remove plan before build. This is why the two top-level children appear before their children. The exact sequence comes from the code-derived macro.}
+\end{frame}
+
+\begin{frame}{A deliberate trace error, then a fix}
+\princ{CHECK THE WORK}
+\begin{columns}[T]
+\begin{column}{0.47\textwidth}
+\begin{alertblock}{Wrong label: ``breadth-first''}
+\texttt{project, plan, requirements, design, build, tests, docs}
+\end{alertblock}
+This is the preorder trace wearing the wrong label.
+\end{column}
+\begin{column}{0.47\textwidth}
+\begin{block}{Fix}
+\texttt{\TraceProjectBFS}
+\end{block}
+\end{column}
+\end{columns}
+\see{build belongs in the second position, before level-two nodes.}
+\note{Show the error as intentional. Ask students what check exposes it: inspect levels, or run the breadth-first test. The wrong trace dives down the plan branch before visiting build, so it is depth-first preorder. Fix it by using the queue-based function and the exact generated trace.}
+\end{frame}
+
+\begin{frame}{Three traces, one fixed tree}
+\princ{TRAVERSAL}
+\small
+\begin{tabular}{@{}p{3.1cm}p{10.0cm}@{}}
+\textbf{preorder} & \texttt{\TraceProjectPre}\\[5pt]
+\textbf{postorder} & \texttt{\TraceProjectPost}\\[5pt]
+\textbf{breadth-first} & \texttt{\TraceProjectBFS}\\
+\end{tabular}
+\vspace{9pt}
+\begin{block}{Not used here}
+Inorder is a binary-tree convention; this is a general rooted tree.
+\end{block}
+\note{Compare the three sequences without asking which is best. Each is a correct answer to a different traversal rule. Close the section by saying that tests freeze the exact order, which is why a plausible-looking trace is not enough.}
+\end{frame}

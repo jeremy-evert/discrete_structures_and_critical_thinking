@@ -1,0 +1,98 @@
+\section{Predict, run, explain with the prompts}
+\begin{frame}{Prompt 01a: model the graph}
+\princ{MODEL VS PROCEDURE}
+\promptbox{01}{a}
+\predict{Before running: which exact seven edges should the test require?}
+\see{the model is written down before the code is trusted.}
+\note{Give about three minutes. Students predict the seven vertices and edges, then run prompt-a. Listen for the phrase ``A must be completed before B.'' The model comes before the procedure.}
+\end{frame}
+
+\begin{frame}{Prompt 01b: test the graph}
+\princ{MODEL VS PROCEDURE}
+\promptbox{01}{b}
+\see{the exact-set test checks the graph without allowing later code to change it.}
+\note{Students run prompt-b after prompt-a. The exact-set test is the visible check; do not allow later code to silently change the data.}
+\end{frame}
+
+\begin{frame}{Prompt 02a: draw the directory tree}
+\princ{TREE STRUCTURE}
+\promptbox{02}{a}
+\predict{Before running: which edge changes meaning when it becomes a parent-child line?}
+\see{the picture is a containment view, so its edges need a new definition.}
+\note{Give about four minutes. Have students convert the graph into the fixed directory-style tree and name the edge meaning before they judge the drawing.}
+\end{frame}
+
+\begin{frame}{Prompt 02b: test the tree}
+\princ{TREE STRUCTURE}
+\promptbox{02}{b}
+\mistake{A neat directory picture is not automatically a complete dependency graph.}
+\note{Students run the structural checks: root, one parent, seven nodes, and acyclicity. The test checks the tree shape, not whether it preserves every dependency.}
+\end{frame}
+
+\begin{frame}{Prompt 03a: trace the tree}
+\princ{TRAVERSAL}
+\promptbox{03}{a}
+\predict{Before running: which list should put build before requirements?}
+\see{the three traversal rules answer three different visit-order questions.}
+\note{Give about four minutes. Students implement preorder, postorder, and breadth-first traversal. Remind them that the fixed child order is part of the input.}
+\end{frame}
+
+\begin{frame}{Prompt 03b: test the traces}
+\princ{TRAVERSAL}
+\promptbox{03}{b}
+\see{the breadth-first list is the level-by-level list generated from the fixed order.}
+\note{Students compare the exact assertions. If breadth-first looks like preorder, ask where the queue is. Inorder is not part of this general rooted-tree lesson.}
+\end{frame}
+
+\begin{frame}{Prompt 04a: trace a decision tree}
+\princ{DECISION RULE}
+\promptbox{04}{a}
+\predict{Before running: should yes or no appear in the node trace?}
+\see{the route records nodes; yes and no label the edges between them.}
+\note{Give about four minutes. Students model the eligible-plus-aid route, keeping yes/no as edge labels. No real intake data is needed or allowed.}
+\end{frame}
+
+\begin{frame}{Prompt 04b: test the decision tree}
+\princ{DECISION RULE}
+\promptbox{04}{b}
+\see{the trace ends at aid route; the language-access relation is a separate note.}
+\note{Students test the three decision traces and identify what the tree does not show: aid route to language-access review.}
+\end{frame}
+
+\begin{frame}{Prompt 05a: audit the cross-link}
+\princ{CHECK THE WORK}
+\promptbox{05}{a}
+\predict{Before running: what exact one-edge set should the audit print?}
+\see{set subtraction compares relationships, not just the names of nodes.}
+\note{Give about four minutes. Students compare graph edges with tree edges and predict the one missing relationship before running the audit.}
+\end{frame}
+
+\begin{frame}{Prompt 05b: add the audit test}
+\princ{CHECK THE WORK}
+\promptbox{05}{b}
+\see{the audit names \texttt{requirements -> tests}; the strict expected failure stays visible.}
+\note{Students add the regression test and keep the strict expected failure. Explain that an expected failure is evidence about the false claim, not a broken suite.}
+\end{frame}
+
+\begin{frame}{Prompt 06a: check a search claim}
+\princ{HIERARCHY LIMIT}
+\promptbox{06}{a}
+\predict{Before running: can finding every known node prove every dependency is present?}
+\see{a node search asks whether an item is present; an edge audit asks whether a relationship is present.}
+\note{Give about four minutes. Students search the seven synthetic tree nodes and include the missing language-access review case.}
+\end{frame}
+
+\begin{frame}{Prompt 06b: test the stronger claim}
+\princ{HIERARCHY LIMIT}
+\promptbox{06}{b}
+\mistake{A successful node search is not a relationship audit.}
+\note{Students compare node coverage with the dropped-edge audit. The intended conclusion is no: finding nodes does not prove that all dependency edges were preserved.}
+\end{frame}
+
+\begin{frame}{Prompt 07a: explain the limit}
+\princ{CHECK THE WORK}
+\promptbox{07}{a}
+\predict{Before running: what evidence will support the one-sentence conclusion?}
+\see{traces, the dropped dependency, and one bounded conclusion supported by those checks.}
+\note{Give about five minutes. Students run the full suite and print both project and decision traces plus the dropped set. Require the bounded sentence from the prompt and label direct checks versus model limitations.}
+\end{frame}

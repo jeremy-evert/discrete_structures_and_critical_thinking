@@ -1,0 +1,58 @@
+\begin{frame}
+\titlepage
+\note{Welcome the class and name the question for today: when does a tidy tree help, and when does it hide a relationship? Tell students that every example uses synthetic data only.}
+\end{frame}
+
+\begin{frame}{Week 12 continuity: the model comes first}
+\princ{MODEL VS PROCEDURE}
+\begin{block}{Carry this sentence forward}
+\large A correct procedure on the wrong model is still wrong.
+\end{block}
+\begin{itemize}
+\item Last week, a one-way street meant the two directions had different edges.
+\item This week, a tree will make a tidy picture of relationships.
+\item Before tracing the picture, ask what one edge means.
+\end{itemize}
+\predict{If the arrows mean dependency but the tree edges mean containment, can the same picture answer both questions?}
+\note{Connect to Week 12 in one minute. A procedure can be perfectly executed and still answer the wrong question if its model is wrong. Today the trap is a change in edge meaning: dependency is a work-order relationship; containment is a displayed-under relationship. Ask for a prediction before showing the graph.}
+\end{frame}
+
+\begin{frame}{Today: model, trace, audit}
+\princ{CHECK THE WORK}
+\begin{enumerate}
+\item Start with a concrete seven-item project graph.
+\item Turn it into a directory-style tree, and name the edge meaning.
+\item Trace the tree three ways: preorder, postorder, and breadth-first.
+\item Audit what the tree dropped; then test a decision tree's limit.
+\end{enumerate}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\predict{Which trace will visit both top-level branches before their children?}
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{alertblock}{Slide legend}
+\textcolor{blue!60!black}{PREDICT} = guess first;\\
+\textcolor{green!40!black}{What you should see} = visible result;\\
+\textcolor{red!60!black}{Common mistake} = failure mode.
+\end{alertblock}
+\end{column}
+\end{columns}
+\note{Preview the sequence and the loop. Students should predict before code runs, then compare the visible result, then explain the gap. Do not start with abstract definitions; the project picture comes next. The answer to the prediction is breadth-first, but do not give it away yet.}
+\end{frame}
+
+\begin{frame}{Words we will use}
+\princ{MODEL VS PROCEDURE}
+\small
+\begin{tabular}{@{}p{3.0cm}p{9.9cm}@{}}
+\textbf{graph} & A set of items and relationships between them.\\[2pt]
+\textbf{vertex} & One item in a graph; the dot in a picture.\\[2pt]
+\textbf{directed edge} & An arrow from one vertex to another; direction matters.\\[2pt]
+\textbf{dependency} & A relationship saying one item must be completed before another.\\[2pt]
+\textbf{tree} & A rooted, connected structure with one parent for each non-root item.\\[2pt]
+\textbf{containment} & A display relationship: one item is shown under another.\\[2pt]
+\textbf{traversal} & A rule for the order in which we visit vertices.\\[2pt]
+\textbf{assert} & A test statement that fails when a claim is false.\\[2pt]
+\textbf{decision tree} & A tree whose branches represent choices and outcomes.\\
+\end{tabular}
+\note{Do not read every row aloud. Point out that graph, directed edge, tree, and traversal are the words that will recur. Emphasize the two meanings: dependency tells us about completion; containment tells us about display. If a term is new later, return to this slide.}
+\end{frame}

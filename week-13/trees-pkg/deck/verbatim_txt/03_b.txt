@@ -1,0 +1,5 @@
+Predict the exact lists before running tests. Add pytest assertions for preorder
+[project, plan, requirements, design, build, tests, docs], postorder
+[requirements, design, plan, tests, docs, build, project], and breadth-first
+[project, plan, build, requirements, design, tests, docs]. Run pytest and explain
+why a depth-first implementation cannot produce the breadth-first trace.

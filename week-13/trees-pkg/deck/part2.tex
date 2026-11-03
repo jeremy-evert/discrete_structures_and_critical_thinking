@@ -1,0 +1,80 @@
+\section{From graph to tree}
+\begin{frame}{Choose a directory-style tree}
+\princ{TREE STRUCTURE}
+\begin{block}{Fixed display rule}
+Show project with children plan and build; show requirements and design under plan; show tests and docs under build.
+\end{block}
+\begin{itemize}
+\item Visit children left-to-right.
+\item Every non-root item has one parent.
+\item These parent-child edges mean containment: ``shown under.''
+\end{itemize}
+\predict{Which graph edge will not appear as a parent-child edge?}
+\note{Say that we are making a useful display, not claiming to replace the graph. Freeze the child order now because every traversal answer depends on it. Ask the class to predict the missing edge before showing the tree.}
+\end{frame}
+
+\begin{frame}{The same items as a tree}
+\princ{TREE STRUCTURE}
+\begin{center}
+\begin{tikzpicture}[level distance=0.85cm,sibling distance=2.4cm,every node/.style={draw,rounded corners,fill=blue!8,minimum width=1.5cm,minimum height=0.48cm,font=\small},edge from parent/.style={draw,->,>=Stealth}]
+\node {project}
+  child {node {plan}
+    child {node {requirements}}
+    child {node {design}}
+  }
+  child {node {build}
+    child {node {tests}}
+    child {node {docs}}
+  };
+\end{tikzpicture}
+\end{center}
+\see{six parent-child edges, seven vertices, one root, and a fixed left-to-right order.}
+\mistake{A parent-child line is containment here; it is not automatically a dependency.}
+\note{Walk the tree from the root and read the children left to right. Count seven vertices and six tree edges. Say explicitly that a tree with seven vertices has six parent-child edges, so it cannot carry all seven graph dependencies without an extra relation. That count is a clue, not the whole audit.}
+\end{frame}
+
+\begin{frame}{What changed when we drew the tree?}
+\princ{EDGE MEANING}
+\small
+\begin{tabular}{@{}p{3.2cm}p{4.6cm}p{4.6cm}@{}}
+\textbf{Question} & \textbf{Dependency graph} & \textbf{Directory-style tree}\\\midrule
+What does \texttt{A -> B} say? & Complete A before B. & Show B under A.\\[4pt]
+How many edges? & Seven listed edges. & Six parent-child edges.\\[4pt]
+Can branches cross? & Yes, \texttt{requirements -> tests}. & No, not as a tree parent relation.\\
+\end{tabular}
+\vspace{9pt}
+\see{the tree is a containment view, not a complete dependency model.}
+\note{Use the table as a side-by-side translation. Students often assume a tree edge keeps the old meaning; it does not unless we say so. Ask which row predicts a lost cross-branch relation. The answer is the third row.}
+\end{frame}
+
+\begin{frame}{The dropped cross-link is visible}
+\princ{HIERARCHY LIMIT}
+\begin{center}
+\begin{tikzpicture}[>=Stealth,every node/.style={draw,rounded corners,fill=blue!8,minimum width=1.35cm,minimum height=0.48cm,font=\scriptsize},edge/.style={->,thick}]
+\node (p) at (0,1.5) {project};
+\node (pl) at (-2,0.4) {plan};\node (bu) at (2,0.4) {build};
+\node (r) at (-3.0,-0.8) {requirements};\node (d) at (-1.0,-0.8) {design};
+\node (t) at (1.0,-0.8) {tests};\node (do) at (3.0,-0.8) {docs};
+\draw[edge] (p)--(pl);\draw[edge] (p)--(bu);\draw[edge] (pl)--(r);\draw[edge] (pl)--(d);\draw[edge] (bu)--(t);\draw[edge] (bu)--(do);
+\draw[edge,red!75!black,dashed,bend right=22] (r) to node[draw=none,fill=white,below,font=\scriptsize] {dropped: \texttt{requirements -> tests}} (t);
+\end{tikzpicture}
+\end{center}
+\begin{block}{Audit result}
+The tree preserves six edges and drops exactly one dependency: \texttt{requirements -> tests}.
+\end{block}
+\note{Point at the six solid tree edges, then the red dashed edge. The hierarchy is not bad; it is incomplete for the dependency question. Name the exact dropped edge. This is the lesson's central audit result and will be generated and tested from the reference code.}
+\end{frame}
+
+\begin{frame}{Before code: make the audit checkable}
+\princ{CHECK THE WORK}
+\begin{enumerate}
+\item Write the graph edge set.
+\item Write the tree parent-child edge set.
+\item Subtract: graph edges minus tree edges.
+\end{enumerate}
+\begin{center}
+\fbox{\scriptsize dropped = graph\_edges - tree\_edges = \{requirements -> tests\}}
+\end{center}
+\predict{What should happen if an AI-generated hierarchy claims that nothing was dropped?}
+\note{Turn the picture into a small, falsifiable check. The set subtraction is more reliable than trusting a tidy drawing. Ask what should happen to the stronger claim; the test should fail or be marked as an expected failure. We will keep that failure visible later.}
+\end{frame}

@@ -1,0 +1,4 @@
+Predict what an exact edge-set test should catch. Add pytest tests for the seven
+synthetic vertices and the exact seven-edge set listed in prompt-a. Do not edit these
+tests later, even if a later prompt produces a surprising result. Run pytest and show
+the short result. Explain what an exact set check tells us that a picture alone may not.
