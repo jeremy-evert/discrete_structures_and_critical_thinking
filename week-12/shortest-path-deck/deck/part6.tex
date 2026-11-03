@@ -29,14 +29,14 @@ We now know the model (a directed, weighted table) and the objective (the shorte
 \note{Predict answer: the total comes out short by one leg (the way home). Show that by hand. Explain beat: closed tour means the return leg counts. Common mistake: range over five legs not six.}
 \end{frame}
 
-\begin{frame}{Step 3: check 1-2-3-4-5-6-1, then write tests}
+\begin{frame}{Step 3: check our hand total}
 \princ{CHECK THE WORK}
 \promptbox{03}{a}
 \see{legs \NLegNatOne, \NLegNatTwo, \NLegNatThree, \NLegNatFour, \NLegNatFive, \NLegNatSix; total \textbf{\NTotalNat}, the same as our hand total.}
 \note{Compare with the hand total from the tour slide. If they differ, the code or the hand work is wrong; find which. Do not let Claude adjust the expected number until they agree. This is checking a procedure against a hand check, which is Tuesday's move.}
 \end{frame}
 
-\begin{frame}{Step 3b: tests that guard the model}
+\begin{frame}{Step 3b: tests guard the model}
 \princ{ASYMMETRY}
 \promptbox{03}{b}
 \see{\code{2 passed}. Test 1 fails if someone ``fixes'' the table to be symmetric.}
@@ -66,7 +66,7 @@ We now know the model (a directed, weighted table) and the objective (the shorte
 \note{Predict answer: it can never lose, since greedy's tour is one of the tours brute force tries. Here it wins by \NGreedyGap. The count \NBruteCount\ is the formula from the counting slides.}
 \end{frame}
 
-\begin{frame}{Step 6b: assert the count matches the formula}
+\begin{frame}{Step 6b: assert the count}
 \princ{COUNTING / PATTERN}
 \promptbox{06}{b}
 \see{\code{pytest} passes: counts \NCountTwo, \NCountThree, \NCountFour, \NCountFive, \NCountSix\ for 2 to 6 cities, and brute force is no worse than greedy.}
