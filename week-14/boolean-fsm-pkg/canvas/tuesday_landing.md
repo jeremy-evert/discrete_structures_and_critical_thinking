@@ -14,6 +14,11 @@ and what can this state model not establish?
 Here, **SAT** is short for satisfiability: whether at least one allowed
 assignment makes an expression true. **Unsatisfiable** means no allowed
 assignment makes it true. A **proof** here is a check that covers every case.
+A **counterexample** is an allowed assignment that shows a claim is false. A
+**satisfying witness** is an assignment that makes an expression true. A
+**tautology** is an expression that is true for every allowed assignment.
+A **transition** is a rule saying which next state follows from one state and
+one input. A **trace** is the ordered record of states and inputs during a run.
 An **arrow** such as `Locked --valid--> Open` means “from Locked, on the
 `valid` event, go to Open”; a plain `A -> B` means “A leads to B.”
 

@@ -1,4 +1,4 @@
-# Prompt 02 — Exhaust the truth table
+# Prompt 02 - Exhaust the truth table
 
 Why: a single counterexample defeats a claim that two expressions agree on
 every assignment.
@@ -14,7 +14,7 @@ Expected observable result: four rows are printed, and the only mismatch is
 
 Predict first: which row will expose the proposed simplification, if any?
 
-Likely AI drift: the program may print only true rows, use the wrong operator
+Likely AI mistake: the program may print only true rows, use the wrong operator
 precedence, or quietly replace the proposed expression.
 
 Recovery: compare the printed four rows with the visible table on the slide;
