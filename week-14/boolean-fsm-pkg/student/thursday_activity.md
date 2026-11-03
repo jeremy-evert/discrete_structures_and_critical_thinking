@@ -1,8 +1,17 @@
 # Thursday Show & Tell — defend a model, then name its boundary
 
-Thursday is a small public defense. Classmates will see the work, so use a
-fictional or otherwise non-sensitive example and critique the claim or model,
-never the person.
+**Show & Tell** is a short class presentation: show an example and explain the
+checkable **evidence** for it. Evidence means results, such as rows or a trace,
+that support or challenge a **claim**, the statement being checked. A
+**boundary** is the line between what a model represents and what it leaves
+out. A **model limit**
+is a relevant fact the model leaves out, so it cannot establish that fact. In
+a state machine, an **input** is an event supplied to the machine, such as
+`valid`; in `Locked --valid--> Open`, the arrow means “from Locked, on
+`valid`, go to Open,” and plain `A -> B` means “A leads to B.” Thursday is a
+small public defense. Classmates will see the work, so use a fictional or
+otherwise non-sensitive example and critique the claim or model, never the
+person.
 
 ## Choose one artifact path
 
@@ -20,7 +29,8 @@ tool is required.
 
 ## Defense procedure
 
-1. State your claim and show the truth-table rows or traces that support it.
+1. State your **claim** (the statement you want the check to support) and
+   show the truth-table rows or traces that are its evidence.
 2. Name the strongest limitation before an audience has to discover it. A
    model limit is a relevant fact the model does not represent, so the model
    cannot establish it.
