@@ -50,7 +50,7 @@ The feature used to judge or order choices. A criterion answers what â€œbetterâ€
 
 ## Decision rule
 
-A test declared before repeated evidence that includes a number threshold and says when to declare A, declare B, or refuse.
+A test declared before repeated evidence that says when to declare A, declare B, or refuse. It must be checkable by someone else and may include a number threshold.
 
 ## Defend
 
