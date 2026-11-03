@@ -17,7 +17,7 @@ Branch `anna/dsct-w12-shortest-path-deck-20261103`, pushed to origin. Pushed tip
 Tour 1-2-3-4-5-6-1 = 55 (reverse 1-6-5-4-3-2-1 = 56); greedy 1-3-5-2-6-4-1 = 39; best (brute force) 1-5-2-6-3-4-1 = 34 over 120 tours; 15 cities = 87,178,291,200 tours; 24.2 hours at an assumed one million tours per second.
 
 ## Judgment calls
-- **Invented table.** Searched seeded random 6x6 tables (values 2 to 12) for: all pairs asymmetric, no ties in greedy from city 1, greedy 5 worse than the unique best, natural order worse than greedy. Then changed the cell 6 to 5 from 12 to 13 because the reverse of the natural tour happened to total exactly 55 as well (a pytest caught it). Greedy loses to the best tour, as required.
+- **Invented table.** Searched seeded random 6x6 tables (values 2 to 12) for: all pairs asymmetric, no ties in greedy from city 1, greedy 5 worse than the unique best, natural order worse than greedy. Then changed the (6,5) cell from 12 to 13 because the reverse of the natural tour happened to total exactly 55 as well (a pytest caught it). Greedy loses to the best tour, as required.
 - **Counting convention.** Start fixed at city 1, direction matters, (n-1)!; no halving because the table is asymmetric. The n! and halved conventions are stated once.
 - **Guess-and-check seed 3114** was chosen (searched) so the five-guess trace is short and the best-so-far drops three times. The prompt tells students to use the same seed so their output matches.
 - **Exit-trace prompt.** The Thursday run-of-show has no exit-trace text; its Tuesday run-of-show has "Exit trace" and the Tuesday activity ends "State one bounded conclusion and its edge assumption; keep this trace for the Decision Gate." I used that sentence verbatim and say so in the slide's notes. Flo/Jeremy may want different wording.
@@ -32,3 +32,4 @@ Tour 1-2-3-4-5-6-1 = 55 (reverse 1-6-5-4-3-2-1 = 56); greedy 1-3-5-2-6-4-1 = 39;
 - Not looked at: the notes PDF beyond a build check.
 
 ## Tip
+Content tip `c583965` (deck, code, PDFs, prompts); this REPORT line was added in the next commit, see `git log` for the final tip.
