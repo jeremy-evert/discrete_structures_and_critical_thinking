@@ -1,8 +1,8 @@
 # Report: DSCT Week 16 Farkle + ML package (Ivy, run ee5f3c97b9dd2ed8d362972dc69ec4ca)
 
-Terminal state: **COMPLETE pending Sol re-review** (Sol passes 1 and 2 returned REPAIR; repairs applied; see "Sol" below). Not accepted; Anna audits. No Canvas contact, no merge, no student data, synthetic/fallback data only.
+Terminal state: **COMPLETE** (Sol pass 3 CLEAR at 9283c60; Sol passes 1 and 2 returned REPAIR and were repaired; see "Sol" below). Not accepted: Anna audits. Not accepted; Anna audits. No Canvas contact, no merge, no student data, synthetic/fallback data only.
 
-Branch `ivy/dsct-w16-farkle-ml-20261103` (pushed), base `origin/main` ee18526. Tip: a committed file cannot contain its own SHA; the branch tip is `git rev-parse origin/ivy/dsct-w16-farkle-ml-20261103` and is reported to Anna in the hand-off message. Content reviewed by Sol pass 2: dc3f34e.
+Branch `ivy/dsct-w16-farkle-ml-20261103` (pushed), base `origin/main` ee18526. Tip: a committed file cannot contain its own SHA; the branch tip is `git rev-parse origin/ivy/dsct-w16-farkle-ml-20261103` and is reported to Anna in the hand-off message. Content cleared by Sol pass 3: 9283c60; later commits only add sol_receipts and this report update.
 
 ## Delivered (all under `week-16/farkle-ml-pkg/`)
 - `deck/`: 18-page slides + 18-page instructor notes (tectonic build, `build.sh`, `check_prompts.sh`, numbers generated from the fallback CSV), 4 prompts shown verbatim.
@@ -16,8 +16,9 @@ Branch `ivy/dsct-w16-farkle-ml-20261103` (pushed), base `origin/main` ee18526. T
 
 ## Sol
 - Pass 1 at 096874e: REPAIR (7 findings: alternate-metric data, missing REPORT, undefined terms, receipt route, strategy descriptions, host-name grep, prompts.md H1). Repaired in dc3f34e except the logged exceptions below.
-- Pass 2 at dc3f34e: REPAIR (handout said A led seed 17 when B led 7-3; Tuesday revealed bundle signs/range early; numeric-threshold rule conflicted with deck and Prompt 01; first-use gaps; REPORT tip and false clean-grep claim; one host name in this file; deck said PREDICT-RUN-EXPLAIN). All fixed in the following commit; pass 3 verdict is recorded in the hand-off message and `jobs/ivy` receipts, not in this file.
-- Receipts live outside the repo (Ivy scratchpad); key findings are summarised above.
+- Pass 2 at dc3f34e: REPAIR (handout said A led seed 17 when B led 7-3; Tuesday revealed bundle signs/range early; numeric-threshold rule conflicted with deck and Prompt 01; first-use gaps; REPORT tip and false clean-grep claim; one host name in this file; deck said PREDICT-RUN-EXPLAIN). All fixed in the following commit; pass 3 is below.
+- Pass 3 at 9283c60: **CLEAR** (no acceptance defect; Anna items below remain open). A first pass-3 attempt at 6f54513 was cut off by a Codex usage limit and is not counted.
+- Receipts for all three counted passes are in `instructor/sol_receipts/` (paths sanitised).
 
 ## Judgment calls
 - **Decision rule threshold**: deck slide and Prompt 01 give a rule without a numeric threshold, so student pages say a rule may include a threshold but must be a checkable test.
