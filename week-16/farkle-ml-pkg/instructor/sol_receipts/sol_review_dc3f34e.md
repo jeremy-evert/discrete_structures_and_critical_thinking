@@ -147,7 +147,7 @@ returns:
 week-16/farkle-ml-pkg/instructor/REPORT.md:18: ... pdflatex absent on <host> ...
 ```
 
-Yet `instructor/REPORT.md:15` says `Package-wide grep for fleet host names and absolute paths: clean.` A separate real-host scan also finds the literal campus Canvas fragment `swosu.instructure` in `canvas/validate_manifest.py:124`; the validator was instructed to detect that string, but it remains a literal package-wide hostname fixture.
+Yet `instructor/REPORT.md:15` says `Package-wide grep for fleet host names and absolute paths: clean.` A separate real-host scan also finds the literal campus Canvas fragment `<canvas-host>` in `canvas/validate_manifest.py:124`; the validator was instructed to detect that string, but it remains a literal package-wide hostname fixture.
 
 **Observed versus expected:** The requested grep is nonempty and the report says it is empty. The expected result is either neutral fake fixtures/phrasing or an explicitly accepted, narrowly documented fixture exception; a false `clean` claim is not acceptable.
 
