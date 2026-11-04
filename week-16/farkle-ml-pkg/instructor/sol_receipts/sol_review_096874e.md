@@ -100,7 +100,7 @@ Negative controls in `runtime-copy`:
 ### F6 — MEDIUM — literal package-wide hostname-clean acceptance fails
 
 - Violated invariant: contract line 51 says grep clean for real fleet host names.
-- Evidence: `canvas/validate_manifest.py:97` contains `april|maise|brandy|morgan|september`; `instructor/LUNA_RECEIPT_4_5.md:4,65` contains `<worktree>`. The manifest-reachable student surface is clean.
+- Evidence: `canvas/validate_manifest.py:97` contains `<fleet-host-names>`; `instructor/LUNA_RECEIPT_4_5.md:4,65` contains `<worktree>`. The manifest-reachable student surface is clean.
 - Observed versus expected: package-wide grep is nonempty even though student exposure was not found.
 - Independent basis: direct tracked-tree grep. The literal worker input itself requested example fleet names in the validator, so this also exposes an input/contract conflict rather than a secret leak.
 - Smallest repair: Foreman should either record a narrow accepted exception for validator test vocabulary or replace real host identifiers with non-production fixtures and sanitize environment-specific receipt paths.
