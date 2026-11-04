@@ -42,7 +42,7 @@ The package is nevertheless not acceptable yet. The repaired handout publishes t
 | F3 incomplete first-use vocabulary | **Partially fixed; remains REPAIR.** | The glossary is alphabetized and the named repair terms were mostly added, but `fallback fixture`, `benchmark`, and strategy-state jargon still fail first-use/plain-language review. See S2-F4. |
 | F4 receipt route not reachable | **Logged, by design.** | Student pages name the assignment without inventing a URL (`handout.md:85`, `thursday_activity.md:105`); `REPORT.md:27` records the publisher/route question for Anna. |
 | F5 strategies unexplained | **Fixed.** | `handout.md:54-55` and `thursday_activity.md:26-27` explain both strategies. The statements agree with `lessons/vendor/farkle_ml/strategies.py:13-24,99-112` and `learner.py:12-44,145-150`. |
-| F6 package hostname grep failed | **Regressed; remains REPAIR.** | Older receipts were sanitized and validator fragments were split, but new `REPORT.md:18` contains `maise`; the literal package scan is nonempty. See S2-F6. |
+| F6 package hostname grep failed | **Regressed; remains REPAIR.** | Older receipts were sanitized and validator fragments were split, but new `REPORT.md:18` contains `<host>`; the literal package scan is nonempty. See S2-F6. |
 | F7 prompts page H1 exception | **Logged, by design.** | `REPORT.md:22` records the exact-concatenation/H1 exception, and the validator reports it explicitly. Exact concatenation still holds. |
 
 ## Findings
@@ -137,14 +137,14 @@ The package is nevertheless not acceptable yet. The repaired handout publishes t
 **Evidence:**
 
 ```sh
-rg -n -i 'april|maise|brandy|morgan|september|<worktree> \
+rg -n -i '<fleet-host-names>|<worktree> \
   week-16/farkle-ml-pkg
 ```
 
 returns:
 
 ```text
-week-16/farkle-ml-pkg/instructor/REPORT.md:18: ... pdflatex absent on maise ...
+week-16/farkle-ml-pkg/instructor/REPORT.md:18: ... pdflatex absent on <host> ...
 ```
 
 Yet `instructor/REPORT.md:15` says `Package-wide grep for fleet host names and absolute paths: clean.` A separate real-host scan also finds the literal campus Canvas fragment `swosu.instructure` in `canvas/validate_manifest.py:124`; the validator was instructed to detect that string, but it remains a literal package-wide hostname fixture.
