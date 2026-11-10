@@ -12,6 +12,8 @@
 \newcommand{\sF}{\tikz[baseline=-0.6ex]{\draw[thick,fill=yellow!50](0,0)circle(0.15);\fill(-0.05,0.04)circle(0.015);\fill(0.05,0.04)circle(0.015);\draw(-0.07,-0.04)to[bend right=60](0.07,-0.04);}}
 \newcommand{\sH}{\tikz[baseline=-0.6ex]{\draw[thick,fill=cyan!40](0,0)ellipse(0.16 and 0.09);\draw[thick,fill=cyan!40](0.14,0)--(0.27,0.1)--(0.27,-0.1)--cycle;\fill(-0.08,0.02)circle(0.015);}}
 \newcommand{\bigsym}[1]{{\Large #1}}
+\newcommand{\gc}[1]{\textcolor{black!60}{\footnotesize #1}}
+\usepackage{xcolor}
 \title{Counting, Carrying, and Circuits}
 \subtitle{Week 13 Tuesday --- Boolean algebra, and how a computer adds and multiplies}
 \author{COMSC 2043 \textbullet\ Discrete Structures and Critical Thinking}
@@ -55,25 +57,48 @@ Count on your fingers or on paper, out loud if you like:
 \note{Hit the point: 10 is not a new symbol. It is a one and a zero, two digits. The first time we need a second column is exactly when the first column runs out. Odometer picture: the right wheel hits 9, rolls over to 0, and bumps the next wheel by one.}
 \end{frame}
 
-\begin{frame}{The same move at 99 + 1}
-\begin{columns}
-\column{0.45\textwidth}
-\begin{center}
-\begin{tabular}{r}
-\texttt{\ \ 9\ 9}\\
-\texttt{+\ \ \ 1}\\\hline
-\texttt{1\ 0\ 0}
-\end{tabular}
-\end{center}
-\column{0.55\textwidth}
+\begin{frame}{Add one column at a time: 52 + 53}
+\begin{columns}[c]
+\column{0.42\textwidth}
+\begin{center}{\huge
+\begin{tabular}{@{}l@{\ \ }c@{\ \ }c@{\ \ }c@{}}
+\gc{place} & \gc{100s} & \gc{10s} & \gc{1s}\\
+\gc{carry} & \gc{1} & & \\
+ & & \texttt{5} & \texttt{2}\\
+$+$ & & \texttt{5} & \texttt{3}\\\hline
+ & \texttt{1} & \texttt{0} & \texttt{5}
+\end{tabular}}\end{center}
+\column{0.58\textwidth}
 \begin{enumerate}
-\item $9+1$: ones place resets to 0, carry 1.
-\item $9+1$ (the carry): tens place resets to 0, carry 1.
-\item Nothing left to add to, so the carry becomes a new digit.
+\item \textbf{Ones:} $2+3=5$.
+\item \textbf{Tens:} $5+5=10$. Write 0, \textbf{carry 1}.
+\item \textbf{Hundreds:} nothing to add, so the carry drops down: 1.
+\end{enumerate}
+Do one column, then work sideways to the next.
+\end{columns}
+\note{Reveal one column at a time, right to left. Say the carry out loud and write it above the next column. This is the format Jeremy wants students to see.}
+\end{frame}
+
+\begin{frame}{The same move at 99 + 1}
+\begin{columns}[c]
+\column{0.42\textwidth}
+\begin{center}{\huge
+\begin{tabular}{@{}l@{\ \ }c@{\ \ }c@{\ \ }c@{}}
+\gc{place} & \gc{100s} & \gc{10s} & \gc{1s}\\
+\gc{carry} & \gc{1} & \gc{1} & \\
+ & & \texttt{9} & \texttt{9}\\
+$+$ & & & \texttt{1}\\\hline
+ & \texttt{1} & \texttt{0} & \texttt{0}
+\end{tabular}}\end{center}
+\column{0.58\textwidth}
+\begin{enumerate}
+\item $9+1=10$: write 0, carry 1.
+\item $9+1$ (the carry) $=10$: write 0, carry 1.
+\item Nothing left to add, so the carry becomes a new digit.
 \end{enumerate}
 \end{columns}
 \vspace{4pt}
-Place values: ones = $10^0$, tens = $10^1$, hundreds = $10^2$. \textbf{A new column appears every time the last one fills.}
+Place values: ones $=10^0$, tens $=10^1$, hundreds $=10^2$. \textbf{A new column appears every time the last one fills.}
 \note{Walk it slowly. The carry ripples left. This ripple is the reason a circuit that adds is built from a chain of identical pieces; hold that thought for the full adder.}
 \end{frame}
 
@@ -241,36 +266,30 @@ That is the entire addition table. With a carry in, the last case can reach $1+1
 \note{Compare to decimal, where the table has 100 entries (10 by 10). Binary has four. Everything else is the carrying procedure they already know.}
 \end{frame}
 
-\begin{frame}[fragile]{Binary addition: worked examples}
-\begin{columns}
-\column{0.33\textwidth}
-\begin{verbatim}
-   11
- +  1
- -----
-  100
-\end{verbatim}
-$3+1=4$
-\column{0.33\textwidth}
-\begin{verbatim}
-  101
- +011
- -----
- 1000
-\end{verbatim}
-$5+3=8$
-\column{0.33\textwidth}
-\begin{verbatim}
- 1011
-+0110
------
-10001
-\end{verbatim}
-$11+6=17$
+\begin{frame}{Binary addition: one column at a time}
+\begin{columns}[c]
+\column{0.48\textwidth}
+\begin{center}{\LARGE
+\begin{tabular}{@{}l@{\ \ }c@{\ \ }c@{\ \ }c@{\ \ }c@{\ \ }c@{}}
+\gc{place} & \gc{16s} & \gc{8s} & \gc{4s} & \gc{2s} & \gc{1s}\\
+\gc{carry} & \gc{1} & \gc{1} & \gc{1} & \gc{0} & \\
+ & & \texttt{1} & \texttt{0} & \texttt{1} & \texttt{1}\\
+$+$ & & \texttt{0} & \texttt{1} & \texttt{1} & \texttt{0}\\\hline
+ & \texttt{1} & \texttt{0} & \texttt{0} & \texttt{0} & \texttt{1}
+\end{tabular}}\end{center}
+\column{0.52\textwidth}
+\small
+\begin{enumerate}
+\item \textbf{1s:} $1+0=1$.
+\item \textbf{2s:} $1+1=10$: write 0, carry 1.
+\item \textbf{4s:} $0+1+1=10$: write 0, carry 1.
+\item \textbf{8s:} $1+0+1=10$: write 0, carry 1.
+\item \textbf{16s:} the carry drops down: 1.
+\end{enumerate}
 \end{columns}
 \vspace{4pt}
-Carry from the right, one column at a time, exactly like decimal.
-\note{Verified: 11+1 = 100 (3+1 = 4). 101+011 = 1000 (5+3 = 8). 1011+0110 = 10001 (11+6 = 17). Do the third one together, writing the carries above each column. Rightmost column 1+0 = 1; next 1+1 = 10 carry 1; next 0+1+1 = 10 carry 1; next 1+0+1 = 10 carry 1; the last carry becomes the new leftmost 1. Check by converting to decimal. Student tries: 0111 + 0101 (7+5 = 12 = 1100).}
+$1011+0110=10001$, which is $11+6=17$. Smaller examples: $11+1=100$ ($3+1=4$) and $101+011=1000$ ($5+3=8$).
+\note{Verified: 11+1 = 100 (3+1 = 4). 101+011 = 1000 (5+3 = 8). 1011+0110 = 10001 (11+6 = 17). Go column by column and have students say each step. Check by converting to decimal. Student tries next slide: 0111 + 0101 (7+5 = 12 = 1100).}
 \end{frame}
 
 \begin{frame}{Check: your turn}
