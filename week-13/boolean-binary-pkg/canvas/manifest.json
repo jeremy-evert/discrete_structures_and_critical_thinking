@@ -31,6 +31,10 @@
       {
         "old": "Decision Gate — Week 13: Trees, Search &amp; Decision Structures — 100 pts, due 11/13 →",
         "new": "Decision Gate — Week 13: Boolean Algebra &amp; Binary Arithmetic — 100 pts, due 11/13 →"
+      },
+      {
+        "old": "<p>This week: Are we solving the graph correctly, or modeling reality incorrectly? Model a situation as a graph; analyze paths, connectivity, and traversal; distinguish a correct procedure from a correct model.</p>",
+        "new": "<p>This week: How does a computer add and multiply, and what does carrying really mean? Count and carry in decimal, octal, hexadecimal, and a number system of your own symbols; add and multiply in binary; then see how AND, OR, NOT, and XOR gates build the half adder, full adder, and multiplier that do it. Thursday is Show &amp; Tell.</p>"
       }
     ]
   }

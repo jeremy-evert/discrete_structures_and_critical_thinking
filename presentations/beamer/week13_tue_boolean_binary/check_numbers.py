@@ -74,3 +74,47 @@ for x,y,p in [("101","11","1111"),("110","101","11110")]:
     assert int(x,2)*int(y,2)==int(p,2)
 assert 23*14==322==92+230
 print("handout examples check out")
+
+# ---- multiplier: 1-bit = AND; 2-bit = 4 ANDs + 2 half adders; n-bit array multiplier counts ----
+for a_,b_ in product((0,1),repeat=2): assert a_*b_==(a_&b_)
+def ha(x,y): return x^y, x&y
+def mul2(a1,a0,b1,b0):
+    p0=a0&b0
+    p1,c=ha(a1&b0, a0&b1)
+    p2,p3=ha(a1&b1, c)
+    return p3,p2,p1,p0
+for a_ in range(4):
+    for b_ in range(4):
+        p3,p2,p1,p0=mul2(a_>>1,a_&1,b_>>1,b_&1)
+        assert 8*p3+4*p2+2*p1+p0==a_*b_
+assert int("1011",2)*int("1101",2)==143==int("10001111",2)==128+8+4+2+1 and int("1011",2)==11 and int("1101",2)==13
+assert int("11",2)*int("11",2)==9==int("1001",2) and int("011",2)+int("110",2)==9
+def array_mult(a,b,n):
+    """Ripple-array multiplier built only from AND gates, half adders and full adders. Returns (product, #and, #HA, #FA)."""
+    A=[(a>>j)&1 for j in range(n)]; B=[(b>>i)&1 for i in range(n)]
+    nha=nfa=0; P=[0]*(2*n)
+    P[0]=A[0]&B[0]
+    upper=[A[j]&B[0] for j in range(1,n)]+[0]       # row 0 bits above weight 0, plus a constant 0 on top
+    for i in range(1,n):
+        s=[0]*n; c=0
+        for j in range(n):
+            pp=A[j]&B[i]; y=upper[j]
+            if j==0:
+                s[j],c=ha(pp,y); nha+=1
+            elif j==n-1 and i==1:                       # nothing above row 0 here, so only pp and the carry meet: half adder
+                s[j],c=ha(pp,c); nha+=1
+            else:
+                s[j]=pp^y^c; c=(pp&y)|(c&(pp^y)); nfa+=1
+        P[i]=s[0]; upper=s[1:]+[c]
+    for j in range(n): P[n+j]=upper[j]
+    return sum(bit<<k for k,bit in enumerate(P)), n*n, nha, nfa
+for n in (2,3,4,8):
+    for a_ in range(2**n if n<=4 else 0):
+        for b_ in range(2**n):
+            p,ands,h,f=array_mult(a_,b_,n); assert p==a_*b_,(n,a_,b_,p)
+    import random
+    for _ in range(3000):
+        a_,b_=random.randrange(2**n),random.randrange(2**n); assert array_mult(a_,b_,n)[0]==a_*b_
+    _,ands,h,f=array_mult(1,1,n); assert (ands,h,f)==(n*n,n,n*(n-2)),(n,ands,h,f)
+assert [array_mult(1,1,n)[1:] for n in (2,4,8)]==[(4,2,0),(16,4,8),(64,8,48)]
+print("multiplier: 1-bit AND, 2-bit (4 AND + 2 HA), and array multiplier counts check out")

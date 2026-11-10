@@ -6,6 +6,7 @@
 \usetheme{Madrid}
 \usepackage{tikz}
 \usepackage{amssymb}
+\usepackage{array}
 \usetikzlibrary{circuits.logic.US,positioning,shapes.geometric}
 \newcommand{\sO}{\tikz[baseline=-0.6ex]\draw[thick](0,0)circle(0.14);}
 \newcommand{\sS}{\tikz[baseline=-0.6ex]\node[star,star points=5,star point ratio=2.2,draw,fill=yellow!70,inner sep=1pt]{};}
@@ -666,15 +667,198 @@ last sum ready after & 32 & \textbf{8} gate delays
 \note{Counting for the 16-bit design: P, G at 1; block P* at 2 (a four-input AND); block G* at 3; the block carries C4, C8, C12, C16 at 5 (two more levels); the carries inside each block at 7; sums at 8. Four times faster than ripple in this model. Verified: the checker script builds this exact design in code and tests it on 20,000 random 16-bit sums plus the edge cases 0xFFFF+1 and 0x00FF+1. Costs: more gates, wide gates, and more wires to route. Ask: when would you accept the extra hardware? (Fast general-purpose CPU) and when not? (Tiny cheap chip where speed does not matter.) Make the trade-off the takeaway, not the algebra.}
 \end{frame}
 
-\begin{frame}{Putting multiplication in the circuit}
-\begin{itemize}
-\item Each partial product bit is an \textbf{AND} of one bit from each number.
-\item Shifting is just wiring each row one place to the left.
-\item The rows are added with \textbf{full adders}.
-\end{itemize}
-So a binary multiplier is AND gates plus the adders we just built.
-\note{Closing the loop on the multiplication slides. Do not draw the full array multiplier unless asked; the point is that nothing new was added. Everything was AND, XOR, OR. The connection to traditional multiplication: same partial products, same shifts, same final add.}
+
+\begin{frame}{Multiplying bits: the 1-bit multiplier}
+\begin{columns}[c]
+\column{0.45\textwidth}
+\begin{center}
+\begin{tabular}{cc|c|c}
+$A$&$B$&$P=A\cdot B$&decimal\\\hline
+0&0&0&$0\times0=0$\\
+0&1&0&$0\times1=0$\\
+1&0&0&$1\times0=0$\\
+1&1&1&$1\times1=1$
+\end{tabular}
+\end{center}
+\column{0.55\textwidth}
+\begin{center}
+\begin{tikzpicture}[circuit logic US, every circuit symbol/.style={thick}]
+\node[and gate US, draw, logic gate inputs=nn] (g) at (2,0) {};
+\draw (0,0.35) node[left]{$A$} -- (g.input 1);
+\draw (0,-0.35) node[left]{$B$} -- (g.input 2);
+\draw (g.output) -- ++(0.8,0) node[right]{$P$};
+\end{tikzpicture}
+\end{center}
+\end{columns}
+\vspace{4pt}
+The product of two bits is 1 only when \textbf{both} are 1. That is exactly an \textbf{AND} gate. The 1-bit multiplier \emph{is} one AND gate.
 \end{frame}
+
+\begin{frame}[fragile]{One bit times a whole number: copy it or zero it}
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{verbatim}
+  1 1 0 1      1 1 0 1
+x       1    x       0
+---------    ---------
+  1 1 0 1      0 0 0 0
+\end{verbatim}
+$13\times1=13$ \qquad $13\times0=0$
+\column{0.5\textwidth}
+Each bit of the top number is ANDed with the one multiplier bit $B$:
+\[ P_i = A_i\cdot B \]
+If $B=1$ every bit passes through (a copy). If $B=0$ every bit becomes 0. \textbf{One AND gate per bit.}
+\end{columns}
+\end{frame}
+
+\begin{frame}{2-bit $\times$ 2-bit: line up the partial products}
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}{\Large
+\begin{tabular}{@{}r>{\centering\arraybackslash}p{1.3cm}>{\centering\arraybackslash}p{1.3cm}>{\centering\arraybackslash}p{1.3cm}>{\centering\arraybackslash}p{1.3cm}@{}}
+ & & & $A_1$ & $A_0$\\
+$\times$ & & & $B_1$ & $B_0$\\\hline
+ & & & $A_1B_0$ & $A_0B_0$\\
+ & & $A_1B_1$ & $A_0B_1$ & \\\hline
+ & $P_3$ & $P_2$ & $P_1$ & $P_0$
+\end{tabular}}
+\end{center}
+\column{0.5\textwidth}
+\begin{enumerate}
+\item Row 1 is $A\times B_0$: two AND gates.
+\item Row 2 is $A\times B_1$, shifted left one place: two more AND gates.
+\item Add the columns, right to left, with carries.
+\end{enumerate}
+That is 4 AND gates, then an adder for the middle columns.
+\end{columns}
+\end{frame}
+
+\begin{frame}{2-bit $\times$ 2-bit: a worked example, $3\times3=9$}
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}{\huge
+\begin{tabular}{@{}r>{\centering\arraybackslash}p{0.9cm}>{\centering\arraybackslash}p{0.9cm}>{\centering\arraybackslash}p{0.9cm}>{\centering\arraybackslash}p{0.9cm}@{}}
+\gc{carry} & \gc{1} & \gc{1} & & \\
+ & & & \texttt{1} & \texttt{1}\\
+$\times$ & & & \texttt{1} & \texttt{1}\\\hline
+ & & & \texttt{1} & \texttt{1}\\
+ & & \texttt{1} & \texttt{1} & \\\hline
+ & \texttt{1} & \texttt{0} & \texttt{0} & \texttt{1}
+\end{tabular}}
+\end{center}
+\column{0.5\textwidth}
+\begin{enumerate}
+\item $P_0$: only one bit here, $1\cdot1=1$.
+\item $P_1$: $1+1=10$. Write 0, carry 1.
+\item $P_2$: $1$ (from row 2) $+$ the carry $=10$. Write 0, carry 1.
+\item $P_3$: the carry drops down: 1.
+\end{enumerate}
+Answer \texttt{1001} $=9$ \ ($3\times3=9$).
+\end{columns}
+\end{frame}
+
+\begin{frame}{The 2-bit multiplier is two half adders}
+\begin{align*}
+P_0&=A_0B_0\\
+P_1&=A_1B_0\oplus A_0B_1 \qquad c=A_1B_0\cdot A_0B_1\quad\text{(half adder 1)}\\
+P_2&=A_1B_1\oplus c \qquad\quad\ \ P_3=A_1B_1\cdot c\quad\text{(half adder 2)}
+\end{align*}
+\begin{center}
+\begin{tikzpicture}[b/.style={draw,thick,minimum height=0.8cm,align=center,font=\small}, scale=0.95, transform shape]
+\node[b] (g00) at (0,0) {AND\\$A_0B_0$};
+\node[b] (g10) at (0,-1.2) {AND\\$A_1B_0$};
+\node[b] (g01) at (0,-2.4) {AND\\$A_0B_1$};
+\node[b] (g11) at (0,-3.6) {AND\\$A_1B_1$};
+\node[b,minimum width=1.6cm] (h1) at (4,-1.8) {Half\\adder 1};
+\node[b,minimum width=1.6cm] (h2) at (7.2,-3.3) {Half\\adder 2};
+\draw[->] (g00.east) -- ++(5.6,0) node[right]{$P_0$};
+\draw[->] (g10.east) -- ++(0.9,0) |- ([yshift=0.25cm]h1.west);
+\draw[->] (g01.east) -- ++(0.9,0) |- ([yshift=-0.25cm]h1.west);
+\draw[->] ([yshift=0.25cm]h1.east) -- ++(3.4,0) node[right]{$P_1$};
+\draw[->] ([yshift=-0.25cm]h1.east) -- ++(0.6,0) |- ([yshift=0.25cm]h2.west) node[pos=0.8,above]{\scriptsize $c$};
+\draw[->] (g11.east) -- ++(2.7,0) |- ([yshift=-0.25cm]h2.west);
+\draw[->] ([yshift=0.25cm]h2.east) -- ++(0.7,0) node[right]{$P_2$};
+\draw[->] ([yshift=-0.25cm]h2.east) -- ++(0.7,0) node[right]{$P_3$};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+\begin{frame}{Truth table: the 2-bit multiplier}
+\begin{columns}[t]
+\column{0.5\textwidth}
+\begin{center}\small
+\begin{tabular}{cc|c|l}
+$A_1A_0$&$B_1B_0$&$P_3P_2P_1P_0$&decimal\\\hline
+\texttt{00} & \texttt{00} & \texttt{0000} & $0\times0=0$\\
+\texttt{00} & \texttt{01} & \texttt{0000} & $0\times1=0$\\
+\texttt{00} & \texttt{10} & \texttt{0000} & $0\times2=0$\\
+\texttt{00} & \texttt{11} & \texttt{0000} & $0\times3=0$\\
+\texttt{01} & \texttt{00} & \texttt{0000} & $1\times0=0$\\
+\texttt{01} & \texttt{01} & \texttt{0001} & $1\times1=1$\\
+\texttt{01} & \texttt{10} & \texttt{0010} & $1\times2=2$\\
+\texttt{01} & \texttt{11} & \texttt{0011} & $1\times3=3$\\
+\end{tabular}
+\end{center}
+\column{0.5\textwidth}
+\begin{center}\small
+\begin{tabular}{cc|c|l}
+$A_1A_0$&$B_1B_0$&$P_3P_2P_1P_0$&decimal\\\hline
+\texttt{10} & \texttt{00} & \texttt{0000} & $2\times0=0$\\
+\texttt{10} & \texttt{01} & \texttt{0010} & $2\times1=2$\\
+\texttt{10} & \texttt{10} & \texttt{0100} & $2\times2=4$\\
+\texttt{10} & \texttt{11} & \texttt{0110} & $2\times3=6$\\
+\texttt{11} & \texttt{00} & \texttt{0000} & $3\times0=0$\\
+\texttt{11} & \texttt{01} & \texttt{0011} & $3\times1=3$\\
+\texttt{11} & \texttt{10} & \texttt{0110} & $3\times2=6$\\
+\texttt{11} & \texttt{11} & \texttt{1001} & $3\times3=9$\\
+\end{tabular}
+\end{center}
+\end{columns}
+All 16 input rows, so this table is a proof for 2 bits.
+\end{frame}
+
+\begin{frame}[fragile]{4-bit $\times$ 4-bit: the same idea, more rows}
+\begin{columns}[c]
+\column{0.52\textwidth}
+\begin{verbatim}
+       1 0 1 1    (11)
+     x 1 1 0 1    (13)
+     ---------
+       1 0 1 1    11 x 1
+     0 0 0 0      11 x 0, shifted 1
+   1 0 1 1        11 x 1, shifted 2
+ 1 0 1 1          11 x 1, shifted 3
+ ---------------
+ 1 0 0 0 1 1 1 1  (143)
+\end{verbatim}
+\column{0.48\textwidth}
+\small
+Decimal check, both ways:\\
+\texttt{1011} $=8+2+1=11$, \ \texttt{1101} $=8+4+1=13$.\\
+$11\times13=143=128+8+4+2+1=\texttt{10001111}$.
+\end{columns}
+\vspace{4pt}
+4 rows of partial products, 16 AND gates in all. Then add the 4 rows, two at a time, with half and full adders.
+\end{frame}
+
+\begin{frame}{It is modular: the same blocks, repeated}
+\begin{center}
+\begin{tabular}{c|ccc}
+$n\times n$ bits & AND gates & half adders & full adders\\\hline
+1 & 1 & 0 & 0\\
+2 & 4 & 2 & 0\\
+4 & 16 & 4 & 8\\
+8 & 64 & 8 & 48
+\end{tabular}
+\end{center}
+\begin{itemize}
+\item \textbf{AND gates} make every partial-product bit ($n^2$ of them).
+\item \textbf{Shifting is just wiring}: a row moves left by connecting its bits to different columns.
+\item \textbf{Half and full adders} add the rows, carry rippling along each row, just like the ripple-carry adder.
+\end{itemize}
+Same carry ripple, so the delay grows with the number of bits; fast multipliers use lookahead ideas too.
+\end{frame}
+
 
 \begin{frame}{AI Fluency check}
 An AI says:\ ``$A+B$ simplifies to $A$ because it worked for $A=1,\ B=1$.''
