@@ -1,0 +1,25 @@
+{
+  "week": 13,
+  "module_id": 218912,
+  "module_name_contains": "Week 13",
+  "note": "Page sources may contain {{FILE:name}} and {{FILE_URL:name}} tokens for the publisher to replace with uploaded file names and URLs.",
+  "pages": [
+    {
+      "title": "Week 13 Tuesday: Counting, Carrying, and Circuits",
+      "source": "canvas/tuesday_landing.md",
+      "after": "overview"
+    }
+  ],
+  "files": [
+    {
+      "name": "boolean_binary_slides.pdf",
+      "source": "deck/boolean_binary_slides.pdf",
+      "page_link_from": "Week 13 Tuesday: Counting, Carrying, and Circuits"
+    },
+    {
+      "name": "boolean_binary_handout.pdf",
+      "source": "student/boolean_binary_handout.pdf",
+      "page_link_from": "Week 13 Tuesday: Counting, Carrying, and Circuits"
+    }
+  ]
+}
