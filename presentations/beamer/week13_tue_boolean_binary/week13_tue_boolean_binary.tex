@@ -102,17 +102,70 @@ Place values: ones $=10^0$, tens $=10^1$, hundreds $=10^2$. \textbf{A new column
 \note{Walk it slowly. The carry ripples left. This ripple is the reason a circuit that adds is built from a chain of identical pieces; hold that thought for the full adder.}
 \end{frame}
 
-\begin{frame}{Check: use the carrying rule on bigger sums}
-\begin{center}
-\begin{tabular}{rr}
-\texttt{\ 5\ 8}&\quad\texttt{\ 9\ 9\ 9}\\
-\texttt{+\ 2\ 7}&\quad\texttt{+\ \ \ \ 1}\\\hline
-\texttt{\ 8\ 5}&\quad\texttt{1\ 0\ 0\ 0}
-\end{tabular}
-\end{center}
-Say aloud which columns carried, and what the carry is worth.
-\note{58 + 27 = 85 (8+7 = 15: write 5, carry 1; 5+2+1 = 8). 999 + 1 = 1000 (three carries). Have two students narrate.}
+\begin{frame}{Try the pattern: 67 + 58}
+\begin{columns}[c]
+\column{0.42\textwidth}
+\begin{center}{\huge
+\begin{tabular}{@{}l@{\ \ }c@{\ \ }c@{\ \ }c@{}}
+\gc{place} & \gc{100s} & \gc{10s} & \gc{1s}\\
+\gc{carry} & \gc{1} & \gc{1} & \\
+ &  & \texttt{6} & \texttt{7}\\
+$+$ &  & \texttt{5} & \texttt{8}\\\hline
+ & \texttt{1} & \texttt{2} & \texttt{5}
+\end{tabular}}\end{center}
+\column{0.58\textwidth}
+\begin{enumerate}
+\item \textbf{Ones:} $7+8=15$. Write 5, \textbf{carry 1}.
+\item \textbf{Tens:} $6+5+1=12$. Write 2, \textbf{carry 1}.
+\item \textbf{Hundreds:} the carry drops down: 1.
+\end{enumerate}
+\textbf{Say each column out loud, then work sideways.}
+\end{columns}
+\note{Both numbers are over 50, so the sum passes 100. This is the pattern for all of binary: add two numbers in a column, write the ones digit, carry to the next column. Ask: how many carries? (two). Where did the new third digit come from? (the last carry). Answer: 67 + 58 = 125, verified.}
 \end{frame}
+
+\begin{frame}{Another one: 58 + 27}
+\begin{columns}[c]
+\column{0.42\textwidth}
+\begin{center}{\huge
+\begin{tabular}{@{}l@{\ \ }c@{\ \ }c@{\ \ }c@{}}
+\gc{place} & \gc{100s} & \gc{10s} & \gc{1s}\\
+\gc{carry} &  & \gc{1} & \\
+ &  & \texttt{5} & \texttt{8}\\
+$+$ &  & \texttt{2} & \texttt{7}\\\hline
+ & \texttt{} & \texttt{8} & \texttt{5}
+\end{tabular}}\end{center}
+\column{0.58\textwidth}
+\begin{enumerate}
+\item \textbf{Ones:} $8+7=15$. Write 5, \textbf{carry 1}.
+\item \textbf{Tens:} $5+2+1=8$. No carry, so we are done.
+\end{enumerate}
+\textbf{Say each column out loud, then work sideways.}
+\end{columns}
+\note{58 + 27 = 85, verified. One carry, and the answer stays two digits.}
+\end{frame}
+
+\begin{frame}{999 + 1}
+\begin{columns}[c]
+\column{0.42\textwidth}
+\begin{center}{\huge
+\begin{tabular}{@{}l@{\ \ }c@{\ \ }c@{\ \ }c@{\ \ }c@{}}
+\gc{place} & \gc{1000s} & \gc{100s} & \gc{10s} & \gc{1s}\\
+\gc{carry} & \gc{1} & \gc{1} & \gc{1} & \\
+ &  & \texttt{9} & \texttt{9} & \texttt{9}\\
+$+$ &  &  &  & \texttt{1}\\\hline
+ & \texttt{1} & \texttt{0} & \texttt{0} & \texttt{0}
+\end{tabular}}\end{center}
+\column{0.58\textwidth}
+\begin{enumerate}
+\item Every column is $9+1=10$ or $9+0+1=10$: write 0, carry 1.
+\item Three carries in a row. The last carry becomes a new digit.
+\end{enumerate}
+\textbf{Say each column out loud, then work sideways.}
+\end{columns}
+\note{999 + 1 = 1000, verified. Three carries ripple left. Tie back to 99 + 1 = 100.}
+\end{frame}
+
 
 \begin{frame}{Octal: only eight symbols}
 Digits \texttt{0 1 2 3 4 5 6 7}. There is no 8, no 9.

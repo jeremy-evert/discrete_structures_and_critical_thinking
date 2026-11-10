@@ -61,3 +61,16 @@ assert ripple(0b11111111,1,8)==(0,1)
 # delay counts for the CLA slide: P,G t=1; block P* t=2, G* t=3; c4..c16 t=5; inner carries t=7; sums t=8
 assert (1+1, 1+2, 3+2, 5+2, 7+1)==(2,3,5,7,8)
 print("delay model and 16-bit carry-lookahead check out")
+
+assert 67+58==125 and 58+27==85 and 999+1==1000
+print('decimal slide sums check out')
+
+# ---- handout examples (shown both in binary and in decimal) ----
+for x,y,s in [("11","1","100"),("1011","110","10001"),("10110111","01101101","100100100")]:
+    assert int(x,2)+int(y,2)==int(s,2)
+assert (int("10110111",2),int("01101101",2),int("100100100",2))==(183,109,292)
+assert 292==256+32+4 and 183==128+32+16+4+2+1 and 109==64+32+8+4+1
+for x,y,p in [("101","11","1111"),("110","101","11110")]:
+    assert int(x,2)*int(y,2)==int(p,2)
+assert 23*14==322==92+230
+print("handout examples check out")

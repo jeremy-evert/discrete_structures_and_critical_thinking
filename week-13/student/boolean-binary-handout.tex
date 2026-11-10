@@ -42,46 +42,91 @@ $+$ & & \texttt{5} & \texttt{3}\\\hline
 \end{minipage}
 \end{center}
 
-\textbf{Binary uses the identical steps}, with a smaller table: $0+0=0,\ 0+1=1,\ 1+0=1,\ 1+1=\texttt{10}$ (write 0, carry 1).
-\begin{center}
-\renewcommand{\arraystretch}{1.15}
-{\Large\begin{tabular}{@{}l@{\ \ }c@{\ \ }c@{\ \ }c@{\ \ }c@{\ \ }c@{}}
+\textbf{Binary uses the identical steps}, with a smaller table: $0+0=0,\ 0+1=1,\ 1+0=1,\ 1+1=\texttt{10}$ (write 0, carry 1). Each example also shows the numbers converted to decimal, so you can check that the math works the same way \emph{both directions}: binary $\to$ decimal, and decimal $\to$ binary.
+
+\textbf{Short} \ ($3+1=4$)\\[2pt]
+{\large\begin{tabular}{@{}l>{\centering\arraybackslash}p{0.78cm}>{\centering\arraybackslash}p{0.78cm}>{\centering\arraybackslash}p{0.78cm}@{}}
+\gc{place} & \gc{4s} & \gc{2s} & \gc{1s}\\
+\gc{carry} & \gc{1} & \gc{1} & \\
+ &  & \texttt{1} & \texttt{1}\\
+$+$ &  &  & \texttt{1}\\\hline
+ & \texttt{1} & \texttt{0} & \texttt{0}
+\end{tabular}}\\[1pt]
+{\small \texttt{11} $=2+1=3$; \ \texttt{1} $=1=1$; \ sum $3+1=4=4=$ \texttt{100}}
+
+\textbf{Medium} \ ($11+6=17$)\\[2pt]
+\begin{minipage}[c]{0.5\textwidth}{\large\begin{tabular}{@{}l>{\centering\arraybackslash}p{0.78cm}>{\centering\arraybackslash}p{0.78cm}>{\centering\arraybackslash}p{0.78cm}>{\centering\arraybackslash}p{0.78cm}>{\centering\arraybackslash}p{0.78cm}@{}}
 \gc{place} & \gc{16s} & \gc{8s} & \gc{4s} & \gc{2s} & \gc{1s}\\
 \gc{carry} & \gc{1} & \gc{1} & \gc{1} & \gc{0} & \\
- & & \texttt{1} & \texttt{0} & \texttt{1} & \texttt{1}\\
-$+$ & & \texttt{0} & \texttt{1} & \texttt{1} & \texttt{0}\\\hline
+ &  & \texttt{1} & \texttt{0} & \texttt{1} & \texttt{1}\\
+$+$ &  & \texttt{0} & \texttt{1} & \texttt{1} & \texttt{0}\\\hline
  & \texttt{1} & \texttt{0} & \texttt{0} & \texttt{0} & \texttt{1}
-\end{tabular}}
-\qquad
-\begin{minipage}[c]{0.40\textwidth}\small
-\textbf{1s:} $1+0=1$. \quad \textbf{2s:} $1+1=10$, write 0, carry 1.\\
+\end{tabular}}\end{minipage}
+\begin{minipage}[c]{0.45\textwidth}\small
+\textbf{1s:} $1+0=1$. \ \textbf{2s:} $1+1=10$, write 0, carry 1.\\
 \textbf{4s:} $0+1+1=10$, write 0, carry 1.\\
 \textbf{8s:} $1+0+1=10$, write 0, carry 1.\\
-\textbf{16s:} the carry drops down: 1.\\
-\textbf{Answer: \texttt{10001}} \ ($11+6=17$).
-\end{minipage}
-\end{center}
+\textbf{16s:} the carry drops down: 1.
+\end{minipage}\\[1pt]
+{\small \texttt{1011} $=8+2+1=11$; \ \texttt{0110} $=4+2=6$; \ sum $11+6=17=16+1=$ \texttt{10001}}
 
-\textbf{Multiply} the same way you do in decimal: one partial product per digit of the bottom number, each shifted left, then add the columns. A bit times a bit is $0\times0=0,\ 0\times1=0,\ 1\times0=0,\ 1\times1=1$.
-\begin{center}
-{\Large\begin{tabular}{@{}r@{\ \ }c@{\ \ }c@{\ \ }c@{\ \ }c@{}}
- & \texttt{1} & \texttt{0} & \texttt{1} & \\
-$\times$ & & \texttt{1} & \texttt{1} & \\\hline
- & \texttt{1} & \texttt{0} & \texttt{1} & \hfill\gc{$101\times1$}\\
- \texttt{1} & \texttt{0} & \texttt{1} & \texttt{0} & \hfill\gc{$101\times1$, shifted}\\\hline
- \texttt{1} & \texttt{1} & \texttt{1} & \texttt{1} & \hfill\gc{$5\times3=15$}
+\textbf{Long} \ ($183+109=292$)\\[2pt]
+{\large\begin{tabular}{@{}l>{\centering\arraybackslash}p{0.78cm}>{\centering\arraybackslash}p{0.78cm}>{\centering\arraybackslash}p{0.78cm}>{\centering\arraybackslash}p{0.78cm}>{\centering\arraybackslash}p{0.78cm}>{\centering\arraybackslash}p{0.78cm}>{\centering\arraybackslash}p{0.78cm}>{\centering\arraybackslash}p{0.78cm}>{\centering\arraybackslash}p{0.78cm}@{}}
+\gc{place} & \gc{256s} & \gc{128s} & \gc{64s} & \gc{32s} & \gc{16s} & \gc{8s} & \gc{4s} & \gc{2s} & \gc{1s}\\
+\gc{carry} & \gc{1} & \gc{1} & \gc{1} & \gc{1} & \gc{1} & \gc{1} & \gc{1} & \gc{1} & \\
+ &  & \texttt{1} & \texttt{0} & \texttt{1} & \texttt{1} & \texttt{0} & \texttt{1} & \texttt{1} & \texttt{1}\\
+$+$ &  & \texttt{0} & \texttt{1} & \texttt{1} & \texttt{0} & \texttt{1} & \texttt{1} & \texttt{0} & \texttt{1}\\\hline
+ & \texttt{1} & \texttt{0} & \texttt{0} & \texttt{1} & \texttt{0} & \texttt{0} & \texttt{1} & \texttt{0} & \texttt{0}
+\end{tabular}}\\[1pt]
+{\small \texttt{10110111} $=128+32+16+4+2+1=183$; \ \texttt{01101101} $=64+32+8+4+1=109$; \ sum $183+109=292=256+32+4=$ \texttt{100100100}}
+\vspace{2pt}
+\newpage
+\textbf{3. Multiply} the same way in every base: one partial product per digit of the bottom number, each shifted left one place, then add the columns. In binary a partial product is either a copy of the top number or all zeros.
+
+\textbf{Decimal first} \ ($23\times14=322$)\\[2pt]
+\begin{minipage}[c]{0.3\textwidth}
+{\large\begin{tabular}{@{}r>{\centering\arraybackslash}p{0.78cm}>{\centering\arraybackslash}p{0.78cm}>{\centering\arraybackslash}p{0.78cm}@{}}
+ & & \texttt{2} & \texttt{3}\\
+$\times$ & & \texttt{1} & \texttt{4}\\\hline
+ & & \texttt{9} & \texttt{2}\\
+ & \texttt{2} & \texttt{3} & \texttt{0}\\\hline
+ & \texttt{3} & \texttt{2} & \texttt{2}
 \end{tabular}}
-\end{center}
-\textbf{Try it} (check in decimal): \ \texttt{0111 + 0101} \quad \texttt{1111 + 0001} \quad \texttt{110 $\times$ 101}
+\end{minipage}
+\begin{minipage}[c]{0.6\textwidth}\small
+$23\times4=92$ \quad (the ones digit of the bottom number)\\
+$23\times10=230$ \quad (the tens digit: shifted left one place)\\
+$92+230=322$. Add the columns, right to left, with carries.
+\end{minipage}
+
+\textbf{Binary example 1} \ ($5\times3=15$)\\[2pt]
+{\large\begin{tabular}{@{}r>{\centering\arraybackslash}p{0.78cm}>{\centering\arraybackslash}p{0.78cm}>{\centering\arraybackslash}p{0.78cm}>{\centering\arraybackslash}p{0.78cm}@{}}
+ &  & \texttt{1} & \texttt{0} & \texttt{1}\\
+$\times$ &  &  & \texttt{1} & \texttt{1}\\\hline
+ &  & \texttt{1} & \texttt{0} & \texttt{1}\hfill\gc{}\\
+ & \texttt{1} & \texttt{0} & \texttt{1} & \hfill\gc{}\\\hline
+ & \texttt{1} & \texttt{1} & \texttt{1} & \texttt{1}
+\end{tabular}}\\[1pt]
+{\small \texttt{101} $=5$; \ \texttt{11} $=3$; \ product $5\times3=15=8+4+2+1=$ \texttt{1111}}
+
+\textbf{Binary example 2} \ ($6\times5=30$)\\[2pt]
+{\large\begin{tabular}{@{}r>{\centering\arraybackslash}p{0.78cm}>{\centering\arraybackslash}p{0.78cm}>{\centering\arraybackslash}p{0.78cm}>{\centering\arraybackslash}p{0.78cm}>{\centering\arraybackslash}p{0.78cm}@{}}
+ &  &  & \texttt{1} & \texttt{1} & \texttt{0}\\
+$\times$ &  &  & \texttt{1} & \texttt{0} & \texttt{1}\\\hline
+ &  &  & \texttt{1} & \texttt{1} & \texttt{0}\hfill\gc{}\\
+ &  & \texttt{0} & \texttt{0} & \texttt{0} & \hfill\gc{}\\
+ & \texttt{1} & \texttt{1} & \texttt{0} &  & \hfill\gc{}\\\hline
+ & \texttt{1} & \texttt{1} & \texttt{1} & \texttt{1} & \texttt{0}
+\end{tabular}}\\[1pt]
+{\small \texttt{110} $=6$; \ \texttt{101} $=5$; \ product $6\times5=30=16+8+4+2=$ \texttt{11110}}
 
 \vspace{2pt}\rule{\textwidth}{0.3pt}
 
-\textbf{3. Boolean algebra.} Values 0 and 1. \textbf{AND} $A\cdot B$ is 1 only if both are 1. \textbf{OR} $A+B$ is 1 if at least one is 1. \textbf{NOT} $\overline{A}$ flips. \textbf{XOR} $A\oplus B$ is 1 when the inputs differ.
+\textbf{4. Boolean algebra.} Values 0 and 1. \textbf{AND} $A\cdot B$ is 1 only if both are 1. \textbf{OR} $A+B$ is 1 if at least one is 1. \textbf{NOT} $\overline{A}$ flips. \textbf{XOR} $A\oplus B$ is 1 when the inputs differ.
 
 \textbf{Careful:} in Boolean algebra $1+1=1$ (OR). In binary arithmetic $1+1=10$ (add). Always say which system you are in.
 
-\newpage
-\textbf{4. Half adder} (adds two bits). Sum $S=A\oplus B$. Carry $C=A\cdot B$. Read $CS$ as a two-bit number: it equals $A+B$.
+\textbf{5. Half adder} (adds two bits). Sum $S=A\oplus B$. Carry $C=A\cdot B$. Read $CS$ as a two-bit number: it equals $A+B$.
 \begin{center}
 \begin{tabular}{cc|cc|c}
 $A$&$B$&$C$&$S$&$A+B$ in binary\\\hline
@@ -92,7 +137,7 @@ $A$&$B$&$C$&$S$&$A+B$ in binary\\\hline
 \end{tabular}
 \end{center}
 
-\textbf{5. Full adder} (adds $A$, $B$, and a carry-in). $S=A\oplus B\oplus C_{in}$ \quad $C_{out}=A\cdot B+C_{in}\cdot(A\oplus B)$.
+\textbf{6. Full adder} (adds $A$, $B$, and a carry-in). $S=A\oplus B\oplus C_{in}$ \quad $C_{out}=A\cdot B+C_{in}\cdot(A\oplus B)$.
 \begin{center}
 \begin{tabular}{ccc|cc|c}
 $A$&$B$&$C_{in}$&$C_{out}$&$S$&$A+B+C_{in}$\\\hline
@@ -108,17 +153,5 @@ $A$&$B$&$C_{in}$&$C_{out}$&$S$&$A+B+C_{in}$\\\hline
 \end{center}
 All eight input rows are listed, so the table is a \textbf{proof}, not just an example.
 
-\textbf{6. Chaining adders.} A full adder per bit, each carry feeding the next: a \textbf{ripple-carry adder}. The carry must travel through every stage, so about $2n$ gate delays for $n$ bits (8 bits: 16; 16 bits: 32). \textbf{Carry lookahead} computes the carries directly from \emph{generate} $G_i=A_iB_i$ and \emph{propagate} $P_i=A_i\oplus B_i$:
-\[C_1=G_0+P_0C_0,\qquad C_2=G_1+P_1G_0+P_1P_0C_0.\]
-A 16-bit lookahead adder (four 4-bit blocks plus a lookahead unit) finishes in about 8 gate delays instead of 32, at the cost of more hardware.
-
-\vspace{4pt}\rule{\textwidth}{0.3pt}
-\textbf{Check yourself} (write your answers on the back or in your notes):
-\begin{enumerate}\setlength{\itemsep}{1pt}
-\item In your own words, what does ``carry'' mean?
-\item Which gate makes the sum bit of a half adder? Which makes the carry?
-\item Fill in the full-adder row $A=1,\ B=1,\ C_{in}=1$ without looking. Why is the answer \texttt{11}?
-\item Why is one correct example not enough to prove a circuit works? What would be?
-\item Our delay model leaves something out. Name one thing.
-\end{enumerate}
+\textbf{7. Chaining adders.} One full adder per bit, each carry feeding the next: a \textbf{ripple-carry adder}. The carry travels through every stage, so about $2n$ gate delays for $n$ bits (8 bits: 16; 16 bits: 32). \textbf{Carry lookahead} computes the carries directly from \emph{generate} $G_i=A_iB_i$ and \emph{propagate} $P_i=A_i\oplus B_i$: $C_1=G_0+P_0C_0$, $C_2=G_1+P_1G_0+P_1P_0C_0$. A 16-bit lookahead adder finishes in about 8 gate delays instead of 32, for more hardware.
 \end{document}
