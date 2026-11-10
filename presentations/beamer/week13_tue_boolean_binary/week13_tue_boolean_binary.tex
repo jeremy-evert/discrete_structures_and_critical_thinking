@@ -26,9 +26,9 @@
 \item Notice what \textbf{carrying} really is, using the decimal addition you already know.
 \item See that any set of symbols can be a number system (circles, stars, faces, fish).
 \item Add and multiply in \textbf{binary}, and see it is the same method as the one you learned.
-\item Meet Boolean algebra and build a \textbf{half adder} and a \textbf{full adder} from it.
+\item Meet Boolean algebra and build a \textbf{half adder} and a \textbf{full adder} from it.\item See why adding 16 bits fast needs a cleverer design: \textbf{ripple delay} versus \textbf{carry lookahead}.
 \end{itemize}
-\note{Run of show: 0:00 warm-up and AI check (8). 0:08 decimal carrying (10). 0:18 octal and hex (10). 0:28 invented symbols (8). 0:36 binary add (8). 0:44 binary multiply (8). 0:52 Boolean algebra (8). 1:00 half and full adder (12). 1:12 exit ticket (3).}
+\note{Run of show: 0:00 warm-up and AI check (8). 0:08 decimal carrying (10). 0:18 octal and hex (10). 0:28 invented symbols (8). 0:36 binary add (8). 0:44 binary multiply (8). 0:52 Boolean algebra (8). 1:00 half and full adder (12). 1:12 ripple delay and lookahead (use as extension if time is short; it is also Thursday-safe) (6). Exit ticket (3).}
 \end{frame}
 
 \begin{frame}{Warm-up: what happens at 9 + 1?}
@@ -504,6 +504,94 @@ Eight rows is every possible input. \textbf{Eight rows is a proof.}
 \end{center}
 Each carry ripples left, one stage at a time: the same ripple as $99+1=100$.
 \note{Example: 0111 + 0101. FA0: 1+1 = 10, write 0 carry 1. FA1: 1+0+1 = 10, write 0 carry 1. FA2: 1+1+1 = 11, write 1 carry 1. FA3: 0+0+1 = 1. Result 1100 = 12. Overflow: if the answer needs more bits than we built, the carry-out is lost. 1111 + 0001 on a 4-bit adder gives 0000 with Cout = 1. Ask: so what is 4-bit 15 + 1? It wraps. Real computers use wider adders but the same idea. Multiplication in hardware is shifting plus these adders, with AND gates making the partial products.}
+\end{frame}
+
+
+\begin{frame}{Scale up: an 8-bit ripple-carry adder}
+\begin{center}
+\begin{tikzpicture}[fa/.style={draw,thick,minimum width=0.95cm,minimum height=0.8cm,font=\small}]
+\foreach \i/\x in {0/10.4,1/8.9,2/7.4,3/5.9,4/4.4,5/2.9,6/1.4,7/-0.1}{
+  \node[fa] (f\i) at (\x,0) {FA$_\i$};
+  \draw[<-] ([xshift=-0.2cm]f\i.north) -- ++(0,0.35);
+  \draw[<-] ([xshift=0.2cm]f\i.north) -- ++(0,0.35);
+  \draw[->] (f\i.south) -- ++(0,-0.35) node[below]{\scriptsize $S_\i$};
+}
+\draw[<-] (f0.east) -- ++(0.5,0) node[right]{\scriptsize $0$};
+\foreach \i/\j in {0/1,1/2,2/3,3/4,4/5,5/6,6/7}{ \draw[->] (f\i.west) -- (f\j.east); }
+\draw[->] (f7.west) -- ++(-0.5,0) node[left]{\scriptsize $C_{out}$};
+\end{tikzpicture}
+\end{center}
+Worst case: \texttt{11111111 + 00000001 = 100000000} ($255+1=256$). The carry is created in the \emph{first} column and must travel through \textbf{all eight}.
+\note{Verified: 255 + 1 = 256 and the 8-bit adder returns 00000000 with carry-out 1. Same ripple as 99 + 1 = 100, but now it is physical: each full adder cannot finish until the carry from the one to its right arrives. Ask: which column finishes last?}
+\end{frame}
+
+\begin{frame}{Delay: signals take time}
+A gate is a physical thing. Its output changes a tiny moment \emph{after} its inputs do. Call that one \textbf{gate delay}.
+\begin{itemize}
+\item In one full adder, a carry-in passes through an AND, then an OR: \textbf{2 gate delays} per stage.
+\item The carry into bit $i$ is ready after about $2i+1$ gate delays; the sum bit needs one more XOR.
+\end{itemize}
+\begin{center}
+\begin{tabular}{c|ccccc}
+bits $n$ & 4 & 8 & 16 & 32 & 64\\\hline
+last sum bit ready after & 8 & 16 & 32 & 64 & 128 \ gate delays
+\end{tabular}
+\end{center}
+Delay grows in step with the number of bits: \textbf{about $2n$}. The slowest path sets how fast the clock may tick.
+\note{Model: every gate has delay 1; P = A xor B and G = A and B are ready at time 1; each carry takes an AND then an OR (2 more); the last sum bit is one XOR after its carry-in. That gives 2n for the last sum bit, which the checker script verifies for n = 4, 8, 16, 32, 64. The model is simplified (real gates differ in speed, wires add delay) but the trend is right: the delay is linear in n. Why it matters: a processor clock must wait for the slowest path to settle. If the adder takes 128 gate delays, the clock cannot tick faster than that. Critical-thinking beat: a model is useful and also leaves something out. Name what this one omits (wire delay, different gate speeds).}
+\end{frame}
+
+\begin{frame}{Can we get the carries sooner?}
+Each stage asks one of two questions about its two input bits:
+\begin{columns}
+\column{0.5\textwidth}
+\textbf{Generate:} $G_i=A_i\cdot B_i$\\
+This column makes a carry \emph{by itself} ($1+1$).
+\column{0.5\textwidth}
+\textbf{Propagate:} $P_i=A_i\oplus B_i$\\
+This column \emph{passes along} a carry that arrives (exactly one 1).
+\end{columns}
+\vspace{6pt}
+Carry out of a column: $\;C_{i+1}=G_i+P_i\cdot C_i$.
+\vspace{4pt}
+Now \textbf{substitute} instead of waiting. The carries only depend on the inputs and $C_0$:
+\begin{align*}
+C_1&=G_0+P_0C_0\\
+C_2&=G_1+P_1G_0+P_1P_0C_0
+\end{align*}
+\note{This is the key idea of carry look-ahead: stop waiting for the previous stage. Write C2 in terms of C1, then substitute C1. Every carry becomes a flat AND-OR of the P and G values, which are all ready at time 1. Interpret each term in words: C2 happens if column 1 generates one, or column 1 propagates a carry that column 0 generated, or column 1 and 0 both propagate the carry-in. Ask the class to say it in words.}
+\end{frame}
+
+\begin{frame}{A 4-bit carry-lookahead unit}
+\begin{align*}
+C_1&=G_0+P_0C_0\\
+C_2&=G_1+P_1G_0+P_1P_0C_0\\
+C_3&=G_2+P_2G_1+P_2P_1G_0+P_2P_1P_0C_0\\
+C_4&=G_3+P_3G_2+P_3P_2G_1+P_3P_2P_1G_0+P_3P_2P_1P_0C_0
+\end{align*}
+Every carry is ready after \textbf{3 gate delays} (P and G: 1; the AND terms: 1; the OR: 1). Then sums: $S_i=P_i\oplus C_i$, \textbf{4 total}, against 8 for 4-bit ripple.
+\note{Counting: P, G at time 1; the AND of up to five signals at time 2; the OR at time 3; the sum XOR at time 4. That assumes gates with several inputs (up to five-input AND/OR). Real chips limit fan-in, which is why the next slide groups bits into blocks. Cost: many more gates than ripple. You trade hardware for speed.}
+\end{frame}
+
+\begin{frame}{16 bits: lookahead on top of lookahead}
+\begin{center}
+\begin{tikzpicture}[blk/.style={draw,thick,minimum width=2.3cm,minimum height=1.0cm,align=center,font=\small}]
+\foreach \i/\x in {3/0,2/3,1/6,0/9}{
+  \node[blk] (b\i) at (\x,0) {4-bit adder\\bits \the\numexpr 4*\i\relax--\the\numexpr 4*\i+3\relax};
+  \draw[->] (b\i.south) -- ++(0,-0.4) node[below]{\scriptsize $G^*_\i,\,P^*_\i$};
+}
+\node[draw,thick,minimum width=10.7cm,minimum height=0.9cm,fill=yellow!20] (L) at (4.5,-2.0) {Lookahead unit: $C_4,\ C_8,\ C_{12},\ C_{16}$ straight from $G^*,P^*,C_0$};
+\foreach \i in {0,1,2,3}{ \draw[->] ([xshift=0cm]b\i.south |- 0,-1.2) -- (b\i.south |- L.north); }
+\end{tikzpicture}
+\end{center}
+Each 4-bit block reports a \textbf{block generate} $G^*$ and \textbf{block propagate} $P^*$ (``all four propagate''). The same trick, applied to blocks.
+\begin{center}
+\begin{tabular}{l|cc}
+& \textbf{ripple (16)} & \textbf{lookahead (16)}\\\hline
+last sum ready after & 32 & \textbf{8} gate delays
+\end{tabular}
+\end{center}
+\note{Counting for the 16-bit design: P, G at 1; block P* at 2 (a four-input AND); block G* at 3; the block carries C4, C8, C12, C16 at 5 (two more levels); the carries inside each block at 7; sums at 8. Four times faster than ripple in this model. Verified: the checker script builds this exact design in code and tests it on 20,000 random 16-bit sums plus the edge cases 0xFFFF+1 and 0x00FF+1. Costs: more gates, wide gates, and more wires to route. Ask: when would you accept the extra hardware? (Fast general-purpose CPU) and when not? (Tiny cheap chip where speed does not matter.) Make the trade-off the takeaway, not the algebra.}
 \end{frame}
 
 \begin{frame}{Putting multiplication in the circuit}

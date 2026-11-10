@@ -30,3 +30,34 @@ def ripple(x,y,n=4):
     return out,c
 assert ripple(0b0111,0b0101)==(0b1100,0) and ripple(0b1111,0b0001)==(0,1)
 print("all deck numbers check out")
+
+# ---- delay model and carry-lookahead (added for the 8-bit / 16-bit slides) ----
+import random
+# carry into bit i (i>=1) ready at 2i+1; sum bit i one XOR later
+assert [2*(n-1)+1+1 for n in (4,8,16,32,64)]==[8,16,32,64,128]
+def cla16(x,y):
+    P=[((x>>i)^(y>>i))&1 for i in range(16)]; G=[((x>>i)&(y>>i))&1 for i in range(16)]
+    c=[0]*17
+    for blk in range(4):
+        b=4*blk; cin=c[b]
+        # flat two-level carries inside the block, each written only from G, P and the block carry-in
+        c[b+1]=G[b]|(P[b]&cin)
+        c[b+2]=G[b+1]|(P[b+1]&G[b])|(P[b+1]&P[b]&cin)
+        c[b+3]=G[b+2]|(P[b+2]&G[b+1])|(P[b+2]&P[b+1]&G[b])|(P[b+2]&P[b+1]&P[b]&cin)
+        c[b+4]=G[b+3]|(P[b+3]&G[b+2])|(P[b+3]&P[b+2]&G[b+1])|(P[b+3]&P[b+2]&P[b+1]&G[b])|(P[b+3]&P[b+2]&P[b+1]&P[b]&cin)
+    # 16-bit block-level lookahead: c4,c8,c12,c16 straight from block G*, P* and c0
+    Gs=[G[b+3]|(P[b+3]&G[b+2])|(P[b+3]&P[b+2]&G[b+1])|(P[b+3]&P[b+2]&P[b+1]&G[b]) for b in (0,4,8,12)]
+    Ps=[P[b]&P[b+1]&P[b+2]&P[b+3] for b in (0,4,8,12)]
+    c4=Gs[0]|(Ps[0]&0); c8=Gs[1]|(Ps[1]&Gs[0])|(Ps[1]&Ps[0]&0)
+    c12=Gs[2]|(Ps[2]&Gs[1])|(Ps[2]&Ps[1]&Gs[0]); c16=Gs[3]|(Ps[3]&Gs[2])|(Ps[3]&Ps[2]&Gs[1])|(Ps[3]&Ps[2]&Ps[1]&Gs[0])
+    assert (c[4],c[8],c[12],c[16])==(c4,c8,c12,c16)
+    s=sum((P[i]^c[i])<<i for i in range(16))
+    return s,c[16]
+for _ in range(20000):
+    x,y=random.randrange(65536),random.randrange(65536)
+    s,co=cla16(x,y); assert s+(co<<16)==x+y,(x,y)
+assert cla16(0xFFFF,1)==(0,1) and cla16(0x00FF,1)==(0x0100,0)
+assert ripple(0b11111111,1,8)==(0,1)
+# delay counts for the CLA slide: P,G t=1; block P* t=2, G* t=3; c4..c16 t=5; inner carries t=7; sums t=8
+assert (1+1, 1+2, 3+2, 5+2, 7+1)==(2,3,5,7,8)
+print("delay model and 16-bit carry-lookahead check out")
