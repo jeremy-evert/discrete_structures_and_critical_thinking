@@ -21,5 +21,17 @@
       "source": "student/boolean_binary_handout.pdf",
       "page_link_from": "Week 13 Tuesday: Counting, Carrying, and Circuits"
     }
-  ]
+  ],
+  "landing": {
+    "page_url": "start-here-this-week",
+    "anchor": "data-api-returntype=\"Page\">DSCT Week 13 -- Overview →</a>",
+    "link_page": "Week 13 Tuesday: Counting, Carrying, and Circuits",
+    "label": "Tue Nov 10: Counting, Carrying, and Circuits (slides + handout) →",
+    "replace": [
+      {
+        "old": "Decision Gate — Week 13: Trees, Search &amp; Decision Structures — 100 pts, due 11/13 →",
+        "new": "Decision Gate — Week 13: Boolean Algebra &amp; Binary Arithmetic — 100 pts, due 11/13 →"
+      }
+    ]
+  }
 }
