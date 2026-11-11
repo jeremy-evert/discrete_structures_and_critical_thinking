@@ -306,6 +306,57 @@ The first column fills at \texttt{1}. So \texttt{1 + 1 = 10} (that is two).
 \note{Pattern spotting: the ones column alternates 0 1 0 1; the twos column alternates in pairs; the fours in fours. Each column is half as fast as the one to its right. Verified table by Python. 8 = 1000, 16 = 10000.}
 \end{frame}
 
+\begin{frame}{Binary to decimal: write the place values above the bits}
+Write each place value above its bit.\par\medskip
+{\LARGE\begin{tabular}{@{}l@{\ \ }c@{\ \ }c@{\ \ }c@{\ \ }c@{\ \ }c@{\ \ }c@{\ \ }c@{}}
+\gc{place} & \gc{64} & \gc{32} & \gc{16} & \gc{8} & \gc{4} & \gc{2} & \gc{1}\\
+ & \texttt{1} & \texttt{0} & \texttt{0} & \texttt{0} & \texttt{1} & \texttt{0} & \texttt{1}
+\end{tabular}}\par\smallskip
+Circle the places that have a 1, then add: $64+4+1=69$.\par\medskip
+{\LARGE\begin{tabular}{@{}l@{\ \ }c@{\ \ }c@{\ \ }c@{\ \ }c@{\ \ }c@{\ \ }c@{\ \ }c@{\ \ }c@{}}
+\gc{place} & \gc{128} & \gc{64} & \gc{32} & \gc{16} & \gc{8} & \gc{4} & \gc{2} & \gc{1}\\
+ & \texttt{1} & \texttt{0} & \texttt{0} & \texttt{1} & \texttt{1} & \texttt{1} & \texttt{0} & \texttt{1}
+\end{tabular}}\par\smallskip
+$128+16+8+4+1=157$.\par\medskip
+\small Seven digits means the top place is $2^6=64$: places count from 0, so $2^0$ is the first. Leading zeros change nothing: \texttt{0001} and \texttt{1} are both 1.
+\end{frame}
+
+\begin{frame}{Decimal to binary, method 1: take the biggest power that fits}
+Convert 69. Go down the place values; write 1 if it fits, subtract, otherwise 0.
+\begin{center}
+\begin{tabular}{r|c|l}
+\textbf{place} & \textbf{bit} & \textbf{left over}\\\hline
+64 & \texttt{1} & $69-64=5$\\
+32 & \texttt{0} & 5 (too small)\\
+16 & \texttt{0} & 5\\
+8 & \texttt{0} & 5\\
+4 & \texttt{1} & $5-4=1$\\
+2 & \texttt{0} & 1\\
+1 & \texttt{1} & $1-1=0$
+\end{tabular}
+\end{center}
+Read the bits down: \texttt{1000101}. Check: $64+4+1=69$.
+\end{frame}
+
+\begin{frame}{Decimal to binary, method 2: divide by 2, read the remainders upward}
+\begin{columns}[c]
+\column{0.45\textwidth}
+\begin{tabular}{r@{\ $\div2=$\ }r@{\ remainder\ }c}
+69 & 34 & \textbf{1}\\
+34 & 17 & \textbf{0}\\
+17 & 8 & \textbf{1}\\
+8 & 4 & \textbf{0}\\
+4 & 2 & \textbf{0}\\
+2 & 1 & \textbf{0}\\
+1 & 0 & \textbf{1}
+\end{tabular}
+\column{0.52\textwidth}
+Stop when the quotient is 0. The only possible remainders are 0 and 1.\\[6pt]
+Read the remainders from the \textbf{bottom up}: \texttt{1000101}.\\[6pt]
+Same answer as method 1. Check: $64+4+1=69$.
+\end{columns}
+\end{frame}
+
 \begin{frame}{Binary addition: the whole rule table}
 \begin{center}
 \begin{tabular}{c|c}
@@ -346,6 +397,24 @@ $1011+0110=10001$, which is $11+6=17$. Smaller examples: $11+1=100$ ($3+1=4$) an
 \note{Verified: 11+1 = 100 (3+1 = 4). 101+011 = 1000 (5+3 = 8). 1011+0110 = 10001 (11+6 = 17). Go column by column and have students say each step. Check by converting to decimal. Student tries next slide: 0111 + 0101 (7+5 = 12 = 1100).}
 \end{frame}
 
+\begin{frame}{Another: $14+22=36$}
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{center}{\LARGE
+\begin{tabular}{@{}l@{\ \ }c@{\ \ }c@{\ \ }c@{\ \ }c@{\ \ }c@{\ \ }c@{}}
+\gc{place} & \gc{32s} & \gc{16s} & \gc{8s} & \gc{4s} & \gc{2s} & \gc{1s}\\
+\gc{carry} & \gc{1} & \gc{1} & \gc{1} & \gc{1} & \gc{0} & \\
+ & & \texttt{0} & \texttt{1} & \texttt{1} & \texttt{1} & \texttt{0}\\
+$+$ & & \texttt{1} & \texttt{0} & \texttt{1} & \texttt{1} & \texttt{0}\\\hline
+ & \texttt{1} & \texttt{0} & \texttt{0} & \texttt{1} & \texttt{0} & \texttt{0}
+\end{tabular}}\end{center}
+\column{0.5\textwidth}
+\small
+Two five-digit numbers, added the way students picked them in class. Each step is still $0+0$, $0+1$, or $1+1=10$ (with a carry in, $1+1+1=11$).\\[4pt]
+\texttt{01110} $=14$, \texttt{10110} $=22$, \texttt{100100} $=32+4=36$.
+\end{columns}
+\end{frame}
+
 \begin{frame}{Check: your turn}
 Add in binary, then convert both sides back to decimal to check.
 \begin{center}
@@ -367,6 +436,15 @@ $1\times1$ & \texttt{1}
 \end{center}
 A product of single bits is \textbf{1 only if both are 1}. Hold that thought: it is AND.
 \note{Plant the connection now. Multiplication of bits = AND, and we will name it that in a few minutes.}
+\end{frame}
+
+\begin{frame}{One bit times a number: copy it or zero it}
+\begin{columns}[c]
+\column{0.5\textwidth}
+Multiplying by 1 gives the number back. Multiplying by 0 gives zero. In decimal: $128\times1=128$ and $128\times0=0$.
+\column{0.5\textwidth}
+Binary works the same: $1101\times1=1101$ and $1101\times0=0000$. That is why a row of zeros appears in a long multiplication: that bit of the bottom number was 0.
+\end{columns}
 \end{frame}
 
 \begin{frame}[fragile]{Binary long multiplication: same as the method you know}
@@ -561,6 +639,28 @@ Eight rows is every possible input. \textbf{Eight rows is a proof.}
 \note{If this diagram looks busy in the room, drop it and say it in words: first add A and B, then add the carry-in to that sum, and either step may produce a carry, so Cout = C1 OR C2. The two carries can never both be 1, which you can show with the truth table if time remains.}
 \end{frame}
 
+\begin{frame}{Optional: the full adder as Karnaugh maps}
+Maurice Karnaugh (Bell Labs, 1953) arranged a truth table in a grid so patterns jump out. The columns go $00,01,11,10$ (only one input changes between neighbors), \emph{not} counting order.
+\begin{center}
+$C_{out}$\quad
+\begin{tabular}{c|cccc}
+ & \multicolumn{4}{c}{$AB$}\\
+$C_{in}$ & 00 & 01 & 11 & 10\\\hline
+0 & 0 & 0 & 1 & 0\\
+1 & 0 & 1 & 1 & 1
+\end{tabular}
+\qquad
+$S$\quad
+\begin{tabular}{c|cccc}
+ & \multicolumn{4}{c}{$AB$}\\
+$C_{in}$ & 00 & 01 & 11 & 10\\\hline
+0 & 0 & 1 & 0 & 1\\
+1 & 1 & 0 & 1 & 0
+\end{tabular}
+\end{center}
+$C_{out}$: group the 1s in pairs: $AB$, $A\,C_{in}$, $B\,C_{in}$, so $C_{out}=AB+AC_{in}+BC_{in}$ (at least two inputs are 1). $S$ is a checkerboard: no pair of neighbors to merge, which is XOR.
+\end{frame}
+
 \begin{frame}{Chain them: a 4-bit ripple-carry adder}
 \begin{center}
 \begin{tikzpicture}[fa/.style={draw,thick,minimum width=1.6cm,minimum height=1.1cm}, scale=0.95, transform shape]
@@ -694,7 +794,7 @@ $A$&$B$&$P=A\cdot B$&decimal\\\hline
 The product of two bits is 1 only when \textbf{both} are 1. That is exactly an \textbf{AND} gate. The 1-bit multiplier \emph{is} one AND gate.
 \end{frame}
 
-\begin{frame}[fragile]{One bit times a whole number: copy it or zero it}
+\begin{frame}[fragile]{One bit times a whole number: one AND gate per bit}
 \begin{columns}[c]
 \column{0.5\textwidth}
 \begin{verbatim}

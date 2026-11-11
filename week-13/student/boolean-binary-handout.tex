@@ -1,6 +1,6 @@
 % Two-page student handout, DSCT Week 13 Tuesday (Nov 10, 2026). Values checked by presentations/beamer/week13_tue_boolean_binary/check_numbers.py
 \documentclass[10pt,letterpaper]{article}
-\usepackage[margin=0.6in]{geometry}
+\usepackage[margin=0.5in]{geometry}
 \usepackage{amssymb,amsmath}
 \usepackage{array}\usepackage{xcolor}
 \pagestyle{empty}
@@ -21,6 +21,9 @@ base 2 & $1+1=10$ & $11+1=100$ & $1,2,4,8$
 \end{tabular}
 \end{center}
 ``10'' always means \emph{one group of $b$, none left over}. The marks could be anything: circle, star, face, fish.
+
+{\small\textbf{Converting.} \emph{Binary $\to$ decimal:} write the place values above the bits, add the places that hold a 1. \texttt{1000101}: $64+4+1=69$. \texttt{10011101}: $128+16+8+4+1=157$. Seven digits means the top place is $2^6=64$ (places count from 0); leading zeros change nothing.\\
+\emph{Decimal $\to$ binary,} two ways. (a) Biggest power that fits: $69=64+4+1$, so \texttt{1000101}. (b) Divide by 2 and read the remainders \emph{upward}: $69\to34\,r1,\ 34\to17\,r0,\ 17\to8\,r1,\ 8\to4\,r0,\ 4\to2\,r0,\ 2\to1\,r0,\ 1\to0\,r1$, which reads \texttt{1000101}. Both give the same answer.}
 
 \textbf{2. Add one column at a time, right to left, then move sideways.} Line the digits up. Write any carry above the next column.
 \newcommand{\gc}[1]{\textcolor{black!60}{\footnotesize #1}}

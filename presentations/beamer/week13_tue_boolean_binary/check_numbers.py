@@ -118,3 +118,19 @@ for n in (2,3,4,8):
     _,ands,h,f=array_mult(1,1,n); assert (ands,h,f)==(n*n,n,n*(n-2)),(n,ands,h,f)
 assert [array_mult(1,1,n)[1:] for n in (2,4,8)]==[(4,2,0),(16,4,8),(64,8,48)]
 print("multiplier: 1-bit AND, 2-bit (4 AND + 2 HA), and array multiplier counts check out")
+
+# --- 2026-11-11 additions: conversions, class examples, Karnaugh maps ---
+assert int('1000101', 2) == 69 and 64 + 4 + 1 == 69
+assert int('10011101', 2) == 157 and 128 + 16 + 8 + 4 + 1 == 157
+_n, _r = 69, []
+while _n:
+    _r.append(_n % 2); _n //= 2
+assert ''.join(map(str, _r[::-1])) == '1000101'   # repeated division, remainders read upward
+assert int('01110', 2) + int('10110', 2) == 36 == int('100100', 2)
+_cout = {0: [0, 0, 1, 0], 1: [0, 1, 1, 1]}; _s = {0: [0, 1, 0, 1], 1: [1, 0, 1, 0]}
+for _cin in (0, 1):
+    for _i, (_a, _b) in enumerate([(0, 0), (0, 1), (1, 1), (1, 0)]):   # Gray order of AB
+        _t = _a + _b + _cin
+        assert _cout[_cin][_i] == _t >> 1 == ((_a & _b) | (_a & _cin) | (_b & _cin))
+        assert _s[_cin][_i] == _t & 1 == _a ^ _b ^ _cin
+print("2026-11-11 additions OK")
