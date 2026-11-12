@@ -22,6 +22,10 @@ By the end of the week, you can:
 
 ## Prerequisites and materials
 
+Supplemental binary arithmetic tool: [Two's Complement Teacher](twos_complement_teacher/README.md).
+Its README includes setup, a guided lesson, subtraction walkthroughs, a separate
+overflow demonstration, and ungraded practice.
+
 Bring your Week 12 graph vocabulary: vertex, edge, path, and the meaning you
 assigned to an edge. You need paper or a local editable file. No outside text,
 account, program, or AI tool is required.

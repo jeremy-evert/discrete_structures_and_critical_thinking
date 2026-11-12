@@ -12,10 +12,7 @@ student work/
 
 # ShoulderTap recordings are protected (student voices; >100MB) -- never publish
 /recordings/
-<<<<<<< HEAD
-=======
 
 # Old Canvas course snapshots were removed from this public repo and its history (2026-11-11).
 # Keep any local copy private; never commit it. See docs/ARCHIVE_REMOVED.md.
 /archive/
->>>>>>> c7154ea52aabd8fedfde01f85b6f5973822896a4
