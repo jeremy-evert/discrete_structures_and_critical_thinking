@@ -11,6 +11,8 @@ What to look for this week:
 - **Say how you made it:** name the tools, AI included, and what you checked yourself.
 - **Other people's information:** no classmates' work or private details in anything public.
 
+The same path as a 50-minute deck: https://jeremy-evert.github.io/swosu-computing/show-your-work/lecture/
+
 Before you publish anything, tick the checklist: https://github.com/jeremy-evert/oeqa_spell_roller_public/blob/main/CHECKLIST.md
 
 Pick one thing you made, find the first checklist box it fails, and fix that one box. That is the whole task.
