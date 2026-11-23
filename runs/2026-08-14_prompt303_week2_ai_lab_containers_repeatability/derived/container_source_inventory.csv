@@ -1,0 +1,5 @@
+"repository","search_terms","matching_source","finding","use_in_prompt303"
+"computer_science_2","container; Dockerfile; Containerfile; docker; podman; image; reproducible; repeatability; dependency pinning","conceptual/historical matches only","No authoritative Week 2 container lesson or runtime receipt","Reference search completed before Thursday authoring"
+"local_ai_lab_setup","container; Dockerfile; Containerfile; docker; podman; image; reproducible; repeatability; dependency pinning","conceptual architecture/module-plan matches only","No canonical container execution surface","Shared source remains read-only"
+"windows_classroom","container; Dockerfile; Containerfile; docker; podman; image; reproducible; repeatability; dependency pinning","no Week 2 container-specific files","No tested classroom container harness","Do not assume runtime; use preflight + fallback"
+"DSCT","bounded repeatability example","week-02/student/thursday/container-example/","Small DSCT-owned recipe/program/receipt","Author the smallest honest lesson"

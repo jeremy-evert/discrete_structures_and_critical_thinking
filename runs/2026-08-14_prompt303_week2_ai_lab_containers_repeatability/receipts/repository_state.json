@@ -1,0 +1,11 @@
+{
+  "run_date": "2026-08-14",
+  "dsct": {"path": "discrete_structures_and_critical_thinking", "branch": "main", "head_before_prompt303_commit": "f2e79776a3bb235b12289c0320b06ee2d1e4cb47", "upstream": "origin/main", "worktree_before_commit": "clean_after_fast_forward; Prompt 303 files were then added"},
+  "jeremy_task_tracking": {"branch": "main", "head_before_pointer": "045b9bfb92cc8761839995055050edcc83cbf012", "upstream": "origin/main", "worktree_before_pointer": "clean"},
+  "reference_repositories": {
+    "computer_science_2": {"head": "6dd1ee017819066258080d7a053773b314ad36b6", "status": "clean", "use": "read-only reference"},
+    "local_ai_lab_setup": {"head": "b2b2ec1afcea98c59a5ab3818cd361a29eb0f99c", "status": "clean", "use": "read-only canonical shared source"},
+    "windows_classroom": {"head": "f87e340aad4bf4e4e2c064abc676afdcc5260b48", "status": "clean", "use": "read-only execution harness"}
+  },
+  "scope_guard": {"shared_repositories_modified": false, "deployment_or_assessment_systems_touched": false, "student_data_collected": false}
+}

@@ -1,0 +1,8 @@
+{
+  "target_classroom_windows_runtime": {"status": "UNVERIFIED", "reason": "No live Windows classroom station or current runtime receipt available during Linux authoring"},
+  "docker_syntax_example": {"status": "UNVERIFIED", "reason": "DSCT-owned conditional example; runtime and base image require instructor preflight"},
+  "thursday_executable_path": {"status": "UNVERIFIED", "action": "Do not announce until preflight verifies runtime and local base image"},
+  "thursday_supplied_receipt_path": {"status": "GO", "reason": "Tracked recipe, deterministic example, evidence table, and fallback run-of-show"},
+  "tuesday_not_ready_path": {"status": "GO", "reason": "Shared source explicitly permits accurate NOT READY evidence and supplied demonstration"},
+  "cloud_accounts_api_keys_admin_repair": {"status": "SOURCE_BACKED_NOT_REQUIRED", "source": "local_ai_lab_setup/AGENTS.md and shared safety page"}
+}
