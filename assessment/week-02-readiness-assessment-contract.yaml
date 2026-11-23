@@ -1,0 +1,196 @@
+schema_version: dsct-assessment-contract/v1
+contract_version: "2026-08-14.1"
+assignment:
+  key: week-02-local-ai-readiness
+  title: Local AI Lab Readiness Check
+  submission_path: local-ai-readiness.md
+  source_assignment:
+    repository: local_ai_lab_setup
+    path: curriculum/shared/week2/12_readiness_assignment.md
+  course_extension:
+    repository: local_ai_lab_setup
+    path: curriculum/dsct/week2_extension.md
+  recurring_method:
+    name: DSCT five-part reasoning method
+    source:
+      repository: discrete_structures_and_critical_thinking
+      path: week-01/student/reasoning-method.md
+    criteria_order:
+      - sources_evidence_provenance
+      - rules_assumptions_system_model
+      - work_traceable_workflow
+      - check_counterexample_verification
+      - summary_evidence_limits
+  artifact_scope: source-backed Tuesday readiness evidence and DSCT claim/evidence/limit reflection
+policies:
+  marker_output: assessment draft only; Marker is never final grade authority
+  numeric_course_scoring: unresolved and out of scope for this contract
+  test_scoring: numeric units may be injected only by an explicitly labeled local acceptance harness
+  live_rollout: not authorized by Prompt 305; no Canvas, Savnac, Dispatch, or feedback write is part of this contract
+criteria:
+  - id: sources_evidence_provenance
+    label: Sources / Evidence Provenance
+    slot: Sources
+    marker_semantic_text: |
+      Full-credit work names the source of each material claim and separates
+      observations from assertions. It distinguishes evidence from the
+      student's own machine, a supplied or sanitized instructor/partner
+      receipt, canonical course or tool documentation, and a claim merely
+      stated by the student or an AI. A supplied receipt may explain a
+      diagnostic or demonstrate a workflow, but it cannot prove that the
+      student's own machine was READY. Fabricated provenance, copied output
+      presented as personal observation, and AI completion presented as
+      evidence are critical errors.
+    full_credit_observable_evidence:
+      - labels whether each readiness result is MY MACHINE or SUPPLIED DEMONSTRATION EVIDENCE
+      - identifies the exact observed status and first diagnostic code when one exists
+      - names the canonical documentation or supplied receipt used to interpret a claim
+      - keeps AI/model language in the assertion or proposal category unless independently observed
+    common_failure_modes:
+      - says “I ran everything” without an observation, artifact, or source label
+      - copies a supplied receipt while implying it came from the student's machine
+      - treats an Aider response or model completion as evidence that a claim is true
+      - invents a command result, diagnostic code, or machine status
+    critical_errors:
+      - id: supplied_receipt_as_own_ready
+        description: Treats a supplied or sanitized READY receipt as proof that the student's own machine was READY.
+      - id: fabricated_provenance
+        description: Attributes an unshown command result, source, or AI statement to personal observation.
+    coach_remediation_topics:
+      - dsct-week2-reflection
+      - shared-readiness-assignment
+      - shared-troubleshooting-evidence
+
+  - id: rules_assumptions_system_model
+    label: Rules / Assumptions / System Model
+    slot: Rules / Assumptions
+    marker_semantic_text: |
+      Full-credit work models the relevant system accurately and states the
+      scope of its assumptions. Aider is the coding client, Ollama is the
+      local model server, qwen3:8b is the selected language model, and
+      localhost is the loopback route on the same computer. The response
+      distinguishes command availability, service reachability, model
+      availability, successful inference, and a correct program change.
+      It does not turn a passing prerequisite into evidence for every later
+      layer. Confusing Aider, Ollama, Python, Git, localhost, or the model,
+      or making an absolute privacy/correctness claim from a loopback check,
+      is a critical system-model error.
+    full_credit_observable_evidence:
+      - assigns the Aider, Ollama, model, Python, Git, and localhost roles correctly when discussed
+      - distinguishes command resolution, loopback reachability, model availability, inference, and test behavior
+      - states assumptions and constraints such as the supplied exercise and bounded local path
+      - limits conclusions to the layer actually observed
+    common_failure_modes:
+      - calls Aider the language model or Ollama the code editor
+      - says localhost means the internet or proves that every process is private
+      - treats READY as proof that a later AI change is correct
+      - treats a listed model as proof that inference or Aider integration succeeded
+    critical_errors:
+      - id: wrong_component_roles
+        description: Assigns the client, server, model, or local program roles incorrectly in a way that changes the claim.
+      - id: layer_collapse
+        description: Treats command, service, model, inference, and correctness checks as interchangeable evidence.
+    coach_remediation_topics:
+      - shared-local-ai-architecture
+      - shared-localhost-boundary
+      - shared-readiness-check
+
+  - id: work_traceable_workflow
+    label: Work / Traceable Workflow
+    slot: Work
+    marker_semantic_text: |
+      Full-credit work makes the student's actual reasoning path inspectable.
+      On a READY path it records the source-backed sequence Check → Baseline
+      → Launch → Diff → Final, the relevant observations, the bounded request,
+      and the reviewed file change. On a NOT READY path it records the truthful
+      status and diagnostic, the bounded diagnostic/support action, and the
+      approved fallback without unauthorized installation, repair, credential,
+      or system changes. Reproducible artifacts and a truthful history matter;
+      “I ran everything” is not a workflow receipt.
+    full_credit_observable_evidence:
+      - records the applicable workflow steps in source-backed order
+      - shows or identifies the actual status, diagnostic, baseline, diff, or final-test observation
+      - identifies the exact bounded request and the reviewed file/line change when READY
+      - records a NOT READY fallback without claiming an unperformed repair or run
+    common_failure_modes:
+      - gives a polished conclusion with no traceable observations
+      - omits Baseline or Diff while claiming the complete READY path
+      - hides a NOT READY result or describes an unauthorized installation as troubleshooting
+      - reports a final test without saying what was tested
+    critical_errors:
+      - id: assertion_only_workflow
+        description: Claims that the workflow ran or succeeded while supplying no inspectable observation, artifact, or ordered trace.
+      - id: unauthorized_repair_path
+        description: Presents installation, credential entry, elevation, network exposure, or system repair as the approved student workflow.
+    coach_remediation_topics:
+      - shared-readiness-check
+      - shared-first-local-ai-interaction
+      - shared-troubleshooting-evidence
+
+  - id: check_counterexample_verification
+    label: Check / Counterexample & Verification
+    slot: Check
+    marker_semantic_text: |
+      Full-credit work actively tests the claim and interprets each check at
+      the right scope. The intentional Baseline failure is evidence against
+      the original title-case claim for its tested input; the Diff is evidence
+      of what text changed, not of correctness; a passing supplied Final test
+      supports only the behavior and cases it tests; and an Aider/model
+      completion is a proposal event, not proof. A counterexample must address
+      the stated claim and domain. Irrelevant or out-of-domain examples,
+      simulation output, one observation, or a passing test must not be used as
+      a universal theorem. Unsupported generalization is a critical error.
+    full_credit_observable_evidence:
+      - identifies the original claim and explains what the Baseline observation does or does not show
+      - uses the Diff to establish the changed text and then seeks independent verification
+      - states the tested cases and limits a passing Final result to those cases
+      - checks whether a proposed counterexample is relevant to the claim and its stated domain
+      - explicitly rejects AI completion as proof of semantic correctness
+    common_failure_modes:
+      - says a passing test proves every possible name is handled correctly
+      - says a one-line diff proves the behavior is correct
+      - calls an irrelevant container, hardware, or formatting observation a counterexample to string behavior
+      - says the model understood the task because it completed the request
+    critical_errors:
+      - id: passing_test_universal_overclaim
+        description: Converts a passing supplied test or single observation into a universal correctness claim.
+      - id: invalid_counterexample
+        description: Uses an irrelevant or out-of-domain example as if it challenged or established the stated behavior claim.
+      - id: ai_completion_as_proof
+        description: Treats Aider/model completion or fluent explanation as proof rather than a proposal requiring inspection.
+    coach_remediation_topics:
+      - dsct-week2-extension
+      - shared-first-local-ai-interaction
+      - dsct-reasoning-method
+
+  - id: summary_evidence_limits
+    label: One-Sentence Summary / Evidence Limits
+    slot: One-Sentence Summary
+    marker_semantic_text: |
+      Full-credit work ends with a concise conclusion that matches the actual
+      evidence and names its limits. “The supplied test passed for the tested
+      case(s)” is appropriately scoped. “Therefore the function is correct for
+      every possible name,” “therefore the AI understood the task,” or
+      “therefore my machine is READY” when only a supplied receipt exists are
+      unjustified conclusions. The summary must preserve the distinction
+      between personal evidence and supplied evidence and between tested
+      behavior and universal correctness.
+    full_credit_observable_evidence:
+      - gives one sentence tying the conclusion to the strongest actual observation
+      - states whether the evidence is personal, supplied, or canonical documentation
+      - names the remaining limit on generalization, correctness, or readiness
+      - keeps the summary consistent with the criterion-level evidence
+    common_failure_modes:
+      - repeats a confident claim without its evidence source or limit
+      - claims a supplied receipt proves personal readiness
+      - claims an AI understood the task or a test proves all possible inputs
+      - makes a summary broader than the body of the response
+    critical_errors:
+      - id: unsupported_summary_generalization
+        description: States a universal correctness, understanding, or readiness conclusion that exceeds the recorded evidence.
+      - id: summary_provenance_mismatch
+        description: The final sentence changes supplied or documented evidence into a claim about the student's own machine.
+    coach_remediation_topics:
+      - dsct-week2-reflection
+      - dsct-reasoning-method
+      - shared-readiness-assignment
