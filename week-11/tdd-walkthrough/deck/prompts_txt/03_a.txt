@@ -1,0 +1,7 @@
+Create demos/classify.py using the four checkers in demos/properties.py. Print a table with
+columns: relation, reflexive, symmetric, antisymmetric, transitive, verdict (yes/no per property).
+verdict = "equivalence" if reflexive+symmetric+transitive; "partial order" if
+reflexive+antisymmetric+transitive; otherwise "neither".
+Relations: (1) same birthday month, on 6 invented students given as (name, month) pairs;
+(2) "a divides b" on 1..12; (3) "a <= b" on 1..6; (4) "sits next to" from demos/seating.py;
+(5) "a < b" on 1..6. Run it and show me the table.

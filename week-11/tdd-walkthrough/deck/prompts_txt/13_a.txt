@@ -1,0 +1,13 @@
+Test first. Stub merger/deps.py: build_graph(*modules) and leaves_first(graph), both raising
+NotImplementedError. build_graph maps each top-level function name in the given modules to the
+set of OTHER top-level functions (from those modules) it calls by plain name.
+Write tests/test_dependencies.py for modules merger.names, merger.records, merger.pipeline:
+(1) graph["merge_duplicates"] == {"group_records","merge_group"}, graph["group_records"] ==
+{"duplicate_key"}, graph["duplicate_key"] == {"canonical_key"}, graph["canonical_key"] ==
+{"_split"}, graph["_split"] == set(); (2) leaves_first(graph) lists every function after
+everything it depends on, and its first item depends on nothing; (3) the transitive closure of
+"depends on" has no function depending on itself and is antisymmetric and transitive (helpers).
+IMPORTANT: call build_graph inside each test function body, never at module scope
+(import the modules at the top, but build the graph in the test), so a stub that raises
+NotImplementedError makes the tests FAIL instead of breaking test collection.
+Run pytest, show it red, stop.

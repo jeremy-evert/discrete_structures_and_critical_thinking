@@ -1,0 +1,16 @@
+{
+  "files": {
+    "__init__.py": "763bfd9fd6187fc0b5ef65268a4b48e65814f528f23389b7b785c96c117f93f4",
+    "contract.py": "d736216f1fae2f5a649041c7c00d567da1ce0fa6b86338874c146a920ee1b706",
+    "engine.py": "c4bb8e35bcec394733ecbf51f5e7e419ba37f735d40fe282caa5280a707b7103",
+    "evidence.py": "2fd3f1c25ae109b1fde63e3f43669326110cebf441900a358835e4c44e32e5f7",
+    "experiment.py": "591087d481d4e3dc5f72e17872ce1033225061e5ae56ea241ffafcbe6a38f38a",
+    "learner.py": "925f335fef2e15d4ecf3fdd7977f81f5b0584fa6fc813dec04769f565a9e8ba8",
+    "simulate.py": "c10281d30ebbd2b04fc5e7d50536260783bbdad856a71b659b7f76e64a32ee46",
+    "strategies.py": "344f51e7f0af949ece92246789f5d19631265dbb66fac7ac4f3c8d62f1689059"
+  },
+  "shared_commit": "d3a1ed379a652731b0b6237c33b4fe42c518ac9e",
+  "shared_repo_head": "7fad98f8a778c297587b9a5200abcb0d11dbccae",
+  "shared_repository": "jeremy-evert/Farkle_and_Machine_Learning",
+  "source_path": "src/farkle_ml"
+}

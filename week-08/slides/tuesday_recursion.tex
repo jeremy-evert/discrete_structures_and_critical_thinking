@@ -1,0 +1,326 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+
+\usetheme{default}
+\usepackage{amsmath,amssymb}
+\usepackage{listings}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\lstset{basicstyle=\ttfamily\small, columns=fullflexible, keepspaces=true,
+  showstringspaces=false, frame=single, aboveskip=0.6em, belowskip=0.6em}
+
+\title{Induction, Recursion \& Recurrences}
+\subtitle{Where is the logical bridge?}
+\author{COMSC 2043}
+\date{Tuesday, October 6, 2026}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Today's question}
+  \begin{center}
+    \LARGE Where is the logical bridge---and are we assuming\
+    what we are trying to prove?
+  \end{center}
+  \vfill
+  \centering\large Sources $\to$ Rules/Assumptions $\to$ Work $\to$ Check $\to$ Summary
+\end{frame}
+
+\begin{frame}[fragile]{A polished function that never stops}
+\begin{lstlisting}[language=Python]
+def S(n):
+    return n + S(n - 1)
+\end{lstlisting}
+  \Large What does $S(3)$ do?
+\end{frame}
+
+\begin{frame}{The missing stop}
+  \centering\Large
+  $S(3)\to S(2)\to S(1)\to S(0)\to S(-1)\to\cdots$
+
+  \vfill
+  \begin{block}{Takeaway}
+    A recursive definition needs a place to stop, and each step must move toward it.
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Demo 0: a terminating sum}
+\begin{lstlisting}[language=Python]
+def S(n):
+    if n == 0:                 # base case
+        return 0
+    return n + S(n - 1)        # reduce toward 0
+\end{lstlisting}
+  \centering\Large Base case: $S(0)=0$\qquad Step: $S(n)=n+S(n-1)$
+\end{frame}
+
+\begin{frame}{Trace before you trust it}
+  \centering\Large
+  $\begin{aligned}
+  S(3)&=3+S(2)\\
+      &=3+(2+S(1))\\
+      &=3+(2+(1+S(0)))\\
+      &=3+(2+(1+0))=6
+  \end{aligned}$
+
+  \vfill Each call lowers a nonnegative integer, so the trace reaches $0$.
+\end{frame}
+
+\begin{frame}{A definition computes; a proof earns the formula}
+  \begin{itemize}
+    \item The recursive rule tells us how to compute $S(n)$.
+    \item Matching a formula for 30 inputs is evidence about those inputs.
+    \item Induction shows why the match continues for every $n\ge 0$.
+  \end{itemize}
+  \vfill\centering\Large Claim: $S(n)=\dfrac{n(n+1)}2$
+\end{frame}
+
+\begin{frame}{Sum proof: Base}
+  \begin{block}{Base case: $n=0$}
+    $S(0)=0=\dfrac{0(0+1)}2$.
+  \end{block}
+  The claim starts true.
+\end{frame}
+
+\begin{frame}{Sum proof: Hypothesis}
+  \begin{block}{Inductive hypothesis}
+    For one fixed $k\ge 0$, assume $S(k)=\dfrac{k(k+1)}2$.
+  \end{block}
+  We assume the $k$ case so we can earn the next case.
+\end{frame}
+
+\begin{frame}{Sum proof: Step}
+  \begin{align*}
+    S(k+1)&=(k+1)+S(k)\\
+          &=(k+1)+\frac{k(k+1)}2\\
+          &=\frac{(k+1)(k+2)}2.
+  \end{align*}
+  \centering\Large Takeaway: the hypothesis bridges $k$ to $k+1$.
+\end{frame}
+
+\begin{frame}{Demo 1: Fibonacci needs two starting values}
+  \begin{align*}
+    F(0)&=0, & F(1)&=1,\\
+    F(n)&=F(n-1)+F(n-2), && n\ge 2.
+  \end{align*}
+  \begin{block}{Why two?}
+    $F(2)$ reaches back to both $F(1)$ and $F(0)$.
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{The recursive definition}
+\begin{lstlisting}[language=Python]
+def fib(n):
+    if n == 0:
+        return 0               # base case 1
+    if n == 1:
+        return 1               # base case 2
+    return fib(n - 1) + fib(n - 2)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Trace $F(5)$}
+  \begin{align*}
+    F(2)&=F(1)+F(0)=1+0=1\\
+    F(3)&=F(2)+F(1)=1+1=2\\
+    F(4)&=F(3)+F(2)=2+1=3\\
+    F(5)&=F(4)+F(3)=3+2=5
+  \end{align*}
+  \centering\large $0,\;1,\;1,\;2,\;3,\;5$
+\end{frame}
+
+\begin{frame}{Termination is not the same as correctness}
+  \begin{itemize}
+    \item Missing $F(1)$: one branch runs through negative inputs; the guard raises \texttt{RecursionError}.
+    \item Wrong $F(1)=0$: the calls stop, but the first six values are $[0,0,0,0,0,0]$.
+    \item The step recombines values; the base cases supply them.
+  \end{itemize}
+  \vfill\centering\Large Check both base cases---and their values.
+\end{frame}
+
+\begin{frame}{Fibonacci proof: Base}
+  \begin{block}{Claim}
+    $F(1)+\cdots+F(n)=F(n+2)-1$ for $n\ge 0$; the empty sum is $0$.
+  \end{block}
+  \begin{block}{Base case: $n=0$}
+    $0=F(2)-1=1-1$.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Fibonacci proof: Hypothesis}
+  Assume for one $k\ge0$ that
+  \[
+    F(1)+\cdots+F(k)=F(k+2)-1.
+  \]
+  The goal is the sum through $F(k+1)$.
+\end{frame}
+
+\begin{frame}{Fibonacci proof: Step}
+  \begin{align*}
+    F(1)+\cdots+F(k+1)
+      &=(F(k+2)-1)+F(k+1)\\
+      &=F(k+3)-1.
+  \end{align*}
+  \centering\Large Takeaway: two-term recurrences need both starting values.
+\end{frame}
+
+\begin{frame}{A growth hook: $52!$}
+  \begin{itemize}
+    \item $52!=80658175170943878571660636856403766975289505440883277824000000000000$
+    \item $2^{52}=4503599627370496$
+    \item $52^{10}=144555105949057024$
+  \end{itemize}
+  \vfill\centering\Large A shuffled deck has $52!$ possible orderings.
+\end{frame}
+
+\begin{frame}{Start the inequality where it is true}
+  \centering
+  \begin{tabular}{c|ccccc}
+    $n$ & 0 & 1 & 2 & 3 & \textbf{4}\\ \hline
+    $n!$ & 1 & 1 & 2 & 6 & \textbf{24}\\
+    $2^n$ & 1 & 2 & 4 & 8 & \textbf{16}\\
+    $n!>2^n$? & no & no & no & no & \textbf{yes}
+  \end{tabular}
+  \vfill\large Claim: $n!>2^n$ for every integer $n\ge4$.
+\end{frame}
+
+\begin{frame}{Factorial proof: Base}
+  \begin{block}{Base case: $n=4$}
+    $4!=24>16=2^4$.
+  \end{block}
+  At $n=0$, the proposed claim says $1>1$, which is false.
+\end{frame}
+
+\begin{frame}{Factorial proof: Hypothesis}
+  Assume for one $k\ge4$ that $k!>2^k$.
+  \[
+    (k+1)!=(k+1)k!
+  \]
+  Since $k+1>0$, multiplying preserves the inequality.
+\end{frame}
+
+\begin{frame}{Factorial proof: Step}
+  \begin{align*}
+    (k+1)!&>(k+1)2^k\\
+          &\ge 2\cdot2^k\\
+          &=2^{k+1}.
+  \end{align*}
+  \centering\Large Takeaway: an induction base must make the claim true.
+\end{frame}
+
+\begin{frame}[fragile]{Demo 3: odd numbers build a square}
+  \begin{columns}[T]
+    \column{.52\textwidth}
+      \centering\small
+\begin{verbatim}
+1 2 3 4
+2 2 3 4
+3 3 3 4
+4 4 4 4
+\end{verbatim}
+      \centering\small $4^2=1+3+5+7=16$\\
+      The next L adds $9$ cells.
+    \column{.43\textwidth}
+      \textbf{Domino picture}
+      \begin{itemize}
+        \item Base: push the first.
+        \item Step: $k$ knocks down $k+1$.
+        \item Together: every one falls.
+      \end{itemize}
+  \end{columns}
+  \vfill\centering $1+3+5+\cdots+(2n-1)=n^2$
+\end{frame}
+
+\begin{frame}{Odd-sum proof: Base}
+  \begin{block}{Base case: $n=0$}
+    The empty sum is $0=0^2$.
+  \end{block}
+  (Or start at $n=1$: $1=1^2$.)
+\end{frame}
+
+\begin{frame}{Odd-sum proof: Hypothesis}
+  Assume the first $k$ odd numbers add to $k^2$:
+  \[
+    1+3+\cdots+(2k-1)=k^2.
+  \]
+  The next odd number is $2k+1$.
+\end{frame}
+
+\begin{frame}{Odd-sum proof: Step}
+  \[
+    (1+3+\cdots+(2k-1))+(2k+1)
+      =k^2+2k+1=(k+1)^2.
+  \]
+  \centering\Large Takeaway: the new L has $2k+1$ cells.
+\end{frame}
+
+\begin{frame}{Extra: Horner's rule is a recurrence}
+  \begin{align*}
+    p_0&=2, & p_1&=3p_0-6=0\\
+    p_2&=3p_1+2=2, & p_3&=3p_2-1=5
+  \end{align*}
+  Direct check: $54-54+6-1=5$.\qquad Horner: $[2,0,2,5]$.
+\end{frame}
+
+\begin{frame}{Horner payoff}
+  \centering
+  \begin{tabular}{c|cc}
+    Degree & Direct multiplications & Horner multiplications\\ \hline
+    3 & 9 & 3\\
+    10 & 65 & 10
+  \end{tabular}
+  \vfill\begin{block}{Takeaway}
+    A recurrence can also be a faster way to compute.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Find the bug: problem}
+  \begin{block}{Proposed induction proof}
+    \textbf{Base:} $n=1$ works for $1+3+\cdots+(2n-1)=n^2$.\\
+    \textbf{Step:} Assume the first $k+1$ odd numbers add to $(k+1)^2$.\\
+    Remove $2k+1$; then the first $k$ add to $k^2$. Done!
+  \end{block}
+  \centering\Large What did the proof assume, and what did it conclude?
+\end{frame}
+
+\begin{frame}{Find the bug: reveal}
+  The arrow points backward: it assumes $P(k+1)$ to get $P(k)$.
+
+  \vfill The bridge we need is $P(k)\Rightarrow P(k+1)$.
+
+  \begin{block}{Takeaway}
+    Check both the base case and the direction of the step.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Your turn: Tuesday activity}
+  \begin{enumerate}
+    \item Trace $S(4)$; name the base and reducing rule.
+    \item For $T(0)=1$, $T(n)=T(n+1)$, find the smallest input that exposes the problem.
+    \item Give the base check and bridge for $S(n)=n(n+1)/2$.
+  \end{enumerate}
+  \vfill\centering Sources $\to$ Rules $\to$ Work $\to$ Check $\to$ One-sentence summary
+\end{frame}
+
+\begin{frame}{AI check}
+  AI can omit a base case or reverse the induction step. Check:
+  \begin{enumerate}
+    \item Does the smallest input reach a true base case?
+    \item Does each recursive input move toward a base case?
+    \item Does the step assume $P(k)$ and establish $P(k+1)$?
+    \item For Fibonacci, are both $F(0)$ and $F(1)$ present and correct?
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Close: the bridge}
+  \begin{itemize}
+    \item A recursive definition computes; a trace checks a case.
+    \item Base cases start the chain.
+    \item The inductive step carries truth from $k$ to $k+1$.
+  \end{itemize}
+  \vfill\centering\Large In one sentence: why does induction reach every case?
+\end{frame}
+
+\end{document}

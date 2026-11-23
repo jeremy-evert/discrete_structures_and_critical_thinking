@@ -1,44 +1,58 @@
-# DSCT Week 2 — Build the Lab, Then Make Results Reproducible
+# Week 2 — Building Your AI Lab / Containers and Repeatability
 
-**Tuesday, August 25, 2026:** Building Your AI Lab
-**Thursday, August 27, 2026:** Containers and Repeatability
+**Tuesday, August 25 and Thursday, August 27, 2026**
+COMSC-2043-1420 · 12:30–1:45 PM · Gen. Thomas P. Stafford Center, Room 259
 
-Week 1 asked us to make reasoning inspectable with **Sources → Rules / Assumptions → Work → Check → One-Sentence Summary**. Week 2 applies the same habit to a technical environment and its evidence.
+## What this week is for
 
-The recurring question is:
+Week 2 turns the Week 1 evidence habit into two bounded infrastructure
+investigations. On Tuesday, students build a mental model of the prepared
+local-AI lab and submit privacy-reviewed readiness evidence. On Thursday,
+students inspect prepared rootless Podman layers, storage, lifecycle, and a
+small reproducible transformation.
 
-> What does this observation prove, and what does it not prove?
+The recurring question is: **What does this observation prove, and what does
+it not prove?** Keep Sources → Rules/Assumptions → Work → Check →
+One-Sentence Summary visible in both meetings.
 
-This week is a tooling and reproducibility bridge, not a second orientation week and not formal DSCT topic instruction. Week 3 begins the contracted **Logic, Claims & Proof** sequence.
+## Canonical sources
+
+This directory is a DSCT course wrapper, not a copy of the technical lessons.
+
+- Tuesday: read `../local_ai_lab_setup/curriculum/shared/week2/01_start_here.md`
+  through the linked shared pages, then use the shared
+  `12_readiness_assignment.md` and `readiness_assignment_rubric.md`.
+- Tuesday DSCT exercise: use
+  `../local_ai_lab_setup/curriculum/dsct/week2_extension.md`.
+- Tuesday classroom execution: use the supplied Windows guide named by the
+  CS2 precedent, not commands invented here.
+- Thursday: use the four canonical files in
+  `../container_foundations/curriculum/`: the instructor brief, learning
+  package architecture, evidence manifest, and reflection/evaluation guide.
+
+Do not install, repair, expose, or replace classroom infrastructure. The
+Thursday source is marked pending an instructor dry run; the instructor must
+complete its preflight and decide whether the prepared environment is ready.
 
 ## Student path
 
-### Tuesday — Building Your AI Lab
+- **Tuesday:** map the local-AI request path; run the supplied readiness check;
+  if ready, inspect one bounded Aider proposal, diff, and independent test;
+  submit `local-ai-readiness.md` with the DSCT claim/counterexample/limit
+  reflection.
+- **Thursday:** map the prepared container layers; distinguish image,
+  container, writable layer, named volume, and host bind; verify exact bytes
+  and hashes; reproduce the bounded workload twice; analyze the supplied
+  Bill/Brandy evidence without claiming universal portability.
 
-1. Read the shared local-AI pages selected by the instructor.
-2. Use the [DSCT Tuesday guide](student/tuesday/README.md) to trace the system and interpret `Check`.
-3. If the classroom harness reports `READY`, complete the supplied `Baseline → Launch → Diff → Final` workflow.
-4. If it reports accurate `NOT READY`, preserve that evidence and use the instructor/supplied-evidence branch.
-5. Complete the [DSCT evidence/reflection receipt](student/tuesday/dsct-evidence-reflection.md) using the shared `local-ai-readiness.md` assignment as the canonical submission surface.
-6. Use the [Tuesday exit check](student/tuesday/exit-check.md).
+## Week 2 evidence portfolio
 
-### Thursday — Containers and Repeatability
+Submit the Tuesday `local-ai-readiness.md` and Thursday's six searchable
+receipts (`01_preflight.txt` through `05_workload_hashes.txt` plus
+`reflection.md`) as one **40-point Week 2 Evidence Portfolio**. The detailed
+rubric and the grading application are in `student/week-02-evidence-rubric.md`
+and `student/week-02-evidence-assignment.md`.
 
-1. Inspect the tiny [repeatability example](student/thursday/container-example/).
-2. Use the [Thursday guide](student/thursday/README.md) to distinguish a recipe, image, running container, output, and check.
-3. Follow the instructor's preflight decision. The container run is conditional until a runtime and local base image are verified.
-4. Complete the [repeatability evidence receipt](student/thursday/repeatability-receipt.md), either from the executable path or from the supplied receipt path. Label which path produced the evidence.
-5. Use the [Thursday exit check](student/thursday/exit-check.md).
-
-## Ownership boundaries
-
-- `local_ai_lab_setup` owns the shared explanation, shared readiness assignment, evidence model, and DSCT extension.
-- `windows_classroom` owns the Windows execution harness and exact `Check`, `Baseline`, `Launch`, `Diff`, `Final`, and `Reset -ConfirmReset` command surface.
-- `computer_science_2` is a reference integration showing how a course wraps the shared module.
-- DSCT owns this week's sequence, the connection to Reasoning Odyssey habits, the claim/evidence/limit reflections, and the bounded repeatability activity.
-
-See [Week 2 source map](../planning/week-02-source-map.md) and [runtime/help status](student/help-and-runtime-status.md).
-
-## Policy boundary
-
-This package introduces no new DSCT points, weights, grading category, or due-date cadence. “Exit check” and “receipt” name learning evidence, not a claimed grading policy. Do not submit credentials, private data, full paths, or unrelated terminal history.
+This is recurring weekly course work, not a Reasoning Odyssey write-up and
+not a new semester grading category. Optional World Bible notes are not
+graded this week.

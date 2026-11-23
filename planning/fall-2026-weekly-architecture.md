@@ -1,8 +1,10 @@
 # DSCT Fall 2026 — weekly instructional architecture contract
 
-This contract applies to Weeks 3–14 and gives later authoring one stable
+This contract applies to Weeks 4–14 and gives later authoring one stable
 Tuesday/Thursday cadence. It adapts Professional Minds' historical Monday /
 Wednesday / Friday rhythm to DSCT's Tuesday/Thursday meeting pattern.
+
+**Status update (Decision 029, 2026-08-25 — Olivia recovery mission):** the "Professional Minds: AI Fluency/Wednesday/Friday" chassis segments below were never source-backed (`SOURCE_PENDING` throughout) and the actual authored `week-04/` through `week-14/` content confirms they were never built as separate graded slots — the real weeks go straight from orientation to technical content. Decision 029 makes this the correct outcome, not a gap: AI Fluency/Professional Minds are optional Computing Commons enrichment, not required DSCT chassis segments, going forward. Pair Reasoning/Show & Tell remain real Thursday activities but produce no separate graded Canvas object — see `docs/grading-model.md`'s reconciled table. The table below is preserved as historical planning intent; do not source-fill the `SOURCE_PENDING` rows going forward.
 
 ## Tuesday chassis — 75 minutes
 
@@ -21,14 +23,68 @@ source-backed lesson requires them; the four functions remain present.
 | Segment | Default time | Contract |
 |---|---:|---|
 | Professional Minds: Friday strand | ~10–12 min | Reflection, communication, career/professional judgment, or evidence-receipt slot; content is `SOURCE_PENDING` unless source-backed. |
-| Pair Programming or Show & Tell | ~50–55 min | Make reasoning inspectable through a pair artifact or a defended artifact/model/argument. |
-| Critique / revision / evidence receipt / exit | ~8–10 min | Receive critique, revise, expose evidence, and record the individual reasoning receipt. |
+| Pair Reasoning or Show & Tell | ~50–55 min | Make reasoning inspectable through a pair artifact, or a public defense of a claim/artifact/model/argument in which every participating student also gives at least one professional critique of a peer's reasoning. |
+| Critique / revision / evidence receipt / exit | ~8–10 min | Receive critique, revise, expose evidence, and record the individual reasoning receipt — on Show & Tell weeks this receipt is the individual Show & Tell report, which records both the critique received and the critique the student gave a peer (see `assignments/show-and-tell-artifact.md`; Prompt 312 folds the retired separate Friday-feedback/A7 category into this same report). |
 
-The chosen mode is frozen per week in the topic map. Pair Programming may
+The chosen mode is frozen per week in the topic map. Pair Reasoning may
 produce a checker, simulator, counterexample generator, traversal, verifier,
 Boolean evaluator, state-machine runner, or other inspectable artifact; it is
 not limited to a conventional application. Show & Tell is explanation and
-defense followed by critique and revision, not presentation theater.
+defense followed by required professional critique of a peer and revision,
+not presentation theater.
+
+### Pair Reasoning / Show & Tell cadence (Prompt 313)
+
+A normal Week 4–14 formal-content week carries exactly **one** named
+recurring social-reasoning mode on Thursday — Pair Reasoning **or** Show &
+Tell, never both as separate required recurring graded events in the same
+normal week. This does not restrict ordinary discussion, peer questions, or
+brief partner checks inside other lessons; it governs only the named graded
+recurring event family.
+
+The baseline formal-core alternation, expressed in `fall-2026-topic-map.md`'s
+"Thu mode / intended artifact family" column, is:
+
+- Week 4: **Show & Tell** (first formal core week)
+- Week 5: **Pair Reasoning**
+- Week 6: **Show & Tell**
+- Week 7: **Pair Reasoning**
+- Week 8: **Show & Tell**
+- Week 9: **Pair-style work folded into Tuesday** (Thursday is Fall Break;
+  see Exceptions below — no Thursday artifact is promised)
+- Week 10: **Show & Tell**
+- Week 11: **Pair Reasoning**
+- Week 12: **Show & Tell**
+- Week 13: **Pair Reasoning**
+- Week 14: **Show & Tell / Reasoning Odyssey mini-capstone**
+
+This is the predictable alternation the design decision calls for: it starts
+with Show & Tell in Week 4, then Pair Reasoning in Week 5, and continues in
+strict alternation except where an explicit calendar or special-week
+exception intervenes (currently only Week 9). The topic map remains the
+frozen per-week source of truth; this section restates its cadence so the
+rule does not have to be re-derived from the table.
+
+Weeks 2 and 3 are runway weeks and sit outside the Week 4–14 alternation.
+Week 3's own contract (Prompts 307/316, pinned-container skill ladder) may
+include pair-style reproducibility work; that work belongs to Week 3's own
+tooling contract and does not make Week 4 a Pair Reasoning week or otherwise
+shift the baseline alternation above.
+
+**Seam resolved 2026-08-17 (Jeremy, executed by Cleo/Lead Foreman):**
+Decision cluster E is settled. `fall-2026-topic-map.md` and
+`docs/grading-model.md` are renumbered to Weeks 4–14; Week 3 carries no
+formal topic and Boolean Algebra/Finite-State Machines are merged into
+Week 14. See `fall-2026-spine.md`'s "The Week 14 merge" for the full
+rationale. The Week 4–14 alternation above needed no change, because it was
+already anchored to Week 4 (Show & Tell), not to Week 3.
+
+Pair Reasoning and Show & Tell remain separate 5% semester grading
+categories (`docs/grading-model.md`). This cadence contract does not change
+either weight, does not merge the categories, and does not require the two
+categories to contain the same number of graded weeks — the odd eleven-week
+core and the Week 9 calendar exception make an even split impossible by
+construction.
 
 ## Recurring reasoning and AI lens
 
@@ -38,12 +94,58 @@ counterexamples, tests, or approaches, but fluent output is never evidence.
 The Tuesday AI Fluency slot targets the week's failure anatomy listed in the
 topic map. The course stance remains: **Love AI more. Trust AI less.**
 
+## Reasoning Odyssey continuity and grading map
+
+Where pedagogically appropriate, a student may carry a chosen world, system,
+organization, scenario, or problem space through the course. Claims,
+structures, data, or decisions from that World Bible can become the context
+for logic, proof, modeling, checking, or explanation. This is persistent
+context for the Reasoning Odyssey, not mandatory fiction and not a required
+connection every week; a topic should stand on its own when a continuity link
+would be artificial.
+
+The existing chassis provides the natural continuity handoffs. On Tuesday, the
+reasoning challenge / check / exit can ask the student to make one claim,
+counterexample, assumption, or conclusion legible in the chosen context when
+that context helps. On Thursday, the Pair Reasoning or Show & Tell artifact
+can apply or defend the week's formal structure in that context, with the
+existing critique / revision / evidence receipt preserving the individual
+reasoning trail. These are uses of existing slots, not new meetings,
+assignments, or time allocations.
+
+For Question 004's resolved grading categories, the mapping is:
+
+- The individual Tuesday reasoning trace and its Thursday evidence receipt,
+  when collected as the week's checked reasoning, feed the **Decision Gate**
+  category (30%), **except in Weeks 7, 11, and 14**, where the same evidence
+  instead feeds that week's **Reasoning Odyssey Checkpoint** (15% category,
+  one-third per checkpoint) as the week's sole Odyssey submission — see
+  `docs/grading-model.md` (Prompt 315).
+- The existing Thursday pair artifact or Show & Tell artifact, plus the
+  existing concept check, lab, activity, critique, or revision evidence, feeds
+  the **recurring weekly course work (concept-checks/labs/activities)**
+  category. Pair work does not create a second Decision Gate; the individual
+  receipt keeps accountability visible within the same weekly work.
+
+This is a planning contract only. It does not author Week 2–17 lesson content;
+future authors still select the week's real disciplinary task and use the
+continuity pattern only where it is instructionally natural.
+
 ## Exceptions
 
 - **Week 1:** the landed Prompt 301 kickoff package, not this formal-topic
   chassis.
 - **Week 2:** Tuesday is Building Your AI Lab and Thursday is Containers and
   Repeatability; no lessons are authored by Prompt 302.
+- **Week 3 infrastructure note:** Week 3 is the container/minimum-useful-LaTeX
+  runway and does not carry a formal topic package. Prompt 316 supplies the
+  pinned-container LaTeX
+  baseline (`week-03/container/`, `week-03/student/container-latex-skill-ladder.md`)
+  that Pair Reasoning artifacts needing a typeset claim/proof run on top of.
+  Students start from a supplied, pinned, ready-to-run image rather than an
+  install/build-from-scratch tax; see
+  `sidecar/reports/316_week3_pinned_container_skill_ladder.md` for the
+  validated contract and its returned action items.
 - **Week 9:** Thursday Oct 15 is Fall Break and has no class. Pair-style work
   is folded into Tuesday's reasoning activity; no Thursday artifact is
   promised.
@@ -52,8 +154,10 @@ topic map. The course stance remains: **Love AI more. Trust AI less.**
 - **Week 16:** Farkle + Machine Learning synthesis; later authoring may draw
   on prior probability, expected outcomes/simulation, state models,
   finite-state machines, algorithms, evidence/checking, and model limits.
+  Graded under its own **Farkle + Machine Learning Synthesis** category (5%,
+  Prompt 315) — not the Decision Gate category and not an Odyssey checkpoint.
 - **Week 17:** Final Reflection write-up during finals week; no grading weight
-  or rubric is invented while Question 004 is open.
+  or rubric is invented in this planning contract.
 
 Professional Minds itself is not modified here. No local checkout was
 available on 2026-08-14, so per-week Wednesday/Friday anchors remain

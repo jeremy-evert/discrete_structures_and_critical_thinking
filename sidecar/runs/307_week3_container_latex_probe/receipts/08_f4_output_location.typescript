@@ -1,0 +1,8 @@
+Script started on 2026-08-17 00:58:42-05:00 [<not executed on terminal>]
+Known PDF candidates before inspection:
+sidecar/runs/307_week3_container_latex_probe/fixture/week3-reasoning.pdf 52756 bytes 2026-08-17T00:58:20.4230405280-0500
+
+Wrapper-declared output location:
+PDF: /tmp/dsct-prompt307/sidecar/runs/307_week3_container_latex_probe/fixture/week3-reasoning.pdf
+
+Script done on 2026-08-17 00:58:43-05:00 [COMMAND_EXIT_CODE="0"]

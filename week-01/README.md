@@ -30,6 +30,19 @@ For a claim, problem, model, program, or AI answer, make the evidence visible:
 The Check step matters: a confident answer is not automatically a supported
 answer.
 
+## What you submit each week
+
+The Reasoning Odyssey is the semester-long journey of your reasoning, not a
+weekly assignment name. In a normal week you submit exactly one individual
+reasoning artifact for it: your **Decision Gate**. A Decision Gate makes
+visible whether you have enough reasoning and evidence to justify the
+conclusion you are carrying forward; its disciplinary form (proof, model,
+computation, simulation, counterexample, graph, truth table, state machine,
+or another artifact) varies by week, but the recurring reasoning shape above
+still applies. Pair Reasoning and Show & Tell are separate, distinct
+activities on their own scheduled weeks — they are not additional Decision
+Gates.
+
 ## AI expectation
 
 **Love AI more. Trust AI less.** AI can generate explanations, examples,

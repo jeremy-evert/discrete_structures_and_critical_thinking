@@ -1,0 +1,5 @@
+Script started on 2026-08-17 00:58:43-05:00 [<not executed on terminal>]
+Error: crun: executable file `/definitely-not-present` not found: No such file or directory: OCI runtime attempted to invoke a command that was not found
+Observed exit=127 (expected nonzero for bounded bad entrypoint).
+
+Script done on 2026-08-17 00:58:43-05:00 [COMMAND_EXIT_CODE="0"]

@@ -1,0 +1,7 @@
+Test first. In merger/deps.py add class CycleError(Exception). Write tests/test_cycles.py with
+LOOP = {"parse": {"validate"}, "validate": {"parse"}, "report": {"validate"}}:
+(1) leaves_first(LOOP) raises CycleError whose message contains "parse" and "validate";
+(2) using the transitive-closure code from test_dependencies.py (import it:
+from test_dependencies import closure; if there is no function called closure, extract it there
+first without changing behaviour), antisymmetric_failure on LOOP's closure is ("parse","validate").
+Run pytest. The cycle test should fail (the second test may already pass: say so). Stop.

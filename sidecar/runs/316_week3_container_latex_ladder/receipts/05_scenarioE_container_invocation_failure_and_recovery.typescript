@@ -1,0 +1,22 @@
+$ DSCT_WEEK3_IMAGE=localhost/dsct-week3-latex:doesnotexist ./run-latex.sh week3-claim.tex   # bad image reference
+IMAGE: localhost/dsct-week3-latex:doesnotexist
+RUNTIME: podman
+HOST_SOURCE_DIR: /tmp/dsct-316-scratch/E_containerfail
+CONTAINER_WORK_DIR: /work
+SOURCE: week3-claim.tex
+EXPECTED_PDF: /tmp/dsct-316-scratch/E_containerfail/week3-claim.pdf
+Error: localhost/dsct-week3-latex:doesnotexist: image not known
+RESULT: FAIL
+REASON: container/runtime invocation error (exit 125) before compilation started -- check the IMAGE/RUNTIME lines above, not the LaTeX source
+SCRIPT_EXIT=125
+
+--- diagnosis: message names it as a runtime/image problem, not a LaTeX problem; correct the image reference ---
+
+$ ./run-latex.sh week3-claim.tex   # corrected back to default pinned image
+Latexmk: Examining 'week3-claim.log'
+Latexmk: Log file says output to 'week3-claim.pdf'
+Latexmk: All targets (week3-claim.pdf) are up-to-date
+
+RESULT: PASS
+PDF: /tmp/dsct-316-scratch/E_containerfail/week3-claim.pdf
+SCRIPT_EXIT=0

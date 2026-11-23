@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Week 6 — Live Sorting Race</title>
+<style>
+:root{font-family:Inter,system-ui,sans-serif;color:#102033;background:#f6f8fb}
+body{margin:0}.wrap{max-width:1180px;margin:auto;padding:32px}h1{font-size:clamp(2.2rem,5vw,4.4rem);margin:.1em 0}.sub{font-size:1.3rem;color:#4b5b70}
+.panel{background:#fff;border:1px solid #dbe2ea;border-radius:18px;padding:22px;margin-top:22px;box-shadow:0 8px 24px #1b35520f}
+.controls{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+button{font:inherit;font-weight:800;border:0;border-radius:12px;padding:12px 18px;background:#102033;color:white;cursor:pointer}button:disabled{opacity:.45}
+.status{font-weight:750;min-height:1.5em}.results{overflow:auto;margin-top:16px}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}th,td{padding:10px 12px;border-bottom:1px solid #e3e8ef;text-align:right}th:first-child,td:first-child{text-align:left}
+canvas{width:100%;height:470px;margin-top:14px}.note{color:#607085}.question{font-size:1.45rem;font-weight:750}
+@media(max-width:760px){.wrap{padding:18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div>DSCT · Week 6 · Open #06</div>
+<h1>Now make the computer prove it.</h1>
+<p class="sub">Same random lists. Same browser. Two sorting algorithms. Actual measured runtime.</p>
+<div class="panel">
+  <div class="controls">
+    <button id="run">Run the race</button>
+    <label><input type="radio" name="mode" value="normal" checked> normal</label>
+    <label><input type="radio" name="mode" value="pain"> turn up the pain</label>
+    <label><input id="log" type="checkbox"> log-scale chart</label>
+  </div>
+  <p class="status" id="status">Ready.</p>
+  <div class="results">
+    <table>
+      <thead><tr><th>n</th><th>Bubble Sort (ms)</th><th>Merge Sort (ms)</th><th>Bubble / Merge</th></tr></thead>
+      <tbody id="body"></tbody>
+    </table>
+  </div>
+  <canvas id="chart" width="1120" height="470"></canvas>
+  <p class="note">These are real timings from this browser, so exact numbers will vary by machine, browser, background load, and JavaScript engine. The growth pattern matters more than any single millisecond value.</p>
+</div>
+<p class="question">Ask before running it: what shape should each line make?</p>
+</div>
+<script>
+const canvas=document.getElementById('chart'),ctx=canvas.getContext('2d'),runBtn=document.getElementById('run'),statusEl=document.getElementById('status'),tbody=document.getElementById('body'),logToggle=document.getElementById('log');
+let results=[];
+function seededArray(n,seed){let s=seed>>>0,a=new Array(n);for(let i=0;i<n;i++){s=(1664525*s+1013904223)>>>0;a[i]=s}return a}
+function bubbleSort(input){const a=input.slice();for(let end=a.length-1;end>0;end--){let swapped=false;for(let i=0;i<end;i++){if(a[i]>a[i+1]){const t=a[i];a[i]=a[i+1];a[i+1]=t;swapped=true}}if(!swapped)break}return a}
+function mergeSort(a){if(a.length<=1)return a.slice();const mid=Math.floor(a.length/2),L=mergeSort(a.slice(0,mid)),R=mergeSort(a.slice(mid));let i=0,j=0,out=[];while(i<L.length&&j<R.length)out.push(L[i]<=R[j]?L[i++]:R[j++]);while(i<L.length)out.push(L[i++]);while(j<R.length)out.push(R[j++]);return out}
+function timed(fn,a){const t0=performance.now();fn(a);return performance.now()-t0}
+function fmt(x){return x<1?x.toFixed(3):x.toFixed(2)}
+function draw(){
+ const W=canvas.width,H=canvas.height,p={l:76,r:26,t:28,b:58};ctx.clearRect(0,0,W,H);ctx.font='16px system-ui';
+ if(!results.length){ctx.fillStyle='#64748b';ctx.fillText('Run the race to build the graph.',p.l,80);return}
+ const log=logToggle.checked,maxX=Math.max(...results.map(r=>r.n)),rawMax=Math.max(...results.flatMap(r=>[r.bubble,r.merge])),maxY=log?Math.log10(Math.max(rawMax,.001)+1):rawMax*1.08;
+ const X=x=>p.l+x/maxX*(W-p.l-p.r),Y=v=>H-p.b-((log?Math.log10(Math.max(v,.001)+1):v)/maxY)*(H-p.t-p.b);
+ ctx.strokeStyle='#d9e1ea';ctx.fillStyle='#5c6d80';ctx.lineWidth=1;
+ for(let i=0;i<=5;i++){let yy=p.t+i*(H-p.t-p.b)/5;ctx.beginPath();ctx.moveTo(p.l,yy);ctx.lineTo(W-p.r,yy);ctx.stroke()}
+ for(const r of results)ctx.fillText(r.n.toLocaleString(),X(r.n)-18,H-p.b+25);
+ const series=[['Bubble','#d62728','bubble'],['Merge','#1f77b4','merge']];
+ for(const s of series){ctx.strokeStyle=s[1];ctx.lineWidth=4;ctx.beginPath();results.forEach((r,i)=>{let xx=X(r.n),yy=Y(r[s[2]]);i?ctx.lineTo(xx,yy):ctx.moveTo(xx,yy);ctx.fillStyle=s[1];ctx.fillRect(xx-3,yy-3,6,6)});ctx.stroke()}
+ ctx.fillStyle='#d62728';ctx.fillText('Bubble measured ms',W-220,44);ctx.fillStyle='#1f77b4';ctx.fillText('Merge measured ms',W-220,68);ctx.fillStyle='#334155';ctx.fillText('n',W-15,H-18);ctx.fillText(log?'log milliseconds':'milliseconds',p.l,20);
+}
+function renderTable(){
+ tbody.innerHTML='';for(const r of results){const tr=document.createElement('tr');tr.innerHTML='<td>'+r.n.toLocaleString()+'</td><td>'+fmt(r.bubble)+'</td><td>'+fmt(r.merge)+'</td><td>'+(r.bubble/Math.max(r.merge,.000001)).toFixed(1)+'×</td>';tbody.appendChild(tr)}draw()
+}
+async function runRace(){
+ runBtn.disabled=true;results=[];renderTable();
+ const mode=document.querySelector('input[name=mode]:checked').value;
+ const sizes=mode==='pain'?[500,1000,2000,4000,8000]:[250,500,1000,2000,4000];
+ for(let k=0;k<sizes.length;k++){
+   const n=sizes[k];statusEl.textContent='Sorting '+n.toLocaleString()+' values…';
+   await new Promise(r=>setTimeout(r,40));
+   const source=seededArray(n,12345+n);
+   const bubble=timed(bubbleSort,source),merge=timed(mergeSort,source);
+   results.push({n,bubble,merge});renderTable();
+ }
+ statusEl.textContent='Race complete. Now look at the shape, not just the winner.';
+ runBtn.disabled=false;
+}
+runBtn.onclick=runRace;logToggle.onchange=draw;draw();
+</script>
+</body></html>

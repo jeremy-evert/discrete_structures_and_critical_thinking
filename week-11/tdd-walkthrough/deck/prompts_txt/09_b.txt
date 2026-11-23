@@ -1,0 +1,2 @@
+Implement group_by_chain with union-find (connected components), no other dependencies.
+Do not edit the tests. Run pytest: all green. Then print the groups for SMITH_NAMES. Stop.

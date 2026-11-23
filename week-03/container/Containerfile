@@ -1,0 +1,28 @@
+# DSCT Week 3 — pinned LaTeX build environment
+#
+# Purpose: give students a known-good, ready-to-run environment for
+# compiling the small .tex proof/claim write-ups used in Week 3 Pair
+# Reasoning artifacts. Students do not build this image; they consume a
+# pinned, published copy of it (see ../README.md and run-latex.sh).
+#
+# Design note (provenance): the base image and package shape reuse the
+# already-validated pattern from the Computer Architecture course's
+# lab/Containerfile (commit ba1eb7eccc5bf5731881a09a67422b6aa3903db8:
+# debian:trixie-slim + texlive + latexmk), trimmed to only the LaTeX
+# toolchain DSCT needs. No Architecture-specific course semantics
+# (archlab tooling, gdb/clang/python instrumentation, CMD ["archlab",
+# "doctor"]) are copied into this image.
+FROM debian:trixie-slim
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    texlive-latex-base \
+    texlive-latex-recommended \
+    texlive-fonts-recommended \
+    latexmk \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /work
+
+CMD ["latexmk", "-version"]

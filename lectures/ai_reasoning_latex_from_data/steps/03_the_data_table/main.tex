@@ -1,0 +1,7 @@
+\documentclass{article}\usepackage[margin=1in]{geometry}\usepackage{booktabs}\usepackage{xcolor}\usepackage{hyperref}
+\title{Love AI More. Trust AI Less.}\author{DSCT lecture walkthrough}\date{}
+\begin{document}\maketitle
+\begin{abstract}A short report can be a reasoning instrument: state a claim, inspect evidence, and decide how much confidence is earned.\end{abstract}
+\section{The question}\textbf{Claim:} Increasing simultaneous requests should increase aggregate AI throughput until parallelism is saturated. This matters because “bigger GPU is faster” can confuse capacity with scheduling.
+\section{Evidence: a generated table}The cells report aggregate tokens per second / overlap factor. The overlap factor is aggregate rate divided by the median per-request generation rate.\begin{center}\input{../../generated/tables/evidence.tex}\end{center}
+\end{document}

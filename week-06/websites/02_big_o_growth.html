@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Week 6 — Big O Growth</title>
+<style>
+:root{font-family:Inter,system-ui,sans-serif;color:#102033;background:#f6f8fb}
+body{margin:0}.wrap{max-width:1180px;margin:auto;padding:32px}
+h1{font-size:clamp(2.2rem,5vw,4.4rem);margin:.1em 0}.sub{font-size:1.35rem;color:#4b5b70}
+.panel{background:white;border:1px solid #dbe2ea;border-radius:18px;padding:22px;margin-top:22px;box-shadow:0 8px 24px #1b35520f}
+.controls{display:flex;gap:20px;align-items:center;flex-wrap:wrap}.controls label{font-weight:700}
+input[type=range]{width:min(560px,75vw)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.card{padding:14px;border-radius:14px;background:#f2f5f9}.card b{font-size:1.35rem}.card span{display:block;color:#596b80;margin-top:4px}
+canvas{width:100%;height:520px}
+.note{font-size:1rem;color:#607085}.question{font-size:1.45rem;font-weight:750;margin:22px 0 8px}
+@media(max-width:760px){.cards{grid-template-columns:1fr 1fr}.wrap{padding:18px}canvas{height:420px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div>DSCT · Week 6 · Open #02</div>
+  <h1>What happens when the input gets bigger?</h1>
+  <p class="sub">Big O is a story about growth. Move <strong>n</strong>. Watch six common growth patterns separate.</p>
+
+  <div class="panel">
+    <div class="controls">
+      <label for="n">Input size n = <strong id="nVal">16</strong></label>
+      <input id="n" type="range" min="1" max="20" value="16">
+      <label><input id="log" type="checkbox"> log-scale view</label>
+    </div>
+    <canvas id="chart" width="1120" height="520"></canvas>
+    <div class="cards" id="cards"></div>
+    <p class="note">Representative operation counts: 1, log₂n, n, n log₂n, n², and 2ⁿ. These are growth models, not measured runtimes.</p>
+  </div>
+
+  <p class="question">Ask the room: If we double n, which lines barely care, and which ones explode?</p>
+</div>
+<script>
+const canvas=document.getElementById('chart'),ctx=canvas.getContext('2d');
+const slider=document.getElementById('n'),logToggle=document.getElementById('log');
+const specs=[
+  ['O(1)',x=>1],
+  ['O(log n)',x=>Math.log2(x)],
+  ['O(n)',x=>x],
+  ['O(n log n)',x=>x*Math.log2(x)],
+  ['O(n²)',x=>x*x],
+  ['O(2ⁿ)',x=>Math.pow(2,x)]
+];
+const colors=['#1f77b4','#2ca02c','#9467bd','#ff7f0e','#d62728','#111827'];
+function fmt(v){return v>=1e6?v.toExponential(2):Math.round(v*100)/100}
+function draw(){
+  const selected=+slider.value; document.getElementById('nVal').textContent=selected;
+  const W=canvas.width,H=canvas.height,p={l:72,r:24,t:28,b:56};
+  ctx.clearRect(0,0,W,H);ctx.font='16px system-ui';ctx.lineWidth=1;
+  const vals=[]; for(let x=1;x<=20;x++) for(const s of specs) vals.push(s[1](x));
+  const log=logToggle.checked;
+  const cap=log?Math.log10(Math.pow(2,20)):Math.min(500,Math.max(...vals.filter(v=>v<501)));
+  const yMap=v=>{const z=log?Math.log10(Math.max(v,1)):Math.min(v,cap);return H-p.b-(z/cap)*(H-p.t-p.b)};
+  const xMap=x=>p.l+(x-1)/19*(W-p.l-p.r);
+  ctx.strokeStyle='#d9e1ea';ctx.fillStyle='#5c6d80';
+  for(let i=0;i<=5;i++){const yy=p.t+i*(H-p.t-p.b)/5;ctx.beginPath();ctx.moveTo(p.l,yy);ctx.lineTo(W-p.r,yy);ctx.stroke();
+    const raw=log?Math.pow(10,cap*(1-i/5)):cap*(1-i/5);ctx.fillText(fmt(raw),8,yy+5)}
+  for(const [idx,s] of specs.entries()){
+    ctx.strokeStyle=colors[idx];ctx.lineWidth=3;ctx.beginPath();
+    for(let x=1;x<=20;x++){const xx=xMap(x),yy=yMap(s[1](x));x===1?ctx.moveTo(xx,yy):ctx.lineTo(xx,yy)}ctx.stroke();
+  }
+  const gx=xMap(selected);ctx.strokeStyle='#334155';ctx.lineWidth=2;ctx.setLineDash([6,6]);ctx.beginPath();ctx.moveTo(gx,p.t);ctx.lineTo(gx,H-p.b);ctx.stroke();ctx.setLineDash([]);
+  ctx.fillStyle='#334155';ctx.fillText('n',W-16,H-16);ctx.fillText(log?'log operations':'operations (capped at 500)',p.l,20);
+  for(let x=2;x<=20;x+=2){ctx.fillText(x,xMap(x)-7,H-p.b+25)}
+  const cards=document.getElementById('cards');cards.innerHTML='';
+  specs.forEach((s,i)=>{const d=document.createElement('div');d.className='card';d.innerHTML='<b style="color:'+colors[i]+'">'+s[0]+'</b><span>'+fmt(s[1](selected))+' representative ops</span>';cards.appendChild(d)});
+}
+slider.oninput=draw;logToggle.onchange=draw;draw();
+</script>
+</body></html>

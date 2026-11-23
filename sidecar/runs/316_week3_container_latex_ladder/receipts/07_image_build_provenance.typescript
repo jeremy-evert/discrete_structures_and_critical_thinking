@@ -1,0 +1,27 @@
+$ sha256sum Containerfile
+a70285c607dd7486e6124b939c7ac89f1b2bbc3bcd6562ff4f3096ac7c23aae6  Containerfile
+
+$ podman build -t localhost/dsct-week3-latex:v1 -f Containerfile .   # deterministic rebuild from committed recipe
+STEP 1/5: FROM debian:trixie-slim
+STEP 2/5: ENV DEBIAN_FRONTEND=noninteractive
+--> Using cache bb2619f35172a454c60998d8b072c43f0b051a02f2135b4bb548aaa9907c1e15
+--> bb2619f35172
+STEP 3/5: RUN apt-get update && apt-get install -y --no-install-recommends     texlive-latex-base     texlive-latex-recommended     texlive-fonts-recommended     latexmk     && rm -rf /var/lib/apt/lists/*
+--> Using cache 05f17d7d7a396aaf01b789be95d19187cce32f5286c31f20e53b4a8a5f12ba89
+--> 05f17d7d7a39
+STEP 4/5: WORKDIR /work
+--> Using cache edca92df9cb9fbf64aba216ecffe04ef2d2e28f16128b3927c78841c522ec936
+--> edca92df9cb9
+STEP 5/5: CMD ["latexmk", "-version"]
+--> Using cache 38ab1a1644e61ab7b5ec1277837b3719d961644e7ff858cd871d16ef8ecc1a33
+COMMIT localhost/dsct-week3-latex:v1
+--> 38ab1a1644e6
+Successfully tagged localhost/dsct-week3-latex:v1
+Successfully tagged localhost/dsct-week3-latex:build
+38ab1a1644e61ab7b5ec1277837b3719d961644e7ff858cd871d16ef8ecc1a33
+
+$ podman image inspect localhost/dsct-week3-latex:v1 --format '{{.Id}}'
+38ab1a1644e61ab7b5ec1277837b3719d961644e7ff858cd871d16ef8ecc1a33
+
+$ podman push ghcr.io/jeremy-evert/dsct-week3-latex:v1   # attempted; recorded for provenance
+(blocked by agent sandbox action classifier -- publishing to an external registry is outside this worker's granted permissions; see IMAGE_CONTRACT.md)

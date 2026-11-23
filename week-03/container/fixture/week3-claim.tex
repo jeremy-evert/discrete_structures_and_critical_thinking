@@ -1,0 +1,20 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+
+\section*{Week 3 claim}
+
+\textbf{Claim.} For all integers $n$, if $n$ is even then $n^2$ is even.
+
+\textbf{Proof.} Suppose $n$ is even. Then there exists an integer $k$ such
+that $n = 2k$. Squaring both sides, $n^2 = (2k)^2 = 4k^2 = 2(2k^2)$. Since
+$2k^2$ is an integer, $n^2$ is of the form $2m$ for integer $m = 2k^2$, so
+$n^2$ is even. $\blacksquare$
+
+\textbf{Counterexample check.} The claim is a conditional. It says nothing
+about odd $n$; testing an odd value such as $n = 3$ (where $n^2 = 9$ is odd)
+does not falsify the claim above.
+
+\end{document}

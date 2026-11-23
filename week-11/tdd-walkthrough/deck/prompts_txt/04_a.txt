@@ -1,0 +1,6 @@
+Test first. Create merger/__init__.py (empty), a stub merger/grades.py whose
+letter_grade(score) just raises NotImplementedError, and tests/test_grades.py.
+Spec: 90-100 A, 80-89 B, 70-79 C, 60-69 D, 0-59 F; scores outside 0-100 raise ValueError.
+Tests: one parametrized test covering each bin and both sides of every boundary
+(59/60, 69/70, 79/80, 89/90) plus 0 and 100, and a test that -1 and 101 raise ValueError.
+Run pytest and show me. Every test must be red. Do not implement letter_grade. Stop.

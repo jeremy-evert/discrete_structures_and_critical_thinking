@@ -1,7 +1,7 @@
 {
   "run": "2026-08-14_prompt300B_course_source_audit",
-  "workspace": "/mnt/nora/git",
-  "repo": "/mnt/nora/git/discrete_structures_and_critical_thinking",
+  "workspace": "<storage>/git",
+  "repo": "<storage>/git/discrete_structures_and_critical_thinking",
   "branch": "main",
   "audited_sha": "1fa96ee7bc8d45af2cb0d185743759d8d027c088",
   "handoff_sha_300A": "1fa96ee7bc8d45af2cb0d185743759d8d027c088",

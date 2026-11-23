@@ -1,0 +1,31 @@
+Script started on 2026-08-17 00:58:07-05:00 [<not executed on terminal>]
+path=sidecar/runs/307_week3_container_latex_probe/fixture/week3-reasoning.pdfsidecar/runs/307_week3_container_latex_probe/fixture/week3-reasoning.pdfsize=52764 bytessidecar/runs/307_week3_container_latex_probe/fixture/week3-reasoning.pdfmtime=2026-08-17 00:58:07.835041057 -0500
+74c27d2738081f88502acf74618000fb23bb7fa7ceb61da192df8438d7b53fe3  sidecar/runs/307_week3_container_latex_probe/fixture/week3-reasoning.pdf
+Creator:        TeX
+Producer:       pdfTeX-1.40.28
+CreationDate:   Mon Aug 17 00:58:07 2026 CDT
+ModDate:        Mon Aug 17 00:58:07 2026 CDT
+Tagged:         no
+UserProperties: no
+Suspects:       no
+Form:           none
+JavaScript:     no
+Pages:          1
+Encrypted:      no
+Page size:      595.276 x 841.89 pts (A4)
+Page rot:       0
+File size:      52764 bytes
+Optimized:      no
+PDF version:    1.7
+
+Extracted readable text:
+Week 3 reasoning probe
+For a finite set S with |S| = 6, the power set has
+|P(S)| = 26 = 64.
+This first bounded edit says: the claim is inspectable when the source
+and the typesetting command are both explicit.
+
+1
+
+
+Script done on 2026-08-17 00:58:07-05:00 [COMMAND_EXIT_CODE="0"]

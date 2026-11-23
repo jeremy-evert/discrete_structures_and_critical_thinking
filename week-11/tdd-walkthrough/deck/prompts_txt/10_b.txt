@@ -1,0 +1,3 @@
+Fix is_duplicate so swapping a and b can never change the answer: same_person on the names AND
+a.email == b.email. Do not edit the tests. Run pytest: all green. Then print is_duplicate for
+Record 1 vs Record 2 and Record 2 vs Record 1. Stop.

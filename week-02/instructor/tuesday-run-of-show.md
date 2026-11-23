@@ -1,44 +1,28 @@
 # Tuesday, August 25 — Building Your AI Lab
 
-**Length:** 75 minutes
-**Core question:** What does each local-AI observation prove, and what does it not prove?
+**75 minutes · 12:30–1:45 PM · Stafford 259**
 
-## Before class
+| Time | Segment | Instructor move / visible output |
+|---|---|---|
+| 0:00–0:08 | Professional Minds AI Fluency | Use the current Tuesday AI Fluency source slot; ask what a convincing wrong AI/infrastructure claim would look like. |
+| 0:08–0:20 | Professional Minds Wednesday strand | Use the current Wednesday-strand source when available. Keep the connection to evidence, boundaries, and professional help-seeking. |
+| 0:20–0:30 | Local-AI system map | Point students to shared pages 01–08. Trace PowerShell → Aider → localhost → Ollama → approved model → response; distinguish a tool check from a correctness claim. |
+| 0:30–0:43 | Readiness boundary | Students read the safety boundary and run the supplied `Check`. A `READY` result permits the next steps; `NOT READY` plus its first diagnostic code is valid evidence. No installation or repair. |
+| 0:43–0:57 | Bounded interaction | READY students run `Baseline`, enter the exact DSCT request from `dsct/week2_extension.md`, then inspect `Diff`. Partners identify whether the change stayed within the stated contract. |
+| 0:57–1:07 | Independent check | Students run `Final`, read the changed code, and record what the passing test does and does not establish. Students with NOT READY complete the shared conceptual questions and record the bounded support path. |
+| 1:07–1:15 | DSCT reasoning check | Complete `student/tuesday-activity.md`: claim, observation, counterexample/baseline, check, and limit. Preview the privacy boundary for `local-ai-readiness.md`. |
+| 1:15–1:25 | Exit / Thursday bridge | Collect the evidence plan and ask: “What would count as evidence that the lab is ready, and what would not?” Preview Thursday’s prepared-container boundary investigation. |
 
-- Read the canonical shared pages `local_ai_lab_setup/curriculum/shared/week2/01_start_here.md`, `02_learning_objectives_and_safety.md`, `05_local_ai_architecture.md`, `09_run_the_readiness_check.md`, `10_first_local_ai_interaction.md`, `11_troubleshoot_with_evidence.md`, and `12_readiness_assignment.md`.
-- Read `local_ai_lab_setup/curriculum/dsct/week2_extension.md` and the DSCT [student guide](../student/tuesday/README.md).
-- Use `windows_classroom/docs/week2_student_guide.md` and `scripts/week2_classroom.ps1` as the command authority. Do not substitute commands from memory.
-- Have one sanitized instructor/supplied evidence set ready for the NOT READY branch and one READY demonstration if classroom readiness is mixed.
-- Keep the [help/runtime status page](../student/help-and-runtime-status.md) visible.
+## Flex points
 
-## Run of show — exactly 75 minutes
+Protect the readiness result, the exact bounded request, diff inspection, and
+independent test. If the source-slot material is unavailable, label it
+`SOURCE_PENDING` and use the remaining time for the shared system map; do not
+invent Professional Minds content or extend the technical request.
 
-| Minutes | Segment | Core / flex | Instructor move and visible student evidence |
-|---:|---|---|---|
-| 0–7 (7) | Week 1 bridge | Core | Revisit Sources → Rules / Assumptions → Work → Check → Summary and “Expected / Actual / Tried.” Students predict why a green tool check cannot certify a correct answer. |
-| 7–17 (10) | Architecture mental model | Core | Draw Student → Aider → localhost → Ollama → `qwen3:8b` → response/change. Students label PowerShell, Python, Git, Aider, Ollama, model, and localhost by role. |
-| 17–25 (8) | Safety and privacy boundary | Core | State: no installation, model download, cloud account, API key, admin repair, or network exposure. Students identify one safe stop/escalate condition. |
-| 25–35 (10) | Guided `Check` | Core | Run the exact source-backed Windows command from the supplied folder. Pause at each row: command, service, model, inference, or exercise. Record `READY` or accurate `NOT READY` plus the first `W2-...` code. |
-| 35–43 (8) | Baseline as a claim test | Core | In a READY demonstration, run `Baseline`. Ask: what claim is challenged by the failing title-case assertion? Students write the baseline observation and limit. |
-| 43–55 (12) | Bounded `Launch` or supplied evidence | Core | READY students use the exact DSCT extension request in the supplied exercise. NOT READY students inspect a sanitized supplied transcript/diff and mark it as demonstration evidence, not their machine's readiness evidence. |
-| 55–63 (8) | `Diff` inspection | Core | Run `Diff` in the READY path. Students compare expected and actual: `student_code.py` only, `.upper()` → `.title()`. Ask what the diff establishes and leaves open. |
-| 63–71 (8) | Independent `Final` and reflection | Core | Run `Final` in the READY path. Students complete claim, baseline/counterexample, diff, and limit in the DSCT receipt; NOT READY students use the supplied result and explicitly mark the source. |
-| 71–75 (4) | Exit check and transition | Core | Collect the five-question exit check or oral equivalent. Close: Week 1 made reasoning visible; Week 2 makes environment/evidence reproducible; Week 3 applies the habits to formal logic, claims, and proof. |
+## Materials and safety
 
-## Branch rules
-
-### READY branch
-
-Students may execute `Baseline`, the exact bounded `Launch`, `Diff`, and `Final` commands from the Windows guide. A completed Aider request is a proposal; acceptance requires reading the diff and running the independent final test.
-
-### Accurate NOT READY branch
-
-Do not turn setup failure into student failure. Students record the exact status/code, stop at the safe boundary, and work from the sanitized instructor receipt. They may answer all reasoning questions except claims about their own machine. Their receipt must say `SUPPLIED DEMONSTRATION EVIDENCE`, not `my machine was READY`.
-
-### Flex points
-
-If the class is mixed, shorten the architecture drawing to 6 minutes and add 4 minutes to the evidence comparison. If all students are NOT READY, replace live `Baseline`/`Launch`/`Diff`/`Final` with the instructor receipt and spend the protected time on claim/evidence/limit analysis. Do not spend flex time on repair clinics.
-
-## Exit evidence
-
-Each student leaves with a privacy-reviewed DSCT reflection receipt and an exit response. The shared submission remains the canonical `local-ai-readiness.md`; DSCT adds the four labeled reflection parts in the shared assignment's `### Course-specific reflection` section.
+Use the shared local-AI pages and the Windows classroom guide named in the CS2
+wrapper. Students use only the supplied non-sensitive exercise. Missing
+software, credentials, elevation, model downloads, PATH changes, or system
+repairs are stop-and-ask signals.

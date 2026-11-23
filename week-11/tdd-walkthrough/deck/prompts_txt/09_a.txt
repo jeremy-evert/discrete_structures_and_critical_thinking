@@ -1,0 +1,8 @@
+Test first. Stub merger/grouping.py with group_by_chain(items, rel) raising NotImplementedError.
+It returns a list of groups (each a list, first-seen order): items are in the same group when
+linked by any chain of rel matches. Write tests/test_grouping.py:
+1) group_by_chain(SMITH_NAMES, similar_names) == [["Jon Smith","John Smith","Jonathan Smith"],
+   ["Maya Smith"], ["Maria Garcia"]];
+2) "same group" is reflexive, symmetric and transitive over SMITH_NAMES (use the helpers);
+3) tradeoff: Jon Smith and Jonathan Smith are NOT similar_names, yet share a group.
+Run pytest, show it red, stop.

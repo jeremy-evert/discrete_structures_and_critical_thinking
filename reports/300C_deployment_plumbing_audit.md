@@ -91,7 +91,7 @@ Harbor is the only intended Canvas HTTP boundary for this pipeline: Imprint impo
 
 ## 8. Savnac target, reachability, and safe read evidence
 
-Current Savnac documentation says Canvas runs in a private VM hosted on **Brandy**, at `http://192.168.122.172:3000`; Maise is not its expected direct host. `harbor/docs/savnac.md` says the normal programmatic path is direct from Brandy after explicitly sourcing `~/.config/canvas/savnac.env`; it must not be auto-loaded. The DSCT metadata comment claims a Savnac course `4`, but Savnac's current operational document only establishes course `1` as the original CS1 test course. Therefore `4` is source-backed as a claim but not verified as an extant/current DSCT sandbox course.
+Current Savnac documentation says Canvas runs in a private VM hosted on **Brandy**, at `http://<savnac-private-ip>:3000`; Maise is not its expected direct host. `harbor/docs/savnac.md` says the normal programmatic path is direct from Brandy after explicitly sourcing `~/.config/canvas/savnac.env`; it must not be auto-loaded. The DSCT metadata comment claims a Savnac course `4`, but Savnac's current operational document only establishes course `1` as the original CS1 test course. Therefore `4` is source-backed as a claim but not verified as an extant/current DSCT sandbox course.
 
 No local canvas or Savnac env file exists on Maise. A noninteractive SSH attempt to the documented Brandy route failed locally with `socket: Operation not permitted`, before it could perform the read-only login probe. This is `RUNTIME`/`EXTERNAL VERIFICATION`, not evidence that Savnac is down. No credentials were read or logged.
 

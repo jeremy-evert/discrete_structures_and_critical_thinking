@@ -1,0 +1,18 @@
+.venv/
+__pycache__/
+*.pyc
+
+# Disposable runtime evidence from the Week 16 validator.
+# Preserve durable receipts in sidecar/runs/ and curate any classroom fallback
+# fixture into week-16/ rather than committing timestamped validation trees.
+artifacts/week16_farkle_validation/
+
+# Student work and student-named material is never committed (see foreman_interface docs/STUDENT_DATA_RETENTION.md).
+student work/
+
+# ShoulderTap recordings are protected (student voices; >100MB) -- never publish
+/recordings/
+
+# Old Canvas course snapshots were removed from this public repo and its history (2026-11-11).
+# Keep any local copy private; never commit it. See docs/ARCHIVE_REMOVED.md.
+/archive/

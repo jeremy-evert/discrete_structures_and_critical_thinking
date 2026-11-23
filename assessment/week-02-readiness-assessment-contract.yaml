@@ -1,5 +1,5 @@
 schema_version: dsct-assessment-contract/v1
-contract_version: "2026-08-14.1"
+contract_version: "2026-08-17.1"
 assignment:
   key: week-02-local-ai-readiness
   title: Local AI Lab Readiness Check

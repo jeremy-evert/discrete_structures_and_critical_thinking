@@ -1,6 +1,6 @@
 {
   "run": "2026-08-14_prompt301_week1_launch_package",
-  "workspace": "/mnt/nora/git",
+  "workspace": "<storage>/git",
   "refresh": "git pull --ff-only",
   "repositories": {
     "jeremy_task_tracking": {"branch": "main", "head": "d8a15d4167a8b39340856e7a31ecceeec88c13bf", "upstream": "origin/main", "status_before_authoring": "clean"},

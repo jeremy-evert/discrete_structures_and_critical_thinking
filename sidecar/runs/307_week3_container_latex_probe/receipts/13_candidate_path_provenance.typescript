@@ -1,0 +1,32 @@
+Script started on 2026-08-17 00:59:34-05:00 [<not executed on terminal>]
+Computer Architecture provenance
+ba1eb7eccc5bf5731881a09a67422b6aa3903db8
+FROM debian:trixie-slim
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    MPLBACKEND=Agg
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3 python3-matplotlib \
+    gcc make binutils gdb file vim-common procps util-linux \
+    clang llvm lld \
+    texlive-latex-base texlive-latex-recommended latexmk \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /opt/archlab
+COPY . /opt/archlab
+ENV PYTHONPATH=/opt/archlab \
+    PATH=/opt/archlab/bin:$PATH
+
+CMD ["archlab", "doctor"]
+
+DSCT source inventory
+
+Cached-image LaTeX scan (no pulls):
+IMAGE localhost/gearbox-codex-worker:latest
+IMAGE ghcr.io/jeremy-evert/nrp-ellm-battery:prompt111-hosted-contract-v2
+IMAGE docker.io/library/python:3.11-slim
+IMAGE docker.io/library/alpine:latest
+
+Script done on 2026-08-17 00:59:35-05:00 [COMMAND_EXIT_CODE="0"]

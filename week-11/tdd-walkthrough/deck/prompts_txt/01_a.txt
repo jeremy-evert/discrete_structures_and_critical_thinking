@@ -1,0 +1,8 @@
+Create demos/seating.py. Students: Ana, Ben, Cy, Dee, Eli (in that order, a list named ITEMS).
+Relation "sits next to": Ana-Ben, Ben-Cy, Cy-Dee, Dee-Eli, and each pair works both ways.
+Store it as a set of ordered pairs named SITS_NEXT_TO (so 8 pairs).
+When run as a script, print:
+ 1. the pairs, sorted;
+ 2. a 5x5 matrix of 0/1 with the names as row and column labels;
+ 3. a digraph as text, one line per student listing all neighbours, like "Ben -> Ana, Cy".
+Then run: python3 demos/seating.py   and show me the output.
